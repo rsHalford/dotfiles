@@ -1,0 +1,5 @@
+#!/bin/sh
+cd ~/.dotfiles
+nix flake update
+# --commit-lock-file --commit-lockfile-summary "Custom Commit Message"
+cd -
