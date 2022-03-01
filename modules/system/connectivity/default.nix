@@ -58,6 +58,7 @@ in
 
     programs.ssh.startAgent = cfg.ssh.enable;
 
-    networking.wireless.enable = cfg.wifi.enable;
+    # networking.wireless.enable = cfg.wifi.enable;
+    networking.networkmanager.enable = cfg.wifi.enable;
   };
 }

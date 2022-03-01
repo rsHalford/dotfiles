@@ -34,7 +34,7 @@ in
     };
 
     environment = {
-      binsh = "${pkgs.dash}/bin/dash";
+      # binsh = "${pkgs.dash}/bin/dash";
       loginShellInit = ''
         if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
           exec sway
@@ -50,6 +50,8 @@ in
       ];
     };
 
+    powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+    hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     # hardware.enableRedistributableFirmware = lib.mkDefault true;
     # hardware.enableAllFirmware = lib.mkDefault true;
     # hardware.cpu.${system architecture}.updateMicrocode = true;
