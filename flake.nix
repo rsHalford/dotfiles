@@ -35,7 +35,7 @@
           # printing.enable = true;
           sound.enable = true;
           ssh.enable = true;
-          wifi.enable = false;
+          wifi.enable = true;
         };
         core.enable = true;
       };
@@ -100,6 +100,19 @@
           users = defaultUser;
           cpuCores = 4;
           stateVersion = " 21.11 ";
+        };
+        external = host.mkHost {
+          name = "external";
+          NICs = [ "enps31f6" "wlp2s0" ];
+          initrdMods = [ "xhci_pci" "nvme" "uas" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+          kernelMods = [ "kvm-intel" ];
+          kernelPackage = pkgs.linuxPackages_latest;
+          kernelParams = [];
+          kernelPatches = [];
+          systemConfig = laptopConfig;
+          users = defaultUser;
+          cpuCores = 4;
+          stateVersion = "21.11";
         };
         laptop = host.mkHost {
           name = "laptop";
