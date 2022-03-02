@@ -231,7 +231,6 @@ in
           lcs = "$HOME/.local/share/";
           ls = "exa -lagh -s=.Name --time-style=iso --git --group-directories-first --colour-scale";
           mkdir = "mkdir -pv";
-          mpv = "mpv --wid=$WINDOWID";
           mv = "mv -i";
           remind = "remind -b1 -m -@0 -gaaaa";
           v = "nvim";
