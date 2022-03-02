@@ -73,9 +73,9 @@
             core.enable = true;
             # direnv.enable = true;
             git.enable = true;
-            # gpg.enable = true;
+            gpg.enable = true;
 	    graphical.enable = true;
-            # ssh.enable = true;
+            ssh.enable = true;
 	    terminal = {
 	      emulator.enable = true;
               shell.enable = true;

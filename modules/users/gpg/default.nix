@@ -15,13 +15,12 @@ in
 
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
+      gnupg
       pinentry-qt
     ];
 
     programs.gpg = {
       enable = true;
-      homedir = "${config.xdg.dataHome}/gnupg";
-      publicKeys = [ ];
     };
 
     services.gpg-agent = {
