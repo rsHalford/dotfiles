@@ -36,6 +36,12 @@ in
       enable = true;
       userName = cfg.userName;
       userEmail = cfg.userEmail;
+      # aliases = { };
+      # attributes = [ ];
+      # delta = {
+      #   enable = false;
+      #   options = { };
+      # };
       extraConfig = {
         commit.gpgSign = cfg.signByDefault;
 	# gpg = {
@@ -61,6 +67,13 @@ in
 	init.defaultBranch = "main";
 	# pull.rebase = "true";
       };
+      # ignores = [ ];
+      # includes = [ ];
+      # signing = {
+      #   gpgPath = "\${pkgs.gnupg}/bin/gpg2";
+      #   key = null;
+      #   signByDefault = false;
+      # };
     };
   };
 }
