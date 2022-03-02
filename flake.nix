@@ -31,11 +31,10 @@
       defaultConfig = {
         boot = "encrypted-efi";
         connectivity = {
-          # bluetooth.enable = true;
-          # printing.enable = true;
+          bluetooth.enable = true;
+          printing.enable = true;
           sound.enable = true;
           ssh.enable = true;
-          wifi.enable = true;
         };
         core.enable = true;
       };
@@ -103,7 +102,7 @@
         };
         external = host.mkHost {
           name = "external";
-          NICs = [ "enps31f6" "wlp2s0" ];
+          NICs = [ "wlp2s0" "enp0s31f6" ];
           initrdMods = [ "xhci_pci" "nvme" "uas" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
           kernelMods = [ "kvm-intel" ];
           kernelPackage = pkgs.linuxPackages_latest;

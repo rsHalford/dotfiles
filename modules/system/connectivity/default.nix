@@ -29,12 +29,6 @@ in
       type = types.bool;
       default = false;
     };
-
-    wifi.enable = mkOption {
-      description = "Enable WiFi with default options";
-      type = types.bool;
-      default = false;
-    };
   };
 
   config = {
@@ -57,8 +51,5 @@ in
     };
 
     programs.ssh.startAgent = cfg.ssh.enable;
-
-    # networking.wireless.enable = cfg.wifi.enable;
-    networking.networkmanager.enable = cfg.wifi.enable;
   };
 }
