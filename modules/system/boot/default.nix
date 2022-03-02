@@ -42,7 +42,7 @@ in
         timeout = 3;
       };
       plymouth = {
-        enable = false;
+        enable = true;
       };
     };
     

@@ -50,9 +50,9 @@ with builtins;
           networking = {
             hostName = "${name}";
             interfaces = networkCfg;
-            wireless.interfaces = wifi;
             networkmanager.enable = true;
             useDHCP = false;
+            wireless.interfaces = wifi;
           };
 
           boot = {

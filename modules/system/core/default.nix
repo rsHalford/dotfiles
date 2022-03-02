@@ -34,27 +34,22 @@ in
     };
 
     environment = {
-      # binsh = "${pkgs.dash}/bin/dash";
       loginShellInit = ''
         if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
           exec sway
         fi
       '';
       pathsToLink = [ "/share/zsh" ];
-      # shells = [ pkgs.zsh ];
+      shells = [ pkgs.zsh ];
       systemPackages = with pkgs; [
-        dash
         git
         neovim
         zsh
       ];
     };
 
-    powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-    hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    # hardware.enableRedistributableFirmware = lib.mkDefault true;
-    # hardware.enableAllFirmware = lib.mkDefault true;
-    # hardware.cpu.${system architecture}.updateMicrocode = true;
+    hardware.enableRedistributableFirmware = true;
+    hardware.cpu.intel.updateMicrocode = true;
 
     i18n.defaultLocale = "en_GB.UTF-8";
 
@@ -75,8 +70,6 @@ in
 
     programs.sway.enable = true;
     # security.pam.services.swaylock = mkIf (cfg.swaylock-pam) { };
-
-    # powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 
     # security.sudo.extraConfig = "Defaults env_reset,timestamp_timeout=5";
     # security.sudo.execWheelOnly = true;

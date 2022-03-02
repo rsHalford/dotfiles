@@ -16,7 +16,7 @@ in
   config = mkIf (cfg.enable) {
     home = {
       packages = with pkgs; [
-        # git
+        git
         # git-crypt
         (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
         mpv
