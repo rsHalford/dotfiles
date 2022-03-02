@@ -21,13 +21,21 @@ in
     programs.gpg = {
       enable = true;
       homedir = "${config.xdg.dataHome}/gnupg";
+      publicKeys = [ ];
     };
 
     services.gpg-agent = {
       enable = true;
+      # enableExtraSocket = false;
+      # enableScDaemon = false;
+      enableSshSupport = true;
+      defaultCacheTtl = 28800;
+      # defaultCacheTtlSsh = null;
+      # extraConfig = "";
+      maxCacheTtl = 86400;
+      # maxCacheTtlSsh = null;
       pinentryFlavor = "qt";
-      enableExtraSocket = true;
-      enableScDaemon = false;
+      # sshKeys = null;
     };
   };
 }

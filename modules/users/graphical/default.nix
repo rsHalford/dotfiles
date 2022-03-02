@@ -58,6 +58,11 @@ in
 		xkb_model = "pc105";
 	        xkb_options = "caps:escape_shifted_capslock";
 	      };
+	      "1267:29:Elan_Touchpad" = {
+	        accel_profile = "flat";
+		natural_scroll = "enabled";
+		tap = "enabled";
+	      };
 	    };
 	    # keybindings = { }; # use separate lib.mkOptionDefault in file
 	    # menu = "\${pkgs.dmenu}/bin/dmenu_path | \${pkgs.dmenu}/bin/dmenu | \${pkgs.findutils}/bin/xargs swaymsg exec --";
