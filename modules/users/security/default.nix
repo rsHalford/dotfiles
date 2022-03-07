@@ -61,6 +61,13 @@ in
         # hashKnownHosts = false;
         # includes = [ ];
         matchBlocks = {
+          "hydrogen" = {
+	    hostname = "xhalford.com";
+	    user = "richard";
+            port = 22;
+            identitiesOnly = true;
+            identityFile = "~/.ssh/id_rsa_yubikey.pub";
+          };
           "github.com" = {
             hostname = "github.com";
             identitiesOnly = true;
