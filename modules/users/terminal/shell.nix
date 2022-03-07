@@ -157,6 +157,7 @@ in
 	enableVteIntegration = true;
 	autocd = true;
 	dotDir = ".config/zsh";
+	# envExtra = "";
 	history = {
 	  expireDuplicatesFirst = true;
 	  ignoreDups = false;
