@@ -69,6 +69,9 @@
       homeManagerConfigurations = {
         richard = user.mkHMUser {
           userConfig = {
+	    browser = {
+	      qutebrowser.enable = true;
+	    };
             core.enable = true;
             # direnv.enable = true;
             git.enable = true;

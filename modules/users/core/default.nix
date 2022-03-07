@@ -19,9 +19,7 @@ in
         git
         # git-crypt
         (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-        mpv
         neovim
-        qutebrowser
         # yt-dlp
         zathura
       ];
@@ -40,9 +38,7 @@ in
 
     programs = {
       # git-crypt.enable = true;
-      mpv.enable = true;
       # neofetch.enable = true;
-      qutebrowser.enable = true;
       zathura.enable = true;
     };
 
