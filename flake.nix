@@ -34,7 +34,6 @@
           bluetooth.enable = true;
           printing.enable = true;
           sound.enable = true;
-          ssh.enable = true;
         };
         core.enable = true;
       };
