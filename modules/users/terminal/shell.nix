@@ -182,6 +182,9 @@ in
 	  bindkey -M vicmd "j" history-substring-search-down
           typeset -g HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=default,fg=magenta,underline"
           typeset -g HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="bg=default,fg=yellow,underline"
+	  export GPG_TTY="$(tty)"
+	  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+	  gpgconf --launch gpg-agent
 	'';
 	initExtraBeforeCompInit = ''
 	  source .nix-profile/share/zsh-history-substring-search/zsh-history-substring-search.zsh
