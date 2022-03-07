@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./browser
     ./core
     ./direnv
     ./git
