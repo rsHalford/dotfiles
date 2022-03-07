@@ -23,12 +23,6 @@ in
       type = types.bool;
       default = false;
     };
-
-    ssh.enable = mkOption {
-      description = "Enable and start SSH agent";
-      type = types.bool;
-      default = false;
-    };
   };
 
   config = {
@@ -49,7 +43,5 @@ in
       alsa.support32Bit = cfg.sound.enable;
       pulse.enable = cfg.sound.enable;
     };
-
-    programs.ssh.startAgent = cfg.ssh.enable;
   };
 }
