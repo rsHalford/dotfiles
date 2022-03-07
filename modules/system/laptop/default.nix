@@ -26,11 +26,8 @@ in
       environment.systemPackages = with pkgs; [
         # acpid
         # powertop
+	brightnessctl
       ];
-
-      programs = {
-        light.enable = true;
-      };
 
       # powerManagement = {
       #   cpuFreqGovernor = "powersave";
