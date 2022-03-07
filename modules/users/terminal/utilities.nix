@@ -15,16 +15,19 @@ in
 
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
+      alsa-utils
       bat
       curl
       exa
+      fd
       fzf
       htop
       neofetch
+      pulsemixer
+      ripgrep
 
       # acpi
       # bottom
-      # fd
       # gawk
       # gnused
       # jq
@@ -32,7 +35,6 @@ in
       # nix-index
       # pciutils
       # pstree
-      # ripgrep
       # unzip
       # wget
     ];
