@@ -5,9 +5,8 @@
     ./core
     ./direnv
     ./git
-    ./gpg
     ./graphical
-    ./ssh
+    ./security
     ./terminal
   ];
 }
