@@ -27,6 +27,7 @@ in
 
   config = {
     home.packages = with pkgs; [
+      git-secret
       gnupg
       pinentry-gtk2
     ];
