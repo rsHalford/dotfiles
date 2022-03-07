@@ -30,7 +30,7 @@ with builtins;
 	    username = username;
 	    homeDirectory = "/home/${username}";
 	  };
-	  imports = [ ../modules/users machineModule ]; # add pkgs.homeage.homeManagerModules.homeage
+	  imports = [ ../modules/users machineModule ];
 	};
       homeDirectory = "/home/${username}";
     };
