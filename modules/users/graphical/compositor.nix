@@ -139,6 +139,7 @@ in
                 "Escape" = "mode default";
 	      };
             };
+	    output = { "*" = { bg = "#282828 solid_color"; }; };
 	    # seat = { }; # define seat modules - sway-input(5)
 	    # startup = [ ]; # startup commands { command = ""; always = bool; }
 	    terminal = "alacritty";
