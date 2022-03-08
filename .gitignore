@@ -1,4 +1,6 @@
 result
 .gitsecret/keys/random_seed
 !*.secret
-secrets/test-file.txt
+secrets/qutebrowser/default.nix
+secrets/qutebrowser/quickmarks.nix
+secrets/qutebrowser/searchengines.nix
