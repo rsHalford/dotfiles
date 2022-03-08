@@ -139,13 +139,6 @@ in
                 "Escape" = "mode default";
 	      };
             };
-	    output = {
-	      eDP-1 = {
-	        resolution = "1920x1080";
-		position = "1920,0";
-		bg = "/run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill";
-	      };
-	    };
 	    # seat = { }; # define seat modules - sway-input(5)
 	    # startup = [ ]; # startup commands { command = ""; always = bool; }
 	    terminal = "alacritty";
