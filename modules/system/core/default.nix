@@ -43,6 +43,7 @@ in
       shells = [ pkgs.zsh ];
       systemPackages = with pkgs; [
         git
+        libnotify
         neovim
         zsh
       ];

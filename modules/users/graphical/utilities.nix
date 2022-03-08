@@ -17,11 +17,41 @@ in
     home.packages = with pkgs; [
       gammastep
       kanshi
+      mako
       waybar
       wofi
       wl-clipboard
     ];
     programs = {
+      mako = {
+        enable = true;
+        actions = true;
+        anchor = "top-right";
+        backgroundColor = "#282828";
+        borderColor = "#458588";
+        borderRadius = 0;
+        borderSize = 3;
+        defaultTimeout = 10000;
+        extraConfig = "";
+        font = "JetBrainsMono Nerd Font";
+        format = ''<b>%s</b>\n%b'';
+        groupBy = null;
+        height = 100;
+        iconPath = null;
+        icons = true;
+        ignoreTimeout = false;
+        layer = "overlay";
+        margin = "10,10,5";
+        markup = true;
+        maxIconSize = 32;
+        maxVisible = 5;
+        output = null;
+        padding = "0,10,20";
+        progressColor = "over #665c54";
+        sort = "-time";
+        textColor = "#fbf1c7";
+        width = 300;
+      };
       waybar = {
         enable = true;
         # settings = [ ];
