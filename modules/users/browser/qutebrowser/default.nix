@@ -34,6 +34,8 @@ let
   dark_orange = "#d65d0e";
 in
 {
+  imports = [ ~/.dotfiles/secrets/qutebrowser ];
+
   options.richard.browser.qutebrowser = {
     enable = mkOption {
       description = "Enable qutebrowser";
@@ -82,7 +84,6 @@ in
       };
       # keyMappings = { };
       loadAutoconfig = true;
-      # quickamrks = { };
       settings = {
         auto_save.session = true;
         changelog_after_upgrade = "patch";
