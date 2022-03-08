@@ -15,6 +15,7 @@ in
 
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
+      gammastep
       waybar
       wofi
       wl-clipboard
@@ -72,7 +73,7 @@ in
 	    fade = 1;
 	    brightness-day = 1.0;
 	    brightness-night = 0.4;
-	    adjustment-method = "randr";
+	    adjustment-method = "wayland";
 	  };
 	};
 	temperature = {
