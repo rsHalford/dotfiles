@@ -16,6 +16,7 @@ in
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
       gammastep
+      kanshi
       waybar
       wofi
       wl-clipboard
@@ -81,6 +82,32 @@ in
 	  night = 2800;
 	};
 	tray = false;
+      };
+      kanshi = {
+        enable = true;
+	profiles = {
+	  undocked = {
+	    outputs = [{
+	      criteria = "eDP-1";
+	      position = "0,0";
+	      status = "enable";
+	    }];
+	  };
+	  docked = {
+	    outputs = [
+	      {
+	        criteria = "eDP-1";
+	        status = "disable";
+	      }
+	      {
+	        criteria = "Dell Inc. DELL U2515H 9X2VY5CA0QTL";
+	        position = "0,0";
+	        scale = 1.0;
+	        status = "enable";
+	      }
+	    ];
+	  };
+	};
       };
     };
   };
