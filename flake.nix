@@ -80,6 +80,7 @@
 	      utilities.enable = true;
               video.enable = true;
             };
+	    messaging.enable = true;
 	    security = {
               gpg.enable = true;
 	      pass.enable = true;
