@@ -29,7 +29,7 @@ in
     home.packages = with pkgs; [
       git-secret
       gnupg
-      pinentry-gtk2
+      pinentry-qt
     ];
 
     programs = {
@@ -119,7 +119,7 @@ in
         # extraConfig = "";
         # maxCacheTtl = null;
         # maxCacheTtlSsh = null;
-        pinentryFlavor = "gtk2";
+        pinentryFlavor = "qt";
         # sshKeys = null;
         # verbose = false;
       };
