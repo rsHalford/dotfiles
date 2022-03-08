@@ -2,18 +2,21 @@
 with lib;
 
 let
-  cfg = config.richard.graphical.video;
+  cfg = config.richard.media;
 in
 {
-  options.richard.graphical.video = {
+  options.richard.media = {
     enable = mkOption {
-      description = "Enable video";
+      description = "Enable media applications";
       type = types.bool;
       default = false;
     };
   };
 
   config = mkIf (cfg.enable) {
+    home.packages = with pkgs; [
+      imv
+    ];
     programs = {
       mpv = {
         enable = true;

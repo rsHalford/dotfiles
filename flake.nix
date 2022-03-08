@@ -78,8 +78,8 @@
             graphical = {
               compositor.enable = true;
 	      utilities.enable = true;
-              video.enable = true;
             };
+	    media.enable = true;
 	    messaging.enable = true;
 	    security = {
               gpg.enable = true;

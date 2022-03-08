@@ -7,6 +7,7 @@
     ./direnv
     ./git
     ./graphical
+    ./media
     ./messaging
     ./security
     ./terminal
