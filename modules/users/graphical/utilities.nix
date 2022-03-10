@@ -333,6 +333,7 @@ in
       };
     };
     services = {
+      blueman-applet.enable = true;
       gammastep = {
         enable = true;
 	dawnTime = "06:30-08:30";
