@@ -150,7 +150,7 @@ in
 		disconnected = "<span font='12' color='#d65d0e'></span>";
 		disabled = "<span font='12' color='#cc241d'>睊</span>";
               };
-	      on-click = "$TERM -e nmtui";
+	      on-click = "$TERM --class nmtui -e nmtui";
             };
             "pulseaudio" = {
               format = "{icon}";
@@ -187,7 +187,7 @@ in
 		# hmdi = "﴿";
 		# speaker = "蓼";
               };
-              on-click = "$TERM -e pulsemixer";
+              on-click = "$TERM --class pulsemixer -e pulsemixer";
               scroll-step = 1.0;
 	      tooltip-format = "{desc}: {volume}%";
             };
