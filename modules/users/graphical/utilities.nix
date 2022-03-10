@@ -54,8 +54,235 @@ in
       };
       waybar = {
         enable = true;
-        # settings = [ ];
-        # style = "";
+        settings = [
+	  {
+            height = 20;
+            spacing = 0;
+	    fixed-center = false;
+            modules-left = [ "sway/workspaces" "sway/mode" ];
+            "sway/workspaces" = {
+              disable-scroll = true;
+	    };
+            "sway/mode" = {
+              format = "<span style=\"italic\">{}</span>";
+            };
+            modules-center = [ "sway/window" ];
+	    "sway/window" = {
+	      format = { };
+	    };
+            modules-right = [
+	      "cpu"
+              "temperature"
+	      "memory"
+	      "disk"
+              "pulseaudio"
+              "network"
+	      "battery"
+	      "tray"
+	      "custom/weather"
+	      "clock"
+	    ];
+            "battery" = {
+              format = "{icon}";
+              format-charging = "{icon}";
+              format-time = "{H}:{M}";
+              format-icons = {
+	        default = [
+                  "<span font='12' color='#cc241d'></span>"
+                  "<span font='12' color='#cc241d'></span>"
+                  "<span font='12' color='#cc241d'></span>"
+                  "<span font='12' color='#d65d0e'></span>"
+                  "<span font='12' color='#d65d0e'></span>"
+                  "<span font='12' color='#d79921'></span>"
+                  "<span font='12' color='#d79921'></span>"
+                  "<span font='12' color='#b8bb26'></span>"
+                  "<span font='12' color='#b8bb26'></span>"
+                  "<span font='12' color='#458588'></span>"
+                  "<span font='12' color='#458588'></span>"
+                ];
+	        charging = [
+                  "<span font='12' color='#b8bb26'> </span>"
+                  "<span font='12' color='#b8bb26'> </span>"
+                  "<span font='12' color='#b8bb26'> </span>"
+                  "<span font='12' color='#b8bb26'> </span>"
+                  "<span font='12' color='#b8bb26'> </span>"
+                  "<span font='12' color='#b8bb26'> </span>"
+                  "<span font='12' color='#b8bb26'> </span>"
+                ];
+	      };
+	      # on-click = ""; # tlp powersave
+	      tooltip-format = "{capacity}%";
+            };
+            "clock" = {
+              format = "<span font='12' color='#fabd2f'></span> {:%H:%M}";
+	      # on-click = "$TERM -e remind";
+	      today-format = "<span color='#b16286'><b>{}</b></span>";
+              tooltip-format = "<big>{:%B <span color='#cc241d'>%Y}</span></big>\n<tt><small>{calendar}</small></tt>";
+            };
+            "cpu" = {
+              format = "<span font='12' color='#689d6a'>﬙</span> {usage}%";
+            };
+	    "custom/weather" = {
+	      exec = "curl -sf wttr.in/Halifax?format=%c%t";
+	      interval = 3600;
+	    };
+	    "disk" = {
+	      path = "/";
+	      format = "<span font='12' color='#fabd2f'></span> {percentage_used}%";
+	      tooltip-format = "{used} / {total}";
+	    };
+            "memory" = {
+              format = "<span font='12' color='#b16286'></span> {percentage}%";
+	      tooltip-format = "{used:0.1f}GiB / {total:0.1f}GiB";
+            };
+            "network" = {
+              format-wifi = "{icon}";
+              tooltip-format-wifi = "{essid} {signalStrength}%\n{ipaddr}/{cidr}";
+              format-ethernet = "{icon}";
+              tooltip-format-ethernet = "{essid}\n{ipaddr}/{cidr}";
+              format-disconnected = "{icon}";
+              format-linked = "{icon}";
+              format-disabled = "{icon}";
+	      format-icons = {
+	        wifi = "<span font='12' color='#689d6a'>直</span>";
+	        ethernet = "<span font='12' color='#b16286'></span>";
+		linked = "<span font='12' color='#d65d0e'></span>";
+		disconnected = "<span font='12' color='#d65d0e'></span>";
+		disabled = "<span font='12' color='#cc241d'>睊</span>";
+              };
+	      on-click = "$TERM -e nmtui";
+            };
+            "pulseaudio" = {
+              format = "{icon}";
+              format-muted = "<span font='12' color='#cc241d'>ﱝ</span>";
+              format-bluetooth = "<span font='12' color='#fbf1c7'></span> {volume}%";
+              format-bluetooth-muted = "<span font='12' color='#cc241d'></span>";
+              format-source = "<span font='12' color='#fbf1c7'></span> {volume}%";
+              format-source-muted = "<span font='12' color='#cc241d'></span>";
+              format-icons = {
+                default = [
+		  "<span font='12' color='#fb4934'>婢</span>"
+		  "<span font='12' color='#fbf1c7'>奄</span>"
+		  "<span font='12' color='#fbf1c7'>奄</span>"
+		  "<span font='12' color='#fbf1c7'>奄</span>"
+		  "<span font='12' color='#fbf1c7'>奄</span>"
+		  "<span font='12' color='#fbf1c7'>奔</span>"
+		  "<span font='12' color='#fbf1c7'>奔</span>"
+		  "<span font='12' color='#fbf1c7'>奔</span>"
+		  "<span font='12' color='#fbf1c7'>奔</span>"
+		  "<span font='12' color='#fbf1c7'>奔</span>"
+		  "<span font='12' color='#fbf1c7'>奔</span>"
+		  "<span font='12' color='#fbf1c7'>奔</span>"
+		  "<span font='12' color='#fbf1c7'>墳</span>"
+		  "<span font='12' color='#fbf1c7'>墳</span>"
+		  "<span font='12' color='#fbf1c7'>墳</span>"
+		  "<span font='12' color='#fbf1c7'>墳</span>"
+		  "<span font='12' color='#fbf1c7'>墳</span>"
+		  "<span font='12' color='#fbf1c7'>墳</span>"
+		  "<span font='12' color='#fbf1c7'>墳</span>"
+		  "<span font='12' color='#fbf1c7'>墳</span>"
+                ];
+                headset = "";
+		# hifi = "蓼";
+		# hmdi = "﴿";
+		# speaker = "蓼";
+              };
+              on-click = "$TERM -e pulsemixer";
+              scroll-step = 1.0;
+	      tooltip-format = "{desc}: {volume}%";
+            };
+            "temperature" = {
+	      hwmon-path = "/sys/class/hwmon/hwmon7/temp1_input";
+              critical-threshold = 100;
+              format = "{icon} {temperatureC}°C";
+              format-icons = [
+                "<span font='12' color='#458588'>﨎</span>"
+                "<span font='12' color='#689d6a'>﨎</span>"
+                "<span font='12' color='#98971a'>﨎</span>"
+                "<span font='12' color='#d79921'>﨏</span>"
+                "<span font='12' color='#d65d0e'>﨏</span>"
+                "<span font='12' color='#cc241d'>﨏</span>"
+              ];
+            };
+            "tray" = {
+              icon-size = 16;
+	      show-passive-items = true;
+              spacing = 18;
+            };
+          }
+	];
+        style = ''
+	  * {
+            font-family: JetBrainsMono Nerd Font;
+            font-size: 11.5pt;
+          }
+
+          window#waybar {
+	    background-color: #282828;
+	    color: #fbf1c7;
+          }
+          
+          #window,
+          #workspaces {
+            margin: 0 4px;
+          }
+          
+          .modules-left > widget:first-child > #workspaces {
+            margin-left: 0;
+          }
+          
+          #workspaces button {
+            padding: 0 5px;
+            background-color: #282828;
+	    color: #bdae93;
+            border: none;
+	    border-radius: 0;
+	    box-shadow: none;
+	    text-shadow: none;
+          }
+          
+          #workspaces button:hover {
+	    box-shadow: inset 0 3px #458588;
+	    transition-property: box-shadow;
+	    transition-duration: 250ms;
+          }
+          
+          #workspaces button.focused {
+            background-color: #458588;
+	    color: #fbf1c7;
+          }
+          
+          #workspaces button.urgent {
+            background-color: #d65d0e;
+          }
+          
+          #mode {
+	    background: #282828;
+            border-top: 3px solid #fbf1c7;
+          }
+          
+	  #battery,
+	  #clock,
+	  #cpu,
+	  #custom-weather,
+	  #disk,
+	  #memory,
+          #network,
+          #pulseaudio,
+          #temperature,
+	  #tray {
+            padding: 0 8pt;
+            background: #282828;
+	    color: #bdae93;
+          }
+
+	  tooltip {
+	    background-color: #1d2021;
+	    color: #fbf1c7;
+	    border: 3px solid #458588;
+	    border-radius: 0;
+	  }
+	'';
         systemd.enable = true;
       };
     };
@@ -111,7 +338,7 @@ in
 	  day = 6500;
 	  night = 2800;
 	};
-	tray = false;
+	tray = true;
       };
       kanshi = {
         enable = true;
