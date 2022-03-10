@@ -298,8 +298,19 @@ in
 	extraConfig = "";
       };
       gtk3 = {
-        extraConfig = { };
-	extraCss = "";
+        extraConfig = { gtk-application-prefer-dark-theme = true; };
+	extraCss = ''
+	  menu {
+	    border-radius: 0;
+	    border: 3px solid #458588;
+	    background-color: #282828;
+	    color: #fbf1c7;
+	  }
+	  menuitem:hover {
+	    background-color: #458588;
+	    color: #fbf1c7;
+	  }
+	'';
       };
       gtk4 = {
         extraConfig = { };
