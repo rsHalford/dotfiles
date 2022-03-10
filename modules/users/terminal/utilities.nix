@@ -25,6 +25,7 @@ in
       neofetch
       pulsemixer
       ripgrep
+      wev
 
       # acpi
       # bottom
