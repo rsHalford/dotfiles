@@ -26,7 +26,7 @@ in
 	        background = "#458588";
 	        border = "#458588";
 		childBorder = "#458588";
-	        indicator = "#458588";
+	        indicator = "#b16286";
 	        text = "#fbf1c7";
               };
 	      focusedInactive = {
