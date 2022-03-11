@@ -1,4 +1,4 @@
-{ pkgs, home-manager, lib, system, ... }:
+{ pkgs, home-manager, lib, system, overlays, ... }:
 with builtins;
 {
   mkHMUser = { userConfig, username }:
@@ -12,7 +12,7 @@ with builtins;
 
 	  machineModule = { pkgs, config, lib, ... }: {
 	    options.machineData = lib.mkOption {
-	      default = {};
+	      default = { };
 	      description = "Settings passed from nixos system configuration. If not present will be empty";
 	    };
 
@@ -22,6 +22,7 @@ with builtins;
 	{
 	  richard = userConfig;
 
+	  nixpkgs.overlays = overlays;
 	  nixpkgs.config.allowUnfree = true;
 
 	  systemd.user.startServices = true;
