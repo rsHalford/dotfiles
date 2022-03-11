@@ -16,8 +16,6 @@ in
   config = mkIf (cfg.enable) {
     home = {
       packages = with pkgs; [
-        git
-        # git-crypt
         (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
         # yt-dlp
         zathura
@@ -36,8 +34,6 @@ in
     fonts.fontconfig.enable = true;
 
     programs = {
-      # git-crypt.enable = true;
-      # neofetch.enable = true;
       zathura.enable = true;
     };
 
