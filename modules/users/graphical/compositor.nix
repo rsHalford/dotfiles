@@ -31,9 +31,9 @@ in
               };
 	      focusedInactive = {
 	        background = "#504945";
-	        border = "#458588";
-		childBorder = "#458588";
-	        indicator = "#458588";
+	        border = "#504945";
+		childBorder = "#504945";
+	        indicator = "#504945";
 	        text = "#fbf1c7";
               };
 	      unfocused = {
@@ -45,9 +45,9 @@ in
               };
 	      urgent = {
 	        background = "#d65d0e";
-	        border = "#282828";
-		childBorder = "#282828";
-	        indicator = "#282828";
+	        border = "#d65d0e";
+		childBorder = "#d65d0e";
+	        indicator = "#d65d0e";
 	        text = "#fbf1c7";
               };
 	    };
