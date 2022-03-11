@@ -8,21 +8,27 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs = { nixpkgs, home-manager, neovim-nightly, ... }@inputs:
     let
       inherit (nixpkgs) lib;
 
       util = import ./lib {
-        inherit system pkgs home-manager lib;
+        inherit system pkgs home-manager lib overlays;
       };
+
+      inherit (import ./overlays {
+        inherit system pkgs lib neovim-nightly;
+      }) overlays;
 
       inherit (util) user;
       inherit (util) host;
 
       pkgs = import nixpkgs {
-        inherit system;
+        inherit system overlays;
         config.allowUnfree = true;
       };
 

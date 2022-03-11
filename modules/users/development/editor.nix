@@ -14,11 +14,23 @@ in
   };
 
   config = mkIf (cfg.enable) {
-    home.packages = with pkgs; [
-      neovim
-    ];
     programs = {
-      # neovim.enable = true;
+      neovim = {
+        enable = true;
+        package = pkgs.neovim-nightly;
+	# extraConfig = "";
+	# extraLuaPackages = "[]";
+	# extraPackages = with pkgs; = [ ];
+	# extraPython3Packages = "ps: []";
+	# generatedConfigViml = "";
+	# plugins = [ ];
+	# viAlias = true;
+	# vimAlias = true;
+	# vimdiffAlias = true;
+	# withNodeJs = true;
+	# with Python3 = true;
+	# withRuby = true;
+      };
     };
   };
 }
