@@ -4,6 +4,7 @@
   imports = [
     ./browser
     ./core
+    ./development
     ./direnv
     ./git
     ./graphical

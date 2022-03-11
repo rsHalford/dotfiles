@@ -19,7 +19,6 @@ in
         git
         # git-crypt
         (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-        neovim
         # yt-dlp
         zathura
       ];

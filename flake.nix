@@ -73,6 +73,9 @@
 	      qutebrowser.enable = true;
 	    };
             core.enable = true;
+	    development = {
+	      editor.enable = true;
+	    };
             # direnv.enable = true;
             git.enable = true;
             graphical = {
