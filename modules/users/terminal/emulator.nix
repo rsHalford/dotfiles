@@ -21,14 +21,18 @@ in
       enable = true;
       settings = {
         window = {
-          decorations = "none"; # "full" or "none"
-          opacity = 1.0; # 0.0 to 1.0
-          title = "Alacritty";
-          dynamic_title = true;
           class = {
             instance = "Alacritty";
             general = "Alacritty";
 	  };
+          decorations = "none"; # "full" or "none"
+          dynamic_title = true;
+          opacity = 1.0; # 0.0 to 1.0
+          padding = {
+            x = 5;
+            y = 2;
+          };
+          title = "Alacritty";
           gtk_theme_variant = "dark"; # "None", "dark" and "light"
 	};
         scrolling = {
