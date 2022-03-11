@@ -25,12 +25,10 @@ in
       neofetch
       pulsemixer
       ripgrep
+      translate-shell
       wev
 
       # acpi
-      # bottom
-      # gawk
-      # gnused
       # jq
       # manix
       # nix-index
