@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ...}:
+{ pkgs, config, lib, ... }:
 with lib;
 
 let
@@ -22,64 +22,64 @@ in
     programs = {
       starship = {
         enable = true;
-	enableZshIntegration = true;
-	settings = {
-	  add_newline = false;
+        enableZshIntegration = true;
+        settings = {
+          add_newline = false;
           aws = {
-           symbol = " ";
-	  };
+            symbol = " ";
+          };
           battery = {
             discharging_symbol = "";
-	    display = [
+            display = [
               { threshold = 10; style = "bold red"; }
               { threshold = 30; style = "bold yellow"; }
-	    ];
-	  };
+            ];
+          };
           character = {
             success_symbol = "[ ](bold green)";
             error_symbol = "[ ](bold red)";
             vicmd_symbol = "[ ](bold yellow)";
-	  };
+          };
           cmd_duration = {
             disabled = true;
-	  };
+          };
           crystal = {
             symbol = " ";
-	  };
+          };
           dart = {
             symbol = " ";
-	  };
+          };
           directory = {
             style = "blue";
             read_only = " ";
             read_only_style = "yellow";
             fish_style_pwd_dir_length = 1;
-	  };
+          };
           docker_context = {
             symbol = " ";
-	  };
+          };
           dotnet = {
             symbol = " ";
-	  };
+          };
           elixir = {
             symbol = " ";
-	  };
+          };
           elm = {
             symbol = " ";
-	  };
+          };
           erlang = {
             symbol = " ";
-	  };
+          };
           gcloud = {
             symbol = " ";
-	  };
+          };
           git_branch = {
             always_show_remote = true;
             symbol = " ";
-	  };
+          };
           git_commit = {
             tag_symbol = " ";
-	  };
+          };
           git_status = {
             style = "bold yellow";
             conflicted = "";
@@ -92,110 +92,112 @@ in
             staged = "[\($count\)](green)";
             renamed = "";
             deleted = "";
-	  };
+          };
           golang = {
             symbol = "ﳑ ";
-	  };
+          };
           helm = {
             symbol = "ﴱ ";
-	  };
+          };
           java = {
             symbol = " ";
-	  };
+          };
           julia = {
             symbol = " ";
-	  };
+          };
           kotlin = {
             symbol = " ";
-	  };
+          };
           line_break = {
             disabled = true;
-	  };
+          };
           lua = {
             symbol = " ";
-	  };
+          };
           nim = {
             symbol = " ";
-	  };
+          };
           nix_shell = {
             symbol = " ";
-	  };
+          };
           nodejs = {
             symbol = " ";
             format = "via [$symbol]($style)";
-	  };
+          };
           openstack = {
             symbol = " ";
-	  };
+          };
           package = {
             disabled = true;
             symbol = " ";
-	  };
+          };
           php = {
             symbol = " ";
-	  };
+          };
           python = {
             symbol = " ";
             style = "green";
             format = ''via [''${symbol}(\($virtualenv\))]($style)'';
-	  };
+          };
           ruby = {
             symbol = " ";
-	  };
+          };
           rust = {
             symbol = " ";
-	  };
+          };
           swift = {
             symbol = "ﯣ ";
-	  };
-	};
+          };
+        };
       };
       zsh = {
         enable = true;
-	enableAutosuggestions = true;
-	enableSyntaxHighlighting = true;
-	enableVteIntegration = true;
-	autocd = true;
-	dotDir = ".config/zsh";
-	# envExtra = "";
-	history = {
-	  expireDuplicatesFirst = true;
-	  ignoreDups = false;
-	  ignorePatterns = [ ];
-	  ignoreSpace = true;
-	  path = "${config.xdg.dataHome}/zsh/.zsh_history";
-	  save = 1000000;
-	  size = 1000000;
-	};
-	initExtra = ''
-	  zmodload -i zsh/complist
-          zstyle ":completion:*" menu select
-          zstyle ":completion:*" matcher-list "" "m:{a-z}={A-Z}" "m:{a-zA-Z}={A-Za-z}" "r:|[._-]=* r:|=*" "l:|=* r:|=*"
-	  zle -N history-substring-search-up
-	  zle -N history-substring-search-down
-	  setopt auto_pushd
-	  setopt correct
-	  setopt globdots
-	  setopt hist_ignore_all_dups
-	  bindkey "^[[A" history-substring-search-up
-	  bindkey "^[[B" history-substring-search-down
-	  bindkey -M vicmd "k" history-substring-search-up
-	  bindkey -M vicmd "j" history-substring-search-down
-          typeset -g HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=default,fg=magenta,underline"
-          typeset -g HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="bg=default,fg=yellow,underline"
-	  export GPG_TTY="$(tty)"
-	  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-	  gpgconf --launch gpg-agent
-	'';
-	initExtraBeforeCompInit = ''
-	  source .nix-profile/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-	'';
-	initExtraFirst = "";
-	plugins = [ ];
-	shellAliases = {
-	  dl = "$HOME/Downloads";
-	  docs = "$HOME/Documents";
-	  dot = "$HOME/.dotfiles";
+        enableAutosuggestions = true;
+        enableSyntaxHighlighting = true;
+        enableVteIntegration = true;
+        autocd = true;
+        dotDir = ".config/zsh";
+        # envExtra = "";
+        history = {
+          expireDuplicatesFirst = true;
+          ignoreDups = false;
+          ignorePatterns = [ ];
+          ignoreSpace = true;
+          path = "${config.xdg.dataHome}/zsh/.zsh_history";
+          save = 1000000;
+          size = 1000000;
+        };
+        initExtra =
+          ''
+            zmodload -i zsh/complist
+            zstyle ":completion:*" menu select
+            zstyle ":completion:*" matcher-list "" "m:{a-z}={A-Z}" "m:{a-zA-Z}={A-Za-z}" "r:|[._-]=* r:|=*" "l:|=* r:|=*"
+            zle -N history-substring-search-up
+            zle -N history-substring-search-down
+            setopt auto_pushd
+            setopt correct
+            setopt globdots
+            setopt hist_ignore_all_dups
+            bindkey "^[[A" history-substring-search-up
+            bindkey "^[[B" history-substring-search-down
+            bindkey -M vicmd "k" history-substring-search-up
+            bindkey -M vicmd "j" history-substring-search-down
+            typeset -g HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=default,fg=magenta,underline"
+            typeset -g HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="bg=default,fg=yellow,underline"
+            export GPG_TTY="$(tty)"
+            export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+            gpgconf --launch gpg-agent
+          '';
+        initExtraBeforeCompInit =
+          ''
+            source .nix-profile/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+          '';
+        initExtraFirst = "";
+        plugins = [ ];
+        shellAliases = {
+          dl = "$HOME/Downloads";
+          docs = "$HOME/Documents";
+          dot = "$HOME/.dotfiles";
           # find = "fd";
           # rm = "rm -i";
           abook = "abook --config $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook";
@@ -238,8 +240,8 @@ in
           mv = "mv -i";
           remind = "remind -b1 -m -@0 -gaaaa";
           v = "nvim";
-	};
-	shellGlobalAliases = { }; # aliases substituted anywhere on a line
+        };
+        shellGlobalAliases = { }; # aliases substituted anywhere on a line
       };
     };
   };

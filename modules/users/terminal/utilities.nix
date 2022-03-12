@@ -46,30 +46,30 @@ in
           #paging = never;
           #pager = "less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse";
           #map-syntax = [
-	  # "*.ino:C++";
+          # "*.ino:C++";
           # ".ignore:Git Ignore";
-	  #];
+          #];
           style = "numbers,changes,grid";
         };
       };
       exa.enable = true;
       fzf = {
         enable = true;
-	enableZshIntegration = true;
-	changeDirWidgetCommand = null; # source command with ALT-C
-	changeDirWidgetOptions = [ ]; # ALT-C options
-	defaultCommand = null; 
-	defaultOptions = [
-	  "-i --preview 'bat --color=always --style=numbers --line-range=:68 {}'"
-	];
-	fileWidgetCommand = null; # source command with CTRL-T
-	fileWidgetOptions = [ ]; # CTRL-T options
-	historyWidgetOptions = [ ]; # CTRL-R options
+        enableZshIntegration = true;
+        changeDirWidgetCommand = null; # source command with ALT-C
+        changeDirWidgetOptions = [ ]; # ALT-C options
+        defaultCommand = null;
+        defaultOptions = [
+          "-i --preview 'bat --color=always --style=numbers --line-range=:68 {}'"
+        ];
+        fileWidgetCommand = null; # source command with CTRL-T
+        fileWidgetOptions = [ ]; # CTRL-T options
+        historyWidgetOptions = [ ]; # CTRL-R options
       };
       htop = {
         enable = true;
         settings = { };
-      }; 
+      };
     };
   };
 }

@@ -15,37 +15,38 @@ in
     boot = {
       loader = {
         efi = {
-	  canTouchEfiVariables = true;
-	  efiSysMountPoint = "/boot/efi";
-	};
-	grub = {
-	  enable = true;
-	  # backgroundColor = "";
-	  devices = [ "nodev" ];
-	  efiSupport = true;
-	  extraEntries = ''
-	    menuentry "Reboot" {
-              reboot
-            }
-            menuentry "Shutdown" {
-              halt
-            }
-	  '';
-	  # font = "${pkgs.grub2}/share/grub/unicode.pf2";
-	  # fontSize = null;
-	  # splashImage = null;
-	  # splashMode = "stretch";
-	  # theme = null;
-	  useOSProber = true;
-	  version = 2;
-	};
+          canTouchEfiVariables = true;
+          efiSysMountPoint = "/boot/efi";
+        };
+        grub = {
+          enable = true;
+          # backgroundColor = "";
+          devices = [ "nodev" ];
+          efiSupport = true;
+          extraEntries =
+            ''
+              menuentry "Reboot" {
+                reboot
+              }
+              menuentry "Shutdown" {
+                halt
+              }
+            '';
+          # font = "${pkgs.grub2}/share/grub/unicode.pf2";
+          # fontSize = null;
+          # splashImage = null;
+          # splashMode = "stretch";
+          # theme = null;
+          useOSProber = true;
+          version = 2;
+        };
         timeout = 3;
       };
       plymouth = {
         enable = true;
       };
     };
-    
+
     fileSystems."/" = {
       device = "/dev/disk/by-label/NIXROOT";
       fsType = "ext4";

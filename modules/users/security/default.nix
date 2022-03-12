@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ...}:
+{ pkgs, config, lib, ... }:
 with lib;
 
 let
@@ -47,7 +47,7 @@ in
 
       password-store = {
         enable = cfg.pass.enable;
-	# package = with pkgs; [ (pass.withExtensions (exts: [ exts.pass-otp ])) ];
+        # package = with pkgs; [ (pass.withExtensions (exts: [ exts.pass-otp ])) ];
       };
 
       ssh = {
@@ -63,8 +63,8 @@ in
         # includes = [ ];
         matchBlocks = {
           "hydrogen" = {
-	    hostname = "xhalford.com";
-	    user = "richard";
+            hostname = "xhalford.com";
+            user = "richard";
             port = 22;
             identitiesOnly = true;
             identityFile = "~/.ssh/id_rsa_yubikey.pub";
@@ -74,33 +74,33 @@ in
             identitiesOnly = true;
             identityFile = "~/.ssh/id_rsa_yubikey.pub";
           };
-        #   <name> = {
-        #     addressFamily = null;
-        #     certificateFile = [ ];
-        #     checkHostIP = true;
-        #     compression = null;
-        #     dynamicForwards = [
-        #       address = "localhost";
-        #       port = null;
-        #     ];
-        #     extraOptions = { };
-        #     forwardAgent = null;
-        #     forwardX11 = false;
-        #     forwardX11Trusted = false;
-        #     host = "";
-        #     hostname = null;
-        #     identitiesOnly = false;
-        #     identityFile = "";
-        #     localForwards = [ ];
-        #     port = null;
-        #     proxyCommand = null;
-        #     proxyJump = null;
-        #     remoteForwards = [ ];
-        #     sendEnv = [ ];
-        #     serverAliveCountMax = 3;
-        #     serverAliveInterval = 0;
-        #     user = "";
-        #   };
+          #   <name> = {
+          #     addressFamily = null;
+          #     certificateFile = [ ];
+          #     checkHostIP = true;
+          #     compression = null;
+          #     dynamicForwards = [
+          #       address = "localhost";
+          #       port = null;
+          #     ];
+          #     extraOptions = { };
+          #     forwardAgent = null;
+          #     forwardX11 = false;
+          #     forwardX11Trusted = false;
+          #     host = "";
+          #     hostname = null;
+          #     identitiesOnly = false;
+          #     identityFile = "";
+          #     localForwards = [ ];
+          #     port = null;
+          #     proxyCommand = null;
+          #     proxyJump = null;
+          #     remoteForwards = [ ];
+          #     sendEnv = [ ];
+          #     serverAliveCountMax = 3;
+          #     serverAliveInterval = 0;
+          #     user = "";
+          #   };
         };
         # serverAliveCountMax = 3;
         # serverAliveInterval = 0;

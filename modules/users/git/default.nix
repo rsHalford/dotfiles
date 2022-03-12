@@ -47,28 +47,8 @@ in
       # };
       extraConfig = {
         commit.gpgSign = cfg.signByDefault;
-	# gpg = {
-	#   format = "ssh";
-	#   ssh = {
-	#     defaultKeyCommand = "${pkgs.openssh}/bin/ssh-add -L";
-	#     program = "${pkgs.openssh}/bin/ssh-keygen";
-	#     allowedSignersFile =
-	#       let
-	#         file = pkgs.writeTextFile {
-	# 	name = "git-authorized-keys";
-	#         text = ''
-	# 	  richard@xhalford.com ssh-...
-	#         '';
-	# 	};
-	#       in
-	#       builtins.toString file;
-	#   };
-	# };
-	# credential.helper = "${
-	#     pkgs.git.override { withLibSecret = true; }
-	#   }/bin/git-credential-libsecret";
-	init.defaultBranch = "main";
-	# pull.rebase = "true";
+        init.defaultBranch = "main";
+        # pull.rebase = "true";
       };
       # ignores = [ ];
       # includes = [ ];

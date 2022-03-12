@@ -15,8 +15,8 @@ in
     fprint = {
       enable = mkOption {
         description = "Enable fingerprint";
-	type = types.bool;
-	default = false;
+        type = types.bool;
+        default = false;
       };
     };
   };
@@ -26,7 +26,7 @@ in
       environment.systemPackages = with pkgs; [
         # acpid
         # powertop
-	brightnessctl
+        brightnessctl
       ];
 
       # powerManagement = {
@@ -34,29 +34,32 @@ in
       # };
 
       # systemd = {
-      #   sleep.extraConfig = ''
-      #     HiberanteDelaySec=30min
-      #     SuspendMode=suspend
-      #     SuspendState=disk
-      #   '';
+      #   sleep.extraConfig =
+      #     ''
+      #       HiberanteDelaySec=30min
+      #       SuspendMode=suspend
+      #       SuspendState=disk
+      #     '';
       # };
 
       services = {
-        # udev.extraRules = ''
-        #   # Suspend the system when battery level drops to 5% or lower
-        #   SUBSYSTEM=="power_supply", ATTR(status)=="Discharging", ATTR(capacity)=="[0-5]", RIN+="${pkgs.systemd}/bin/systemctl hibernate"
-        # '';
+        # udev.extraRules =
+        #   ''
+        #     # Suspend the system when battery level drops to 5% or lower
+        #     SUBSYSTEM=="power_supply", ATTR(status)=="Discharging", ATTR(capacity)=="[0-5]", RIN+="${pkgs.systemd}/bin/systemctl hibernate"
+        #   '';
 
         # logind = {
-        #   extraConfig = ''
-        #     HandleLidSwitch=suspend-then-hibernate
-        #     HandlePowerKey=suspend-then-hiberate
-        #     HandleSuspendKey=ignore
-        #     HandleHibernateKey=ignore
-        #     HandleSwitchDocked=ignore
-        #     IdleAction=suspend-then-hibernate
-        #     IdleActionSec=5min
-        #   '';
+        #   extraConfig =
+        #     ''
+        #       HandleLidSwitch=suspend-then-hibernate
+        #       HandlePowerKey=suspend-then-hiberate
+        #       HandleSuspendKey=ignore
+        #       HandleHibernateKey=ignore
+        #       HandleSwitchDocked=ignore
+        #       IdleAction=suspend-then-hibernate
+        #       IdleActionSec=5min
+        #     '';
         # };
 
         tlp = {

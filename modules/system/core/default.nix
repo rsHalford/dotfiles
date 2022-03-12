@@ -27,18 +27,19 @@ in
       doc.enable = true;
       man = {
         enable = true;
-	generateCaches = true;
+        generateCaches = true;
       };
       info.enable = true;
       nixos.enable = true;
     };
 
     environment = {
-      loginShellInit = ''
-        if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-          exec sway
-        fi
-      '';
+      loginShellInit =
+        ''
+          if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+            exec sway
+          fi
+        '';
       pathsToLink = [ "/share/zsh" ];
       shells = [ pkgs.zsh ];
       systemPackages = with pkgs; [
@@ -58,15 +59,16 @@ in
       package = pkgs.nixUnstable;
       gc = {
         automatic = true;
-	dates = "weekly";
-	options = "--delete-older-than 14d";
-	persistent = true;
+        dates = "weekly";
+        options = "--delete-older-than 14d";
+        persistent = true;
       };
-      extraOptions = ''
-        # keep-outputs = true;
-	# keep-derivations = true;
-        experimental-features = nix-command flakes
-      '';
+      extraOptions =
+        ''
+          # keep-outputs = true;
+          # keep-derivations = true;
+          experimental-features = nix-command flakes
+        '';
     };
 
     programs.sway.enable = true;

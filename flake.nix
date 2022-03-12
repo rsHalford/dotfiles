@@ -75,31 +75,31 @@
       homeManagerConfigurations = {
         richard = user.mkHMUser {
           userConfig = {
-	    browser = {
-	      qutebrowser.enable = true;
-	    };
+            browser = {
+              qutebrowser.enable = true;
+            };
             core.enable = true;
-	    development = {
-	      editor.enable = true;
-	    };
+            development = {
+              editor.enable = true;
+            };
             # direnv.enable = true;
             git.enable = true;
             graphical = {
               compositor.enable = true;
-	      utilities.enable = true;
+              utilities.enable = true;
             };
-	    media.enable = true;
-	    messaging.enable = true;
-	    security = {
+            media.enable = true;
+            messaging.enable = true;
+            security = {
               gpg.enable = true;
-	      pass.enable = true;
+              pass.enable = true;
               ssh.enable = true;
-	    };
-	    terminal = {
-	      emulator.enable = true;
+            };
+            terminal = {
+              emulator.enable = true;
               shell.enable = true;
-	      utilities.enable = true;
-	    };
+              utilities.enable = true;
+            };
           };
           username = "richard";
         };
@@ -112,8 +112,8 @@
           initrdMods = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
           kernelMods = [ "kvm-intel" ];
           kernelPackage = pkgs.linuxPackages_latest;
-          kernelParams = [];
-          kernelPatches = [];
+          kernelParams = [ ];
+          kernelPatches = [ ];
           systemConfig = desktopConfig;
           users = defaultUser;
           cpuCores = 4;
@@ -125,8 +125,8 @@
           initrdMods = [ "xhci_pci" "nvme" "uas" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
           kernelMods = [ "kvm-intel" ];
           kernelPackage = pkgs.linuxPackages_latest;
-          kernelParams = [];
-          kernelPatches = [];
+          kernelParams = [ ];
+          kernelPatches = [ ];
           systemConfig = laptopConfig;
           users = defaultUser;
           cpuCores = 4;
@@ -138,8 +138,8 @@
           initrdMods = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
           kernelMods = [ "kvm-intel" ];
           kernelPackage = pkgs.linuxPackages;
-          kernelParams = [];
-          kernelPatches = [];
+          kernelParams = [ ];
+          kernelPatches = [ ];
           systemConfig = laptopConfig;
           users = defaultUser;
           cpuCores = 4;
