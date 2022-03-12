@@ -37,6 +37,7 @@ in
             luafile ${builtins.toString ./nvim/lua/config/git.lua}
             luafile ${builtins.toString ./nvim/lua/config/lsp.lua}
             luafile ${builtins.toString ./nvim/lua/config/telescope.lua}
+            luafile ${builtins.toString ./nvim/lua/config/treesitter.lua}
           ''
         ];
         extraPackages = with pkgs; [
@@ -50,6 +51,10 @@ in
           nodePackages.vue-language-server
           nodePackages.yaml-language-server
           rnix-lsp
+
+          # Tree-sitter
+          tree-sitter
+          gcc
         ];
         plugins = with pkgs.vimPlugins; [
           # Theme
@@ -83,6 +88,11 @@ in
           # Git
           (plugin "tpope/vim-fugitive")
           (plugin "lewis6991/gitsigns.nvim")
+
+          # Tree-sitter
+          (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+          (plugin "p00f/nvim-ts-rainbow")
+          (plugin "windwp/nvim-ts-autotag")
         ];
         viAlias = true;
         vimAlias = true;
