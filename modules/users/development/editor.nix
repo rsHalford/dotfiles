@@ -34,6 +34,7 @@ in
             luafile ${builtins.toString ./nvim/lua/keymaps.lua}
             luafile ${builtins.toString ./nvim/lua/options.lua}
             luafile ${builtins.toString ./nvim/lua/config/cmp.lua}
+            luafile ${builtins.toString ./nvim/lua/config/git.lua}
             luafile ${builtins.toString ./nvim/lua/config/lsp.lua}
             luafile ${builtins.toString ./nvim/lua/config/telescope.lua}
           ''
@@ -78,6 +79,10 @@ in
 
           # Undotree
           (plugin "mbbill/undotree")
+
+          # Git
+          (plugin "tpope/vim-fugitive")
+          (plugin "lewis6991/gitsigns.nvim")
         ];
         viAlias = true;
         vimAlias = true;
