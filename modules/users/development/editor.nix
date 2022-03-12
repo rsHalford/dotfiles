@@ -75,6 +75,9 @@ in
           (plugin "nvim-telescope/telescope-file-browser.nvim")
           (plugin "ThePrimeagen/git-worktree.nvim")
           # (plugin "tknightz/telescope-termfinder.nvim")
+
+          # Undotree
+          (plugin "mbbill/undotree")
         ];
         viAlias = true;
         vimAlias = true;

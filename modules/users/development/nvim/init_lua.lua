@@ -25,6 +25,9 @@ function! XTermPasteBegin()
 endfunction
 ]]
 
+-- Undotree
+g.undotree_SetFocusWhenToggle = 1
+
 -- Gruvbox
 g.gruvbox_contrast_dark = 'hard'
 cmd [[
