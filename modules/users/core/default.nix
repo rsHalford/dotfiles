@@ -42,11 +42,11 @@ in
       # mimeApps.defaultApplications = { };
       userDirs = {
         enable = true;
-	createDirectories = true;
-	desktop = "$HOME";
-	music = "$HOME/Media/Music";
-	pictures = "$HOME/Media/Pictures";
-	videos = "$HOME/Media/Videos";
+        createDirectories = true;
+        desktop = "$HOME";
+        music = "$HOME/Media/Music";
+        pictures = "$HOME/Media/Pictures";
+        videos = "$HOME/Media/Videos";
       };
     };
   };

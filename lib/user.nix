@@ -7,32 +7,32 @@ with builtins;
       stateVersion = "21.11";
       configuration =
         let
-	  trySettings = tryEval (fromJSON (readFile /etc/hmsystemdata.json));
-	  machineData = if trySettings.success then trySettings.value else { };
+          trySettings = tryEval (fromJSON (readFile /etc/hmsystemdata.json));
+          machineData = if trySettings.success then trySettings.value else { };
 
-	  machineModule = { pkgs, config, lib, ... }: {
-	    options.machineData = lib.mkOption {
-	      default = { };
-	      description = "Settings passed from nixos system configuration. If not present will be empty";
-	    };
+          machineModule = { pkgs, config, lib, ... }: {
+            options.machineData = lib.mkOption {
+              default = { };
+              description = "Settings passed from nixos system configuration. If not present will be empty";
+            };
 
-	    config.machineData = machineData;
-	  };
-	in
-	{
-	  richard = userConfig;
+            config.machineData = machineData;
+          };
+        in
+        {
+          richard = userConfig;
 
-	  nixpkgs.overlays = overlays;
-	  nixpkgs.config.allowUnfree = true;
+          nixpkgs.overlays = overlays;
+          nixpkgs.config.allowUnfree = true;
 
-	  systemd.user.startServices = true;
-	  home = {
-	    stateVersion = "21.11";
-	    username = username;
-	    homeDirectory = "/home/${username}";
-	  };
-	  imports = [ ../modules/users machineModule ];
-	};
+          systemd.user.startServices = true;
+          home = {
+            stateVersion = "21.11";
+            username = username;
+            homeDirectory = "/home/${username}";
+          };
+          imports = [ ../modules/users machineModule ];
+        };
       homeDirectory = "/home/${username}";
     };
 
@@ -44,7 +44,7 @@ with builtins;
         extraGroups = groups;
         initialPassword = "helloworld";
         isNormalUser = true;
-	isSystemUser = false;
+        isSystemUser = false;
         name = name;
         shell = shell;
         uid = uid;

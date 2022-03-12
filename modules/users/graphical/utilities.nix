@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ...}:
+{ pkgs, config, lib, ... }:
 with lib;
 
 let
@@ -55,39 +55,39 @@ in
       waybar = {
         enable = true;
         settings = [
-	  {
+          {
             height = 20;
             spacing = 0;
-	    fixed-center = false;
+            fixed-center = false;
             modules-left = [ "sway/workspaces" "sway/mode" ];
             "sway/workspaces" = {
               disable-scroll = true;
-	    };
+            };
             "sway/mode" = {
               format = "<span style=\"italic\">{}</span>";
             };
             modules-center = [ "sway/window" ];
-	    "sway/window" = {
-	      format = { };
-	    };
+            "sway/window" = {
+              format = { };
+            };
             modules-right = [
-	      "cpu"
+              "cpu"
               "temperature"
-	      "memory"
-	      "disk"
+              "memory"
+              "disk"
               "pulseaudio"
               "network"
-	      "battery"
-	      "tray"
-	      "custom/weather"
-	      "clock"
-	    ];
+              "battery"
+              "tray"
+              "custom/weather"
+              "clock"
+            ];
             "battery" = {
               format = "{icon}";
               format-charging = "{icon}";
               format-time = "{H}:{M}";
               format-icons = {
-	        default = [
+                default = [
                   "<span font='12' color='#cc241d'></span>"
                   "<span font='12' color='#cc241d'></span>"
                   "<span font='12' color='#cc241d'></span>"
@@ -100,7 +100,7 @@ in
                   "<span font='12' color='#458588'></span>"
                   "<span font='12' color='#458588'></span>"
                 ];
-	        charging = [
+                charging = [
                   "<span font='12' color='#b8bb26'> </span>"
                   "<span font='12' color='#b8bb26'> </span>"
                   "<span font='12' color='#b8bb26'> </span>"
@@ -109,31 +109,31 @@ in
                   "<span font='12' color='#b8bb26'> </span>"
                   "<span font='12' color='#b8bb26'> </span>"
                 ];
-	      };
-	      # on-click = ""; # tlp powersave
-	      tooltip-format = "{capacity}%";
+              };
+              # on-click = ""; # tlp powersave
+              tooltip-format = "{capacity}%";
             };
             "clock" = {
               format = "<span font='12' color='#fabd2f'></span> {:%H:%M}";
-	      # on-click = "$TERM -e remind";
-	      today-format = "<span color='#b16286'><b>{}</b></span>";
+              # on-click = "$TERM -e remind";
+              today-format = "<span color='#b16286'><b>{}</b></span>";
               tooltip-format = "<big>{:%B <span color='#cc241d'>%Y}</span></big>\n<tt><small>{calendar}</small></tt>";
             };
             "cpu" = {
               format = "<span font='12' color='#689d6a'>﬙</span> {usage}%";
             };
-	    "custom/weather" = {
-	      exec = "curl -sf wttr.in/Halifax?format=%c%t";
-	      interval = 3600;
-	    };
-	    "disk" = {
-	      path = "/";
-	      format = "<span font='12' color='#fabd2f'></span> {percentage_used}%";
-	      tooltip-format = "{used} / {total}";
-	    };
+            "custom/weather" = {
+              exec = "curl -sf wttr.in/Halifax?format=%c%t";
+              interval = 3600;
+            };
+            "disk" = {
+              path = "/";
+              format = "<span font='12' color='#fabd2f'></span> {percentage_used}%";
+              tooltip-format = "{used} / {total}";
+            };
             "memory" = {
               format = "<span font='12' color='#b16286'></span> {percentage}%";
-	      tooltip-format = "{used:0.1f}GiB / {total:0.1f}GiB";
+              tooltip-format = "{used:0.1f}GiB / {total:0.1f}GiB";
             };
             "network" = {
               format-wifi = "{icon}";
@@ -143,14 +143,14 @@ in
               format-disconnected = "{icon}";
               format-linked = "{icon}";
               format-disabled = "{icon}";
-	      format-icons = {
-	        wifi = "<span font='12' color='#689d6a'>直</span>";
-	        ethernet = "<span font='12' color='#b16286'></span>";
-		linked = "<span font='12' color='#d65d0e'></span>";
-		disconnected = "<span font='12' color='#d65d0e'></span>";
-		disabled = "<span font='12' color='#cc241d'>睊</span>";
+              format-icons = {
+                wifi = "<span font='12' color='#689d6a'>直</span>";
+                ethernet = "<span font='12' color='#b16286'></span>";
+                linked = "<span font='12' color='#d65d0e'></span>";
+                disconnected = "<span font='12' color='#d65d0e'></span>";
+                disabled = "<span font='12' color='#cc241d'>睊</span>";
               };
-	      on-click = "$TERM --class nmtui -e nmtui";
+              on-click = "$TERM --class nmtui -e nmtui";
             };
             "pulseaudio" = {
               format = "{icon}";
@@ -161,38 +161,38 @@ in
               format-source-muted = "<span font='12' color='#cc241d'></span>";
               format-icons = {
                 default = [
-		  "<span font='12' color='#fb4934'>婢</span>"
-		  "<span font='12' color='#fbf1c7'>奄</span>"
-		  "<span font='12' color='#fbf1c7'>奄</span>"
-		  "<span font='12' color='#fbf1c7'>奄</span>"
-		  "<span font='12' color='#fbf1c7'>奄</span>"
-		  "<span font='12' color='#fbf1c7'>奔</span>"
-		  "<span font='12' color='#fbf1c7'>奔</span>"
-		  "<span font='12' color='#fbf1c7'>奔</span>"
-		  "<span font='12' color='#fbf1c7'>奔</span>"
-		  "<span font='12' color='#fbf1c7'>奔</span>"
-		  "<span font='12' color='#fbf1c7'>奔</span>"
-		  "<span font='12' color='#fbf1c7'>奔</span>"
-		  "<span font='12' color='#fbf1c7'>墳</span>"
-		  "<span font='12' color='#fbf1c7'>墳</span>"
-		  "<span font='12' color='#fbf1c7'>墳</span>"
-		  "<span font='12' color='#fbf1c7'>墳</span>"
-		  "<span font='12' color='#fbf1c7'>墳</span>"
-		  "<span font='12' color='#fbf1c7'>墳</span>"
-		  "<span font='12' color='#fbf1c7'>墳</span>"
-		  "<span font='12' color='#fbf1c7'>墳</span>"
+                  "<span font='12' color='#fb4934'>婢</span>"
+                  "<span font='12' color='#fbf1c7'>奄</span>"
+                  "<span font='12' color='#fbf1c7'>奄</span>"
+                  "<span font='12' color='#fbf1c7'>奄</span>"
+                  "<span font='12' color='#fbf1c7'>奄</span>"
+                  "<span font='12' color='#fbf1c7'>奔</span>"
+                  "<span font='12' color='#fbf1c7'>奔</span>"
+                  "<span font='12' color='#fbf1c7'>奔</span>"
+                  "<span font='12' color='#fbf1c7'>奔</span>"
+                  "<span font='12' color='#fbf1c7'>奔</span>"
+                  "<span font='12' color='#fbf1c7'>奔</span>"
+                  "<span font='12' color='#fbf1c7'>奔</span>"
+                  "<span font='12' color='#fbf1c7'>墳</span>"
+                  "<span font='12' color='#fbf1c7'>墳</span>"
+                  "<span font='12' color='#fbf1c7'>墳</span>"
+                  "<span font='12' color='#fbf1c7'>墳</span>"
+                  "<span font='12' color='#fbf1c7'>墳</span>"
+                  "<span font='12' color='#fbf1c7'>墳</span>"
+                  "<span font='12' color='#fbf1c7'>墳</span>"
+                  "<span font='12' color='#fbf1c7'>墳</span>"
                 ];
                 headset = "";
-		# hifi = "蓼";
-		# hmdi = "﴿";
-		# speaker = "蓼";
+                # hifi = "蓼";
+                # hmdi = "﴿";
+                # speaker = "蓼";
               };
               on-click = "$TERM --class pulsemixer -e pulsemixer";
               scroll-step = 1.0;
-	      tooltip-format = "{desc}: {volume}%";
+              tooltip-format = "{desc}: {volume}%";
             };
             "temperature" = {
-	      hwmon-path = "/sys/class/hwmon/hwmon7/temp1_input";
+              hwmon-path = "/sys/class/hwmon/hwmon7/temp1_input";
               critical-threshold = 100;
               format = "{icon} {temperatureC}°C";
               format-icons = [
@@ -206,122 +206,124 @@ in
             };
             "tray" = {
               icon-size = 16;
-	      show-passive-items = true;
+              show-passive-items = true;
               spacing = 18;
             };
           }
-	];
-        style = ''
-	  * {
-            font-family: JetBrainsMono Nerd Font;
-            font-size: 11.5pt;
-          }
+        ];
+        style =
+          ''
+            * {
+              font-family: JetBrainsMono Nerd Font;
+              font-size: 11.5pt;
+            }
 
-          window#waybar {
-	    background-color: #282828;
-	    color: #fbf1c7;
-          }
-          
-          #window,
-          #workspaces {
-            margin: 0 4px;
-          }
-          
-          .modules-left > widget:first-child > #workspaces {
-            margin-left: 0;
-          }
-          
-          #workspaces button {
-            padding: 0 5px;
-            background-color: #282828;
-	    color: #bdae93;
-            border: none;
-	    border-radius: 0;
-	    box-shadow: none;
-	    text-shadow: none;
-          }
-          
-          #workspaces button:hover {
-	    box-shadow: inset 0 3px #458588;
-	    transition-property: box-shadow;
-	    transition-duration: 250ms;
-          }
-          
-          #workspaces button.focused {
-            background-color: #458588;
-	    color: #fbf1c7;
-          }
-          
-          #workspaces button.urgent {
-            background-color: #d65d0e;
-          }
-          
-          #mode {
-	    background: #282828;
-            border-top: 3px solid #fbf1c7;
-          }
-          
-	  #battery,
-	  #clock,
-	  #cpu,
-	  #custom-weather,
-	  #disk,
-	  #memory,
-          #network,
-          #pulseaudio,
-          #temperature,
-	  #tray {
-            padding: 0 8pt;
-            background: #282828;
-	    color: #bdae93;
-          }
+            window#waybar {
+              background-color: #282828;
+              color: #fbf1c7;
+            }
+        
+            #window,
+            #workspaces {
+              margin: 0 4px;
+            }
+        
+            .modules-left > widget:first-child > #workspaces {
+              margin-left: 0;
+            }
+        
+            #workspaces button {
+              padding: 0 5px;
+              background-color: #282828;
+              color: #bdae93;
+              border: none;
+              border-radius: 0;
+              box-shadow: none;
+              text-shadow: none;
+            }
+        
+            #workspaces button:hover {
+              box-shadow: inset 0 3px #458588;
+              transition-property: box-shadow;
+              transition-duration: 250ms;
+            }
+        
+            #workspaces button.focused {
+              background-color: #458588;
+              color: #fbf1c7;
+            }
+        
+            #workspaces button.urgent {
+              background-color: #d65d0e;
+            }
+        
+            #mode {
+              background: #282828;
+              border-top: 3px solid #fbf1c7;
+            }
+        
+            #battery,
+            #clock,
+            #cpu,
+            #custom-weather,
+            #disk,
+            #memory,
+            #network,
+            #pulseaudio,
+            #temperature,
+            #tray {
+              padding: 0 8pt;
+              background: #282828;
+              color: #bdae93;
+            }
 
-	  tooltip {
-	    background-color: #1d2021;
-	    color: #fbf1c7;
-	    border: 3px solid #458588;
-	    border-radius: 0;
-	  }
-	'';
+            tooltip {
+              background-color: #1d2021;
+              color: #fbf1c7;
+              border: 3px solid #458588;
+              border-radius: 0;
+            }
+          '';
         systemd.enable = true;
       };
     };
     gtk = {
       enable = true;
       font = {
-	# package = with pkgs; (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-	name = "JetBrainsMono Nerd Font";
-	size = 10;
+        # package = with pkgs; (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+        name = "JetBrainsMono Nerd Font";
+        size = 10;
       };
       gtk2 = {
         configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
-	extraConfig = "";
+        extraConfig = "";
       };
       gtk3 = {
         extraConfig = { gtk-application-prefer-dark-theme = true; };
-	extraCss = ''
-	  menu {
-	    border-radius: 0;
-	    border: 3px solid #458588;
-	    background-color: #282828;
-	    color: #fbf1c7;
-	  }
-	  menuitem:hover {
-	    background-color: #458588;
-	    color: #fbf1c7;
-	  }
-	'';
+        extraCss =
+          ''
+            menu {
+              border-radius: 0;
+              border: 3px solid #458588;
+              background-color: #282828;
+              color: #fbf1c7;
+            }
+            menuitem:hover {
+              background-color: #458588;
+              color: #fbf1c7;
+            }
+          '';
       };
       gtk4 = {
         extraConfig = { };
       };
       iconTheme = {
         package = pkgs.papirus-icon-theme;
-	name = "Papirus Dark";
+        name = "Papirus Dark";
       };
       theme = {
         package = pkgs.gnome.gnome-themes-extra;
-	name = "Adwaita";
+        name = "Adwaita";
       };
     };
     qt = {
@@ -336,47 +338,47 @@ in
       blueman-applet.enable = true;
       gammastep = {
         enable = true;
-	dawnTime = "06:30-08:30";
-	duskTime = "20:30-22:00";
-	settings = {
-	  general = {
-	    fade = 1;
-	    brightness-day = 1.0;
-	    brightness-night = 0.4;
-	    adjustment-method = "wayland";
-	  };
-	};
-	temperature = {
-	  day = 6500;
-	  night = 2800;
-	};
-	tray = true;
+        dawnTime = "06:30-08:30";
+        duskTime = "20:30-22:00";
+        settings = {
+          general = {
+            fade = 1;
+            brightness-day = 1.0;
+            brightness-night = 0.4;
+            adjustment-method = "wayland";
+          };
+        };
+        temperature = {
+          day = 6500;
+          night = 2800;
+        };
+        tray = true;
       };
       kanshi = {
         enable = true;
-	profiles = {
-	  undocked = {
-	    outputs = [{
-	      criteria = "eDP-1";
-	      position = "0,0";
-	      status = "enable";
-	    }];
-	  };
-	  docked = {
-	    outputs = [
-	      {
-	        criteria = "eDP-1";
-	        status = "disable";
-	      }
-	      {
-	        criteria = "Dell Inc. DELL U2515H 9X2VY5CA0QTL";
-	        position = "0,0";
-	        scale = 1.0;
-	        status = "enable";
-	      }
-	    ];
-	  };
-	};
+        profiles = {
+          undocked = {
+            outputs = [{
+              criteria = "eDP-1";
+              position = "0,0";
+              status = "enable";
+            }];
+          };
+          docked = {
+            outputs = [
+              {
+                criteria = "eDP-1";
+                status = "disable";
+              }
+              {
+                criteria = "Dell Inc. DELL U2515H 9X2VY5CA0QTL";
+                position = "0,0";
+                scale = 1.0;
+                status = "enable";
+              }
+            ];
+          };
+        };
       };
     };
   };
