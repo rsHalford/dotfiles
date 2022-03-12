@@ -35,9 +35,11 @@ in
             luafile ${builtins.toString ./nvim/lua/options.lua}
             luafile ${builtins.toString ./nvim/lua/config/cmp.lua}
             luafile ${builtins.toString ./nvim/lua/config/lsp.lua}
+            luafile ${builtins.toString ./nvim/lua/config/telescope.lua}
           ''
         ];
         extraPackages = with pkgs; [
+          # Language Server
           gopls
           nodePackages.bash-language-server
           nodePackages.pyright
@@ -49,8 +51,13 @@ in
           rnix-lsp
         ];
         plugins = with pkgs.vimPlugins; [
+          # Theme
           (plugin "gruvbox-community/gruvbox")
+
+          # Language Server
           (plugin "neovim/nvim-lspconfig")
+
+          # Completions
           (plugin "hrsh7th/nvim-cmp")
           (plugin "L3MON4D3/LuaSnip")
           (plugin "hrsh7th/cmp-buffer")
@@ -59,6 +66,15 @@ in
           (plugin "hrsh7th/cmp-nvim-lua")
           (plugin "hrsh7th/cmp-path")
           (plugin "saadparwaiz1/cmp_luasnip")
+
+          # Telescope
+          (plugin "nvim-telescope/telescope.nvim")
+          (plugin "nvim-lua/popup.nvim")
+          (plugin "nvim-lua/plenary.nvim")
+          # (plugin "nvim-telescope/telescope-fzf-native.nvim")
+          (plugin "nvim-telescope/telescope-file-browser.nvim")
+          (plugin "ThePrimeagen/git-worktree.nvim")
+          # (plugin "tknightz/telescope-termfinder.nvim")
         ];
         viAlias = true;
         vimAlias = true;
