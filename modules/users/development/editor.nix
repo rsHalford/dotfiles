@@ -37,6 +37,7 @@ in
             luafile ${builtins.toString ./nvim/lua/config/git.lua}
             luafile ${builtins.toString ./nvim/lua/config/lsp.lua}
             luafile ${builtins.toString ./nvim/lua/config/telescope.lua}
+            luafile ${builtins.toString ./nvim/lua/config/theme.lua}
             luafile ${builtins.toString ./nvim/lua/config/treesitter.lua}
           ''
         ];
@@ -59,6 +60,11 @@ in
         plugins = with pkgs.vimPlugins; [
           # Theme
           (plugin "gruvbox-community/gruvbox")
+          (plugin "norcalli/nvim-colorizer.lua")
+          # (plugin "goolord/alpha-nvim")
+          (plugin "kyazdani42/nvim-web-devicons")
+          (plugin "kyazdani42/nvim-tree.lua")
+          (plugin "nvim-lualine/lualine.nvim")
 
           # Language Server
           (plugin "neovim/nvim-lspconfig")
