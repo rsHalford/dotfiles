@@ -16,8 +16,10 @@ in
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
       gammastep
+      grim
       kanshi
       mako
+      slurp
       waybar
       wofi
       wl-clipboard
