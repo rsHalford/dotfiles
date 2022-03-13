@@ -37,7 +37,7 @@ in
         };
         scrolling = {
           history = 100000;
-          multiplier = 1;
+          multiplier = 2;
         };
         font = {
           normal = {
