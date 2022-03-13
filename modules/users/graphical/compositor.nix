@@ -3,6 +3,7 @@ with lib;
 
 let
   cfg = config.richard.graphical.compositor;
+  screenshotLocation = "$HOME/Media/Pictures/Screenshots/$(date +%F_%H:%M:%S).png";
 in
 {
   options.richard.graphical.compositor = {
@@ -176,7 +177,7 @@ in
               "Mod4+Shift+minus" = "move scratchpad";
               "Mod4+minus" = "scratchpad show";
 
-              # "Print" = "";
+              "Print" = "exec grim -t png -l 0 ${screenshotLocation} && notify-send 'Grim' 'Screenshot Taken'";
               "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
               "XF86MonBrightnessUp" = "exec brightnessctl set +5%";
               "XF86AudioMute" = "exec pulsemixer --toggle-mute";
