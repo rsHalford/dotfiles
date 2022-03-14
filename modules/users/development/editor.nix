@@ -87,6 +87,7 @@ in
           (plugin "nvim-telescope/telescope-file-browser.nvim")
           (plugin "ThePrimeagen/git-worktree.nvim")
           # (plugin "tknightz/telescope-termfinder.nvim")
+          (plugin "ThePrimeagen/harpoon")
 
           # Undotree
           (plugin "mbbill/undotree")
