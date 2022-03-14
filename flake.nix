@@ -20,8 +20,12 @@
         inherit system pkgs home-manager lib overlays;
       };
 
+      scripts = import ./scripts {
+        inherit pkgs lib;
+      };
+
       inherit (import ./overlays {
-        inherit system pkgs lib neovim-nightly;
+        inherit system pkgs lib neovim-nightly scripts;
       }) overlays;
 
       inherit (util) user;
