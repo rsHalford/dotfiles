@@ -7,47 +7,51 @@ local on_attach = function()
 end
 
 -- null-ls
--- local null_ls = require 'null-ls'
--- local b = null_ls.builtins
--- 
--- null_ls.setup {
---   sources = {
---     b.code_actions.gitsigns,
---     -- b.code_actions.refactoring,
---     b.diagnostics.shellcheck,
---     b.diagnostics.flake8.with {
---       extra_args = {
---         '--max-doc-length=72',
---         '--max-line-length=88',
---         '--extend-ignore=E203',
---       },
---     },
---     -- b.diagnostics.mypy.with {
---     --   args = {
---     --     "--show-column-numbers",
---     --     "--disallow-any-generics",
---     --     "--disallow-untyped-def",
---     --     "--ignore-missing-imports",
---     --   },
---     -- },
---     b.formatting.black,
---     b.formatting.isort,
---     -- b.formatting.prettier,
---     b.formatting.stylua.with {
---       extra_args = {
---         '--config-path',
---         -- vim.fn.expand '~/.config/stylua/stylua.toml',
---       },
---     },
---     -- b.formatting.trim_newlines.with {
---     --   filetypes = { "lua", }
---     -- },
---     -- b.formatting.trim_whitespace.with {
---     --   filetypes = { "lua", }
---     -- },
---   },
---   on_attach = on_attach,
--- }
+local null_ls = require 'null-ls'
+local b = null_ls.builtins
+
+null_ls.setup {
+  sources = {
+    b.code_actions.gitsigns,
+    -- b.code_actions.refactoring,
+    b.diagnostics.shellcheck,
+    b.diagnostics.flake8.with {
+      extra_args = {
+        '--max-doc-length=72',
+        '--max-line-length=88',
+        '--extend-ignore=E203',
+      },
+    },
+    -- b.diagnostics.mypy.with {
+    --   args = {
+    --     "--show-column-numbers",
+    --     "--disallow-any-generics",
+    --     "--disallow-untyped-def",
+    --     "--ignore-missing-imports",
+    --   },
+    -- },
+    b.formatting.black,
+    b.formatting.isort,
+    -- b.formatting.prettier,
+    b.formatting.stylua.with {
+      extra_args = {
+        '--column-width=120',
+        '--line-endings=Unix',
+        '--indent-type=Spaces',
+        '--indent-width=2',
+        '--quote-style=AutoPreferSingle',
+        '--no-call-parenthesis=true',
+      },
+    },
+    -- b.formatting.trim_newlines.with {
+    --   filetypes = { "lua", }
+    -- },
+    -- b.formatting.trim_whitespace.with {
+    --   filetypes = { "lua", }
+    -- },
+  },
+  on_attach = on_attach,
+}
 
 -- python
 local util = require 'lspconfig.util'

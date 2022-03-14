@@ -43,7 +43,10 @@ in
         ];
         extraPackages = with pkgs; [
           # Language Server
+          black
           gopls
+          python310Packages.flake8
+          python310Packages.isort
           nodePackages.bash-language-server
           nodePackages.pyright
           nodePackages.svelte-language-server
@@ -52,6 +55,8 @@ in
           nodePackages.vue-language-server
           nodePackages.yaml-language-server
           rnix-lsp
+          shellcheck
+          stylua
 
           # Tree-sitter
           tree-sitter
@@ -68,6 +73,7 @@ in
 
           # Language Server
           (plugin "neovim/nvim-lspconfig")
+          (plugin "jose-elias-alvarez/null-ls.nvim")
 
           # Completions
           (plugin "hrsh7th/nvim-cmp")
