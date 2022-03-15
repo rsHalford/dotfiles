@@ -39,8 +39,8 @@ in
             luafile ${builtins.toString ./nvim/lua/config/lspsaga.lua}
             luafile ${builtins.toString ./nvim/lua/config/prose.lua}
             luafile ${builtins.toString ./nvim/lua/config/telescope.lua}
-            luafile ${builtins.toString ./nvim/lua/config/theme.lua}
             luafile ${builtins.toString ./nvim/lua/config/treesitter.lua}
+            luafile ${builtins.toString ./nvim/lua/config/ux.lua}
           ''
         ];
         extraPackages = with pkgs; [
@@ -65,13 +65,20 @@ in
           gcc
         ];
         plugins = with pkgs.vimPlugins; [
-          # Theme
+          # UI/UX
           (plugin "gruvbox-community/gruvbox")
           (plugin "norcalli/nvim-colorizer.lua")
           # (plugin "goolord/alpha-nvim")
           (plugin "kyazdani42/nvim-web-devicons")
           (plugin "kyazdani42/nvim-tree.lua")
           (plugin "nvim-lualine/lualine.nvim")
+          (plugin "akinsho/toggleterm.nvim")
+          (plugin "tpope/vim-surround")
+          (plugin "tpope/vim-repeat")
+          (plugin "mattn/emmet-vim")
+          (plugin "windwp/nvim-autopairs")
+          (plugin "numToStr/Comment.nvim")
+          (plugin "dbeniamine/cheat.sh-vim")
 
           # Language Server
           (plugin "neovim/nvim-lspconfig")
