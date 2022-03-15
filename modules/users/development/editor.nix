@@ -87,6 +87,7 @@ in
           (plugin "hrsh7th/cmp-nvim-lua")
           (plugin "hrsh7th/cmp-path")
           (plugin "saadparwaiz1/cmp_luasnip")
+          (plugin "rafamadriz/friendly-snippets")
 
           # Telescope
           (plugin "nvim-telescope/telescope.nvim")
