@@ -17,6 +17,7 @@ in
     home = {
       packages = with pkgs; [
         (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+        xdg-utils
         # yt-dlp
         zathura
       ];
@@ -39,7 +40,47 @@ in
 
     xdg = {
       enable = true;
-      # mimeApps.defaultApplications = { };
+      desktopEntries = {
+        editor = {
+          name = "Neovim";
+          genericName = "Text Editor";
+          type = "Application";
+          exec = "${pkgs.alacritty} --class neovim -e nvim %U";
+          terminal = true;
+        };
+        img = {
+          name = "imv";
+          genericName = "Image Viewer";
+          type = "Application";
+          exec = "${pkgs.alacritty} --class imv -e imv %f";
+          terminal = true;
+        };
+        mail = {
+          name = "neomutt";
+          genericName = "Mail";
+          type = "Application";
+          exec = "${pkgs.alacritty} --class neomutt -e neomutt %U";
+          terminal = true;
+        };
+      };
+      mimeApps = {
+        enable = true;
+        defaultApplications = {
+          "image/png" = "img.desktop";
+          "image/jpeg" = "img.desktop";
+          "image/gif" = "img.desktop";
+          "x-scheme-handler/mailto" = "mail.desktop";
+          "text/plain" = "editor.desktop";
+          "text/x-shellscript" = "editor.desktop";
+          "application/pdf" = "org.pwmt.zathura.desktop";
+          "application/postscript" = "org.pwmt.zathura.desktop";
+          "x-scheme-handler/magnet" = "org.qbittorrent.qBittorrent.desktop";
+          "application/x-bittorrent" = "org.qbittorrent.qBittorrent.desktop";
+          "x-scheme-handler/sgnl" = "signal-desktop.desktop";
+          "x-scheme-handler/signalcaptcha" = "signal.desktop";
+          "x-scheme-handler/tg" = "userapp-Telegram Desktop-RE3OI1.desktop";
+        };
+      };
       userDirs = {
         enable = true;
         createDirectories = true;
