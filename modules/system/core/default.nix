@@ -22,14 +22,11 @@ in
     };
 
     documentation = {
-      enable = true;
       dev.enable = true;
-      doc.enable = true;
       man = {
-        enable = true;
-        generateCaches = true;
+        man-db.enable = false;
+        mandoc.enable = true;
       };
-      info.enable = true;
       nixos.enable = true;
     };
 
@@ -46,6 +43,7 @@ in
         git
         libnotify
         neovim
+        tldr
         zsh
       ];
     };
