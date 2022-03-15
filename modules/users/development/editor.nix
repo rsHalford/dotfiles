@@ -37,6 +37,7 @@ in
             luafile ${builtins.toString ./nvim/lua/config/git.lua}
             luafile ${builtins.toString ./nvim/lua/config/lsp.lua}
             luafile ${builtins.toString ./nvim/lua/config/lspsaga.lua}
+            luafile ${builtins.toString ./nvim/lua/config/prose.lua}
             luafile ${builtins.toString ./nvim/lua/config/telescope.lua}
             luafile ${builtins.toString ./nvim/lua/config/theme.lua}
             luafile ${builtins.toString ./nvim/lua/config/treesitter.lua}
@@ -110,6 +111,19 @@ in
           (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
           (plugin "p00f/nvim-ts-rainbow")
           (plugin "windwp/nvim-ts-autotag")
+
+          # Prose
+          markdown-preview-nvim
+          (plugin "nvim-orgmode/orgmode")
+          (plugin "folke/zen-mode.nvim")
+          (plugin "folke/twilight.nvim")
+          (plugin "preservim/vim-pencil")
+          (plugin "dbmrq/vim-ditto")
+          (plugin "preservim/vim-litecorrect")
+          (plugin "kana/vim-textobj-user")
+          (plugin "preservim/vim-textobj-quote")
+          (plugin "preservim/vim-textobj-sentence")
+          (plugin "preservim/vim-wordy")
         ];
         viAlias = true;
         vimAlias = true;
