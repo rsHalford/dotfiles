@@ -36,6 +36,7 @@ in
             luafile ${builtins.toString ./nvim/lua/config/cmp.lua}
             luafile ${builtins.toString ./nvim/lua/config/git.lua}
             luafile ${builtins.toString ./nvim/lua/config/lsp.lua}
+            luafile ${builtins.toString ./nvim/lua/config/lspsaga.lua}
             luafile ${builtins.toString ./nvim/lua/config/telescope.lua}
             luafile ${builtins.toString ./nvim/lua/config/theme.lua}
             luafile ${builtins.toString ./nvim/lua/config/treesitter.lua}
@@ -74,6 +75,8 @@ in
           # Language Server
           (plugin "neovim/nvim-lspconfig")
           (plugin "jose-elias-alvarez/null-ls.nvim")
+          # (plugin "akinsho/flutter-tools.nvim")
+          (plugin "tami5/lspsaga.nvim")
 
           # Completions
           (plugin "hrsh7th/nvim-cmp")
