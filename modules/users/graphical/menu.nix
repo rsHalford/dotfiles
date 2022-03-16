@@ -37,11 +37,6 @@ in
           font = "JetBrainsMono Nerd Font 13";
           # terminal = "\${pkgs.alacritty}/bin/alacritty";
         };
-        pass = {
-          enable = true;
-          # extraConfig = "";
-          # stores = [ ];
-        };
         plugins = with pkgs; [
           rofi-calc
         ];
