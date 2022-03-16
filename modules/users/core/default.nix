@@ -45,19 +45,25 @@ in
           name = "Neovim";
           genericName = "Text Editor";
           type = "Application";
-          exec = "${pkgs.alacritty}/bin/alacritty -e nvim %U";
+          exec = "nvim %F";
+          terminal = true;
+          icon = "nvim";
         };
         img = {
           name = "imv";
-          genericName = "Image Viewer";
+          genericName = "Image viewer";
           type = "Application";
-          exec = "${pkgs.alacritty}/bin/alacritty -e imv %f";
+          exec = "imv %F";
+          terminal = true;
+          icon = "multimedia-photo-viewer";
         };
         mail = {
           name = "NeoMutt";
           genericName = "Mail";
           type = "Application";
-          exec = "${pkgs.alacritty}/bin/alacritty -e neomutt %U";
+          exec = "neomutt %U";
+          terminal = true;
+          icon = "mutt";
         };
       };
       mimeApps = {
