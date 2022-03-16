@@ -90,6 +90,7 @@
             git.enable = true;
             graphical = {
               compositor.enable = true;
+              menu.enable = true;
               utilities.enable = true;
             };
             media.enable = true;

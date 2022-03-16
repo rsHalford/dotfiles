@@ -21,7 +21,6 @@ in
       mako
       slurp
       waybar
-      wofi
       wl-clipboard
     ];
     programs = {
