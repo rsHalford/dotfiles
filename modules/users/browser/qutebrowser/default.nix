@@ -61,10 +61,7 @@ in
         normal = {
           ",c" = "config-edit";
           "gp" = "set-cmd-text -s :open -p";
-          ",m" = "spawn --userscript music-dl";
-          ",M" = "hint links userscript music-dl";
-          ";m" = "hint --rapid links userscript music-dl";
-          ",r" = "spawn --userscript readability-js";
+          ",r" = "spawn --userscript readability";
           ",sd" = "set-cmd-text -s :session-delete";
           ",sl" = "set-cmd-text -s :session-load";
           ",ss" = "set-cmd-text -s :session-save";
@@ -74,9 +71,9 @@ in
           ",tg" = "set-cmd-text -s :tab-give";
           ",tp" = "set-cmd-text -s :tab-pin";
           ",ts" = "set-cmd-text -s :tab-select";
-          ",v" = "spawn --userscript mpv-play";
-          ",V" = "hint links userscript mpv-play";
-          ";v" = "hint --rapid links userscript mpv-play";
+          ",v" = "spawn --userscript view_in_mpv";
+          ",V" = "hint links userscript view_in_mpv";
+          # ";v" = "hint --rapid links userscript view_in_mpv";
           "zl" = "spawn --userscript qute-pass";
           "zul" = "spawn --userscript qute-pass --username-only";
           "zpl" = "spawn --userscript qute-pass --password-only";
