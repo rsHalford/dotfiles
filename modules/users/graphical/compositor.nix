@@ -104,8 +104,7 @@ in
               "Mod4+Shift+Return" = "focus parent";
               "Mod4+question" = "reload";
 
-              "Mod4+a" = "exec wofi --show=drun -IG";
-              "Mod4+Shift+a" = "exec wofi --show=run -i";
+              "Mod4+a" = "exec rofi -show drun";
               # "Mod4+Shift+a" = "exec ncmpcpp";
               # "Mod4+b" = "exec $TERM -e pkill -USR1 gammastep";
               "Mod4+Shift+b" = "exec blueman-manager";
@@ -190,7 +189,7 @@ in
               # "XF86AudioNext" = "exec mpc next";
               # "XF86AudioPrev" = "exec mpc prev";
             };
-            menu = "wofi --show=run -i";
+            menu = "rofi -show drun";
             modes = {
               resize = {
                 "h" = "resize shrink width 10px";
