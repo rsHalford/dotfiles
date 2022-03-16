@@ -1,4 +1,4 @@
 #!/bin/sh
-cd ~/.dotfiles
+cd ~/.dotfiles || exit
 sudo nixos-rebuild switch --flake '.#'
-cd -
+cd - || exit

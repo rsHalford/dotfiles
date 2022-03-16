@@ -1,5 +1,5 @@
 #!/bin/sh
-cd ~/.dotfiles
-nix build --impure .#homeManagerConfigurations.${USER}.activationPackage
+cd ~/.dotfiles || exit
+nix build --impure .#homeManagerConfigurations."${USER}".activationPackage
 ./result/activate
-cd -
+cd - || exit
