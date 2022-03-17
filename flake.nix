@@ -9,10 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    emacs-unstable.url = "github:nix-community/emacs-overlay";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { nixpkgs, home-manager, neovim-nightly, ... }@inputs:
+  outputs = { nixpkgs, home-manager, emacs-unstable, neovim-nightly, ... }@inputs:
     let
       inherit (nixpkgs) lib;
 
@@ -25,7 +26,7 @@
       };
 
       inherit (import ./overlays {
-        inherit system pkgs lib neovim-nightly scripts;
+        inherit system pkgs lib emacs-unstable neovim-nightly scripts;
       }) overlays;
 
       inherit (util) user;
@@ -84,7 +85,8 @@
             };
             core.enable = true;
             development = {
-              editor.enable = true;
+              emacs.enable = true;
+              neovim.enable = true;
             };
             # direnv.enable = true;
             git.enable = true;

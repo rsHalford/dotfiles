@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "emacs-unstable": {
+      "locked": {
+        "lastModified": 1647508010,
+        "narHash": "sha256-0Yi3oC2PHk6sbKU0VHfa3DxaM9O5no/MgbQjW5tWVes=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "711a3567a484a750017df905b0063a0ad0ed3434",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -38,11 +53,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1647210221,
-        "narHash": "sha256-mUWwEq+ReRQjIqj28ClqmBDyKV4fr6C5ufqlXLzZFsk=",
+        "lastModified": 1647521104,
+        "narHash": "sha256-H9D0fxuwsXNmN3AXCH2EmhcVvOqhVb49TUP3AVpDdCk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8eb7c009f09f1f7b1ec151e5d537104acf42213a",
+        "rev": "970b57fd3c93f6c76d5cdfb4da23a5b4010b9e8b",
         "type": "github"
       },
       "original": {
@@ -61,11 +76,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1647380792,
-        "narHash": "sha256-3DQs22URhSNPUCM7DCdbbt+3ZlMTKYhK9qUkfccyBR0=",
+        "lastModified": 1647494484,
+        "narHash": "sha256-8CWqEy8jpY0CJDjXKPbK9uYlZYT+vR6HQ39TQFXPcsY=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "5a8bf31d328ecdb79453bf1eb22ff10aabbe0422",
+        "rev": "d238b8f6003d34cae7f65ff7585b48a2cd9449fb",
         "type": "github"
       },
       "original": {
@@ -82,11 +97,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1647418490,
-        "narHash": "sha256-zNqjRX50VyspGeZGZoAixIN28h77FkRDZwps+CQJduQ=",
+        "lastModified": 1647504937,
+        "narHash": "sha256-zL+TCRbdypKSFxab09lU4uR52MusKf7vzo50ee6fVIs=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "c84beaf2aa422964d2ef577aedfc6fe1be935730",
+        "rev": "1de1018a5810fd123f0f57798cac2a2a8df6bb85",
         "type": "github"
       },
       "original": {
@@ -128,6 +143,7 @@
     },
     "root": {
       "inputs": {
+        "emacs-unstable": "emacs-unstable",
         "home-manager": "home-manager",
         "neovim-nightly": "neovim-nightly",
         "nixpkgs": "nixpkgs_2"

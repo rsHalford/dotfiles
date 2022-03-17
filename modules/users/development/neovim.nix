@@ -2,7 +2,7 @@
 with lib;
 
 let
-  cfg = config.richard.development.editor;
+  cfg = config.richard.development.neovim;
 
   pluginGit = ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "${lib.strings.sanitizeDerivationName repo}";
@@ -15,9 +15,9 @@ let
   plugin = pluginGit "HEAD";
 in
 {
-  options.richard.development.editor = {
+  options.richard.development.neovim = {
     enable = mkOption {
-      description = "Enable development editor";
+      description = "Enable editing with neovim";
       type = types.bool;
       default = false;
     };
