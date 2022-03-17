@@ -2,6 +2,7 @@
 
 {
   imports = [
-    ./editor.nix
+    ./emacs.nix
+    ./neovim.nix
   ];
 }
