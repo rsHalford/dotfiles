@@ -50,15 +50,21 @@
 ;; Font JetBrains Mono Nerd Font
 (set-face-attribute 'default nil :font "JetbrainsMono Nerd Font" :height 110)
 
-;; Numbered columns
+;; Columns
 (column-number-mode)
-(global-display-line-numbers-mode t)
 
-;; Disable line numbers for some modes
-(dolist (mode '(org-mode-hook
-		term-mode-hook
-		eshell-mode-hook))
+;; Enable line numbers for some modes
+(dolist (mode '(text-mode-hook
+		prog-mode-hook
+		conf-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 1))))
+
+
+;; Disable line numbers for modes that derive from the above
+(dolist (mode '(org-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+(setq-default fill-column 80)
 
 ;; Modeline
 (use-package doom-modeline
