@@ -206,3 +206,40 @@
 (use-package magit
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+;; Lsp
+(use-package lsp-mode
+  :commands lsp
+  ;;:hook (() . lsp)
+  :init
+  :config
+  (lsp-headerline-breadcrumb-enable nil))
+
+(rsh/leader-key-def
+  "l"  '(:ignore t :which-key "lsp")
+  "ld" 'xref-find-definitions
+  "lr" 'xref-find-references
+  "lj" 'lsp-ui-find-next-reference
+  "lk" 'lsp-ui-find-prev-reference
+  "ls" 'counsel-imenu
+  "le" 'lsp-ui-flycheck-list
+  "li" 'lsp-ui-sideline-mode
+  "la" 'lsp-execute-code-action)
+
+;; Lsp UI
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :config
+  (setq lsp-ui-sideline-enable t)
+  (setq lsp-ui-sideline-show-hover nil)
+  (setq lsp-ui-doc-position 'bottom)
+  (lsp-ui-doc-show))
+
+;; Treemacs
+(use-package lsp-treemacs
+  :after lsp)
+
+;; Nix
+(use-package nix-mode
+  :mode "\\.nix\\'"
+  :hook (nix-mode . lsp-deferred))
