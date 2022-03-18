@@ -14,17 +14,22 @@ in
   };
 
   config = mkIf (cfg.enable) {
-    home.packages = with pkgs; [
-      emacsPgtkGcc
-      # (emacsWithPackagesFromUsePackage {
-      #   package = pkgs.emacsPgtkGcc;
-      #   config = ./emacs.el;
-      #   alwaysEnsure = false;
-      #   alwaysTangle = false;
-      #   extraEmacsPackages = epkgs: [ ];
-      #   override = epkgs: epkgs // { };
-      # })
-    ];
+    home = {
+      file = {
+        ".emacs.d/init.el".source = ./init.el;
+      };
+      packages = with pkgs; [
+        emacs-all-the-icons-fonts
+        (emacsWithPackagesFromUsePackage {
+          package = pkgs.emacsPgtkGcc;
+          config = ./init.el;
+          alwaysEnsure = true;
+          # alwaysTangle = false;
+          # extraEmacsPackages = epkgs: [ ];
+          # override = epkgs: epkgs // { };
+        })
+      ];
+    };
     # programs = {
     #   emacs = {
     #     enable = true;
