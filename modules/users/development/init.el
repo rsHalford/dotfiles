@@ -1,22 +1,14 @@
-;; disable auto-save
-(setq auto-save-default nil)
-;;(setq inhibit-startup-message t)
+;; The default is 800 kilobytes. Measures in bytes.
+;; (setq gc-cons-threshold (* 50 1000 1000))
 
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(tooltip-mode -1)
-(menu-bar-mode -1)
-
-(set-face-attribute 'default nil :font "JetbrainsMono Nerd Font" :height 110)
-
-;; Initialise package sources
-(require 'package)
-
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
-
-(package-initialize)
+;; Profile emacs startup performance
+(add-hook 'emacs-startup-hook
+	  (lambda ()
+	    (message "*** Emacs loaded in %s with %d garbage collection."
+		     (format "%.2f seconds"
+			     (float-time
+			      (time-subtract after-init-time before-init-time)))
+		     gcs-done)))
 
 ;; Define XDG directories
 (setq-default user-emacs-config-directory
@@ -26,15 +18,39 @@
 (setq-default user-emacs-cache-directory
               (concat (getenv "HOME") "/.cache/emacs"))
 
-(unless package-archive-contents
-  (package-refresh-contents))
+;; Disable auto-save
+(setq auto-save-default nil)
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+;; Package Management
+;; Initialise package sources
+(require 'package)
+
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ;; ("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+(package-initialize)
+;; (unless package-archive-contents
+;;   (package-refresh-contents))
 
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+;; UI/UX
+;; Disable startup message
+(setq inhibit-startup-message t)
+
+;; Clean up UI
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(tooltip-mode -1)
+(scroll-bar-mode -1)
+
+;; Font JetBrains Mono Nerd Font
+(set-face-attribute 'default nil :font "JetbrainsMono Nerd Font" :height 110)
+
+;; Numbered columns
 (column-number-mode)
 (global-display-line-numbers-mode t)
 
@@ -44,24 +60,7 @@
 		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-(use-package ivy
-  :diminish
-  :bind (("C-s" . swiper)
-	 :map ivy-minibuffer-map
-	 ("TAB" . ivy-alt-done)
-	 ("C-l" . ivy-alt-done)
-	 ("C-j" . ivy-next-line)
-	 ("C-k" . ivy-previous-line)
-	 :map ivy-switch-buffer-map
-	 ("C-k" . ivy-previous-line)
-	 ("C-l" . ivy-done)
-	 ("C-d" . ivy-switch-buffer-kill)
-	 :map ivy-reverse-i-search-map
-	 ("C-k" . ivy-previous-line)
-	 ("C-d" . ivy-reverse-i-search-kill))
-  :config
-  (ivy-mode 1))
-
+;; Modeline
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
@@ -83,17 +82,25 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+;; Keybindings
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; Evil has taken my C-u
 (global-set-key (kbd "C-M-u") 'universal-argument)
 
+;; Get help remembering keybinds
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 0.3))
+
+;; EVIL
 (use-package undo-tree
   :init
   (global-undo-tree-mode 1))
 
-;; EVIL
 (defun rsh/evil-hook ()
   (dolist (mode '(custom-mode
 		  eshell-mode
@@ -144,21 +151,31 @@
   (general-create-definer rsh/ctrl-c-keys
     :prefix "C-c"))
 
-;; Example leader key mappings
-;; (rsh/leader-key-def
-;;   "g" '(:ignore t :which-key "git")
-;;   "gs" 'magit-status)
-
-(use-package which-key
-  :init (which-key-mode)
-  :diminish which-key-mode
-  :config
-  (setq which-key-idle-delay 0.3))
+;; Ivy
+(use-package ivy
+  :diminish
+  :bind (("C-s" . swiper)
+	 :map ivy-minibuffer-map
+	 ("TAB" . ivy-alt-done)
+	 ("C-l" . ivy-alt-done)
+	 ("C-j" . ivy-next-line)
+	 ("C-k" . ivy-previous-line)
+	 :map ivy-switch-buffer-map
+	 ("C-k" . ivy-previous-line)
+	 ("C-l" . ivy-done)
+	 ("C-d" . ivy-switch-buffer-kill)
+	 :map ivy-reverse-i-search-map
+	 ("C-k" . ivy-previous-line)
+	 ("C-d" . ivy-reverse-i-search-kill))
+  :init
+  (ivy-mode 1))
 
 (use-package ivy-rich
   :init
   (ivy-rich-mode 1))
+  ;; :after counsel
 
+;; Counsel
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
 	 ("C-x b" . counsel-ibuffer)
@@ -166,6 +183,7 @@
 	 :map minibuffer-local-map
 	 ("C-r" . 'counsel-minibuffer-history)))
 
+;; Helpful
 (use-package helpful
   :custom
   (counsel-describe-function-function #'helpful-callable)
@@ -176,6 +194,7 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
+;; Git
 (use-package magit
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
