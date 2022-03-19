@@ -207,6 +207,24 @@
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
+(rsh/leader-key-def
+  "g" '(:ignore t :which-key "git")
+  "gs" 'magit-status
+  "gd" 'magit-diff-unstaged
+  "gc" 'magit-branch-or-checkout
+  "gl" '(:ignore t :which-key "log")
+  "glb" 'magit-log-current
+  "glf" 'magit-log-buffer-file
+  "gb" 'magit-branch
+  "gp" '(:ignore t :which-key "push")
+  "gps" 'magit-push-current
+  "gpt" 'magit-push-tag
+  "gP" 'magit-pull-branch
+  "gf" 'magit-fetch
+  "gF" 'magit-fetch-all
+  "gm" 'magit-merge
+  "gr" 'magit-rebase)
+
 ;; Lsp
 (use-package lsp-mode
   :commands lsp
