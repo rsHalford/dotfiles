@@ -272,30 +272,7 @@
   :hook (nix-mode . lsp-deferred))
 
 ;; Org
-(defun rsh/org-mode-setup ()
-  (org-indent-mode)
-  (variable-pitch-mode 1)
-  (auto-fill-mode 0)
-  (visual-line-mode 1)
-  (setq evil-auto-indent nil)
-  (diminish org-indent-mode))
-
-(use-package org
-  :defer t
-  :hook (org-mode . rsh/org-mode-setup)
-  :config
-  (setq org-ellipsis " ▾"
-	org-hide-emphasis-markers t)
-
-  ;; Bullet-points
-  (use-package org-superstar
-    :after org
-    :hook(org-mode . org-superstar-mode)
-    :custom
-    (org-superstar-remove-leading-stars t)
-    (org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●")))
-
-  ;; Vary the size of various headings
+(defun rsh/org-font-setup ()
   ;; (set-face-attribute 'org-document-title nil :font "Open Sans" :weight 'bold :height 1.3)
   (dolist (face '((org-level-1 . 1.2)
 		  (org-level-2 . 1.1)
@@ -317,13 +294,34 @@
   (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
   (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
   (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
-
+  (set-face-attribute 'line-number nil :inherit 'fixed-pitch)
+  (set-face-attribute 'line-number-current-line nil :inherit 'fixed-pitch))
   ;; Get rid of the background on column views
-  (set-face-attribute 'org-column nil :background nil)
-  (set-face-attribute 'org-column-title nil :background nil)
+  ;; (set-face-attribute 'org-column nil :background nil)
+  ;; (set-face-attribute 'org-column-title nil :background nil)
 
-;; End Org block
-)
+(defun rsh/org-mode-setup ()
+  (org-indent-mode)
+  (variable-pitch-mode 1)
+  ;; (auto-fill-mode 0)
+  (visual-line-mode 1))
+  ;; (setq evil-auto-indent nil)
+  ;; (diminish org-indent-mode))
+
+(use-package org
+  :pin org
+  :hook (org-mode . rsh/org-mode-setup)
+  :config
+  (setq org-ellipsis " ▾")
+	;; org-hide-emphasis-markers t)
+  (rsh/org-font-setup))
+
+;; Bullet-points
+(use-package org-superstar
+  :hook(org-mode . org-superstar-mode)
+  :custom
+  (org-superstar-remove-leading-stars t)
+  (org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●")))
 
 (defun rsh/org-mode-visual-fill ()
   (setq visual-fill-column-width 100
