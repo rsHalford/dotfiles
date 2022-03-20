@@ -18,6 +18,9 @@
 (setq-default user-emacs-cache-directory
               (concat (getenv "HOME") "/.cache/emacs"))
 
+;; UTF-8
+(set-default-coding-systems 'utf-8)
+
 ;; Disable auto-save
 (setq auto-save-default nil)
 
@@ -31,15 +34,11 @@
                          ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
-;; (unless package-archive-contents
-;;   (package-refresh-contents))
 
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; UI/UX
-;; Disable startup message
-(setq inhibit-startup-message t)
+(setq inhibit-startup-message t) ;; Disable startup message
 
 ;; Clean up UI
 (menu-bar-mode -1)
@@ -74,7 +73,6 @@
 ;; NOTE: On first time install all-the-icons should be installed as a via nixpkgs
 ;; but if that does not populate icons correctly, enter the command
 ;; M-x all-the-icons-install-fonts
-
 (use-package all-the-icons)
 
 (use-package doom-themes
@@ -89,11 +87,8 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 ;; Keybindings
-;; Make ESC quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
-;; Evil has taken my C-u
-(global-set-key (kbd "C-M-u") 'universal-argument)
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit) ;; Make ESC quit prompts
+(global-set-key (kbd "C-M-u") 'universal-argument) ;; Evil has taken my C-u
 
 ;; Get help remembering keybinds
 (use-package which-key
@@ -112,7 +107,6 @@
 (defun rsh/evil-hook ()
   (dolist (mode '(custom-mode
 		  eshell-mode
-		  ;; git-rebase-mode erc-mode sauron-mode might have to check whether autoenabled
 		  term-mode))
     (add-to-list 'evil-emacs-state-modes mode)))
 
