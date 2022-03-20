@@ -40,30 +40,38 @@
 
 (setq inhibit-startup-message t) ;; Disable startup message
 
-;; Clean up UI
+;; UI/UX
+;; Set mode defaults
+(fringe-mode 0)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
+(window-divider-mode t)
 (scroll-bar-mode -1)
+(blink-cursor-mode -1)
+(column-number-mode t)
+(global-display-line-numbers-mode t)
+(global-display-fill-column-indicator-mode t)
 
-;; Font JetBrains Mono Nerd Font
-(set-face-attribute 'default nil :font "JetbrainsMono Nerd Font" :height 110)
+;; Scrolling
+(setq scroll-margin 8)
+(setq scroll-step 1)
 
-;; Columns
-(column-number-mode)
+(setq display-line-numbers-type 'relative) ;; Relative position line numbers
+(setq column-number-indicator-zero-based nil) ;; Column numbering
+(setq-default fill-column 80) ;; Column boundary position
 
-;; Enable line numbers for some modes
-(dolist (mode '(text-mode-hook
-		prog-mode-hook
-		conf-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 1))))
+;; Disable line numbers and column boudary for some modes
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                treemacs-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0)))
+  (add-hook mode (lambda () (display-fill-column-indicator-mode 0))))
 
-
-;; Disable line numbers for modes that derive from the above
-(dolist (mode '(org-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
-(setq-default fill-column 80)
+;; Font
+(set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 110)
 
 ;; Modeline
 (use-package doom-modeline
