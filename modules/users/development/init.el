@@ -126,6 +126,13 @@
   (setq evil-want-C-i-jump nil)
   (setq evil-respect-visual-line-mode t)
   (setq evil-undo-system 'undo-tree)
+  (setq evil-insert-state-cursor '(box "#ebdbb2")
+      evil-normal-state-cursor '(box "#ebdbb2")
+      evil-visual-state-cursor '(box "#ebdbb2")
+      evil-motion-state-cursor '(box "#ebdbb2")
+      evil-replace-state-cursor '(box "#ebdbb2")
+      evil-operator-state-cursor '(box "#ebdbb2")
+      evil-default-state 'normal)
   :config
   (add-hook 'evil-mode-hook  'rsh/evil-hook)
   (evil-mode 1)
