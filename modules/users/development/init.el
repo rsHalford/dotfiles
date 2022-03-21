@@ -331,3 +331,22 @@
 (use-package visual-fill-column
   :defer t
   :hook (org-mode . rsh/org-mode-visual-fill))
+
+;; Dashboard
+(use-package dashboard
+  :init
+  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+  (setq dashboard-banner-logo-title "Welcome to Emacs")
+  (setq dashboard-startup-banner 'official)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-items '((projects . 5)
+			  (bookmarks . 5)
+			  (recents . 5)
+			  (agenda . 5)))
+  (setq dashboard-item-names '(("Agenda for the coming week:" . "Agenda:")))
+  (setq dashboard-projects-backend 'project-el)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-set-navigator t)
+  (setq dashboard-center-content t)
+  :config
+  (dashboard-setup-startup-hook))
