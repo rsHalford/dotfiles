@@ -50,8 +50,6 @@
 (scroll-bar-mode -1)
 (blink-cursor-mode -1)
 (column-number-mode t)
-(global-display-line-numbers-mode t)
-(global-display-fill-column-indicator-mode t)
 
 ;; Scrolling
 (setq scroll-margin 8)
@@ -61,12 +59,15 @@
 (setq column-number-indicator-zero-based nil) ;; Column numbering
 (setq-default fill-column 80) ;; Column boundary position
 
+;; Enable line numbers and column boudary for some modes
+(dolist (mode '(text-mode-hook
+                prog-mode-hook
+                conf-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode t)))
+  (add-hook mode (lambda () (display-fill-column-indicator-mode t))))
+
 ;; Disable line numbers and column boudary for some modes
-(dolist (mode '(org-mode-hook
-                term-mode-hook
-                shell-mode-hook
-                treemacs-mode-hook
-                eshell-mode-hook))
+(dolist (mode '(org-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0)))
   (add-hook mode (lambda () (display-fill-column-indicator-mode 0))))
 
