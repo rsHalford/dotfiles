@@ -169,6 +169,11 @@
   (general-create-definer rsh/ctrl-c-keys
     :prefix "C-c"))
 
+;; Toggles
+(rsh/leader-key-def
+  "t" '(:ignore t :which-key "toggles")
+  "tw" 'whitespace-mode)
+
 ;; Ivy
 (use-package ivy
   :diminish
