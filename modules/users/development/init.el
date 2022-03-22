@@ -252,6 +252,9 @@
   "gm" 'magit-merge
   "gr" 'magit-rebase)
 
+(use-package magit-todos
+  :init (magit-todos-mode))
+
 (use-package diff-hl
   :config
   (global-diff-hl-mode)
