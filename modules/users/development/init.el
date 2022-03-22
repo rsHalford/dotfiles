@@ -42,7 +42,6 @@
 
 ;; UI/UX
 ;; Set mode defaults
-(fringe-mode 0)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
@@ -50,6 +49,10 @@
 (scroll-bar-mode -1)
 (blink-cursor-mode -1)
 (column-number-mode t)
+
+;; Fringes
+(setq-default left-fringe-width 3)
+(setq-default right-fringe-width 0)
 
 ;; Scrolling
 (setq scroll-margin 8)
@@ -248,6 +251,12 @@
   "gF" 'magit-fetch-all
   "gm" 'magit-merge
   "gr" 'magit-rebase)
+
+(use-package diff-hl
+  :config
+  (global-diff-hl-mode)
+  (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
 
 ;; Lsp
 (use-package lsp-mode
