@@ -327,8 +327,10 @@
   :pin org
   :hook (org-mode . rsh/org-mode-setup)
   :config
-  (setq org-ellipsis " ")
-	;; org-hide-emphasis-markers t)
+  (setq org-ellipsis " "
+	org-hide-emphasis-markers t
+	org-fontify-quote-and-verse-blocks t
+	org-startup-folded 'content)
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)
@@ -445,6 +447,9 @@
     (lambda () (interactive) (org-capture nil "jj")))
 
   (rsh/org-font-setup))
+
+(use-package org-appear
+  :hook (org-mode . org-appear-mode))
 
 ;; Bullet-points
 (use-package org-superstar
