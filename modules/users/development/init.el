@@ -450,6 +450,7 @@
 ;; Dashboard
 (use-package dashboard
   :init
+  :config
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
   (setq dashboard-banner-logo-title "Welcome to Emacs")
   (setq dashboard-startup-banner 'official)
@@ -459,9 +460,9 @@
 			  (recents . 5)
 			  (agenda . 5)))
   (setq dashboard-item-names '(("Agenda for the coming week:" . "Agenda:")))
+  (setq dashboard-agenda-sort-strategy '(time-up))
   (setq dashboard-projects-backend 'project-el)
   (setq dashboard-set-file-icons t)
   (setq dashboard-set-navigator t)
   (setq dashboard-center-content t)
-  :config
   (dashboard-setup-startup-hook))
