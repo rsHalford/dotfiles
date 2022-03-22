@@ -212,6 +212,12 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
+;; Notifications
+(use-package alert
+  :commands alert
+  :config
+  (setq alert-default-style 'libnotify)) ;; 'notifications - via D-Bus
+
 ;; Git
 (use-package magit
   :custom
