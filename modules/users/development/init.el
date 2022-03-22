@@ -174,6 +174,9 @@
   "t" '(:ignore t :which-key "toggles")
   "tw" 'whitespace-mode)
 
+;; TRAMP
+(setq tramp-default-method "ssh")
+
 ;; Ivy
 (use-package ivy
   :diminish
