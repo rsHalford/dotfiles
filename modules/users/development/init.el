@@ -253,7 +253,8 @@
   "gf" 'magit-fetch
   "gF" 'magit-fetch-all
   "gm" 'magit-merge
-  "gr" 'magit-rebase)
+  "gr" 'magit-rebase
+  "gt" 'ivy-magit-todos)
 
 (use-package magit-todos
   :init (magit-todos-mode))
@@ -458,8 +459,8 @@
       ("mw" "Weight" table-line (file+headline "~/Documents/OrgFiles/Metrics.org" "Weight")
        "| %U | %^{Weight} | %^{Notes} |" :kill-buffer t)))
 
-  (define-key global-map (kbd "C-c j")
-    (lambda () (interactive) (org-capture nil "jj")))
+  (rsh/leader-key-def
+    "c"  'org-capture)
 
   (rsh/org-font-setup))
 
