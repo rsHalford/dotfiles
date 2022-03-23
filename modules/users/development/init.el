@@ -352,9 +352,12 @@
   (setq org-log-into-drawer t)
 
   (setq org-directory "~/Documents/OrgFiles")
-  (setq org-agenda-files '("Tasks.org"
+  (setq org-agenda-files '("Archive.org"
 			   "Birthdays.org"
-			   "Habits.org"))
+			   "Habits.org"
+			   "Journal.org"
+			   "Metrics.org"
+			   "Tasks.org"))
 
   (require 'org-habit)
   (add-to-list 'org-modules 'org-habit)
