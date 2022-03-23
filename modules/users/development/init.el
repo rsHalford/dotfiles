@@ -91,9 +91,12 @@
   :config
   (setq doom-themes-enable-bold t
 	doom-themes-enable-italic t)
-  (setq doom-gruvbox-dark-variant "hard")
   (load-theme 'doom-gruvbox t))
   ;; (doom-themes-neotree-config)
+
+(use-package solaire-mode
+  :config
+  (solaire-global-mode +1))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
