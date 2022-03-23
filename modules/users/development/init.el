@@ -364,6 +364,10 @@
   (add-to-list 'org-modules 'org-habit)
   (setq org-habit-graph-column 60)
 
+  (require 'org-tempo)
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+
   ;; Agenda task styles
   (setq org-todo-keywords
 	'((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")
