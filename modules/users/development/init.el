@@ -96,7 +96,8 @@
 
 (use-package solaire-mode
   :config
-  (solaire-global-mode +1))
+  (solaire-global-mode +1)
+  (add-to-list 'solaire-mode-themes-to-face-swap "^doom-"))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
