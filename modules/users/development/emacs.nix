@@ -3,16 +3,11 @@ with lib;
 
 let
   cfg = config.richard.development.emacs;
-  emacsPkg = pkgs.callPackage
-    (
-      { emacsWithPackagesFromUsePackage }:
-      (emacsWithPackagesFromUsePackage {
-        package = pkgs.emacsPgtkGcc;
-        config = ./init.el;
-        alwaysEnsure = true;
-      })
-    )
-    { };
+  emacsPkg = (pkgs.emacsWithPackagesFromUsePackage {
+    package = pkgs.emacsPgtkGcc;
+    config = ./emacs/init.org;
+    alwaysEnsure = true;
+  });
 in
 {
   options.richard.development.emacs = {
@@ -26,7 +21,11 @@ in
   config = mkIf (cfg.enable) {
     home = {
       file = {
-        ".emacs.d/init.el".source = ./init.el;
+        ".emacs.d/init.el".source = pkgs.runCommand "init.el" { } ''
+          cp ${./emacs/init.org} init.org
+          ${pkgs.emacs}/bin/emacs -Q --batch ./init.org -f org-babel-tangle
+          mv init.el $out
+        '';
       };
       packages = with pkgs; [
         emacsPkg
