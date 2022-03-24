@@ -21,7 +21,7 @@ in
   config = mkIf (cfg.enable) {
     home = {
       file = {
-        ".emacs.d/init.el".source = pkgs.runCommand "init.el" { } ''
+        "${config.xdg.configHome}/emacs/init.el".source = pkgs.runCommand "init.el" { } ''
           cp ${./emacs/init.org} init.org
           ${pkgs.emacs}/bin/emacs -Q --batch ./init.org -f org-babel-tangle
           mv init.el $out
