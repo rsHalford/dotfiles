@@ -1,16 +1,23 @@
-#+TITLE Configure everything with Org Babel
+#+title Configure everything with Org Babel
 
-* Initial Startup
+* Startup
+
+Decrease initial startup time by reducing garbage collection frequency.
 
 #+begin_src emacs-lisp :tangle yes
 
   ;; The default is 800 kilobytes. Measures in bytes.
   ;; (setq gc-cons-threshold (* 50 1000 1000))
 
-  ;; Profile emacs startup performance
+#+end_src
+
+Time emacs startup and output to the modeline.
+
+#+begin_src emacs-lisp :tangle yes
+
   (add-hook 'emacs-startup-hook
             (lambda ()
-              (message "*** Emacs loaded in %s with %d garbage collection."
+              (message "*** Emacs loaded in %s with %d garbage collection. ***"
                        (format "%.2f seconds"
                                (float-time
                                 (time-subtract after-init-time before-init-time)))
@@ -18,11 +25,13 @@
 
 #+end_src
 
-* XDG File Location
+* System Settings
+** XDG File Locations
+
+Define the filepaths for config, data and cache according to the [[https://wiki.archlinux.org/title/XDG_Base_Directory][XDG Base Directory]] specification.
 
 #+begin_src emacs-lisp :tangle yes
 
-  ;; Define XDG directories
   (setq-default user-emacs-config-directory
                 (concat (getenv "HOME") "/.config/emacs"))
   (setq-default user-emacs-data-directory
@@ -32,7 +41,9 @@
 
 #+end_src
 
-* UTF-8
+** UTF-8
+
+Set the default encoding to UTF-8.
 
 #+begin_src emacs-lisp :tangle yes
 
@@ -40,7 +51,9 @@
 
 #+end_src
 
-* Disable Autosave
+** Disable Auto-Save
+
+Disable autosave on NixOS to prevent attempts to write to ~/nix/store~.
 
 #+begin_src emacs-lisp :tangle yes
 
@@ -49,6 +62,8 @@
 #+end_src
 
 * Package Management
+
+Use package sources from ELPA, MELPA and Org Mode repositories. With ~use-package~ for configuring packages.
 
 #+begin_src emacs-lisp :tangle yes
 
@@ -66,124 +81,41 @@
 
 #+end_src
 
-* Don't show startup screen
-
-#+begin_src emacs-lisp :tangle yes
-
-  (setq inhibit-startup-message t) ;; Disable startup message
-
-#+end_src
-
-* UI
-** Default Mode Settings
-
-#+begin_src emacs-lisp :tangle yes
-
-  ;; Set mode defaults
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (tooltip-mode -1)
-  (window-divider-mode t)
-  (scroll-bar-mode -1)
-  (blink-cursor-mode -1)
-  (column-number-mode t)
-
-  ;; Fringes
-  (setq-default left-fringe-width 3)
-  (setq-default right-fringe-width 0)
-
-  ;; Scrolling
-  (setq scroll-margin 8)
-  (setq scroll-step 1)
-
-  (setq display-line-numbers-type 'relative) ;; Relative position line numbers
-  (setq column-number-indicator-zero-based nil) ;; Column numbering
-  (setq-default fill-column 80) ;; Column boundary position
-
-  ;; Enable line numbers and column boudary for some modes
-  (dolist (mode '(text-mode-hook
-                  prog-mode-hook
-                  conf-mode-hook))
-    (add-hook mode (lambda () (display-line-numbers-mode t)))
-    (add-hook mode (lambda () (display-fill-column-indicator-mode t))))
-
-  ;; Disable line numbers and column boudary for some modes
-  (dolist (mode '(org-mode-hook))
-    (add-hook mode (lambda () (display-line-numbers-mode 0)))
-    (add-hook mode (lambda () (display-fill-column-indicator-mode 0))))
-
-#+end_src
-
-** Fonts
-
-#+begin_src emacs-lisp :tangle yes
-
-  (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 110)
-
-#+end_src
-
-** Modeline
-
-#+begin_src emacs-lisp :tangle yes
-
-  (use-package doom-modeline
-    :init (doom-modeline-mode 1)
-    :custom ((doom-modeline-height 15)))
-
-#+end_src
-
-** Icons
-
-NOTE: On first time install all-the-icons should be installed as a via nixpkgs but if that does not populate icons correctly, enter the command
-M-x all-the-icons-install-fonts
-
-#+begin_src emacs-lisp :tangle yes
-
-  (use-package all-the-icons)
-
-#+end_src
-
-** Theme
-
-#+begin_src emacs-lisp :tangle yes
-
-  (use-package doom-themes
-    :config
-    (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
-    (load-theme 'doom-gruvbox t))
-    ;; (doom-themes-neotree-config)
-
-  (use-package solaire-mode
-    :config
-    (add-to-list 'solaire-mode-themes-to-face-swap "^doom-")
-    (solaire-global-mode +1))
-
-  (use-package rainbow-delimiters
-    :hook (prog-mode . rainbow-delimiters-mode))
-
-#+end_src
-
 * Keybindings
 
+Neo/Vi/m will always be my first love/s...
+
+** ESC
+
+Escape escapes all, like ~C-g~.
+
 #+begin_src emacs-lisp :tangle yes
 
-  (global-set-key (kbd "<escape>") 'keyboard-escape-quit) ;; Make ESC quit prompts
-  (global-set-key (kbd "C-M-u") 'universal-argument) ;; Evil has taken my C-u
+  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-  ;; Get help remembering keybinds
-  (use-package which-key
-    :init (which-key-mode)
-    :diminish which-key-mode
-    :config
-    (setq which-key-idle-delay 0.3))
+#+end_src
 
-  ;; EVIL
+** Undo-Tree
+
+Vim-like undo history, using ~u~ and ~C-r~ keybindings, etc. Also making sure not to litter.
+
+TODO: Change to $XDG_CONFIG_HOME file path for undo-tree, rather than absolute.
+
+#+begin_src emacs-lisp :tangle yes
+
   (use-package undo-tree
     :init
     (global-undo-tree-mode)
     (setq undo-tree-auto-save-history t)
-    (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo"))))
+    (setq undo-tree-history-directory-alist '(("." . "~/.config/emacs/undo-tree"))))
+
+#+end_src
+
+** Evil Mode
+
+Setup evil-mode with /sensible/ defaults and block cursor *always*.
+
+#+begin_src emacs-lisp :tangle yes
 
   (defun rsh/evil-hook ()
     (dolist (mode '(custom-mode
@@ -207,7 +139,7 @@ M-x all-the-icons-install-fonts
         evil-operator-state-cursor '(box "#ebdbb2")
         evil-default-state 'normal)
     :config
-    (add-hook 'evil-mode-hook  'rsh/evil-hook)
+    (add-hook 'evil-mode-hook 'rsh/evil-hook)
     (evil-mode 1)
     (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
     (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
@@ -216,6 +148,7 @@ M-x all-the-icons-install-fonts
     (evil-global-set-key 'motion "j" 'evil-next-visual-line)
     (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 
+    ;; Start in normal mode
     (evil-set-initial-state 'messages-buffer-mode 'normal)
     (evil-set-initial-state 'dashboard-mode 'normal))
 
@@ -229,6 +162,24 @@ M-x all-the-icons-install-fonts
     (setq evil-collection-mode-list
         (remove 'lispy evil-collection-mode-list))
     (evil-collection-init))
+
+#+end_src
+
+** Universal-Argument
+
+Rebind ~C-u~ to ~C-M-u~ as Evil has rules all.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (global-set-key (kbd "C-M-u") 'universal-argument) ;; Evil has taken 
+
+#+end_src
+
+** General
+
+Replicate the leader key function in Emacs. An example usage is the ~SPC-t~ prefix for toggling modes, like =whitespace-mode=.
+
+#+begin_src emacs-lisp :tangle yes
 
   (use-package general
     :config
@@ -248,15 +199,153 @@ M-x all-the-icons-install-fonts
 
 #+end_src
 
-* Remote
+** Which-Key
+
+Show the available keybings for the prefix keys entered. Changing the idle-delay to determine how quickly the prompt os available options shows up.
 
 #+begin_src emacs-lisp :tangle yes
 
-  (setq tramp-default-method "ssh")
+  (use-package which-key
+    :init (which-key-mode)
+    :diminish which-key-mode
+    :config
+    (setq which-key-idle-delay 0.3))
 
 #+end_src
 
-* Ivy
+* UI
+** Base Layout
+
+Change the base GUI modes to clean-up the UI and improve contrast.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (tooltip-mode -1)
+  (scroll-bar-mode -1)
+  (blink-cursor-mode -1)
+  (window-divider-mode t)
+
+#+end_src
+
+TODO: Move fringe settings to =diff-hl=.
+
+#+begin_src emacs-lisp :tangle yes
+
+  ;; Fringes
+  (setq-default left-fringe-width 3)
+  (setq-default right-fringe-width 0)
+
+#+end_src
+
+Improved cursor scrolling, with relative line numbers and a column boundary indicator in specific buffer modes.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (setq scroll-margin 8) ;; Start scrolling 8 lines from the top/bottom
+  (setq scroll-step 1)
+
+  (setq display-line-numbers-type 'relative) ;; Relative position line numbers
+
+  (column-number-mode t)
+  (setq column-number-indicator-zero-based nil) ;; Column numbers work the same as lines
+  (setq-default fill-column 80) ;; Column boundary position
+
+  ;; Enable
+  (dolist (mode '(text-mode-hook
+                  prog-mode-hook
+                  conf-mode-hook))
+    (add-hook mode (lambda () (display-line-numbers-mode t)))
+    (add-hook mode (lambda () (display-fill-column-indicator-mode t))))
+
+  ;; Disable
+  (dolist (mode '(org-mode-hook))
+    (add-hook mode (lambda () (display-line-numbers-mode 0)))
+    (add-hook mode (lambda () (display-fill-column-indicator-mode 0))))
+
+#+end_src
+
+** Disable Startup Screen
+
+#+begin_src emacs-lisp :tangle yes
+
+  (setq inhibit-startup-message t)
+
+#+end_src
+
+** Fonts
+
+JetBrains Mono all the way.
+
+TODO: Set Lexend/Open-Sans and Gelasio fonts for sans-/serif, respectively.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 110)
+
+#+end_src
+
+** Theme
+
+Doom's themes integrate well with other packages, such as solaire-mode, to increase contrast between windows.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package doom-themes
+    :config
+    (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+    (load-theme 'doom-gruvbox t))
+    ;; (doom-themes-neotree-config)
+
+  (use-package solaire-mode
+    :config
+    (add-to-list 'solaire-mode-themes-to-face-swap "^doom-")
+    (solaire-global-mode +1))
+
+#+end_src
+
+Toggle between themes.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (rsh/leader-key-def
+    "tt" '(counsel-load-theme :which-key "choose theme"))
+
+#+end_src
+
+** Modeline
+
+Improve the modeline look, with a nicer layout, theme integration and greater icon support.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package doom-modeline
+    ;; :after eshell
+    :hook (after-init . doom-modeline-init)
+    :custom
+    (doom-modeline-height 15)
+    ;; (doom-modeline-bar-width 6)
+    ;; (doom-modeline-lsp t)
+    (doom-modeline-buffer-file-name-style 'truncate-except-project)
+    ;; (doom-modeline-major-mode-icon nil)
+    )
+
+#+end_src
+
+** Icons
+
+NOTE: On first time install =all-the-icons= should be installed as a via nixpkgs (~pkgs.emacs-all-the-icons-fonts~), but if that does not populate icons correctly, enter the command ~M-x all-the-icons-install-fonts~ within emacs.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package all-the-icons)
+
+#+end_src
+
+* Menus
+** Ivy
 
 #+begin_src emacs-lisp :tangle yes
 
@@ -283,39 +372,49 @@ M-x all-the-icons-install-fonts
     (ivy-rich-mode 1))
     ;; :after counsel
 
-  ;; Counsel
+#+end_src
+
+** Counsel
+
+#+begin_src emacs-lisp :tangle yes
+
   (use-package counsel
     :bind (("M-x" . counsel-M-x)
          ("C-x b" . counsel-ibuffer)
          ("C-x C-f" . counsel-find-file)
          :map minibuffer-local-map
-         ("C-r" . 'counsel-minibuffer-history)))
-
-  ;; Helpful
-  (use-package helpful
-    :custom
-    (counsel-describe-function-function #'helpful-callable)
-    (counsel-describe-variable-function #'helpful-variable)
-    :bind
-    ([remap describe-function] . counsel-describe-function)
-    ([remap describe-command] . helpful-command)
-    ([remap describe-variable] . counsel-describe-variable)
-    ([remap describe-key] . helpful-key))
+         ("C-r" . 'counsel-minibuffer-history))
+    :config
+    (setq ivy-initial-inputs-alist nil))
 
 #+end_src
 
 * Notifications
+
+Integrate emacs notifications with system libnotify.
 
 #+begin_src emacs-lisp :tangle yes
 
   (use-package alert
     :commands alert
     :config
-    (setq alert-default-style 'libnotify)) ;; 'notifications - via D-Bus
+    (setq alert-default-style 'libnotify))
+
+#+end_src
+
+* Remote
+
+Default TRAMP to use SSH protocol.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (setq tramp-default-method "ssh")
 
 #+end_src
 
 * Git
+
+Magit is life.
 
 #+begin_src emacs-lisp :tangle yes
 
@@ -342,8 +441,20 @@ M-x all-the-icons-install-fonts
     "gr" 'magit-rebase
     "gt" 'ivy-magit-todos)
 
+#+end_src
+
+List all =TODO= (and similar tag) comments within the project in magit's git status buffer, to help track and complete tasks.
+
+#+begin_src emacs-lisp :tangle yes
+
   (use-package magit-todos
     :init (magit-todos-mode))
+
+#+end_src
+
+diff-hl provides a colour indicator in the left fringe, quickly showing added/changed/removed lines of code. 
+
+#+begin_src emacs-lisp :tangle yes
 
   (use-package diff-hl
     :config
@@ -354,6 +465,8 @@ M-x all-the-icons-install-fonts
 #+end_src
 
 * Language Server Protocol
+
+Setup =lsp-mode= with leader key binds for useful actions.
 
 #+begin_src emacs-lisp :tangle yes
 
@@ -375,7 +488,14 @@ M-x all-the-icons-install-fonts
     "li" 'lsp-ui-sideline-mode
     "la" 'lsp-execute-code-action)
 
-  ;; Lsp UI
+#+end_src
+
+** Lsp-UI
+
+Change the look, position and type of symbol information and code-actions, etc. available via the lsp-modes.
+
+#+begin_src emacs-lisp :tangle yes
+
   (use-package lsp-ui
     :hook (lsp-mode . lsp-ui-mode)
     :config
@@ -384,11 +504,59 @@ M-x all-the-icons-install-fonts
     (setq lsp-ui-doc-position 'bottom)
     (lsp-ui-doc-show))
 
-  ;; Treemacs
+#+end_src
+
+** Rainbow Delimiters
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package rainbow-delimiters
+    :hook (prog-mode . rainbow-delimiters-mode))
+
+#+end_src
+
+** Lsp-Treemacs
+
+#+begin_src emacs-lisp :tangle yes
+
   (use-package lsp-treemacs
     :after lsp)
 
-  ;; Nix
+#+end_src
+
+** Languages
+*** Emacs-Lisp
+
+#+begin_src emacs-lisp :tangle yes
+
+  ;; Helpful
+  (use-package helpful
+    :custom
+    (counsel-describe-function-function #'helpful-callable)
+    (counsel-describe-variable-function #'helpful-variable)
+    :bind
+    ([remap describe-function] . helpful-function)
+    ([remap describe-symbol] . helpful-symbol)
+    ([remap describe-variable] . helpful-variable)
+    ([remap describe-command] . helpful-command)
+    ([remap describe-key] . helpful-key))
+
+  (rsh/leader-key-def
+    "e" '(:ignore t :which-key "eval")
+    "eb" '(eval-buffer :which-key "eval buffer"))
+
+  (rsh/leader-key-def
+    :keymaps '(visual)
+    "er" '(eval-region :which-key "eval region"))
+
+#+end_src
+
+*** Nix
+
+Nix lsp provided by =rnix-lsp=.
+
+#+begin_src emacs-lisp :tangle yes
+
   (use-package nix-mode
     :mode "\\.nix\\'"
     :hook (nix-mode . lsp-deferred))
@@ -397,37 +565,11 @@ M-x all-the-icons-install-fonts
 
 * Org Mode
 
-** Base
+** Mode Setup
+
+Turn on indentation and auto-fill mode for Org files.
 
 #+begin_src emacs-lisp :tangle yes
-
-  (defun rsh/org-font-setup ()
-    (set-face-attribute 'org-document-title nil :font "Open Sans" :weight 'bold :height 1.3)
-    (dolist (face '((org-level-1 . 1.2)
-                  (org-level-2 . 1.1)
-                  (org-level-3 . 1.05)
-                  (org-level-4 . 1.0)
-                  (org-level-5 . 1.1)
-                  (org-level-6 . 1.1)
-                  (org-level-7 . 1.1)
-                  (org-level-8 . 1.1)))
-      (set-face-attribute (car face) nil :font "Open Sans" :weight 'regular :height (cdr face)))
-
-    ;; Maintain the monospace
-    (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
-    (set-face-attribute 'org-table nil  :inherit 'fixed-pitch)
-    (set-face-attribute 'org-formula nil  :inherit 'fixed-pitch)
-    (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
-    ;; (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch))
-    (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
-    (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
-    (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
-    (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
-    (set-face-attribute 'line-number nil :inherit 'fixed-pitch)
-    (set-face-attribute 'line-number-current-line nil :inherit 'fixed-pitch))
-    ;; Get rid of the background on column views
-    ;; (set-face-attribute 'org-column nil :background nil)
-    ;; (set-face-attribute 'org-column-title nil :background nil)
 
   (defun rsh/org-mode-setup ()
     (org-indent-mode)
@@ -437,151 +579,62 @@ M-x all-the-icons-install-fonts
     ;; (setq evil-auto-indent nil)
     ;; (diminish org-indent-mode))
 
+#+end_src
+
+** Org
+
+Change the default ellipsis to reduce clutter in headers. And open Org files in a collapsed state, only showing the headers.
+
+NOTE: subsequent sections are part of the same block.
+
+#+begin_src emacs-lisp :tangle yes
+
   (use-package org
-    :pin org
     :hook (org-mode . rsh/org-mode-setup)
     :config
     (setq org-ellipsis " v"
         org-hide-emphasis-markers t
         org-fontify-quote-and-verse-blocks t
         org-startup-folded 'content)
-    (setq org-agenda-start-with-log-mode t)
-    (setq org-log-done 'time)
-    (setq org-log-into-drawer t)
 
-    (setq org-directory "~/Documents/OrgFiles")
-    (setq org-agenda-files '("Archive.org"
-                             "Birthdays.org"
-                             "Habits.org"
-                             "Journal.org"
-                             "Metrics.org"
-                             "Tasks.org"))
+#+end_src
 
-    (require 'org-habit)
-    (add-to-list 'org-modules 'org-habit)
-    (setq org-habit-graph-column 60)
+Load additional modes, such as ~org-habit~.
 
-    (require 'org-tempo)
-    (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
-    (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+#+begin_src emacs-lisp :tangle yes
 
-    ;; Agenda task styles
-    (setq org-todo-keywords
-        '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")
-          (sequence "BACKLOG(b)" "PLAN(p)" "READY(r)" "ACTIVE(a)" "REVIEW(v)" "WAIT(w@/!)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(k@)")))
+  (setq org-modules
+        '(org-bookmark
+          org-eshell
+          org-habit))
 
-    ;; Archive done tasks from clogging up the view
-    (setq org-refile-targets '(("Archive.org" :maxlevel . 1)))
-    (advice-add 'org-refile :after 'org-save-all-org-buffers) ;; Save Org buffers after refile
+#+end_src
 
-    ;; Custom tags to quickly add to tasks
-    (setq org-tag-alist
-      '((:startgroup)
-         ; Put mutually exclusive tags here
-         (:endgroup)
-         ("@errand" . ?E)
-         ("@home" . ?H)
-         ("@work" . ?W)
-         ("agenda" . ?a)
-         ("planning" . ?p)
-         ("publish" . ?P)
-         ("batch" . ?b)
-         ("note" . ?n)
-         ("idea" . ?i)))
+Refile sections of Org files into another file or an archive.
 
-    ;; Configure custom agenda views
-    (setq org-agenda-custom-commands
-     '(("d" "Dashboard"
-       ((agenda "" ((org-deadline-warning-days 7)))
-        (todo "NEXT"
-          ((org-agenda-overriding-header "Next Tasks")))
-        (tags-todo "agenda/ACTIVE" ((org-agenda-overriding-header "Active Projects")))))
+#+begin_src emacs-lisp :tangle yes
 
-      ("n" "Next Tasks"
-       ((todo "NEXT"
-          ((org-agenda-overriding-header "Next Tasks")))))
+  (setq org-refile-targets '((nil :maxlevel . 1)
+                             org-agenda-files :maxlevel .1))
+  (setq org-outline-path-complete-in-steps nil)
+  (setq org-refile-use-outline-path t)
 
-      ("W" "Work Tasks" tags-todo "+work-email")
+#+end_src
 
-      ;; Low-effort next actions
-      ("e" tags-todo "+TODO=\"NEXT\"+Effort<15&+Effort>0"
-       ((org-agenda-overriding-header "Low Effort Tasks")
-        (org-agenda-max-todos 20)
-        (org-agenda-files org-agenda-files)))
+** Org Appear
 
-      ;; Vertical kanban style project workflow
-      ("w" "Workflow Status"
-       ((todo "WAIT"
-              ((org-agenda-overriding-header "Waiting on External")
-               (org-agenda-files org-agenda-files)))
-        (todo "REVIEW"
-              ((org-agenda-overriding-header "In Review")
-               (org-agenda-files org-agenda-files)))
-        (todo "PLAN"
-              ((org-agenda-overriding-header "In Planning")
-               (org-agenda-todo-list-sublevels nil)
-               (org-agenda-files org-agenda-files)))
-        (todo "BACKLOG"
-              ((org-agenda-overriding-header "Project Backlog")
-               (org-agenda-todo-list-sublevels nil)
-               (org-agenda-files org-agenda-files)))
-        (todo "READY"
-              ((org-agenda-overriding-header "Ready for Work")
-               (org-agenda-files org-agenda-files)))
-        (todo "ACTIVE"
-              ((org-agenda-overriding-header "Active Projects")
-               (org-agenda-files org-agenda-files)))
-        (todo "COMPLETED"
-              ((org-agenda-overriding-header "Completed Projects")
-               (org-agenda-files org-agenda-files)))
-        (todo "CANC"
-              ((org-agenda-overriding-header "Cancelled Projects")
-               (org-agenda-files org-agenda-files)))))))
+Show inline Org mode syntax when the cursor is on an affected area.
 
-    ;; Agenda templates to quickly capture thoughts/progress etc.
-    (setq org-capture-templates
-      '(("t" "Tasks / Projects")
-        ("tt" "Task" entry (file+olp "~/Documents/OrgFiles/Tasks.org" "Inbox")
-             "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
-
-        ("j" "Journal Entries")
-        ("jj" "Journal" entry
-             (file+olp+datetree "~/Documents/OrgFiles/Journal.org")
-             "\n* %<%I:%M %p> - Journal :journal:\n\n%?\n\n"
-             :clock-in :clock-resume
-             :empty-lines 1)
-        ("jm" "Meeting" entry
-             (file+olp+datetree "~/Documents/OrgFiles/Journal.org")
-             "* %<%I:%M %p> - %a :meetings:\n\n%?\n\n"
-             :clock-in :clock-resume
-             :empty-lines 1)
-
-        ("w" "Workflows")
-        ("we" "Checking Email" entry (file+olp+datetree "~/Documents/OrgFiles/Journal.org")
-             "* Checking Email :email:\n\n%?" :clock-in :clock-resume :empty-lines 1)
-
-        ("m" "Metrics Capture")
-        ("mw" "Weight" table-line (file+headline "~/Documents/OrgFiles/Metrics.org" "Weight")
-         "| %U | %^{Weight} | %^{Notes} |" :kill-buffer t)))
-
-    (rsh/leader-key-def
-      "c"  'org-capture)
-
-    (rsh/org-font-setup))
+#+begin_src emacs-lisp :tangle yes
 
   (use-package org-appear
     :hook (org-mode . org-appear-mode))
 
-  ;; Bullet-points
-  (use-package org-superstar
-    :hook(org-mode . org-superstar-mode)
-    :custom
-    (org-superstar-remove-leading-stars t)
-    (org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●")))
-
 #+end_src
 
 ** Org Babel
+
+With Org Babel, define and load languages to use within Org buffers.
 
 #+begin_src emacs-lisp :tangle yes
 
@@ -593,7 +646,267 @@ M-x all-the-icons-install-fonts
 
 #+end_src
 
-** Structure Templates
+** Agenda
+*** File Paths
+
+Keep track of Org files.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (setq org-directory "~/Documents/OrgFiles")
+  ;; (setq org-agenda-files '("Archive.org"
+  ;;                          "Birthdays.org"
+  ;;                          "Habits.org"
+  ;;                          "Inbox.org"
+  ;;                          "Journal.org"
+  ;;                          "Metrics.org"
+  ;;                          "Tasks.org"))
+
+  ;; ;; Org Roam
+  ;; (defun rsh/org-roam-project-files ()
+  ;;   "Return a list of note files containing Project tag."
+  ;;   (seq-filter
+  ;;     #'identity
+  ;;     (seq-map
+  ;;       #'car
+  ;;       (org-roam-db-query
+  ;;         [:select file
+  ;;         :from tags
+  ;;         :where (like tags (quote "%\"Project\"%"))]))))
+
+  ;; (defun rsh/update-org-agenda-files ()
+  ;;   (interactive)
+  ;;   (setq org-agenda-files (rsh/org-roam-project-files)))
+
+  ;; (with-eval-after-load 'org-roam
+  ;;   (rsh/update-org-agenda-files))
+
+  (defun rsh/org-path (path)
+    (expand-file-name path org-directory))
+
+  (setq org-default-notes-file (rsh/org-path "Inbox.org"))
+
+#+end_src
+
+*** Workflow States
+
+Trying out the simplified workflow states that David Wilson has within his configurations.
+
+- =TODO= - A task to be done.
+- =NEXT= - Task to be done following the completion of another.
+- =BACK= - The task is put into a backlog for future completion.
+- =WAIT= - Task that is on hold until someone/thing makes it actionable again.
+- =DONE= - Task complete.
+
+TODO: Create custom keyword faces with ~org-todo-keyword-faces~.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (setq org-todo-keywords
+      '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")
+        (sequence "|" "WAIT(w)" "BACK(b)")))
+
+  (add-hook 'org-timer-set-hook #'org-clock-in)
+
+#+end_src
+
+*** Tags
+
+Custom common tags used to make creating/editing TODOs faster.
+
+- =followup= - Prioritise task as someone else depends on it.
+- =batch= - Batch task for completion with others.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (setq org-tag-alist
+    '((:startgroup)
+       ; Put mutually exclusive tags here
+       (:endgroup)
+       ("@home" . ?H)
+       ("@work" . ?W)
+       ("batch" . ?b)
+       ("followup" . ?f)))
+
+#+end_src
+
+*** Agendas
+
+General settings for org-agenda and custom agenda views for listing items for the current week.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (setq org-agenda-window-setup 'current-window)
+  (setq org-agenda-span 'day)
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-log-done 'time)
+  (setq org-log-into-drawer t)
+  (setq org-columns-default-format "%20CATEGORY(Category) %65ITEM(Task) %TODO %6Effort(Estim){:} %6CLOCKSUM(Clock) %TAGS")
+
+  (setq org-agenda-custom-commands
+   '(("d" "Dashboard"
+     ((agenda "" ((org-deadline-warning-days 7)))
+      (tags-todo "+PRIORITY=\"A\""
+                 ((org-agenda-overriding-header "High Priority")))
+      (tags-todo "+followup" ((org-agenda-overriding-header "Needs Follow Up")))
+      (todo "NEXT"
+            ((org-agenda-overriding-header "Next Actions")
+             (org-agenda-max-todos nil)))
+      (todo "TODO"
+            ((org-agenda-overriding-header "Unprocessed Inbox Tasks")
+             (org-agenda-files '(,(rsh/org-path "Inbox.org")))
+             (org-agenda-text-search-extra-files nil)))))
+
+     ("n" "Next Tasks"
+      ((agenda "" ((org-deadline-warning-days 7)))
+       (todo "NEXT"
+             ((org-agenda-overriding-header "Next Tasks")))))
+
+     ("e" tags-todo "+TODO=\"NEXT\"+Effort<15&+Effort>0"
+      ((org-agenda-overriding-header "Low Effort Tasks")
+       (org-agenda-max-todos 20)
+       (org-agenda-files org-agenda-files)))))
+
+#+end_src
+
+*** Capture Templates
+
+Get ideas/progress into a note as fast as possible with little workflow disruption.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (defun rsh/get-todays-journal-file-name ()
+    "Gets the journal file name for today's date"
+    (interactive)
+    (let* ((journal-file-name
+            (expand-file-name
+               (format-time-string "%Y/%B.org")
+               (rsh/org-path "Journal/")))
+           (journal-year-dir (file-name-directory journal-file-name)))
+      (if (not (file-directory-p journal-year-dir))
+        (make-directory journal-year-dir))
+      journal-file-name))
+
+  (defun rsh/on-org-capture ()
+    ;; Don't show the confirmation header text
+    (setq header-line-format nil)
+
+    ;; Control how some buffers are handled
+    (let ((template (org-capture-get :key t)))
+      (pcase template
+        ("jj" (delete-other-windows)))))
+
+  (add-hook 'org-capture-mode-hook 'rsh/on-org-capture)
+
+  (setq org-capture-templates
+    '(("t" "Tasks")
+      ("tt" "Task" entry (file ,(rsh/org-path "Inbox.org"))
+           "* TODO %?\n  %W\n  %a\n  %i" :empty-lines 1)
+      ("ts" "Clocked Entry Subtask" entry (clock)
+           "* TODO %?\n  %W\n  %a\n  %i" :empty-lines 1)
+
+      ("j" "Journal Entries")
+      ("je" "General Entry" entry
+           (file+olp+datetree ,(rsh/org-path "Journal.org"))
+           "\n* %<%H:%M> - %^{Title} \n\n%?\n\n"
+           :tree-type week
+           :clock-in :clock-resume
+           :empty-lines 1)
+      ("jt" "Task Entry" entry
+           (file+olp+datetree ,(rsh/org-path "Journal.org"))
+           "\n* %<%H:%M> - Task Notes: %a\n\n%?\n\n"
+           :tree-type week
+           :clock-in :clock-resume
+           :empty-lines 1)
+      ("jj" "Journal" entry
+           (file+olp+datetree ,(rsh/org-path "Journal.org"))
+           "\n* %<%H:%M> - Journal :journal:\n\n%?\n\n"
+           :tree-type week
+           :clock-in :clock-resume
+           :empty-lines 1)
+
+      ("m" "Metrics Capture")
+      ("mw" "Weight" table-line (file+headline ,(rsh/org-path "Metrics.org" "Weight"))
+       "| %W | %^{Weight kg} | %^{Notes} |" :kill-buffer t)))
+
+#+end_src
+
+** Roam
+
+Basic installation and keybind setup to start building up my [[https://www.youtube.com/watch?v=Cv1RJTHf5fk][knowledge]] base.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package org-roam
+    :init
+    (setq org-roam-v2-ack t)
+    :custom
+    (org-roam-directory "~/Documents/Roam")
+    (org-roam-completion-everywhere t)
+    :bind (("C-c n l" . org-roam-buffer-toggle)
+           ("C-c n f" . org-roam-node-find)
+           ("C-c n i" . org-roam-node-insert)
+           :map org-mode-map
+           ("C-M-i" . completion-at-point))
+    :config
+    (org-roam-setup))
+
+#+end_src
+
+** Font Setup
+
+Make sure the correct fonts and sizes are used for Org documents.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (set-face-attribute 'org-document-title nil :font "Open Sans" :weight 'bold :height 1.3)
+  (dolist (face '((org-level-1 . 1.2)
+                (org-level-2 . 1.1)
+                (org-level-3 . 1.05)
+                (org-level-4 . 1.0)
+                (org-level-5 . 1.1)
+                (org-level-6 . 1.1)
+                (org-level-7 . 1.1)
+                (org-level-8 . 1.1)))
+    (set-face-attribute (car face) nil :font "Open Sans" :weight 'regular :height (cdr face)))
+
+  ;; (require 'org-indent)
+
+  ;; Monospace everything that makes sense.
+  (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-table nil  :inherit 'fixed-pitch)
+  (set-face-attribute 'org-formula nil  :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
+  ;; (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch))
+  (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
+  ;; (set-face-attribute 'line-number nil :inherit 'fixed-pitch)
+  ;; (set-face-attribute 'line-number-current-line nil :inherit 'fixed-pitch)
+  ;; Get rid of the background on column views
+  (set-face-attribute 'org-column nil :background nil)
+  (set-face-attribute 'org-column-title nil :background nil)
+
+#+end_src
+
+** Bullet Points
+
+Improve the bullet point appearance of headings.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package org-superstar
+    :hook(org-mode . org-superstar-mode)
+    :custom
+    (org-superstar-remove-leading-stars t)
+    (org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●")))
+
+#+end_src
+
+** Templates
+
+With ~org-tempo~ quickly create templates for the listed langauges, with their corresponding shorthand.
 
 #+begin_src emacs-lisp :tangle yes
 
@@ -608,7 +921,46 @@ M-x all-the-icons-install-fonts
 
 #+end_src
 
-** Visual Fill
+** Keybinds
+
+Keeping it evil.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package evil-org
+    :after org
+    :hook ((org-mode . evil-org-mode)
+           (org-agenda-mode . evil-org-mode)
+           (evil-org-mode . (lambda ()
+                              (evil-org-set-key-theme '(navigation
+                                                        todo
+                                                        insert
+                                                        textobject
+                                                        additional)))))
+    :config
+    (require 'evil-org-agenda)
+    (evil-org-agenda-set-keys))
+
+  (rsh/leader-key-def
+    "o" '(:ignore t :which-key "org mode")
+    "oi" '(:ignore t :which-key "insert")
+    "oil" '(org-insert-link :which-key "insert link")
+    "oa" '(org-agenda :which-key "status")
+    "ot" '(org-todo-list :which-key "todos")
+    "oc" '(org-capture t :which-key "capture")
+    "ox" '(org-export-dispatch t :which-key "export"))
+
+#+end_src
+
+** Close
+
+Close the ~use-package org-mode~ block.
+
+#+begin_src emacs-lisp :tangle yes
+  )
+#+end_src
+
+* Mode Margins
 
 #+begin_src emacs-lisp :tangle yes
 
