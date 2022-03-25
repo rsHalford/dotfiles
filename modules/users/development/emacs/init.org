@@ -246,6 +246,14 @@ Change the base GUI modes to clean-up the UI and improve contrast.
 
 #+end_src
 
+Prevent GUI dialogs from popping up.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (setq use-dialog-box nil)
+
+#+end_src
+
 TODO: Move fringe settings to =diff-hl=.
 
 #+begin_src emacs-lisp :tangle yes
