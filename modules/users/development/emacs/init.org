@@ -831,6 +831,7 @@ Make sure the correct fonts and sizes are used for Org documents.
   ;; Monospace everything that makes sense.
   (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-table nil  :inherit 'fixed-pitch)
+  (set-face-attribute 'org-date nil  :inherit 'fixed-pitch)
   (set-face-attribute 'org-formula nil  :inherit 'fixed-pitch)
   (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
   ;; (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch))
