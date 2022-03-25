@@ -51,7 +51,24 @@ Set the default encoding to UTF-8.
 
 #+end_src
 
-** Disable Auto-Save
+** Saving
+
+Auto-update buffers if other actions/programs have changed the file.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (global-auto-revert-mode 1)
+  (setq global-auto-revert-non-file-buffers t)
+
+#+end_src
+
+Save place of previous edit when editing a file.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (save-place-mode 1)
+
+#+end_src
 
 Disable autosave on NixOS to prevent attempts to write to ~/nix/store~.
 
