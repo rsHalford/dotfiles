@@ -678,38 +678,12 @@ Keep track of Org files.
 
 #+begin_src emacs-lisp :tangle yes
 
-  (setq org-directory "~/Documents/OrgFiles")
-  ;; (setq org-agenda-files '("Archive.org"
-  ;;                          "Birthdays.org"
-  ;;                          "Habits.org"
-  ;;                          "Inbox.org"
-  ;;                          "Journal.org"
-  ;;                          "Metrics.org"
-  ;;                          "Tasks.org"))
-
-  ;; ;; Org Roam
-  ;; (defun rsh/org-roam-project-files ()
-  ;;   "Return a list of note files containing Project tag."
-  ;;   (seq-filter
-  ;;     #'identity
-  ;;     (seq-map
-  ;;       #'car
-  ;;       (org-roam-db-query
-  ;;         [:select file
-  ;;         :from tags
-  ;;         :where (like tags (quote "%\"Project\"%"))]))))
-
-  ;; (defun rsh/update-org-agenda-files ()
-  ;;   (interactive)
-  ;;   (setq org-agenda-files (rsh/org-roam-project-files)))
-
-  ;; (with-eval-after-load 'org-roam
-  ;;   (rsh/update-org-agenda-files))
-
-  (defun rsh/org-path (path)
-    (expand-file-name path org-directory))
-
-  (setq org-default-notes-file (rsh/org-path "Inbox.org"))
+  (setq org-directory "~/Documents/Agenda")
+  (setq org-agenda-files '("Archive.org"
+                           "Birthdays.org"
+                           "Habits.org"
+                           "Inbox.org"
+                           "Metrics.org"))
 
 #+end_src
 
@@ -739,8 +713,8 @@ TODO: Create custom keyword faces with ~org-todo-keyword-faces~.
 
 Custom common tags used to make creating/editing TODOs faster.
 
-- =followup= - Prioritise task as someone else depends on it.
 - =batch= - Batch task for completion with others.
+- =followup= - Prioritise task as someone else depends on it.
 
 #+begin_src emacs-lisp :tangle yes
 
@@ -769,28 +743,28 @@ General settings for org-agenda and custom agenda views for listing items for th
   (setq org-columns-default-format "%20CATEGORY(Category) %65ITEM(Task) %TODO %6Effort(Estim){:} %6CLOCKSUM(Clock) %TAGS")
 
   (setq org-agenda-custom-commands
-   '(("d" "Dashboard"
-     ((agenda "" ((org-deadline-warning-days 7)))
-      (tags-todo "+PRIORITY=\"A\""
-                 ((org-agenda-overriding-header "High Priority")))
-      (tags-todo "+followup" ((org-agenda-overriding-header "Needs Follow Up")))
-      (todo "NEXT"
-            ((org-agenda-overriding-header "Next Actions")
-             (org-agenda-max-todos nil)))
-      (todo "TODO"
-            ((org-agenda-overriding-header "Unprocessed Inbox Tasks")
-             (org-agenda-files '(,(rsh/org-path "Inbox.org")))
-             (org-agenda-text-search-extra-files nil)))))
+        '(("d" "Dashboard"
+           ((agenda "" ((org-deadline-warning-days 7)))
+            (tags-todo "+PRIORITY=\"A\""
+                       ((org-agenda-overriding-header "High Priority")))
+            (tags-todo "+followup" ((org-agenda-overriding-header "Needs Follow Up")))
+            (todo "NEXT"
+                  ((org-agenda-overriding-header "Next Actions")
+                   (org-agenda-max-todos nil)))
+            (todo "TODO"
+                  ((org-agenda-overriding-header "Unprocessed Inbox Tasks")
+                   (org-agenda-files '("~/Documents/Agenda/Inbox.org"))
+                   (org-agenda-text-search-extra-files nil)))))
 
-     ("n" "Next Tasks"
-      ((agenda "" ((org-deadline-warning-days 7)))
-       (todo "NEXT"
-             ((org-agenda-overriding-header "Next Tasks")))))
+          ("n" "Next Tasks"
+           ((agenda "" ((org-deadline-warning-days 7)))
+            (todo "NEXT"
+                  ((org-agenda-overriding-header "Next Tasks")))))
 
-     ("e" tags-todo "+TODO=\"NEXT\"+Effort<15&+Effort>0"
-      ((org-agenda-overriding-header "Low Effort Tasks")
-       (org-agenda-max-todos 20)
-       (org-agenda-files org-agenda-files)))))
+          ("e" tags-todo "+TODO=\"NEXT\"+Effort<15&+Effort>0"
+           ((org-agenda-overriding-header "Low Effort Tasks")
+            (org-agenda-max-todos 20)
+            (org-agenda-files org-agenda-files)))))
 
 #+end_src
 
@@ -800,59 +774,16 @@ Get ideas/progress into a note as fast as possible with little workflow disrupti
 
 #+begin_src emacs-lisp :tangle yes
 
-  (defun rsh/get-todays-journal-file-name ()
-    "Gets the journal file name for today's date"
-    (interactive)
-    (let* ((journal-file-name
-            (expand-file-name
-               (format-time-string "%Y/%B.org")
-               (rsh/org-path "Journal/")))
-           (journal-year-dir (file-name-directory journal-file-name)))
-      (if (not (file-directory-p journal-year-dir))
-        (make-directory journal-year-dir))
-      journal-file-name))
-
-  (defun rsh/on-org-capture ()
-    ;; Don't show the confirmation header text
-    (setq header-line-format nil)
-
-    ;; Control how some buffers are handled
-    (let ((template (org-capture-get :key t)))
-      (pcase template
-        ("jj" (delete-other-windows)))))
-
-  (add-hook 'org-capture-mode-hook 'rsh/on-org-capture)
-
   (setq org-capture-templates
     '(("t" "Tasks")
-      ("tt" "Task" entry (file ,(rsh/org-path "Inbox.org"))
+      ("tt" "Task" entry (file "~/Documents/Agenda/Inbox.org")
            "* TODO %?\n  %W\n  %a\n  %i" :empty-lines 1)
       ("ts" "Clocked Entry Subtask" entry (clock)
            "* TODO %?\n  %W\n  %a\n  %i" :empty-lines 1)
 
-      ("j" "Journal Entries")
-      ("je" "General Entry" entry
-           (file+olp+datetree ,(rsh/org-path "Journal.org"))
-           "\n* %<%H:%M> - %^{Title} \n\n%?\n\n"
-           :tree-type week
-           :clock-in :clock-resume
-           :empty-lines 1)
-      ("jt" "Task Entry" entry
-           (file+olp+datetree ,(rsh/org-path "Journal.org"))
-           "\n* %<%H:%M> - Task Notes: %a\n\n%?\n\n"
-           :tree-type week
-           :clock-in :clock-resume
-           :empty-lines 1)
-      ("jj" "Journal" entry
-           (file+olp+datetree ,(rsh/org-path "Journal.org"))
-           "\n* %<%H:%M> - Journal :journal:\n\n%?\n\n"
-           :tree-type week
-           :clock-in :clock-resume
-           :empty-lines 1)
-
       ("m" "Metrics Capture")
-      ("mw" "Weight" table-line (file+headline ,(rsh/org-path "Metrics.org" "Weight"))
-       "| %W | %^{Weight kg} | %^{Notes} |" :kill-buffer t)))
+      ("mw" "Body Weight" table-line (file+headline "~/Documents/Agenda/Metrics.org" "Body Weight")
+       "| %U | %^{Weight kg} | %^{Notes} |" :kill-buffer t)))
 
 #+end_src
 
