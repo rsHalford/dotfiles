@@ -291,13 +291,22 @@ Improved cursor scrolling, with relative line numbers and a column boundary indi
 
 ** Fonts
 
-JetBrains Mono all the way.
-
-TODO: Set Lexend/Open-Sans and Gelasio fonts for sans-/serif, respectively.
+JetBrains Mono, Lexend and Gelasio is all I need.
 
 #+begin_src emacs-lisp :tangle yes
 
-  (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 110)
+  (set-face-attribute 'default nil
+                      :font "JetBrainsMono Nerd Font"
+                      :weight 'light
+                      :height 110)
+  (set-face-attribute 'fixed-pitch nil
+                      :font "JetBrainsMono Nerd Font"
+                      :weight 'light
+                      :height 110)
+  (set-face-attribute 'variable-pitch nil
+                      :font "Gelasio"
+                      :weight 'medium
+                      :height 125)
 
 #+end_src
 
@@ -815,7 +824,7 @@ Make sure the correct fonts and sizes are used for Org documents.
 
 #+begin_src emacs-lisp :tangle yes
 
-  (set-face-attribute 'org-document-title nil :font "Open Sans" :weight 'bold :height 1.3)
+  (set-face-attribute 'org-document-title nil :font "Gelasio" :weight 'bold :height 1.3)
   (dolist (face '((org-level-1 . 1.2)
                 (org-level-2 . 1.1)
                 (org-level-3 . 1.05)
@@ -824,7 +833,7 @@ Make sure the correct fonts and sizes are used for Org documents.
                 (org-level-6 . 1.1)
                 (org-level-7 . 1.1)
                 (org-level-8 . 1.1)))
-    (set-face-attribute (car face) nil :font "Open Sans" :weight 'regular :height (cdr face)))
+    (set-face-attribute (car face) nil :font "Lexend" :weight 'medium :height (cdr face)))
 
   ;; (require 'org-indent)
 
