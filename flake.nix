@@ -102,6 +102,12 @@
               pass.enable = true;
               ssh.enable = true;
             };
+            services = {
+              blueman.enable = true;
+              gammastep.enable = true;
+              kanshi.enable = true;
+              syncthing.enable = true;
+            };
             terminal = {
               emulator.enable = true;
               shell.enable = true;

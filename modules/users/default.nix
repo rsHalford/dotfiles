@@ -11,6 +11,7 @@
     ./media
     ./messaging
     ./security
+    ./services
     ./terminal
   ];
 }
