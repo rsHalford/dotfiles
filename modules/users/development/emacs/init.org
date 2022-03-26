@@ -254,16 +254,6 @@ Prevent GUI dialogs from popping up.
 
 #+end_src
 
-TODO: Move fringe settings to =diff-hl=.
-
-#+begin_src emacs-lisp :tangle yes
-
-  ;; Fringes
-  (setq-default left-fringe-width 3)
-  (setq-default right-fringe-width 0)
-
-#+end_src
-
 Improved cursor scrolling, with relative line numbers and a column boundary indicator in specific buffer modes.
 
 #+begin_src emacs-lisp :tangle yes
@@ -480,6 +470,9 @@ List all =TODO= (and similar tag) comments within the project in magit's git sta
 diff-hl provides a colour indicator in the left fringe, quickly showing added/changed/removed lines of code. 
 
 #+begin_src emacs-lisp :tangle yes
+
+  (setq-default left-fringe-width 3)
+  (setq-default right-fringe-width 0)
 
   (use-package diff-hl
     :config
