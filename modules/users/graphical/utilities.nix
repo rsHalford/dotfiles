@@ -15,9 +15,7 @@ in
 
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
-      gammastep
       grim
-      kanshi
       mako
       slurp
       waybar
@@ -333,53 +331,6 @@ in
       style = {
         package = pkgs.adwaita-qt;
         name = "adwaita-dark";
-      };
-    };
-    services = {
-      blueman-applet.enable = true;
-      gammastep = {
-        enable = true;
-        dawnTime = "06:30-08:30";
-        duskTime = "20:30-22:00";
-        settings = {
-          general = {
-            fade = 1;
-            brightness-day = 1.0;
-            brightness-night = 0.4;
-            adjustment-method = "wayland";
-          };
-        };
-        temperature = {
-          day = 6500;
-          night = 2800;
-        };
-        tray = true;
-      };
-      kanshi = {
-        enable = true;
-        profiles = {
-          undocked = {
-            outputs = [{
-              criteria = "eDP-1";
-              position = "0,0";
-              status = "enable";
-            }];
-          };
-          docked = {
-            outputs = [
-              {
-                criteria = "eDP-1";
-                status = "disable";
-              }
-              {
-                criteria = "Dell Inc. DELL U2515H 9X2VY5CA0QTL";
-                position = "0,0";
-                scale = 1.0;
-                status = "enable";
-              }
-            ];
-          };
-        };
       };
     };
   };
