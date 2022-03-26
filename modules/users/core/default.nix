@@ -17,7 +17,7 @@ in
     home = {
       packages = with pkgs; [
         (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-        open-sans
+        google-fonts
         xdg-utils
         # yt-dlp
         zathura
