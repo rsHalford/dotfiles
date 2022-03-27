@@ -154,9 +154,9 @@ in
             "pulseaudio" = {
               format = "{icon}";
               format-muted = "<span font='12' color='#cc241d'>ﱝ</span>";
-              format-bluetooth = "<span font='12' color='#fbf1c7'></span> {volume}%";
+              format-bluetooth = "<span font='12' color='#458588'></span>";
               format-bluetooth-muted = "<span font='12' color='#cc241d'></span>";
-              format-source = "<span font='12' color='#fbf1c7'></span> {volume}%";
+              format-source = "<span font='12' color='#fbf1c7'></span>";
               format-source-muted = "<span font='12' color='#cc241d'></span>";
               format-icons = {
                 default = [
