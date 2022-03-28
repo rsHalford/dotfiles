@@ -7,7 +7,7 @@ Decrease initial startup time by reducing garbage collection frequency.
 #+begin_src emacs-lisp :tangle yes
 
   ;; The default is 800 kilobytes. Measures in bytes.
-  ;; (setq gc-cons-threshold (* 50 1000 1000))
+  (setq gc-cons-threshold (* 50 1000 1000))
 
 #+end_src
 
@@ -443,6 +443,7 @@ Magit is life.
 #+begin_src emacs-lisp :tangle yes
 
   (use-package magit
+    :commands (magit-status magit-get-current-branch)
     :custom
     (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
@@ -617,6 +618,7 @@ NOTE: subsequent sections are part of the same block.
 #+begin_src emacs-lisp :tangle yes
 
   (use-package org
+    :defer t
     :hook (org-mode . rsh/org-mode-setup)
     :config
     (setq org-ellipsis " v"
@@ -863,6 +865,7 @@ Improve the bullet point appearance of headings.
 #+begin_src emacs-lisp :tangle yes
 
   (use-package org-superstar
+    :after org
     :hook(org-mode . org-superstar-mode)
     :custom
     (org-superstar-remove-leading-stars t)
@@ -963,5 +966,15 @@ Close the ~use-package org-mode~ block.
     (setq dashboard-set-navigator t)
     (setq dashboard-center-content t)
     (dashboard-setup-startup-hook))
+
+#+end_src
+
+* Runtime Performance
+
+Reduce garbage collection threshold back down, so it happens more frequently.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (setq gc-cons-threshold (* 2 1000 1000))
 
 #+end_src
