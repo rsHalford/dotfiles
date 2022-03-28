@@ -334,7 +334,7 @@ Toggle between themes.
 #+begin_src emacs-lisp :tangle yes
 
   (rsh/leader-key-def
-    "tt" '(counsel-load-theme :which-key "choose theme"))
+    "tt" '(consult-theme :which-key "choose theme"))
 
 #+end_src
 
@@ -363,9 +363,14 @@ NOTE: On first time install =all-the-icons= should be installed as a via nixpkgs
 #+end_src
 
 * Menus
+
+Started off with Ivy and Counsel, but I am currently trying out vertico for a simpler menu system, where I can learn and use all of the funcitonality that I need.
+
 ** Ivy
 
-#+begin_src emacs-lisp :tangle yes
+Currently not tangled within init.el.
+
+#+begin_src emacs-lisp :tangle no
 
   (use-package ivy
     :diminish
@@ -394,7 +399,9 @@ NOTE: On first time install =all-the-icons= should be installed as a via nixpkgs
 
 ** Counsel
 
-#+begin_src emacs-lisp :tangle yes
+Currently not tangled within init.el.
+
+#+begin_src emacs-lisp :tangle no
 
   (use-package counsel
     :bind (("M-x" . counsel-M-x)
@@ -404,6 +411,110 @@ NOTE: On first time install =all-the-icons= should be installed as a via nixpkgs
          ("C-r" . 'counsel-minibuffer-history))
     :config
     (setq ivy-initial-inputs-alist nil))
+
+#+end_src
+
+** Vertico
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package vertico
+    :bind (:map vertico-map
+                ("C-j" . vertico-next)
+                ("C-k" . vertico-previous)
+                ("C-f" . vertico-exit))
+    :custom
+    (vertico-cycle t)
+    :init
+    (vertico-mode))
+
+#+end_src
+
+** Minibuffer History
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package savehist
+    :config
+    (setq history-length 25)
+    (savehist-mode 1))
+
+#+end_src
+
+** Region Completion
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package corfu
+    :bind (:map corfu-map
+                ("C-j" . corfu-next)
+                ("C-k" . corfu-previous)
+                ("C-f" . corfu-insert))
+    :custom
+    (corfu-cycle t)
+    :config
+    (corfu-global-mode))
+
+#+end_src
+
+** Improved Completion
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package orderless
+    :init
+    (setq completion-styles '(orderless)
+          completion-category-defaults nil
+          completion-category-overrides '((file (styles . (partial-completion))))))
+#+end_src
+
+** Completion Commands
+
+TODO: create function to determine the project root, for consult region completion.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package consult
+    :bind (("C-s" . consult-line)
+           ("C-M-l" . consult-imenu)
+           ("C-M-j" . persp-switch-to-buffer*)
+           :map minibuffer-local-map
+           ("C-r" . consult-history))
+    :custom
+    (completion-in-region-function #'consult-completion-in-region)
+    ;; (consult-project-root-function #'rsh/get-project-root)
+    :config
+    (consult-preview-mode))
+
+#+end_src
+
+** Completion Annotations
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package marginalia
+    :after vertico
+    :custom
+    (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+    :init
+    (marginalia-mode))
+
+#+end_src
+
+** Completion Actions
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package embark
+    :bind (("C-S-a" . embark-act)
+           :map minibuffer-local-map
+           ("C-d" . embark-act))
+    :config
+    (setq embark-action-indicator
+          (lambda (map)
+            (which-key--show-keymap "Embark" map nil nil 'no-paging)
+            #'which-key--hide-popup-ignore-command)
+          embark-become-indicator embark-action-indicator))
 
 #+end_src
 
@@ -505,7 +616,7 @@ Setup =lsp-mode= with leader key binds for useful actions.
     "lr" 'xref-find-references
     "lj" 'lsp-ui-find-next-reference
     "lk" 'lsp-ui-find-prev-reference
-    "ls" 'counsel-imenu
+    "ls" 'consult-imenu
     "le" 'lsp-ui-flycheck-list
     "li" 'lsp-ui-sideline-mode
     "la" 'lsp-execute-code-action)
@@ -554,8 +665,8 @@ Change the look, position and type of symbol information and code-actions, etc. 
   ;; Helpful
   (use-package helpful
     :custom
-    (counsel-describe-function-function #'helpful-callable)
-    (counsel-describe-variable-function #'helpful-variable)
+    (describe-function-function #'helpful-callable)
+    (describe-variable-function #'helpful-variable)
     :bind
     ([remap describe-function] . helpful-function)
     ([remap describe-symbol] . helpful-symbol)
