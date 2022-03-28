@@ -321,7 +321,6 @@ Doom's themes integrate well with other packages, such as solaire-mode, to incre
     (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
     (load-theme 'doom-gruvbox t))
-    ;; (doom-themes-neotree-config)
 
   (use-package solaire-mode
     :config
@@ -346,15 +345,10 @@ Improve the modeline look, with a nicer layout, theme integration and greater ic
 #+begin_src emacs-lisp :tangle yes
 
   (use-package doom-modeline
-    ;; :after eshell
     :hook (after-init . doom-modeline-init)
     :custom
     (doom-modeline-height 15)
-    ;; (doom-modeline-bar-width 6)
-    ;; (doom-modeline-lsp t)
-    (doom-modeline-buffer-file-name-style 'truncate-except-project)
-    ;; (doom-modeline-major-mode-icon nil)
-    )
+    (doom-modeline-buffer-file-name-style 'truncate-except-project))
 
 #+end_src
 
