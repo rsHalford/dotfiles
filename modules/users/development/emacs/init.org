@@ -334,7 +334,7 @@ Toggle between themes.
 #+begin_src emacs-lisp :tangle yes
 
   (rsh/leader-key-def
-    "tt" '(consult-theme :which-key "choose theme"))
+    "tu" '(consult-theme :which-key "choose theme"))
 
 #+end_src
 
@@ -541,6 +541,32 @@ TODO: create function to determine the project root, for consult region completi
 
     (use-package all-the-icons-dired
       :hook (dired-mode . all-the-icons-dired-mode))
+
+#+end_src
+
+* Terminal
+
+For a more natural way of using the terminal within Emacs: vterm. With better colouring and more intelligent /togglelingablelalility/.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package vterm
+    :commands vterm
+    :config
+    (setq vterm-max-scrollback 10000))
+
+  (use-package vterm-toggle
+    :config
+    (setq vterm-toggle-fullscreen-p nil)
+    (add-to-list 'display-buffer-alist
+                 '((lambda (bufname _)
+                     (with-current-buffer bufname (equal major-mode 'vterm-mode)))
+                   (display-buffer-reuse-window display-buffer-at-bottom)
+                   (reusable-frames . visible)
+                   (window-height . 0.3))))
+
+  (rsh/leader-key-def
+    "tt" 'vterm-toggle)
 
 #+end_src
 
