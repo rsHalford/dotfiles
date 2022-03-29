@@ -20,7 +20,11 @@ in
         sway = {
           enable = true;
           config = {
-            bars = [{ command = "\${pkgs.waybar}/bin/waybar"; }];
+            bars = [{
+              command = "\${pkgs.waybar}/bin/waybar";
+              hiddenState = "show";
+              mode = "hide";
+            }];
             colors = {
               background = "#282828";
               focused = {
@@ -127,8 +131,7 @@ in
               "Mod4+m" = "layout toggle split";
               "Mod4+n" = "splitv";
               "Mod4+o" = "fullscreen";
-              "Mod4+p" = "layout tabbed";
-              "Mod4+Shift+p" = "layout stacking";
+              "Mod4+p" = "exec swaymsg bar hidden_state toggle";
               "Mod4+q" = "kill";
               "Mod4+Shift+q" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
               # "Mod4+r" = "retroarch";
