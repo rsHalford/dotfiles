@@ -58,6 +58,7 @@ in
             height = 20;
             spacing = 0;
             fixed-center = false;
+            ipc = true;
             modules-left = [ "sway/workspaces" "sway/mode" ];
             "sway/workspaces" = {
               disable-scroll = true;
