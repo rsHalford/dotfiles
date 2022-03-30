@@ -1086,6 +1086,149 @@ Close the ~use-package org-mode~ block.
   )
 #+end_src
 
+* Mail
+
+** Mu4e
+
+NOTE: subsequent sections are part of the same block.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package mu4e
+    :ensure nil
+    :defer 20
+    :config
+
+    ;; Renames message when moved to avoid issues with mbsync
+    (setq mu4e-change-filenames-when-moving t)
+
+    ;; Sync email with mbsync every 10 minutes
+    (setq mu4e-get-mail-command "mbsync -a")
+    (setq mu4e-update-interval (* 10 60))
+
+    ;; List folder paths for mailboxes
+    (setq mu4e-maildir "~/.local/share/mail")
+
+#+end_src
+
+** Contexts
+
+Setup mu4e to use multiple email accounts with their own set of variables.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (setq mu4e-contexts
+        `( ,(make-mu4e-context
+             :name "1-richard@xhalford.com"
+             :match-func (lambda (msg)
+                           (when msg
+                             (string-prefix-p "/richard@xhalford.com" (mu4e-message-field msg :maildir))))
+             :vars '((user-full-name . "Richard Halford")
+                     (user-mail-address . "richard@xhalford.com")
+                     (mu4e-sent-folder . "/richard@xhalford.com/Sent")
+                     (mu4e-trash-folder . "/richard@xhalford.com/Trash")
+                     (mu4e-drafts-folder . "/richard@xhalford.com/Drafts")
+                     (mu4e-maildir-shortcuts . (("/richard@xhalford.com/Inbox" . ?i)
+                                                ("/richard@xhalford.com/Sent" . ?s)
+                                                ("/richard@xhalford.com/Trash" . ?t)
+                                                ("/richard@xhalford.com/Drafts" . ?d)))))
+           ,(make-mu4e-context
+             :name "2-richardh.1995@googlemail.com"
+             :match-func (lambda (msg)
+                           (when msg
+                             (string-prefix-p "/richardh.1995@googlemail.com" (mu4e-message-field msg :maildir))))
+             :vars '((user-full-name . "Richard Halford")
+                     (user-mail-address . "richardh.1995@googlemail.com")
+                     (mu4e-sent-folder . "/richardh.1995@googlemail.com/Mail]/Sent")
+                     (mu4e-trash-folder . "/richardh.1995@googlemail.com/[Google Mail]/Bin")
+                     (mu4e-drafts-folder . "/richardh.1995@googlemail.com/Mail]/Drafts")
+                     (mu4e-maildir-shortcuts . (("/richardh.1995@googlemail.com/Inbox" . ?i)
+                                                ("/richardh.1995@googlemail.com/Mail]/Sent" . ?s)
+                                                ("/richardh.1995@googlemail.com/[Google Mail]/Bin" . ?t)
+                                                ("/richardh.1995@googlemail.com/Mail]/Drafts" . ?d)))))))
+
+  (setq mu4e-context-policy 'pick-first)
+
+#+end_src
+
+** Bookmarks
+
+Add extra bookmarked queries to the start page.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (add-to-list 'mu4e-bookmarks
+               (make-mu4e-bookmark
+                :name "All Inboxes"
+                :query "maildir:/richard@xhalford.com/Inbox OR maildir:/richardh.1995@googlemail.com/Inbox"
+                :key ?i))
+
+#+end_src
+
+** Queries
+
+Create custom search queries to be used within keybonds or notifications, etc.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (setq rsh/mu4e-inbox-query
+        "(maildir:/richard@xhalford.com/Inbox OR maildir:/richardh.1995@googlemail.com/Inbox) AND flag:unread")
+
+  (defun rsh/go-to-inbox ()
+    (interactive)
+    (mu4e-headers-search rsh/mu4e-inbox-query))
+
+#+end_src
+
+** Keybinds
+
+Map usefule keybinds to issue common mu4e commands.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (rsh/leader-key-def
+    "m" '(:ignore t :which-key "mail")
+    "mm" 'mu4e
+    "mc" 'mu4e-compose-new
+    "mi" 'rsh/go-to-inbox
+    "ms" 'mu4e-headers-search
+    "mS" 'mu4e-update-mail-and-index)
+
+#+end_src
+
+** Background Process
+
+Synchronise email via mu4e running in the background of emacs.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (mu4e t)
+
+#+end_src
+
+** Notifications
+
+Show notifications for all new unread mail after a sync.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package mu4e-alert
+    :after mu4e
+    :config
+    (setq mu4e-alert-interesting-mail-query rsh/mu4e-inbox-query)
+    (setq mu4e-alert-notify-repeated-mails nil)
+    (mu4e-alert-enable-notifications))
+
+#+end_src
+
+** Close
+
+Close the ~use-package mu4e~ block.
+
+#+begin_src emacs-lisp :tangle yes
+  )
+#+end_src
+
 * Mode Margins
 
 #+begin_src emacs-lisp :tangle yes
