@@ -95,6 +95,7 @@
               menu.enable = true;
               utilities.enable = true;
             };
+            mail.enable = true;
             media.enable = true;
             messaging.enable = true;
             security = {

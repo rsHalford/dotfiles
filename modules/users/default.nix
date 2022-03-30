@@ -8,6 +8,7 @@
     ./direnv
     ./git
     ./graphical
+    ./mail
     ./media
     ./messaging
     ./security
