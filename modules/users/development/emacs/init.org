@@ -1205,6 +1205,8 @@ TODO: Improve the compose signature for both accounts.
 
 Add extra bookmarked queries to the start page.
 
+TODO: work out how to remove items already listed by mu4e
+
 #+begin_src emacs-lisp :tangle yes
 
   (add-to-list 'mu4e-bookmarks
@@ -1322,6 +1324,8 @@ Close the ~use-package mu4e~ block.
 #+end_src
 
 * Dashboard
+
+TODO: figure out how to have dashboard just display agenda link descriptions and not the url too
 
 #+begin_src emacs-lisp :tangle yes
 
