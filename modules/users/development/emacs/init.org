@@ -1141,6 +1141,8 @@ NOTE: subsequent sections are part of the same block.
 
 Setup mu4e to use multiple email accounts with their own set of variables.
 
+TODO: Improve the compose signature for both accounts.
+
 #+begin_src emacs-lisp :tangle yes
 
   (setq mu4e-contexts
@@ -1151,6 +1153,12 @@ Setup mu4e to use multiple email accounts with their own set of variables.
                              (string-prefix-p "/richard@xhalford.com" (mu4e-message-field msg :maildir))))
              :vars '((user-full-name . "Richard Halford")
                      (user-mail-address . "richard@xhalford.com")
+                     (smtpmail-smtp-server . "mail.xhalford.com")
+                     (smtpmail-smtp-service . 587)
+                     (smtpmail-smtp-user . "richard")
+                     (mu4e-compose-signature .
+                      (concat
+                       "Richard Halford"))
                      (mu4e-sent-folder . "/richard@xhalford.com/Sent")
                      (mu4e-trash-folder . "/richard@xhalford.com/Trash")
                      (mu4e-drafts-folder . "/richard@xhalford.com/Drafts")
@@ -1165,6 +1173,12 @@ Setup mu4e to use multiple email accounts with their own set of variables.
                              (string-prefix-p "/richardh.1995@googlemail.com" (mu4e-message-field msg :maildir))))
              :vars '((user-full-name . "Richard Halford")
                      (user-mail-address . "richardh.1995@googlemail.com")
+                     (smtpmail-smtp-server . "smtp.gmail.com")
+                     (smtpmail-smtp-service . 587)
+                     (smtpmail-smtp-user . "richardh.1995")
+                     (mu4e-compose-signature .
+                      (concat
+                       "Richard Halford"))
                      (mu4e-sent-folder . "/richardh.1995@googlemail.com/Mail]/Sent")
                      (mu4e-trash-folder . "/richardh.1995@googlemail.com/[Google Mail]/Bin")
                      (mu4e-drafts-folder . "/richardh.1995@googlemail.com/Mail]/Drafts")
@@ -1178,6 +1192,10 @@ Setup mu4e to use multiple email accounts with their own set of variables.
 
   ;; Soft-wrap emails to recipients client window
   (setq mu4e-compose-format-flowed t)
+
+  ;; Use mu4e as the default SMTP mail client
+  (setq mail-user-agent 'mu4e-user-agent
+        message-send-mail-function 'smtpmail-send-it)
 
 #+end_src
 
