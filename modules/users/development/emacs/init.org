@@ -1129,6 +1129,12 @@ NOTE: subsequent sections are part of the same block.
     ;; List folder paths for mailboxes
     (setq mu4e-maildir "~/.local/share/mail")
 
+    ;; Kill message buffers
+    (setq message-kill-buffer-on-exit t)
+
+    ;; Do not prompt for confirmation when exiting
+    (setq mu4e-confirm-quit nil)
+
 #+end_src
 
 ** Contexts
@@ -1167,7 +1173,11 @@ Setup mu4e to use multiple email accounts with their own set of variables.
                                                 ("/richardh.1995@googlemail.com/[Google Mail]/Bin" . ?t)
                                                 ("/richardh.1995@googlemail.com/Mail]/Drafts" . ?d)))))))
 
+  ;; Set richard@xhalford.com to default context
   (setq mu4e-context-policy 'pick-first)
+
+  ;; Soft-wrap emails to recipients client window
+  (setq mu4e-compose-format-flowed t)
 
 #+end_src
 
