@@ -862,9 +862,9 @@ Keep track of Org files.
   (setq org-directory "~/Documents/Agenda")
   (setq org-agenda-files '("Archive.org"
                            "Birthdays.org"
+                           "Body.org"
                            "Habits.org"
-                           "Inbox.org"
-                           "Metrics.org"))
+                           "Inbox.org"))
 
 #+end_src
 
@@ -956,15 +956,17 @@ Get ideas/progress into a note as fast as possible with little workflow disrupti
 #+begin_src emacs-lisp :tangle yes
 
   (setq org-capture-templates
-    '(("t" "Tasks")
-      ("tt" "Task" entry (file "~/Documents/Agenda/Inbox.org")
-           "* TODO %?\n  %W\n  %a\n  %i" :empty-lines 1)
-      ("ts" "Clocked Entry Subtask" entry (clock)
-           "* TODO %?\n  %W\n  %a\n  %i" :empty-lines 1)
+        '(("t" "Tasks")
+          ("tt" "Task" entry (file "~/Documents/Agenda/Inbox.org")
+           "* TODO  %?\nSCHEDULED: %t\nDEADLINE: %(org-insert-time-stamp (org-read-date nil t \"+1d\"))\n\n%i" :empty-lines 1)
+          ("ts" "Clocked Entry Subtask" entry (clock)
+           "* TODO  %?\n  %U\n\n  %i" :empty-lines 1)
+          ("tm" "Mail" entry (file "~/Documents/Agenda/Inbox.org")
+           "* TODO Mail: %a\nSCHEDULED: %t\nDEADLINE: %(org-insert-time-stamp (org-read-date nil t \"+1d\"))\n\n%:fromname %:date-timestamp\n\n%i" :empty-lines 1 :immediate-finish t)
 
-      ("m" "Metrics Capture")
-      ("mw" "Body Weight" table-line (file+headline "~/Documents/Agenda/Metrics.org" "Body Weight")
-       "| %U | %^{Weight kg} | %^{Notes} |" :kill-buffer t)))
+          ("b" "Body")
+          ("bw" "Body Weight" table-line (file+headline "~/Documents/Agenda/Body.org" "Body Weight")
+           "| %U | %^{Weight kg} | %^{Notes} |" :kill-buffer t)))
 
 #+end_src
 
@@ -1215,7 +1217,7 @@ Add extra bookmarked queries to the start page.
 
 ** Queries
 
-Create custom search queries to be used within keybonds or notifications, etc.
+Create custom search and capture queries to be used within keybinds or notifications, etc.
 
 #+begin_src emacs-lisp :tangle yes
 
@@ -1225,6 +1227,16 @@ Create custom search queries to be used within keybonds or notifications, etc.
   (defun rsh/go-to-inbox ()
     (interactive)
     (mu4e-headers-search rsh/mu4e-inbox-query))
+
+  (defun rsh/capture-mail-task (msg)
+    (interactive)
+    (call-interactively 'org-store-link)
+    (org-capture nil "tm"))
+
+  (add-to-list 'mu4e-headers-actions
+               '("task" . rsh/capture-mail-task) t)
+  (add-to-list 'mu4e-view-actions
+               '("task" . rsh/capture-mail-task) t)
 
 #+end_src
 
