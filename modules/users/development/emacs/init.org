@@ -1227,13 +1227,22 @@ Create custom search and capture queries to be used within keybinds or notificat
 
 #+begin_src emacs-lisp :tangle yes
 
+  ;; Save current query as a link to be inserted in org-mode (C-c C-l)
+  (defun rsh/store-link-to-mu4e-query ()
+    (interactive)
+    (let ((mu4e-org-link-query-in-headers-mode t))
+      (call-interactively 'org-store-link)))
+
+  ;; Create a query for a combined inbox of unread messages
   (setq rsh/mu4e-inbox-query
         "(maildir:/richard@xhalford.com/Inbox OR maildir:/richardh.1995@googlemail.com/Inbox) AND flag:unread")
 
+  ;; Go to the combined inbox of unread messages
   (defun rsh/go-to-inbox ()
     (interactive)
     (mu4e-headers-search rsh/mu4e-inbox-query))
 
+  ;; Capture a task with a link for the mail item
   (defun rsh/capture-mail-task (msg)
     (interactive)
     (call-interactively 'org-store-link)
@@ -1257,6 +1266,8 @@ Map usefule keybinds to issue common mu4e commands.
     "mm" 'mu4e
     "mc" 'mu4e-compose-new
     "mi" 'rsh/go-to-inbox
+    "my" '(:ignore t :which-key "copy")
+    "myq" 'rsh/store-link-to-mu4e-query
     "ms" 'mu4e-headers-search
     "mS" 'mu4e-update-mail-and-index)
 
