@@ -1209,9 +1209,15 @@ Add extra bookmarked queries to the start page.
 
   (add-to-list 'mu4e-bookmarks
                (make-mu4e-bookmark
-                :name "All Inboxes"
+                :name "Combined Inbox"
                 :query "maildir:/richard@xhalford.com/Inbox OR maildir:/richardh.1995@googlemail.com/Inbox"
-                :key ?i))
+                :key ?c))
+
+  (add-to-list 'mu4e-bookmarks
+               (make-mu4e-bookmark
+                :name "Flagged Mail"
+                :query "flag:flagged"
+                :key ?f))
 
 #+end_src
 
