@@ -583,6 +583,26 @@ Integrate emacs notifications with system libnotify.
 
 #+end_src
 
+* Password Management
+
+I combine pass, the standard unix password manager, with emacs' auth-sources package and pass extension.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package password-store
+    :config
+    (auth-source-pass-enable)
+    (setq auth-sources '(password-store)
+          auth-source-debug t))
+
+  (rsh/leader-key-def
+    "ap" '(:ignore t :which-key "pass")
+    "apy" 'password-store-copy
+    "api" 'password-store-insert
+    "apg" 'password-store-generate)
+
+#+end_src
+
 * Remote
 
 Default TRAMP to use SSH protocol.
