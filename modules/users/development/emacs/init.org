@@ -466,6 +466,7 @@ Currently not tangled within init.el.
 #+begin_src emacs-lisp :tangle yes
 
   (use-package savehist
+    :ensure nil
     :config
     (setq history-length 25)
     (savehist-mode 1))
