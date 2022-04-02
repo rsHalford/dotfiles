@@ -620,6 +620,10 @@ I combine pass, the standard unix password manager, with emacs' auth-sources pac
 
 #+begin_src emacs-lisp :tangle yes
 
+  (use-package pinentry
+    :init
+    (pinentry-start))
+
   (use-package password-store
     :config
     (auth-source-pass-enable)
