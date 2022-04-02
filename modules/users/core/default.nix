@@ -24,7 +24,7 @@ in
       ];
 
       sessionVariables = {
-        EDITOR = "nvim";
+        EDITOR = "emacsclient -c";
         VISUAL = "nvim";
         BROWSER = "qutebrowser";
         TERM = "alacritty";
@@ -42,14 +42,6 @@ in
     xdg = {
       enable = true;
       desktopEntries = {
-        editor = {
-          name = "Neovim";
-          genericName = "Text Editor";
-          type = "Application";
-          exec = "nvim %F";
-          terminal = true;
-          icon = "nvim";
-        };
         img = {
           name = "imv";
           genericName = "Image viewer";
@@ -58,14 +50,6 @@ in
           terminal = true;
           icon = "multimedia-photo-viewer";
         };
-        mail = {
-          name = "NeoMutt";
-          genericName = "Mail";
-          type = "Application";
-          exec = "neomutt %U";
-          terminal = true;
-          icon = "mutt";
-        };
       };
       mimeApps = {
         enable = true;
@@ -73,9 +57,9 @@ in
           "image/png" = "img.desktop";
           "image/jpeg" = "img.desktop";
           "image/gif" = "img.desktop";
-          "x-scheme-handler/mailto" = "mail.desktop";
-          "text/plain" = "editor.desktop";
-          "text/x-shellscript" = "editor.desktop";
+          "x-scheme-handler/mailto" = "emacsclient-mail.desktop";
+          "text/plain" = "emacsclient.desktop";
+          "text/x-shellscript" = "emacsclient.desktop";
           "application/pdf" = "org.pwmt.zathura.desktop";
           "application/postscript" = "org.pwmt.zathura.desktop";
           "x-scheme-handler/magnet" = "org.qbittorrent.qBittorrent.desktop";
