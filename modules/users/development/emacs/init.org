@@ -845,9 +845,7 @@ Load additional modes, such as ~org-habit~.
 #+begin_src emacs-lisp :tangle yes
 
   (setq org-modules
-        '(org-bookmark
-          org-eshell
-          org-habit))
+        '(org-habit))
 
 #+end_src
 
