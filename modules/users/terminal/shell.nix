@@ -205,6 +205,7 @@ in
           cat = "bat";
           cf = "$HOME/.config/";
           cp = "cp -i";
+          e = "emacsclient -c";
           fd = "fd -HI";
           # fzf = "fzf -i --preview 'bat --color=always --style=numbers --line-range=:68 {}'";
           g = "git";

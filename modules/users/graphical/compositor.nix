@@ -116,7 +116,7 @@ in
               # "Mod4+Shift+c" = "clipmenu";
               # "Mod4+d" = "discord";
               # "Mod4+Shift+d" = "signal-desktop";
-              "Mod4+e" = "exec emacs";
+              "Mod4+e" = "exec emacsclient -c";
               "Mod4+Shift+e" = "exec $TERM --class neovim -e nvim";
               # "Mod4+g" = "steam";
               "Mod4+h" = "focus left";

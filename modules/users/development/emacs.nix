@@ -33,5 +33,12 @@ in
         mu
       ];
     };
+    services.emacs = {
+      enable = true;
+      package = emacsPkg;
+      client.enable = true;
+      defaultEditor = true;
+      socketActivation.enable = true;
+    };
   };
 }
