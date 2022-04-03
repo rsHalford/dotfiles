@@ -861,7 +861,9 @@ Show inline Org mode syntax when the cursor is on an affected area.
 #+begin_src emacs-lisp :tangle yes
 
   (use-package org-appear
-    :hook (org-mode . org-appear-mode))
+    :hook (org-mode . org-appear-mode)
+    :config
+    (setq org-appear-autolinks t))
 
 #+end_src
 
