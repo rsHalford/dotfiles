@@ -1352,6 +1352,108 @@ Close the ~use-package mu4e~ block.
   )
 #+end_src
 
+* RSS
+
+** Elfeed
+
+Setup Elfeed to read feeds from Org files.
+
+#+begin_src emacs-lisp :tangle yes
+
+    (use-package elfeed
+      :commands elfeed
+      :bind (:map elfeed-search-mode-map
+                  ("q" . 'rsh/elfeed-save-db-and-bury))
+      :config
+      (setq elfeed-db-directory (expand-file-name "database" "~/Documents/RSS/")
+            elfeed-show-entry-switch 'display-buffer))
+
+    (use-package elfeed-org
+      :config
+      (elfeed-org)
+      (setq rmh-elfeed-org-files (list "~/Documents/RSS/elfeed.org")
+            elfeed-show-entry-switch 'display-buffer))
+
+#+end_src
+
+** Video
+
+Open video feeds with mpv (umpv to make a playlist).
+
+#+begin_src emacs-lisp :tangle yes
+
+  (defun rsh/elfeed-watch-video ()
+    (interactive)
+    (let ((entry (if (eq major-mode 'elfeed-show-mode)
+                     elfeed-show-entry
+                   (elfeed-search-selected :single)))
+          (quality-arg ""))
+      (message "Adding %s to mpv playlist..." (elfeed-entry-link entry))
+      (start-process "elfeed-mpv" nil "umpv" (elfeed-entry-link entry))))
+
+#+end_src
+
+** Bookmarks
+
+Provide functions to call bookmarked feeds. To create a new bookmark, create the function call, then in =elfeed-search-mode= customise the filter and save it with the corresponding title (i.e. =elfeed-all=).
+
+#+begin_src emacs-lisp :tangle yes
+
+  (defun rsh/elfeed-show-all ()
+    (interactive)
+    (bookmark-maybe-load-default-file)
+    (bookmark-jump "elfeed-all"))
+
+  (defun rsh/elfeed-show-youtube ()
+    (interactive)
+    (bookmark-maybe-load-default-file)
+    (bookmark-jump "elfeed-youtube"))
+
+  (defun rsh/elfeed-show-reddit ()
+    (interactive)
+    (bookmark-maybe-load-default-file)
+    (bookmark-jump "elfeed-reddit"))
+
+#+end_src
+
+** Syncing
+
+Wrappers to load the Elfeed db from disk before opening, and write to it when closing.
+
+#+begin_src emacs-lisp :tangle yes
+
+    (defun rsh/elfeed-load-db-and-open ()
+      (interactive)
+      (elfeed-db-load)
+      (elfeed)
+      (elfeed-search-update--force)
+      (elfeed-update))
+
+    (defun rsh/elfeed-write-db-and-bury ()
+      (interactive)
+      (elfeed-db-save)
+      (quite-window))
+
+#+end_src
+
+** Keybinds
+
+#+begin_src emacs-lisp :tangle yes
+
+  (rsh/leader-key-def
+    "e" '(:ignore t :which-key "elfeed")
+    "eb" '(:ignore t :which-key "bookmarks")
+    "eba" 'rsh/elfeed-show-all
+    "ebr" 'rsh/elfeed-show-reddit
+    "eby" 'rsh/elfeed-show-youtube
+    "ee" 'rsh/elfeed-load-db-and-open
+    "er" 'elfeed-update
+    "eR" 'elfeed-update-feed
+    "eu" 'elfeed-show-tag--unread
+    "ev" 'rsh/elfeed-watch-video)
+
+#+end_src
+
 * Mode Margins
 
 #+begin_src emacs-lisp :tangle yes
