@@ -202,7 +202,8 @@ Replicate the leader key function in Emacs. An example usage is the ~SPC-t~ pref
     :config
     (general-evil-setup t)
     (general-create-definer rsh/leader-key-def
-      :keymaps '(normal insert visual emacs)
+      :keymaps 'override
+      :states '(normal insert visual emacs)
       :prefix "SPC"
       :global-prefix "C-SPC")
 
@@ -632,10 +633,10 @@ I combine pass, the standard unix password manager, with emacs' auth-sources pac
           auth-source-debug t))
 
   (rsh/leader-key-def
-    "ap" '(:ignore t :which-key "pass")
-    "apy" 'password-store-copy
-    "api" 'password-store-insert
-    "apg" 'password-store-generate)
+    "p" '(:ignore t :which-key "pass")
+    "py" 'password-store-copy
+    "pi" 'password-store-insert
+    "pg" 'password-store-generate)
 
 #+end_src
 
@@ -781,14 +782,6 @@ Change the look, position and type of symbol information and code-actions, etc. 
     ([remap describe-variable] . helpful-variable)
     ([remap describe-command] . helpful-command)
     ([remap describe-key] . helpful-key))
-
-  (rsh/leader-key-def
-    "e" '(:ignore t :which-key "eval")
-    "eb" '(eval-buffer :which-key "eval buffer"))
-
-  (rsh/leader-key-def
-    :keymaps '(visual)
-    "er" '(eval-region :which-key "eval region"))
 
 #+end_src
 
