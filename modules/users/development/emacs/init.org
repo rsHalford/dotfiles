@@ -1371,19 +1371,29 @@ Setup Elfeed to read feeds from Org files.
 
 #+begin_src emacs-lisp :tangle yes
 
-    (use-package elfeed
-      :commands elfeed
-      :bind (:map elfeed-search-mode-map
-                  ("q" . 'rsh/elfeed-save-db-and-bury))
-      :config
-      (setq elfeed-db-directory (expand-file-name "database" "~/Documents/RSS/")
-            elfeed-show-entry-switch 'display-buffer))
+  (use-package elfeed
+    :commands elfeed
+    :bind (
+           :map elfeed-search-mode-map
+           ("q" . 'rsh/elfeed-save-db-and-bury)
+           :map elfeed-search-mode-map
+           ("C-j" . 'elfeed-goodies/split-show-next)
+           ("C-k" . 'elfeed-goodies/split-show-prev))
+    :config
+    (setq elfeed-db-directory (expand-file-name "database" "~/Documents/RSS/")
+          elfeed-search-remain-on-entry t))
 
-    (use-package elfeed-org
-      :config
-      (elfeed-org)
-      (setq rmh-elfeed-org-files (list "~/Documents/RSS/elfeed.org")
-            elfeed-show-entry-switch 'display-buffer))
+  (use-package elfeed-org
+    :config
+    (elfeed-org)
+    (setq rmh-elfeed-org-files (list "~/Documents/RSS/elfeed.org")))
+
+  (use-package elfeed-goodies
+    :config
+    (elfeed-goodies/setup)
+    (setq elfeed-goodies/entry-pane-size 0.80
+          elfeed-goodies/entry-pane-position 'bottom
+          elfeed-goodies/powerline-default-separator 'bar))
 
 #+end_src
 
