@@ -278,12 +278,14 @@ Improved cursor scrolling, with relative line numbers and a column boundary indi
                   prog-mode-hook
                   conf-mode-hook))
     (add-hook mode (lambda () (display-line-numbers-mode t)))
-    (add-hook mode (lambda () (display-fill-column-indicator-mode t))))
+    (add-hook mode (lambda () (display-fill-column-indicator-mode t)))
+    (add-hook mode (lambda () (hl-line-mode t))))
 
   ;; Disable
   (dolist (mode '(org-mode-hook))
     (add-hook mode (lambda () (display-line-numbers-mode 0)))
-    (add-hook mode (lambda () (display-fill-column-indicator-mode 0))))
+    (add-hook mode (lambda () (display-fill-column-indicator-mode 0)))
+    (add-hook mode (lambda () (hl-line-mode 0))))
 
 #+end_src
 
@@ -362,7 +364,15 @@ Doom's themes integrate well with other packages, such as solaire-mode, to incre
   (use-package solaire-mode
     :config
     (add-to-list 'solaire-mode-themes-to-face-swap "^doom-")
-    (solaire-global-mode +1))
+    (solaire-global-mode +1)
+    :custom-face
+    (solaire-hl-line-face ((t (:background "#32302f")))))
+
+  (use-package hl-line
+    :ensure nil
+    :custom-face
+    (hl-line ((t (:background "#282828"))))
+    (line-number-current-line ((t (:background "#282828")))))
 
 #+end_src
 
