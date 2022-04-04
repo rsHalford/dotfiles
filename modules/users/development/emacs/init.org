@@ -383,9 +383,14 @@ Improve the modeline look, with a nicer layout, theme integration and greater ic
 
   (use-package doom-modeline
     :hook (after-init . doom-modeline-init)
-    :custom
-    (doom-modeline-height 15)
-    (doom-modeline-buffer-file-name-style 'truncate-except-project))
+    :config
+    (setq doom-modeline-height 15)
+    (setq all-the-icons-scale-factor 1)
+    (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
+    (setq doom-modeline-mu4e t)
+    (setq doom-modeline-major-mode-icon nil)
+    (setq doom-modeline-buffer-state-icon nil)
+    (setq doom-modeline-buffer-encoding nil))
 
 #+end_src
 
@@ -1345,7 +1350,8 @@ Show notifications for all new unread mail after a sync.
     :config
     (setq mu4e-alert-interesting-mail-query rsh/mu4e-inbox-query)
     (setq mu4e-alert-notify-repeated-mails nil)
-    (mu4e-alert-enable-notifications))
+    (mu4e-alert-enable-notifications)
+    (mu4e-alert-enable-mode-line-display))
 
 #+end_src
 
