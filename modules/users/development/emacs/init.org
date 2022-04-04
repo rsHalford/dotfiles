@@ -279,7 +279,8 @@ Improved cursor scrolling, with relative line numbers and a column boundary indi
                   conf-mode-hook))
     (add-hook mode (lambda () (display-line-numbers-mode t)))
     (add-hook mode (lambda () (display-fill-column-indicator-mode t)))
-    (add-hook mode (lambda () (hl-line-mode t))))
+    (add-hook mode (lambda () (hl-line-mode t)))
+    (add-hook mode (lambda () (rainbow-mode t))))
 
   ;; Disable
   (dolist (mode '(org-mode-hook))
@@ -768,12 +769,16 @@ Change the look, position and type of symbol information and code-actions, etc. 
 
 #+end_src
 
-** Rainbow Delimiters
+** Rainbows
 
 #+begin_src emacs-lisp :tangle yes
 
   (use-package rainbow-delimiters
     :hook (prog-mode . rainbow-delimiters-mode))
+
+  (use-package rainbow-mode
+    :defer t
+    :hook (prog-mode . rainbow-mode))
 
 #+end_src
 
