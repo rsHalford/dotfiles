@@ -146,15 +146,17 @@ Setup evil-mode with /sensible/ defaults and block cursor *always*.
     (setq evil-want-keybinding nil)
     (setq evil-want-C-u-scroll t)
     (setq evil-want-C-i-jump nil)
+    (setq evil-move-cursor-back nil)
     (setq evil-respect-visual-line-mode t)
     (setq evil-undo-system 'undo-tree)
-    (setq evil-insert-state-cursor '(box "#ebdbb2")
-        evil-normal-state-cursor '(box "#ebdbb2")
-        evil-visual-state-cursor '(box "#ebdbb2")
-        evil-motion-state-cursor '(box "#ebdbb2")
-        evil-replace-state-cursor '(box "#ebdbb2")
-        evil-operator-state-cursor '(box "#ebdbb2")
-        evil-default-state 'normal)
+    (setq evil-default-state 'normal
+          evil-normal-state-cursor '(box "#ebdbb2")
+          evil-insert-state-cursor '(bar "#fbf1c7")
+          evil-visual-state-cursor '(box "#fe8019")
+          evil-motion-state-cursor '(box "#ebdbb2")
+          evil-replace-state-cursor '(box "#fb4934")
+          evil-operator-state-cursor '(box "#ebdbb2")
+          evil-emacs-state-cursor '(bar "#d3869b"))
     :config
     (add-hook 'evil-mode-hook 'rsh/evil-hook)
     (evil-mode 1)
@@ -232,6 +234,9 @@ Show the available keybings for the prefix keys entered. Changing the idle-delay
 #+end_src
 
 * UI
+
+TODO: create prettify-symbols-mode alist and/or get ligatures.el setup.
+
 ** Base Layout
 
 Change the base GUI modes to clean-up the UI and improve contrast.
