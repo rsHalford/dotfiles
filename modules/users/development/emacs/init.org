@@ -262,8 +262,16 @@ Prevent GUI dialogs from popping up.
 
 Improved cursor scrolling, with relative line numbers and a column boundary indicator in specific buffer modes.
 
+TODO: test out ~pixel-scroll-precision~'s ~large-scroll-height~ and ~interpolation-factor~ for matched mouse and trackpad performance.
+
 #+begin_src emacs-lisp :tangle yes
 
+  (pixel-scroll-precision-mode t)
+  ;; (setq pixel-scroll-precision-large-scroll-height 40.0)
+  ;; (setq pixel-scroll-precision-interpolation-factor 30)
+  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+  (setq mouse-wheel-progressive-speed nil)
+  (setq mouse-wheel-follow-mouse 't)
   (setq scroll-margin 8) ;; Start scrolling 8 lines from the top/bottom
   (setq scroll-step 1)
 
