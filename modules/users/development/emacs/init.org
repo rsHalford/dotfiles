@@ -431,54 +431,6 @@ NOTE: On first time install =all-the-icons= should be installed as a via nixpkgs
 
 Started off with Ivy and Counsel, but I am currently trying out vertico for a simpler menu system, where I can learn and use all of the funcitonality that I need.
 
-** Ivy
-
-Currently not tangled within init.el.
-
-#+begin_src emacs-lisp :tangle no
-
-  (use-package ivy
-    :diminish
-    :bind (("C-s" . swiper)
-         :map ivy-minibuffer-map
-         ("TAB" . ivy-alt-done)
-         ("C-l" . ivy-alt-done)
-         ("C-j" . ivy-next-line)
-         ("C-k" . ivy-previous-line)
-         :map ivy-switch-buffer-map
-         ("C-k" . ivy-previous-line)
-         ("C-l" . ivy-done)
-         ("C-d" . ivy-switch-buffer-kill)
-         :map ivy-reverse-i-search-map
-         ("C-k" . ivy-previous-line)
-         ("C-d" . ivy-reverse-i-search-kill))
-    :init
-    (ivy-mode 1))
-
-  (use-package ivy-rich
-    :init
-    (ivy-rich-mode 1))
-    ;; :after counsel
-
-#+end_src
-
-** Counsel
-
-Currently not tangled within init.el.
-
-#+begin_src emacs-lisp :tangle no
-
-  (use-package counsel
-    :bind (("M-x" . counsel-M-x)
-         ("C-x b" . counsel-ibuffer)
-         ("C-x C-f" . counsel-find-file)
-         :map minibuffer-local-map
-         ("C-r" . 'counsel-minibuffer-history))
-    :config
-    (setq ivy-initial-inputs-alist nil))
-
-#+end_src
-
 ** Vertico
 
 #+begin_src emacs-lisp :tangle yes
@@ -507,23 +459,7 @@ Currently not tangled within init.el.
 
 #+end_src
 
-** Region Completion
-
-#+begin_src emacs-lisp :tangle yes
-
-  (use-package corfu
-    :bind (:map corfu-map
-                ("C-j" . corfu-next)
-                ("C-k" . corfu-previous)
-                ("C-f" . corfu-insert))
-    :custom
-    (corfu-cycle t)
-    :config
-    (corfu-global-mode))
-
-#+end_src
-
-** Improved Completion
+** Completion Style
 
 #+begin_src emacs-lisp :tangle yes
 
@@ -532,9 +468,10 @@ Currently not tangled within init.el.
     (setq completion-styles '(orderless)
           completion-category-defaults nil
           completion-category-overrides '((file (styles . (partial-completion))))))
+
 #+end_src
 
-** Completion Commands
+** Commands
 
 TODO: create function to determine the project root, for consult region completion.
 
@@ -554,7 +491,7 @@ TODO: create function to determine the project root, for consult region completi
 
 #+end_src
 
-** Completion Annotations
+** Annotations
 
 #+begin_src emacs-lisp :tangle yes
 
@@ -564,23 +501,6 @@ TODO: create function to determine the project root, for consult region completi
     (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
     :init
     (marginalia-mode))
-
-#+end_src
-
-** Completion Actions
-
-#+begin_src emacs-lisp :tangle yes
-
-  (use-package embark
-    :bind (("C-S-a" . embark-act)
-           :map minibuffer-local-map
-           ("C-d" . embark-act))
-    :config
-    (setq embark-action-indicator
-          (lambda (map)
-            (which-key--show-keymap "Embark" map nil nil 'no-paging)
-            #'which-key--hide-popup-ignore-command)
-          embark-become-indicator embark-action-indicator))
 
 #+end_src
 
@@ -785,7 +705,40 @@ Setup =lsp-mode= with leader key binds for useful actions.
 
 #+end_src
 
-** Lsp-UI
+** Completions
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package corfu
+    :custom
+    (corfu-cycle t)
+    :bind (:map corfu-map
+                ("C-j" . corfu-next)
+                ("C-k" . corfu-previous)
+                ("C-f" . corfu-insert))
+    :init
+    (corfu-global-mode))
+
+#+end_src
+
+** Actions
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package embark
+    :bind (("C-S-a" . embark-act)
+           :map minibuffer-local-map
+           ("C-d" . embark-act))
+    :config
+    (setq embark-action-indicator
+          (lambda (map)
+            (which-key--show-keymap "Embark" map nil nil 'no-paging)
+            #'which-key--hide-popup-ignore-command)
+          embark-become-indicator embark-action-indicator))
+
+#+end_src
+
+** UI
 
 Change the look, position and type of symbol information and code-actions, etc. available via the lsp-modes.
 
