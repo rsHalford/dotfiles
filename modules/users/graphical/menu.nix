@@ -36,6 +36,10 @@ in
           icon-theme = "Papirus-Dark";
           font = "JetBrainsMono Nerd Font 13";
           # terminal = "\${pkgs.alacritty}/bin/alacritty";
+          kb-row-down = "Down,Control+j";
+          kb-row-up = "Up,Control+k";
+          kb-accept-entry = "Control+m,Return,KP_Enter";
+          kb-remove-to-eol = "";
         };
         plugins = with pkgs; [
           rofi-calc
