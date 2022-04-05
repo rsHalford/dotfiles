@@ -368,7 +368,11 @@ Doom's themes integrate well with other packages, such as solaire-mode, to incre
     :config
     (setq doom-themes-enable-bold t
           doom-themes-enable-italic t)
-    (load-theme 'doom-gruvbox t))
+    (load-theme 'doom-gruvbox t)
+    (setq doom-themes-treemacs-theme "doom-colors"
+          doom-themes-treemacs-enable-variable-pitch nil)
+    (doom-themes-treemacs-config)
+    (doom-themes-org-config))
 
   (use-package solaire-mode
     :config
@@ -577,6 +581,26 @@ TODO: create function to determine the project root, for consult region completi
             (which-key--show-keymap "Embark" map nil nil 'no-paging)
             #'which-key--hide-popup-ignore-command)
           embark-become-indicator embark-action-indicator))
+
+#+end_src
+
+* File Browser
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package treemacs
+    :defer t
+    :config
+    (setq treemacs-position 'right))
+
+  (rsh/leader-key-def
+    "tb" 'treemacs)
+
+  (use-package treemacs-evil
+    :after (treemacs evil))
+
+  (use-package treemacs-magit
+    :after (treemacs magit))
 
 #+end_src
 
