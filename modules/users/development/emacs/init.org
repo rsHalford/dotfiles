@@ -465,9 +465,9 @@ Started off with Ivy and Counsel, but I am currently trying out vertico for a si
 
   (use-package orderless
     :init
-    (setq completion-styles '(orderless)
+    (setq completion-styles '(orderless partial-completion)
           completion-category-defaults nil
-          completion-category-overrides '((file (styles . (partial-completion))))))
+          completion-category-overrides nil))
 
 #+end_src
 
@@ -686,11 +686,13 @@ Setup =lsp-mode= with leader key binds for useful actions.
 #+begin_src emacs-lisp :tangle yes
 
   (use-package lsp-mode
-    :commands lsp
-    ;;:hook (() . lsp)
+    :custom
+    (lsp-completion-provider :none)
     :init
-    :config
-    (lsp-headerline-breadcrumb-enable nil))
+    (defun rsh/corfu-setup-lsp ()
+      (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+            '(orderless)))
+    :hook (lsp-completion-mode . rsh/corfu-setup-lsp))
 
   (rsh/leader-key-def
     "l"  '(:ignore t :which-key "lsp")
@@ -710,18 +712,43 @@ Setup =lsp-mode= with leader key binds for useful actions.
 #+begin_src emacs-lisp :tangle yes
 
   (use-package corfu
-    :custom
-    (corfu-cycle t)
     :bind (:map corfu-map
                 ("C-j" . corfu-next)
                 ("C-k" . corfu-previous)
-                ("C-f" . corfu-insert))
+                ("<return>" . corfu-insert)
+                ("<escape>" . corfu-quit)
+                ("C-g" . corfu-quit)
+                ("C-u" . corfu-doc-scroll-down)
+                ("C-d" . corfu-doc-scroll-up))
+    :custom
+    (tab-always-indent 'complete)
+    (completion-cycle-threshold nil)
+    (corfu-auto nil)
+    (corfu-min-width 50)
+    (corfu-max-width 80)
+    (corfu-count 14)
+    (corfu-scroll-margin 4)
+    (corfu-cycle t)
+    (corfu-quit-at-boundary nil)
+    (corfu-separator ?\s)
+    (corfu-quit-no-match 'separator)
+    (corfu-preview-current 'insert)
+    (corfu-preselect-first t)
     :init
-    (corfu-global-mode))
+    (corfu-global-mode)
+    :config
+    (general-add-advice '(corfu--setup corfu--teardown) :after 'evil-normalize-keymaps)
+    (evil-make-overriding-map corfu-map)
+    (defun corfu-enable-always-in-minibuffer ()
+      "Enable Corfu in the minibuffer if Vertico is not active."
+      (unless (bound-and-true-p vertico--input)
+        (setq-local corfu-auto nil)
+        (corfu-mode 1)))
+    (add-hook 'minibuffer-setup-hook #'corfu-enable-always-in-minibuffer 1))
 
 #+end_src
 
-** Actions
+** Code Actions
 
 #+begin_src emacs-lisp :tangle yes
 
@@ -740,6 +767,8 @@ Setup =lsp-mode= with leader key binds for useful actions.
 
 ** UI
 
+*** Lsp-Mode
+
 Change the look, position and type of symbol information and code-actions, etc. available via the lsp-modes.
 
 #+begin_src emacs-lisp :tangle yes
@@ -754,7 +783,33 @@ Change the look, position and type of symbol information and code-actions, etc. 
 
 #+end_src
 
-** Rainbows
+*** Documentation
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package corfu-doc
+    :after corfu
+    :hook (corfu-mode . corfu-doc-mode)
+    :custom
+    (corfu-doc-max-height 20)
+    (corfu-echo-documentation nil))
+
+#+end_src
+
+*** Icons
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package kind-icon
+    :after corfu
+    :custom
+    (kind-icon-default-face 'corfu-default)
+    :config
+    (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
+#+end_src
+
+*** Rainbows
 
 #+begin_src emacs-lisp :tangle yes
 
@@ -767,7 +822,7 @@ Change the look, position and type of symbol information and code-actions, etc. 
 
 #+end_src
 
-** Lsp-Treemacs
+*** Treemacs
 
 #+begin_src emacs-lisp :tangle yes
 
