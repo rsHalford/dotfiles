@@ -668,7 +668,7 @@ diff-hl provides a colour indicator in the left fringe, quickly showing added/ch
 
 #+begin_src emacs-lisp :tangle yes
 
-  (setq-default left-fringe-width 3)
+  (setq-default left-fringe-width 8)
   (setq-default right-fringe-width 0)
 
   (use-package diff-hl
@@ -762,6 +762,15 @@ Setup =lsp-mode= with leader key binds for useful actions.
             (which-key--show-keymap "Embark" map nil nil 'no-paging)
             #'which-key--hide-popup-ignore-command)
           embark-become-indicator embark-action-indicator))
+
+#+end_src
+
+** Code Checking
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package flycheck
+    :init (global-flycheck-mode))
 
 #+end_src
 
