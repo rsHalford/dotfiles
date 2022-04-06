@@ -731,8 +731,9 @@ Setup =lsp-mode= with leader key binds for useful actions.
                 ("<return>" . corfu-insert)
                 ("<escape>" . corfu-quit)
                 ("C-g" . corfu-quit)
-                ("C-u" . corfu-doc-scroll-down)
-                ("C-d" . corfu-doc-scroll-up))
+                ("C-S-k" . corfu-doc-scroll-down)
+                ("C-S-j" . corfu-doc-scroll-up)
+                ("C-d" . corfu-doc-toggle))
     :custom
     (tab-always-indent 'complete)
     (completion-cycle-threshold nil)
