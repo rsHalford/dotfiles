@@ -1502,15 +1502,25 @@ Provide functions to call bookmarked feeds. To create a new bookmark, create the
     (bookmark-maybe-load-default-file)
     (bookmark-jump "elfeed-all"))
 
-  (defun rsh/elfeed-show-youtube ()
+  (defun rsh/elfeed-show-blogs ()
     (interactive)
     (bookmark-maybe-load-default-file)
-    (bookmark-jump "elfeed-youtube"))
+    (bookmark-jump "elfeed-blogs"))
 
-  (defun rsh/elfeed-show-reddit ()
+  (defun rsh/elfeed-show-videos ()
     (interactive)
     (bookmark-maybe-load-default-file)
-    (bookmark-jump "elfeed-reddit"))
+    (bookmark-jump "elfeed-videos"))
+
+  (defun rsh/elfeed-show-forums ()
+    (interactive)
+    (bookmark-maybe-load-default-file)
+    (bookmark-jump "elfeed-forums"))
+
+  (defun rsh/elfeed-show-releases ()
+    (interactive)
+    (bookmark-maybe-load-default-file)
+    (bookmark-jump "elfeed-releases"))
 
 #+end_src
 
@@ -1542,8 +1552,10 @@ Wrappers to load the Elfeed db from disk before opening, and write to it when cl
     "e" '(:ignore t :which-key "elfeed")
     "eb" '(:ignore t :which-key "bookmarks")
     "eba" 'rsh/elfeed-show-all
-    "ebr" 'rsh/elfeed-show-reddit
-    "eby" 'rsh/elfeed-show-youtube
+    "ebb" 'rsh/elfeed-show-blogs
+    "ebf" 'rsh/elfeed-show-forums
+    "ebr" 'rsh/elfeed-show-releases
+    "ebv" 'rsh/elfeed-show-videos
     "ee" 'rsh/elfeed-load-db-and-open
     "er" 'elfeed-update
     "eR" 'elfeed-update-feed
