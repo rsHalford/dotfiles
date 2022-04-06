@@ -58,6 +58,10 @@ in
       };
       # extraConfig = "";
       keyBindings = {
+        command = {
+          "<Ctrl-J>" = "completion-item-focus next";
+          "<Ctrl-K>" = "completion-item-focus prev";
+        };
         normal = {
           ",c" = "config-edit";
           "gp" = "set-cmd-text -s :open -p";
