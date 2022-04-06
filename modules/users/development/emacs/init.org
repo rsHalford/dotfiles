@@ -1522,6 +1522,22 @@ Provide functions to call bookmarked feeds. To create a new bookmark, create the
     (bookmark-maybe-load-default-file)
     (bookmark-jump "elfeed-releases"))
 
+  (defun rsh/elfeed-show-starred ()
+    (interactive)
+    (bookmark-maybe-load-default-file)
+    (bookmark-jump "elfeed-starred"))
+
+#+end_src
+
+** Starring
+
+Simple toggle function to mark an entry for later reading.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (defalias 'elfeed-toggle-star
+    (elfeed-expose #'elfeed-search-toggle-all 'starred))
+
 #+end_src
 
 ** Syncing
@@ -1555,10 +1571,12 @@ Wrappers to load the Elfeed db from disk before opening, and write to it when cl
     "ebb" 'rsh/elfeed-show-blogs
     "ebf" 'rsh/elfeed-show-forums
     "ebr" 'rsh/elfeed-show-releases
+    "ebs" 'rsh/elfeed-show-starred
     "ebv" 'rsh/elfeed-show-videos
     "ee" 'rsh/elfeed-load-db-and-open
     "er" 'elfeed-update
     "eR" 'elfeed-update-feed
+    "es" 'elfeed-toggle-star
     "eu" 'elfeed-show-tag--unread
     "ev" 'rsh/elfeed-watch-video)
 
