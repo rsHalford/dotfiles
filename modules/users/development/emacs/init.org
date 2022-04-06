@@ -1491,6 +1491,20 @@ Open video feeds with mpv (umpv to make a playlist).
 
 #+end_src
 
+TODO: try out the below function to use u/mpv to open links from websites like youtube intead of a browser
+
+#+begin_src emacs-lisp :tangle no
+
+  ;; May need to set variable browse-url-generic-program
+  (setq browse-url-browser-function
+        '(("https:\\/\\/www.youtu\\.*be." . browse-url-mpv)
+          ("." . browse-url-generic)))
+
+  (defun browse-url-mpv (url &optional single)
+    (start-process "mpv" nil "umpv" (shell-quote-argument url)))
+
+#+end_src
+
 ** Bookmarks
 
 Provide functions to call bookmarked feeds. To create a new bookmark, create the function call, then in =elfeed-search-mode= customise the filter and save it with the corresponding title (i.e. =elfeed-all=).
