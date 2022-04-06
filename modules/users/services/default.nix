@@ -86,7 +86,10 @@ in
       };
       syncthing = {
         enable = cfg.syncthing.enable;
-        tray = { enable = true; };
+        tray = {
+          enable = true;
+          command = "syncthingtray --wait";
+        };
       };
     };
   };
