@@ -136,8 +136,8 @@ Setup evil-mode with /sensible/ defaults and block cursor *always*.
 
   (defun rsh/evil-hook ()
     (dolist (mode '(custom-mode
-                  eshell-mode
-                  term-mode))
+                    eshell-mode
+                    term-mode))
       (add-to-list 'evil-emacs-state-modes mode)))
 
   (use-package evil
@@ -169,7 +169,20 @@ Setup evil-mode with /sensible/ defaults and block cursor *always*.
 
     ;; Start in normal mode
     (evil-set-initial-state 'messages-buffer-mode 'normal)
-    (evil-set-initial-state 'dashboard-mode 'normal))
+    (evil-set-initial-state 'dashboard-mode 'normal)
+
+    ;; Additional command mode functions
+    (defun rsh/save-kill-current-buffer () ;; Save and kill the current buffer
+      (interactive)
+      (save-buffer)
+      (kill-current-buffer))
+
+    (evil-ex-define-cmd "q" 'kill-current-buffer) ;; Kill the current buffer
+    (evil-ex-define-cmd "qa" 'evil-quit) ;; Close the current window, current frame, Emacs
+
+    (evil-ex-define-cmd "wq" 'rsh/save-kill-current-buffer)
+    (evil-ex-define-cmd "wqa" 'evil-save-and-quit) ;; Save all buffers and exit Emacs
+    )
 
   (use-package evil-collection
     :after evil
@@ -179,7 +192,7 @@ Setup evil-mode with /sensible/ defaults and block cursor *always*.
     ;; (evil-collection-outline-bind-tab-p nil)
     :config
     (setq evil-collection-mode-list
-        (remove 'lispy evil-collection-mode-list))
+          (remove 'lispy evil-collection-mode-list))
     (evil-collection-init))
 
 #+end_src
