@@ -638,6 +638,8 @@ Default TRAMP to use SSH protocol.
 
 * Git
 
+** Magit
+
 Magit is life.
 
 #+begin_src emacs-lisp :tangle yes
@@ -646,6 +648,53 @@ Magit is life.
     :commands (magit-status magit-get-current-branch)
     :custom
     (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+#+end_src
+
+** Forges
+
+TODO: setup forge for an existing project and see whtat he fuss is a bout
+
+Manage issues, pull-requests and other data from a git forge (i.e. GitHub and GitLab) from within Magit.
+
+#+begin_src emacs-lisp :tangle no
+
+  (use-package forge
+    :after magit)
+
+#+end_src
+
+** Comment Tags
+
+List all =TODO= (and similar tag) comments within the project in magit's git status buffer, to help track and complete tasks.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package magit-todos
+    :init (magit-todos-mode))
+
+#+end_src
+
+** Fringe Status
+
+diff-hl provides a colour indicator in the left fringe, quickly showing added/changed/removed lines of code. 
+
+#+begin_src emacs-lisp :tangle yes
+
+  (setq-default left-fringe-width 8)
+  (setq-default right-fringe-width 0)
+
+  (use-package diff-hl
+    :config
+    (global-diff-hl-mode)
+    (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+    (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+
+#+end_src
+
+** Keybinds
+
+#+begin_src emacs-lisp :tangle yes
 
   (rsh/leader-key-def
     "g" '(:ignore t :which-key "git")
@@ -665,30 +714,6 @@ Magit is life.
     "gm" 'magit-merge
     "gr" 'magit-rebase
     "gt" 'ivy-magit-todos)
-
-#+end_src
-
-List all =TODO= (and similar tag) comments within the project in magit's git status buffer, to help track and complete tasks.
-
-#+begin_src emacs-lisp :tangle yes
-
-  (use-package magit-todos
-    :init (magit-todos-mode))
-
-#+end_src
-
-diff-hl provides a colour indicator in the left fringe, quickly showing added/changed/removed lines of code. 
-
-#+begin_src emacs-lisp :tangle yes
-
-  (setq-default left-fringe-width 8)
-  (setq-default right-fringe-width 0)
-
-  (use-package diff-hl
-    :config
-    (global-diff-hl-mode)
-    (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
-    (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
 
 #+end_src
 
