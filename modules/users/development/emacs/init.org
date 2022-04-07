@@ -1506,7 +1506,8 @@ Setup Elfeed to read feeds from Org files.
            ("C-k" . 'elfeed-goodies/split-show-prev))
     :config
     (setq elfeed-db-directory (expand-file-name "database" "~/Documents/RSS/")
-          elfeed-search-remain-on-entry t))
+          elfeed-search-remain-on-entry t
+          elfeed-search-filter "@2-weeks-ago +unread"))
 
   (use-package elfeed-org
     :config
@@ -1569,10 +1570,10 @@ Provide functions to call bookmarked feeds. To create a new bookmark, create the
     (bookmark-maybe-load-default-file)
     (bookmark-jump "elfeed-blogs"))
 
-  (defun rsh/elfeed-show-videos ()
+  (defun rsh/elfeed-show-dev ()
     (interactive)
     (bookmark-maybe-load-default-file)
-    (bookmark-jump "elfeed-videos"))
+    (bookmark-jump "elfeed-dev"))
 
   (defun rsh/elfeed-show-forums ()
     (interactive)
@@ -1588,6 +1589,11 @@ Provide functions to call bookmarked feeds. To create a new bookmark, create the
     (interactive)
     (bookmark-maybe-load-default-file)
     (bookmark-jump "elfeed-starred"))
+
+  (defun rsh/elfeed-show-videos ()
+    (interactive)
+    (bookmark-maybe-load-default-file)
+    (bookmark-jump "elfeed-videos"))
 
 #+end_src
 
@@ -1631,6 +1637,7 @@ Wrappers to load the Elfeed db from disk before opening, and write to it when cl
     "eb" '(:ignore t :which-key "bookmarks")
     "eba" 'rsh/elfeed-show-all
     "ebb" 'rsh/elfeed-show-blogs
+    "ebd" 'rsh/elfeed-show-dev
     "ebf" 'rsh/elfeed-show-forums
     "ebr" 'rsh/elfeed-show-releases
     "ebs" 'rsh/elfeed-show-starred
