@@ -207,7 +207,11 @@ in
                 "Escape" = "mode default";
               };
             };
-            output = { "*" = { bg = "#282828 solid_color"; }; };
+            output = {
+              "*" = {
+                bg = "~/Media/Pictures/Wallpapers/gruvbox-dark-rainbow.png fill";
+              };
+            };
             # seat = { }; # define seat modules - sway-input(5)
             # startup = [ ]; # startup commands { command = ""; always = bool; }
             terminal = "$TERM";
