@@ -34,6 +34,7 @@ in
         };
         defaultProfiles = [ ];
         profiles = { };
+        # TODO: figure out why mpv doesn't the youtube-quality and thumbnail scripts
         scripts = with pkgs; [
           mpvScripts.thumbnail
           mpvScripts.youtube-quality
