@@ -719,6 +719,8 @@ diff-hl provides a colour indicator in the left fringe, quickly showing added/ch
 
 * Language Server Protocol
 
+** Setup
+
 Setup =lsp-mode= with leader key binds for useful actions.
 
 #+begin_src emacs-lisp :tangle yes
@@ -828,10 +830,26 @@ TODO: think about creating keybinds to start completion-at-point with specific c
 
 ** Code Checking
 
+*** Flycheck
+
 #+begin_src emacs-lisp :tangle yes
 
   (use-package flycheck
-    :init (global-flycheck-mode))
+    :defer
+    :hook (lsp-mode . flycheck-mode))
+
+  (use-package flycheck-inline
+    :after flycheck
+    :hook (flycheck-mode . flycheck-inline-mode))
+
+#+end_src
+
+*** Go
+
+#+begin_src emacs-lisp
+
+  (use-package flycheck-golangci-lint
+    :hook (go-mode . flycheck-golangci-lint-setup))
 
 #+end_src
 
@@ -902,6 +920,7 @@ Change the look, position and type of symbol information and code-actions, etc. 
 #+end_src
 
 ** Languages
+
 *** Emacs-Lisp
 
 #+begin_src emacs-lisp :tangle yes
@@ -917,6 +936,17 @@ Change the look, position and type of symbol information and code-actions, etc. 
     ([remap describe-variable] . helpful-variable)
     ([remap describe-command] . helpful-command)
     ([remap describe-key] . helpful-key))
+
+#+end_src
+
+*** Go
+
+Use the standard Go language server =gopls=, with =lsp-mode=.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package go-mode
+    :hook (go-mode . lsp-deferred))
 
 #+end_src
 
@@ -1017,6 +1047,7 @@ With Org Babel, define and load languages to use within Org buffers.
 #+end_src
 
 ** Agenda
+
 *** File Paths
 
 Keep track of Org files.
