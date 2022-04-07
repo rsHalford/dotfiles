@@ -86,6 +86,9 @@
             core.enable = true;
             development = {
               emacs.enable = true;
+              languages = {
+                go.enable = true;
+              };
               neovim.enable = true;
             };
             # direnv.enable = true;
