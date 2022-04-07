@@ -734,17 +734,6 @@ Setup =lsp-mode= with leader key binds for useful actions.
             '(orderless)))
     :hook (lsp-completion-mode . rsh/corfu-setup-lsp))
 
-  (rsh/leader-key-def
-    "l"  '(:ignore t :which-key "lsp")
-    "ld" 'xref-find-definitions
-    "lr" 'xref-find-references
-    "lj" 'lsp-ui-find-next-reference
-    "lk" 'lsp-ui-find-prev-reference
-    "ls" 'consult-imenu
-    "le" 'lsp-ui-flycheck-list
-    "li" 'lsp-ui-sideline-mode
-    "la" 'lsp-execute-code-action)
-
 #+end_src
 
 ** Completions
@@ -959,6 +948,24 @@ Nix lsp provided by =rnix-lsp=.
   (use-package nix-mode
     :mode "\\.nix\\'"
     :hook (nix-mode . lsp-deferred))
+
+#+end_src
+
+** Keybinds
+
+#+begin_src emacs-lisp :tangle yes
+
+  (rsh/leader-key-def
+    "l"  '(:ignore t :which-key "lsp")
+    "la" 'lsp-execute-code-action
+    "ld" 'lsp-find-definition
+    "le" 'lsp-ui-flycheck-list
+    "lh" 'lsp-ui-doc-glance
+    "lf" 'lsp-ui-peek-find-references
+    "lr" 'lsp-rename
+    "ls" 'consult-imenu
+    "[[" 'flycheck-next-error
+    "]]" 'flycheck-previous-error)
 
 #+end_src
 
