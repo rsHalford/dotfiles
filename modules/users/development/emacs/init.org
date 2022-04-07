@@ -851,11 +851,13 @@ Change the look, position and type of symbol information and code-actions, etc. 
 #+begin_src emacs-lisp :tangle yes
 
   (use-package lsp-ui
+    :after lsp
     :hook (lsp-mode . lsp-ui-mode)
     :config
     (setq lsp-ui-sideline-enable t)
     (setq lsp-ui-sideline-show-hover nil)
-    (setq lsp-ui-doc-position 'bottom)
+    (setq lsp-ui-doc-position 'at-point)
+    (setq lsp-ui-doc-show-with-mouse nil)
     (lsp-ui-doc-show))
 
 #+end_src
