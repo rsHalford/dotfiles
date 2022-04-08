@@ -17,6 +17,7 @@ in
     home = {
       packages = with pkgs; [
         gcc
+        git-chglog
         golangci-lint
         gopls
         pre-commit
