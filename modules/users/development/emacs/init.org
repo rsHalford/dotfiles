@@ -967,8 +967,8 @@ Nix lsp provided by =rnix-lsp=.
     "lf" 'lsp-ui-peek-find-references
     "lr" 'lsp-rename
     "ls" 'consult-imenu
-    "[[" 'flycheck-next-error
-    "]]" 'flycheck-previous-error)
+    "]]" 'flycheck-next-error
+    "[[" 'flycheck-previous-error)
 
 #+end_src
 
