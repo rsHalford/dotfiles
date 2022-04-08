@@ -16,6 +16,7 @@ in
   config = {
     home = {
       packages = with pkgs; [
+        gcc
         golangci-lint
         gopls
         pre-commit
