@@ -21,6 +21,7 @@ in
         golangci-lint
         gopls
         pre-commit
+        python310Packages.markdown2
       ];
     };
     programs = {
