@@ -861,7 +861,7 @@ TODO: think about creating keybinds to start completion-at-point with specific c
 
 *** Go
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle yes
 
   (use-package flycheck-golangci-lint
     :hook (go-mode . flycheck-golangci-lint-setup))
