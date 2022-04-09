@@ -954,6 +954,17 @@ Nix lsp provided by =rnix-lsp=.
 
 #+end_src
 
+*** Markdown
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package markdown-mode
+    :mode "\\.md\\'"
+    :config
+    (setq markdown-command "markdown2"))
+
+#+end_src
+
 ** Keybinds
 
 #+begin_src emacs-lisp :tangle yes
