@@ -460,6 +460,25 @@ Started off with Ivy and Counsel, but I am currently trying out vertico for a si
 
 #+end_src
 
+** Bufler
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package bufler
+    :bind (("C-M-j" . bufler-switch-buffer)
+           ("C-M-k" . bufler-workspace-frame-set))
+    :config
+    (evil-collection-define-key 'normal 'bufler-list-mode-map
+      (kbd "RET") 'bufler-list-buffer-switch
+      (kbd "M-RET") 'bufler-list-buffer-peek
+      "D" 'bufler-list-buffer-kill))
+
+  (rsh/leader-key-def
+    "b" '(:ignore t :which-key "bufler")
+    "bb" 'bufler)
+
+#+end_src
+
 ** Minibuffer History
 
 #+begin_src emacs-lisp :tangle yes
