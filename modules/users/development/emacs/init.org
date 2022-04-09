@@ -230,6 +230,9 @@ Replicate the leader key function in Emacs. An example usage is the ~SPC-t~ pref
     "t" '(:ignore t :which-key "toggles")
     "tw" 'whitespace-mode)
 
+  (rsh/leader-key-def
+    "w" 'evil-window-map)
+
 #+end_src
 
 ** Which-Key
