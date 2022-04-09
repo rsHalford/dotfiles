@@ -718,22 +718,28 @@ diff-hl provides a colour indicator in the left fringe, quickly showing added/ch
 
   (rsh/leader-key-def
     "g" '(:ignore t :which-key "git")
-    "gs" 'magit-status
-    "gd" 'magit-diff-unstaged
+    "gb" 'magit-branch
     "gc" 'magit-branch-or-checkout
+    "gd" 'magit-diff-unstaged
+    "gf" 'magit-fetch
+    "gF" 'magit-fetch-all
     "gl" '(:ignore t :which-key "log")
     "glb" 'magit-log-current
     "glf" 'magit-log-buffer-file
-    "gb" 'magit-branch
+    "gm" 'magit-merge
     "gp" '(:ignore t :which-key "push")
     "gps" 'magit-push-current
     "gpt" 'magit-push-tag
     "gP" 'magit-pull-branch
-    "gf" 'magit-fetch
-    "gF" 'magit-fetch-all
-    "gm" 'magit-merge
     "gr" 'magit-rebase
-    "gt" 'ivy-magit-todos)
+    "gs" 'magit-status
+    "gt" 'magit-todos-list
+    "gw" '(:ignore t :which-key "worktree")
+    "gwc" 'magit-worktree-checkout
+    "gwb" 'magit-worktree-branch
+    "gwm" 'magit-worktree-move
+    "gwd" 'magit-worktree-delete
+    "gws" 'magit-worktree-status)
 
 #+end_src
 
