@@ -15,6 +15,7 @@ in
 
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
+      chatterino2
       imv
     ];
     programs = {

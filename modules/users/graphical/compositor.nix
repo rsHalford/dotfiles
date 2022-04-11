@@ -112,6 +112,7 @@ in
               # "Mod4+Shift+a" = "exec ncmpcpp";
               # "Mod4+b" = "exec $TERM -e pkill -USR1 gammastep";
               "Mod4+Shift+b" = "exec blueman-manager";
+              "Mod4+c" = "exec chatterino";
               # "Mod4+c" = "wyrd";
               # "Mod4+Shift+c" = "clipmenu";
               # "Mod4+d" = "discord";
