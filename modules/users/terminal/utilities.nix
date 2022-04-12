@@ -22,6 +22,7 @@ in
       fd
       fzf
       htop
+      jq
       neofetch
       pulsemixer
       ripgrep
@@ -29,7 +30,6 @@ in
       wev
 
       # acpi
-      # jq
       # manix
       # nix-index
       # pciutils
