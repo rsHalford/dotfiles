@@ -213,7 +213,11 @@ in
                 bg = "~/Media/Pictures/Wallpapers/gruvbox-dark-rainbow.png fill";
               };
             };
-            # seat = { }; # define seat modules - sway-input(5)
+            seat = {
+              "*" = {
+                hide_cursor = "5000";
+              };
+            };
             # startup = [ ]; # startup commands { command = ""; always = bool; }
             terminal = "$TERM";
             window = {
