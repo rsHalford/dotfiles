@@ -1568,6 +1568,39 @@ Close the ~use-package mu4e~ block.
   )
 #+end_src
 
+* Calendar
+
+** Calfw
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package calfw
+    :commands cfw:open-org-calendar
+
+    (use-package calfw-org
+      :config
+      (setq cfw:org-agenda-schedule-args '(:timestamp))))
+
+  (rsh/leader-key-def
+    "cc" '(cfw:open-org-calendar :which-key "calendar"))
+
+#+end_src
+
+** Google Calendar
+
+Sync Org agenda file with Google Calendar.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package org-gcal
+    :after org
+    :config
+    (setq org-gcal-client-id (password-store-get "Calendar/richardh.1995@googlemail.com/ID")
+          org-gcal-client-secret (password-store-get "Calendar/richardh.1995@googlemail.com/Secret")
+          org-gcal-fetch-file-alist `(("richardh.1995@googlemail.com" . "~/Documents/Agenda/Calendar.org"))))
+
+#+end_src
+
 * RSS
 
 ** Elfeed
