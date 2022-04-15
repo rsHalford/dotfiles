@@ -1304,6 +1304,12 @@ Keeping it evil.
     "oc" '(org-capture t :which-key "capture")
     "ox" '(org-export-dispatch t :which-key "export"))
 
+  (rsh/leader-key-def
+    "r" '(:ignore t :which-key "roam")
+    "rl" 'org-roam-buffer-toggle
+    "rf" 'org-roam-node-find
+    "ri" 'org-roam-node-insert)
+
 #+end_src
 
 ** Close
