@@ -1576,9 +1576,12 @@ Close the ~use-package mu4e~ block.
 
 * Calendar
 
+
+Too much of a fuss to setup calendar with radicale.
+
 ** Calfw
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
 
   (use-package calfw
     :commands cfw:open-org-calendar
@@ -1592,18 +1595,22 @@ Close the ~use-package mu4e~ block.
 
 #+end_src
 
-** Google Calendar
+** Synchronisation
 
-Sync Org agenda file with Google Calendar.
+Sync Org agenda file with calendar server.
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
 
-  (use-package org-gcal
-    :after org
-    :config
-    (setq org-gcal-client-id (password-store-get "Calendar/richardh.1995@googlemail.com/ID")
-          org-gcal-client-secret (password-store-get "Calendar/richardh.1995@googlemail.com/Secret")
-          org-gcal-fetch-file-alist `(("richardh.1995@googlemail.com" . "~/Documents/Agenda/Calendar.org"))))
+  (use-package org-caldav
+    :defer t
+    :init
+    (setq org-caldav-url "https://calendar.xhalford.com/radicale/richard/"
+          org-caldav-calendars
+          '(( :calendar-id "bf4bc876-848a-0daa-8794-e085a0e34b8c"
+              :files ("~/Documents/Agenda/Calendar.org")
+              :inbox "~/Documents/Agenda/FromCalendar.org"))
+          org-caldav-delete-org-entries 'always
+          org-caldav-delete-calendar-entries 'never))
 
 #+end_src
 
