@@ -1106,6 +1106,7 @@ Keep track of Org files.
   (setq org-directory "~/Documents/Agenda")
   (setq org-agenda-files '("Archive.org"
                            "Birthdays.org"
+                           "Calendar.org"
                            "Body.org"
                            "Habits.org"
                            "Inbox.org"))
@@ -1576,41 +1577,29 @@ Close the ~use-package mu4e~ block.
 
 * Calendar
 
+** Khalel
 
-Too much of a fuss to setup calendar with radicale.
+#+begin_src emacs-lisp :tangle yes
 
-** Calfw
-
-#+begin_src emacs-lisp :tangle no
-
-  (use-package calfw
-    :commands cfw:open-org-calendar
-
-    (use-package calfw-org
-      :config
-      (setq cfw:org-agenda-schedule-args '(:timestamp))))
+  (use-package khalel
+    :commands (khalel-export-org-subtree-to-calendar
+               khalel-import-upcoming-events
+               khalel-edit-calendar-event
+               khalel-add-capture-template)
+    :config
+    (setq khalel-default-calendar "personal")
+    (setq khalel-capture-key "e")
+    (setq khalel-import-org-file (concat org-directory "/" "Calendar.org"))
+    (setq khalel-import-org-file-confirm-overwrite nil)
+    (setq khalel-import-time-delta "30d")
+    (khalel-add-capture-template))
 
   (rsh/leader-key-def
-    "cc" '(cfw:open-org-calendar :which-key "calendar"))
-
-#+end_src
-
-** Synchronisation
-
-Sync Org agenda file with calendar server.
-
-#+begin_src emacs-lisp :tangle no
-
-  (use-package org-caldav
-    :defer t
-    :init
-    (setq org-caldav-url "https://calendar.xhalford.com/radicale/richard/"
-          org-caldav-calendars
-          '(( :calendar-id "bf4bc876-848a-0daa-8794-e085a0e34b8c"
-              :files ("~/Documents/Agenda/Calendar.org")
-              :inbox "~/Documents/Agenda/FromCalendar.org"))
-          org-caldav-delete-org-entries 'always
-          org-caldav-delete-calendar-entries 'never))
+    "c" '(:ignore t :which-key "calendar")
+    "ce" 'khalel-edit-calendar-event
+    "ci" 'khalel-import-upcoming-events
+    "cs" 'khalel-run-vdirsyncer
+    "cx" 'khalel-export-org-subtree-to-calendar)
 
 #+end_src
 
