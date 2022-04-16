@@ -98,7 +98,6 @@
               menu.enable = true;
               utilities.enable = true;
             };
-            mail.enable = true;
             media.enable = true;
             messaging.enable = true;
             security = {
@@ -112,6 +111,7 @@
               kanshi.enable = true;
               syncthing.enable = true;
             };
+            suite.enable = true;
             terminal = {
               emulator.enable = true;
               shell.enable = true;

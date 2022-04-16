@@ -2,7 +2,7 @@
 with lib;
 
 let
-  cfg = config.richard.mail;
+  cfg = config.richard.suite;
 
   mbsyncConfig = {
     enable = true;
@@ -56,9 +56,9 @@ let
   };
 in
 {
-  options.richard.mail = {
+  options.richard.suite = {
     enable = mkOption {
-      description = "Enable mail";
+      description = "Enable suite";
       type = types.bool;
       default = false;
     };
