@@ -72,6 +72,11 @@ in
       };
       maildirBasePath = "${config.xdg.dataHome}/mail";
     };
+    home.packages = with pkgs; [
+      khal
+      khard
+      vdirsyncer
+    ];
     programs = {
       mbsync.enable = true;
       msmtp.enable = true;
