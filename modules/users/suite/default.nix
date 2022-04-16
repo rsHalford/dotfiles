@@ -82,5 +82,35 @@ in
       msmtp.enable = true;
       mu.enable = true;
     };
+    systemd.user = {
+      services = {
+        vdirsyncer = {
+          Service = {
+            ExecStart = "${pkgs.vdirsyncer}/bin/vdirsyncer sync";
+            Restart = "on-failure";
+            RuntimeMaxSec = "3m";
+          };
+          Unit = {
+            Description = "Synchronize calendars and contacts";
+            Documentation = "https://vdirsyncer.readthedocs.org/";
+          };
+        };
+      };
+      timers = {
+        vdirsyncer = {
+          Install = {
+            WantedBy = [ "timers.target" ];
+          };
+          Timer = {
+            AccuracySec = "5m";
+            OnBootSec = "5m";
+            OnUnitActiveSec = "15m";
+          };
+          Unit = {
+            Description = "Synchronize vdirs";
+          };
+        };
+      };
+    };
   };
 }
