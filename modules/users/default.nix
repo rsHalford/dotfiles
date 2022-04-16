@@ -8,11 +8,11 @@
     ./direnv
     ./git
     ./graphical
-    ./mail
     ./media
     ./messaging
     ./security
     ./services
+    ./suite
     ./terminal
   ];
 }
