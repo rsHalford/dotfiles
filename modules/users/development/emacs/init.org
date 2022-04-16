@@ -1577,8 +1577,6 @@ Close the ~use-package mu4e~ block.
 
 * Calendar
 
-** Khalel
-
 #+begin_src emacs-lisp :tangle yes
 
   (use-package khalel
@@ -1594,11 +1592,17 @@ Close the ~use-package mu4e~ block.
     (setq khalel-import-time-delta "30d")
     (khalel-add-capture-template))
 
+  (use-package khardel)
+
   (rsh/leader-key-def
     "c" '(:ignore t :which-key "calendar")
-    "ce" 'khalel-edit-calendar-event
-    "ci" 'khalel-import-upcoming-events
+    "ce" '(:ignore t :which-key "edit")
+    "cec" 'khardel-edit-contact
+    "cee" 'khalel-edit-calendar-event
+    "ci" 'khardel-insert-email
+    "cn" 'khardel-new-contact
     "cs" 'khalel-run-vdirsyncer
+    "cu" 'khalel-import-upcoming-events
     "cx" 'khalel-export-org-subtree-to-calendar)
 
 #+end_src
