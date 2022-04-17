@@ -151,10 +151,10 @@
         };
         laptop = host.mkHost {
           name = "laptop";
-          NICs = [ "enp1s0" ];
-          initrdMods = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+          NICs = [ "wlp2s0" "enp0s31f6" ];
+          initrdMods = [ "xhci_pci" "nvme" "uas" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
           kernelMods = [ "kvm-intel" ];
-          kernelPackage = pkgs.linuxPackages;
+          kernelPackage = pkgs.linuxPackages_latest;
           kernelParams = [ ];
           kernelPatches = [ ];
           systemConfig = laptopConfig;
