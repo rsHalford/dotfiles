@@ -152,7 +152,7 @@
         laptop = host.mkHost {
           name = "laptop";
           NICs = [ "wlp2s0" "enp0s31f6" ];
-          initrdMods = [ "xhci_pci" "nvme" "uas" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+          initrdMods = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
           kernelMods = [ "kvm-intel" ];
           kernelPackage = pkgs.linuxPackages_latest;
           kernelParams = [ ];
