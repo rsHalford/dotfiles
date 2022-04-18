@@ -195,19 +195,17 @@ in
         initExtraFirst = "";
         plugins = [ ];
         shellAliases = {
-          dl = "$HOME/Downloads";
-          docs = "$HOME/Documents";
-          dot = "$HOME/.dotfiles";
-          # find = "fd";
-          # rm = "rm -i";
-          abook = "abook --config $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook";
           ca = "$HOME/.cache/";
           cat = "bat";
           cf = "$HOME/.config/";
           cp = "cp -i";
+          dl = "$HOME/Downloads";
+          dc = "$HOME/Documents";
+          dot = "$HOME/.dotfiles";
           e = "emacsclient -c";
           fd = "fd -HI";
-          # fzf = "fzf -i --preview 'bat --color=always --style=numbers --line-range=:68 {}'";
+          # find = "fd";
+          fzf = "fzf -i --preview 'bat --color=always --style=numbers --line-range=:68 {}'";
           g = "git";
           ga = "git add";
           gaa = "git add .";
@@ -225,13 +223,16 @@ in
           gmv = "git mv";
           gob = "go build -v";
           gof = "gofmt -d -s -w .";
-          gos = "cd ~/.local/share/go/src/github.com/rsHalford/";
           gpl = "git pull";
           gps = "git push";
           grb = "git rebase";
           grep = "grep -i --color=auto --exclude-dir={.git,node_modules}";
           grm = "git rm";
           gst = "git status -u";
+          gw = "git worktree";
+          gwa = "git worktree add";
+          gwr = "git worktree remove";
+          gwp = "git worktree prune";
           la = "exa -T -L=3 --group-directories-first";
           lc = "$HOME/.local/";
           lcb = "$HOME/.local/bin/";
@@ -239,7 +240,8 @@ in
           ls = "exa -lagh -s=.Name --time-style=iso --git --group-directories-first --colour-scale";
           mkdir = "mkdir -pv";
           mv = "mv -i";
-          remind = "remind -b1 -m -@0 -gaaaa";
+          pro = "$HOME/Projects";
+          # rm = "rm -i";
           v = "nvim";
         };
         shellGlobalAliases = { }; # aliases substituted anywhere on a line
