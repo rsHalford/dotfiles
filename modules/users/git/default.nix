@@ -34,6 +34,7 @@ in
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
       git
+      scripts.worktreeTools
     ];
     programs.git = {
       enable = true;
