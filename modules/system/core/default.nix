@@ -42,8 +42,10 @@ in
       systemPackages = with pkgs; [
         cachix
         git
+        jq
         libnotify
         neovim
+        scripts.sysTools
         tldr
         zsh
       ];
