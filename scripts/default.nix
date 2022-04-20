@@ -79,6 +79,18 @@ let
     esac
   '';
 
+  wallpaperTools = with pkgs; writeScriptBin "bing-wp" ''
+    #!${runtimeShell}
+    bing="http://www.bing.com"
+    xmlURL="http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=en-WW"
+    saveDir=$XDG_CACHE_HOME'/bing-wp/'
+    mkdir -p "$saveDir"
+    picName="bing.jpg"
+    picURL=$bing$(printf '%s\n' "$(curl -s "$xmlURL")" | grep -oP "<url>(.*)</url>" | cut -d ">" -f2 | cut -d "<" -f1)
+    curl -s -o "$saveDir""$picName" "$picURL"
+    exit
+  '';
+
   worktreeTools = with pkgs; writeScriptBin "worktree-clone" ''
     #!${runtimeShell}
     URL=$1
@@ -97,6 +109,7 @@ in
   overlay = (final: prev: {
     scripts.screenshotTools = screenshotTools;
     scripts.sysTools = sysTools;
+    scripts.wallpaperTools = wallpaperTools;
     scripts.worktreeTools = worktreeTools;
   });
 }

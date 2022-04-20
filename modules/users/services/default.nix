@@ -35,6 +35,7 @@ in
     home.packages = with pkgs; [
       gammastep
       kanshi
+      scripts.wallpaperTools
       syncthing
     ];
 
@@ -89,6 +90,32 @@ in
         tray = {
           enable = true;
           command = "syncthingtray --wait";
+        };
+      };
+    };
+    systemd.user = {
+      services = {
+        bing-wp = {
+          Service = {
+            ExecStart = "${pkgs.scripts.wallpaperTools}/bin/bing-wp";
+          };
+          Unit = {
+            Description = "Daily Bing wallpaper service";
+          };
+        };
+      };
+      timers = {
+        bing-wp = {
+          Install = {
+            WantedBy = [ "timers.target" ];
+          };
+          Timer = {
+            OnBootSec = "10s";
+            OnUnitActiveSec = "1d";
+          };
+          Unit = {
+            Description = "Daily Bing wallpaper timer";
+          };
         };
       };
     };
