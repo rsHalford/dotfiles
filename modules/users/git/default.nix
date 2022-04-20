@@ -47,17 +47,17 @@ in
       #   options = { };
       # };
       extraConfig = {
-        commit.gpgSign = cfg.signByDefault;
         init.defaultBranch = "main";
-        # pull.rebase = "true";
+        pull.rebase = true;
+        fetch.prune = true;
+        diff.colorMoved = "zebra";
       };
       # ignores = [ ];
       # includes = [ ];
-      # signing = {
-      #   gpgPath = "\${pkgs.gnupg}/bin/gpg2";
-      #   key = null;
-      #   signByDefault = false;
-      # };
+      signing = {
+        key = null;
+        signByDefault = cfg.signByDefault;
+      };
     };
   };
 }
