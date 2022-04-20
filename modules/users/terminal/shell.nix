@@ -205,7 +205,6 @@ in
           e = "emacsclient -c";
           fd = "fd -HI";
           # find = "fd";
-          fzf = "fzf -i --preview 'bat --color=always --style=numbers --line-range=:68 {}'";
           g = "git";
           ga = "git add";
           gaa = "git add .";
