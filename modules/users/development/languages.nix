@@ -27,6 +27,7 @@ in
     programs = {
       go = {
         enable = cfg.go.enable;
+        goPath = ".local/share/go";
       };
     };
   };
