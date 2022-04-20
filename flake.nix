@@ -92,7 +92,12 @@
               neovim.enable = true;
             };
             # direnv.enable = true;
-            git.enable = true;
+            git = {
+              enable = true;
+              userName = "Richard Halford";
+              userEmail = "richard@xhalford.com";
+              signByDefault = true;
+            };
             graphical = {
               compositor.enable = true;
               menu.enable = true;
