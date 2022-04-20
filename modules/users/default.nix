@@ -6,6 +6,7 @@
     ./core
     ./development
     ./direnv
+    ./gaming
     ./git
     ./graphical
     ./media
