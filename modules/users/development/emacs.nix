@@ -4,7 +4,7 @@ with lib;
 let
   cfg = config.richard.development.emacs;
   emacsPkg = (pkgs.emacsWithPackagesFromUsePackage {
-    package = pkgs.emacsPgtkGcc;
+    package = pkgs.emacsPgtkNativeComp;
     config = ./emacs/init.org;
     alwaysEnsure = true;
   });
