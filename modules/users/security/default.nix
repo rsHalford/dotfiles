@@ -29,7 +29,7 @@ in
     home.packages = with pkgs; [
       git-secret
       gnupg
-      pinentry-emacs
+      pinentry-qt
     ];
 
     programs = {
@@ -116,12 +116,12 @@ in
         enableSshSupport = true;
         # defaultCacheTtl = null;
         # defaultCacheTtlSsh = null;
-        extraConfig = ''
-          allow-emacs-pinentry
-        '';
+        # extraConfig = ''
+        #   allow-emacs-pinentry
+        # '';
         # maxCacheTtl = null;
         # maxCacheTtlSsh = null;
-        pinentryFlavor = "emacs";
+        pinentryFlavor = "qt";
         # sshKeys = null;
         # verbose = false;
       };
