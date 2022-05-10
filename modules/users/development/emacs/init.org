@@ -1789,7 +1789,7 @@ Wrappers to load the Elfeed db from disk before opening, and write to it when cl
 
 TODO: figure out how to have dashboard just display agenda link descriptions and not the url too
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
 
   (use-package dashboard
     :init
