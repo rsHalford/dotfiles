@@ -14,16 +14,16 @@ let
         "apply")
             cd ~/.dotfiles || exit
             if [ -z "$2" ]; then
-                sudo nixos-rebuild switch --flake '.#'
+                nixos-rebuild switch --use-remote-sudo --flake '.#'
             elif [ "$2" = "--user" ] || [ "$2" = "-u" ] ; then
                 nix build --impure .#homeManagerConfigurations."''${USER}".activationPackage
                 ./result/activate
             elif [ "$2" = "--boot" ] || [ "$2" = "-b" ] ; then
-                sudo nixos-rebuild boot --flake '.#'
-            elif [ "$2" = "--test" ] || [ "$2" = "-c" ] ; then
-                sudo nixos-rebuild test --flake '.#'
-            elif [ "$2" = "--check" ] || [ "$2" = "-t" ] ; then
-                nixos-rebuild dry-activate --flake '.#'
+                nixos-rebuild boot --use-remote-sudo --flake '.#'
+            elif [ "$2" = "--test" ] || [ "$2" = "-t" ] ; then
+                nixos-rebuild test --use-remote-sudo --flake '.#'
+            elif [ "$2" = "--check" ] || [ "$2" = "-c" ] ; then
+                nixos-rebuild dry-activate --use-remote-sudo --flake '.#'
             else
                 echo "Unknown option: $2"
             fi
