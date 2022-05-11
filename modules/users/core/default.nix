@@ -73,6 +73,9 @@ in
         enable = true;
         createDirectories = true;
         desktop = "$HOME";
+        extraConfig = {
+          XDG_PROJECTS_DIR = "$HOME/Projects";
+        };
         music = "$HOME/Media/Music";
         pictures = "$HOME/Media/Pictures";
         videos = "$HOME/Media/Videos";
