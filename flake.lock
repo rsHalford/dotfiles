@@ -65,6 +65,26 @@
         "type": "github"
       }
     },
+    "godo-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1652309143,
+        "narHash": "sha256-lph1SJ3PTPhVSPuQGHfKTUpMn6Bnx8tDtSHKfqfdS0M=",
+        "owner": "rsHalford",
+        "repo": "godo",
+        "rev": "601eb21f0c5f389df4ab840aea845fbd54282849",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rsHalford",
+        "repo": "godo",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -177,6 +197,7 @@
     "root": {
       "inputs": {
         "emacs-unstable": "emacs-unstable",
+        "godo-flake": "godo-flake",
         "home-manager": "home-manager",
         "neovim-nightly": "neovim-nightly",
         "nixpkgs": "nixpkgs_3"
