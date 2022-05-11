@@ -73,6 +73,7 @@ in
       maildirBasePath = "${config.xdg.dataHome}/mail";
     };
     home.packages = with pkgs; [
+      godo
       khal
       khard
       vdirsyncer

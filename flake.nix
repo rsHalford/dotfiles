@@ -10,10 +10,14 @@
     };
 
     emacs-unstable.url = "github:nix-community/emacs-overlay";
+    godo-flake = {
+      url = "github:rsHalford/godo";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { nixpkgs, home-manager, emacs-unstable, neovim-nightly, ... }@inputs:
+  outputs = { nixpkgs, home-manager, emacs-unstable, godo-flake, neovim-nightly, ... }@inputs:
     let
       inherit (nixpkgs) lib;
 
@@ -26,7 +30,7 @@
       };
 
       inherit (import ./overlays {
-        inherit system pkgs lib emacs-unstable neovim-nightly scripts;
+        inherit system pkgs lib emacs-unstable godo-flake neovim-nightly scripts;
       }) overlays;
 
       inherit (util) user;
