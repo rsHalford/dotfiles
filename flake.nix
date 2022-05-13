@@ -9,12 +9,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    emacs-unstable.url = "github:nix-community/emacs-overlay";
+    emacs-unstable = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     godo-flake = {
       url = "github:rsHalford/godo";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+
+    neovim-nightly = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, home-manager, emacs-unstable, godo-flake, neovim-nightly, ... }@inputs:
