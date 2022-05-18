@@ -44,6 +44,110 @@ in
           # mpvScripts.mppris
         ];
       };
+      ncmpcpp = {
+        enable = true;
+        package = pkgs.ncmpcpp.override { visualizerSupport = true; };
+        bindings = [
+          { key = "j"; command = "scroll_down"; }
+          { key = "shift-down"; command = [ "select_item" "scroll_down" ]; }
+          { key = "k"; command = "scroll_up"; }
+          { key = "shift-up"; command = [ "select_item" "scroll_up" ]; }
+          { key = "ctrl-u"; command = "page_up"; }
+          { key = "ctrl-d"; command = "page_down"; }
+          { key = "u"; command = "page_up"; }
+          { key = "d"; command = "page_down"; }
+          { key = "h"; command = "previous_column"; }
+          { key = "l"; command = "next_column"; }
+          { key = "."; command = "show_lyrics"; }
+          { key = "n"; command = "next_found_item"; }
+          { key = "N"; command = "previous_found_item"; }
+          { key = "J"; command = "move_sort_order_down"; }
+          { key = "K"; command = "move_sort_order_up"; }
+          { key = "h"; command = "jump_to_parent_directory"; }
+          { key = "l"; command = "enter_directory"; }
+          { key = "l"; command = "run_action"; }
+          { key = "l"; command = "play_item"; }
+          { key = "m"; command = "show_media_library"; }
+          { key = "m"; command = "toggle_media_library_columns_mode"; }
+          { key = "t"; command = "show_tag_editor"; }
+          { key = "v"; command = "show_visualizer"; }
+          { key = "g"; command = "move_home"; }
+          { key = "G"; command = "move_end"; }
+          { key = "U"; command = "update_database"; }
+          { key = "s"; command = "reset_search_engine"; }
+          { key = "s"; command = "show_search_engine"; }
+          { key = "f"; command = "show_browser"; }
+          { key = "f"; command = "change_browse_mode"; }
+          { key = "x"; command = "delete_playlist_items"; }
+          { key = "P"; command = "show_playlist"; }
+        ];
+        mpdMusicDir = null;
+        settings = {
+          ncmpcpp_directory = "~/.config/ncmpcpp";
+          lyrics_directory = "~/.local/share/lyrics";
+          mpd_music_dir = "~/Media/Music";
+          default_place_to_search_in = "database";
+          mpd_crossfade_time = "3";
+          visualizer_data_source = "/tmp/mpd.fifo";
+          visualizer_output_name = "ncmpcpp visualizer";
+          visualizer_in_stereo = "yes";
+          visualizer_type = "spectrum";
+          visualizer_look = "⏺⏺";
+          visualizer_fps = "144";
+          visualizer_spectrum_smooth_look = "no";
+          visualizer_spectrum_dft_size = "1";
+          visualizer_spectrum_gain = "10";
+          playlist_disable_highlight_delay = "5";
+          playlist_shorten_total_times = "yes";
+          ask_before_clearing_playlists = "yes";
+          song_list_format = "{{$4%30t$9}{$8 - $6%30a$9}{$8 - %30b$9}}|{$4%90f$9}$R{$(blue)%l$9}";
+          song_status_format = "{{$4\"%t\"$9}{ $8by$6 %a$9}{$8 - %b$9}}|{$4%f$9}";
+          song_columns_list_format = "(30)[magenta]{a} (30)[yellow]{t} (30)[white]{b} (10)[blue]{l}";
+          alternative_header_first_line_format = "$0$aqqu$/a{$4%t$9}|{$4%f$9} $0$atqq$/a$9";
+          alternative_header_second_line_format = "{$6%a$8}{$8 - %b$9}";
+          mouse_support = "no";
+          current_item_prefix = "$(magenta)$r$b";
+          current_item_suffix = "$/r$(end)$/b";
+          current_item_inactive_column_prefix = "$(blue)$r";
+          current_item_inactive_column_suffix = "$/r$(end)";
+          now_playing_prefix = "⏵ ";
+          jump_to_now_playing_song_at_start = "yes";
+          centered_cursor = "yes";
+          incremental_seeking = "yes";
+          seek_time = "1";
+          progressbar_look = "=>-";
+          playlist_editor_display_mode = "columns";
+          playlist_display_mode = "columns";
+          search_engine_display_mode = "columns";
+          browser_display_mode = "columns";
+          display_bitrate = "no";
+          display_volume_level = "yes";
+          enable_window_title = "yes";
+          empty_tag_marker = "";
+          regular_expressions = "extended";
+          ignore_leading_the = "yes";
+          ignore_diacritics = "yes";
+          autocenter_mode = "yes";
+          cyclic_scrolling = "yes";
+          lines_scrolled = "1";
+          colors_enabled = "yes";
+          header_window_color = "white";
+          main_window_color = "white";
+          player_state_color = "cyan";
+          volume_color = "cyan";
+          statusbar_color = "white";
+          progressbar_elapsed_color = "green";
+          progressbar_color = "white";
+          discard_colors_if_item_is_selected = "yes";
+          follow_now_playing_lyrics = "yes";
+          fetch_lyrics_for_current_song_in_background = "yes";
+          external_editor = "nvim";
+          use_console_editor = "yes";
+          header_visibility = "yes";
+          statusbar_visibility = "yes";
+          titles_visibility = "yes";
+        };
+      };
     };
   };
 }
