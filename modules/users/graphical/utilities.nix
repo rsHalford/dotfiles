@@ -71,6 +71,7 @@ in
               format = { };
             };
             modules-right = [
+              "mpd"
               "cpu"
               "temperature"
               "memory"
@@ -134,6 +135,25 @@ in
             "memory" = {
               format = "<span font='12' color='#b16286'></span> {percentage}%";
               tooltip-format = "{used:0.1f}GiB / {total:0.1f}GiB";
+            };
+            "mpd" = {
+              format = "{stateIcon} \"{title}\" by {artist}";
+              format-stopped = "Stopped";
+              format-disconnected = "Disconnected";
+              tooltip-format = "Volume: {volume}% [{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}]\n{elapsedTime:%M:%S}:{totalTime:%M:%S}";
+              rotate = "1";
+              max-length = "24";
+              on-click = "mpc toggle";
+              on-click-middle = "$TERM --class ncmpcpp -e ncmpcpp";
+              on-click-right = "mpc next";
+              state-icons = {
+                "playing" = "⏵";
+                "paused" = "⏸";
+              };
+              consume-icons = { "on" = "c"; };
+              random-icons = { "on" = "z"; };
+              repeat-icons = { "on" = "r"; };
+              single-icons = { "on" = "s"; };
             };
             "network" = {
               format-wifi = "{icon}";
@@ -275,6 +295,27 @@ in
               padding: 0 8pt;
               background: #282828;
               color: #bdae93;
+            }
+
+            #mpd {
+              padding: 0 8pt;
+              background: #1d2021;
+            }
+
+            #mpd.disconnected {
+              color: #bdae93;
+            }
+
+            #mpd.playing {
+              color: #98971a;
+            }
+
+            #mpd.paused {
+              color: #d79921;
+            }
+
+            #mpd.stopped {
+              color: #d65d0e;
             }
 
             tooltip {
