@@ -109,7 +109,7 @@ in
               "Mod4+question" = "reload";
 
               "Mod4+a" = "exec rofi -show drun";
-              # "Mod4+Shift+a" = "exec ncmpcpp";
+              "Mod4+Shift+a" = "exec $TERM --class ncmpcpp -e ncmpcpp";
               # "Mod4+b" = "exec $TERM -e pkill -USR1 gammastep";
               "Mod4+Shift+b" = "exec blueman-manager";
               "Mod4+c" = "exec chatterino";
@@ -188,10 +188,10 @@ in
               "XF86AudioRaiseVolume" = "exec pulsemixer --change-volume +5";
               "XF86AudioLowerVolume" = "exec pulsemixer --change-volume -5";
               "XF86AudioMicMute" = "exec amixer set Capture toggle";
-              # "XF86AudioPlay" = "exec mpc toggle";
-              # "XF86AudioStop" = "exec mpc stop";
-              # "XF86AudioNext" = "exec mpc next";
-              # "XF86AudioPrev" = "exec mpc prev";
+              "XF86AudioPlay" = "exec mpc toggle";
+              "XF86AudioStop" = "exec mpc stop";
+              "XF86AudioNext" = "exec mpc next";
+              "XF86AudioPrev" = "exec mpc prev";
             };
             menu = "rofi -show drun";
             modes = {
