@@ -140,7 +140,7 @@ in
               format = "{stateIcon} \"{title}\" by {artist}";
               format-stopped = "Stopped";
               format-disconnected = "Disconnected";
-              tooltip-format = "Volume: {volume}% [{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}]\n{elapsedTime:%M:%S}:{totalTime:%M:%S}";
+              tooltip-format = "Volume: {volume}% [{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}]\n{elapsedTime:%M:%S}/{totalTime:%M:%S}";
               rotate = "1";
               max-length = "24";
               on-click = "mpc toggle";
