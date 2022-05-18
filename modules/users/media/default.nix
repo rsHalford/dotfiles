@@ -16,6 +16,7 @@ in
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
       imv
+      mpc-cli
       streamlink
     ];
     programs = {

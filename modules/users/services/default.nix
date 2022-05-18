@@ -24,6 +24,12 @@ in
       default = false;
     };
 
+    mpd.enable = mkOption {
+      description = "Enable mpd";
+      type = types.bool;
+      default = false;
+    };
+
     syncthing.enable = mkOption {
       description = "Enable syncthing";
       type = types.bool;
@@ -35,6 +41,7 @@ in
     home.packages = with pkgs; [
       gammastep
       kanshi
+      mpd
       scripts.wallpaperTools
       syncthing
     ];
@@ -83,6 +90,27 @@ in
               }
             ];
           };
+        };
+      };
+      mpd = {
+        enable = cfg.mpd.enable;
+        extraConfig = ''
+          audio_output {
+            type "pipewire"
+            name "PipeWire Output"
+          }
+          audio_output {
+            type "fifo"
+            name "ncmpcpp visualizer"
+            path "/tmp/mpd.fifo"
+            format "44100:16:2"
+          }
+        '';
+        musicDirectory = "~/Media/Music";
+        network = {
+        #   listenAddress = "127.0.0.1";
+        #   port = "9001";
+          startWhenNeeded = true;
         };
       };
       syncthing = {
