@@ -794,7 +794,7 @@ Setup =lsp-mode= with leader key binds for useful actions.
     (corfu-preview-current 'insert)
     (corfu-preselect-first t)
     :init
-    (corfu-global-mode)
+    (global-corfu-mode)
     :config
     (general-add-advice '(corfu--setup corfu--teardown) :after 'evil-normalize-keymaps)
     (evil-make-overriding-map corfu-map)
