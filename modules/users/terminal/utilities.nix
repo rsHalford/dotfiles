@@ -27,6 +27,7 @@ in
       pulsemixer
       ripgrep
       translate-shell
+      unzip
       wev
 
       # acpi
@@ -34,7 +35,6 @@ in
       # nix-index
       # pciutils
       # pstree
-      # unzip
       # wget
     ];
     programs = {
