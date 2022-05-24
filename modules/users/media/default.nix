@@ -18,6 +18,7 @@ in
       imv
       mpc-cli
       streamlink
+      whipper
     ];
     programs = {
       mpv = {
