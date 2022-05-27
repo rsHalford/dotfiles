@@ -5,18 +5,8 @@ let
   cfg = config.richard.terminal.emulator;
 in
 {
-  options.richard.terminal.emulator = {
-    enable = mkOption {
-      description = "Enable terminal emulator";
-      type = types.bool;
-      default = true;
-    };
-  };
-
-  config = mkIf (cfg.enable) {
-    home.packages = with pkgs; [
-      alacritty
-    ];
+  config = mkIf (cfg.program == "alacritty") {
+    home.packages = with pkgs; [ alacritty ];
     programs.alacritty = {
       enable = true;
       settings = {

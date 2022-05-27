@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./emulator.nix
+    ./emulator
     ./shell.nix
     ./utilities.nix
   ];
