@@ -14,17 +14,17 @@ in
           # shell = "\$SHELL"; # (if set, otherwise user's default shell from /etc/passwd)
           # term = "foot"; # (or xterm-256color if built with -Dterminfo=disabled)
           # login-shell = "no";
-          font = "JetBrainsMono Nerd Font:style=Regular:size=10";
-          font-bold = "JetBrainsMono Nerd Font:style=Bold:size=10";
-          font-italic = "JetBrainsMono Nerd Font:style=Italic:size=10";
-          font-bold-italic = "JetBrainsMono Nerd Font:style=Bold Italic:size=10";
+          font = "JetBrainsMono Nerd Font:style=Regular:size=11.5";
+          font-bold = "JetBrainsMono Nerd Font:style=Bold:size=11.5";
+          font-italic = "JetBrainsMono Nerd Font:style=Italic:size=11.5";
+          font-bold-italic = "JetBrainsMono Nerd Font:style=Bold Italic:size=11.5";
           # line-height = "";
           letter-spacing = "0";
           horizontal-letter-offset = "0";
           vertical-letter-offset = "0";
           # underline-offset = "";
           box-drawings-uses-font-glyphs = "no";
-          dpi-aware = "auto"; # "auto", "yes", "no"
+          dpi-aware = "no"; # "auto", "yes", "no"
           pad = "5x2"; # optionally append 'center'
           resize-delay-ms = "100";
           # initial-window-size-pixels = "700x500";  # Or,
