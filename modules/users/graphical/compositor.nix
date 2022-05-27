@@ -4,6 +4,7 @@ with lib;
 let
   cfg = config.richard.graphical.compositor;
   screenshot = "${pkgs.scripts.screenshotTools}/bin/screenshot";
+  terminal = config.richard.terminal.emulator.program;
 in
 {
   options.richard.graphical.compositor = {
@@ -104,13 +105,13 @@ in
             keybindings = {
               "Mod4+space" = "focus mode_toggle";
               "Mod4+Semicolon" = "splith";
-              "Mod4+Return" = "exec $TERM";
+              "Mod4+Return" = "exec ${terminal}";
               "Mod4+Shift+Return" = "focus parent";
               "Mod4+question" = "reload";
 
               "Mod4+a" = "exec rofi -show drun";
-              "Mod4+Shift+a" = "exec $TERM --class ncmpcpp -e ncmpcpp";
-              # "Mod4+b" = "exec $TERM -e pkill -USR1 gammastep";
+              "Mod4+Shift+a" = "exec ${terminal} -e ncmpcpp";
+              # "Mod4+b" = "exec ${terminal} -e pkill -USR1 gammastep";
               "Mod4+Shift+b" = "exec blueman-manager";
               "Mod4+c" = "exec chatterino";
               # "Mod4+c" = "wyrd";
@@ -118,7 +119,7 @@ in
               # "Mod4+d" = "discord";
               # "Mod4+Shift+d" = "signal-desktop";
               "Mod4+e" = "exec emacsclient -c";
-              "Mod4+Shift+e" = "exec $TERM --class neovim -e nvim";
+              "Mod4+Shift+e" = "exec ${terminal} -e nvim";
               # "Mod4+g" = "steam";
               "Mod4+h" = "focus left";
               "Mod4+Shift+h" = "move left";
@@ -142,10 +143,10 @@ in
               "Mod4+t" = "exec telegram-desktop";
               # "Mod4+Shift+t" = "qBittorent";
               "Mod4+u" = "mode resize";
-              "Mod4+v" = "exec $TERM --class pulsemixer -e pulsemixer";
+              "Mod4+v" = "exec ${terminal} -e pulsemixer";
               # "Mod4+Shift+v" = "virt-manager";
               "Mod4+w" = "exec $BROWSER";
-              "Mod4+Shift+w" = "exec $TERM --class nmtui -e nmtui";
+              "Mod4+Shift+w" = "exec ${terminal} -e nmtui";
               # "Mod4+Shift+x" = "exec ledger-live-desktop";
 
               "Mod4+Up" = "focus up";
@@ -219,7 +220,7 @@ in
               };
             };
             # startup = [ ]; # startup commands { command = ""; always = bool; }
-            terminal = "$TERM";
+            terminal = "${terminal}";
             window = {
               border = 2;
               hideEdgeBorders = "smart";

@@ -3,6 +3,7 @@ with lib;
 
 let
   cfg = config.richard.browser;
+  terminal = config.richard.terminal.emulator.program;
   bg0_hard = "#1d2021";
   bg0_soft = "#32302f";
   bg0_normal = "#282828";
@@ -117,7 +118,7 @@ in
           position = "bottom";
           remove_finished = 180000;
         };
-        editor.command = [ "alacritty" "-e" "nvim" "{}" ];
+        editor.command = [ "${terminal}" "-e" "nvim" "{}" ];
         keyhint.delay = 0;
         scrolling = {
           bar = "never";

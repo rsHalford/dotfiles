@@ -3,6 +3,7 @@ with lib;
 
 let
   cfg = config.richard.graphical.utilities;
+  terminal = config.richard.terminal.emulator.program;
 in
 {
   options.richard.graphical.utilities = {
@@ -116,7 +117,7 @@ in
             };
             "clock" = {
               format = "<span font='12' color='#fabd2f'></span> {:%H:%M}";
-              # on-click = "$TERM -e remind";
+              # on-click = "${terminal} -e khal";
               today-format = "<span color='#b16286'><b>{}</b></span>";
               tooltip-format = "<big>{:%B <span color='#cc241d'>%Y}</span></big>\n<tt><small>{calendar}</small></tt>";
             };
@@ -144,7 +145,7 @@ in
               rotate = "1";
               max-length = "24";
               on-click = "mpc toggle";
-              on-click-middle = "$TERM --class ncmpcpp -e ncmpcpp";
+              on-click-middle = "${terminal} -e ncmpcpp";
               on-click-right = "mpc next";
               state-icons = {
                 "playing" = "⏵";
@@ -170,7 +171,7 @@ in
                 disconnected = "<span font='12' color='#d65d0e'></span>";
                 disabled = "<span font='12' color='#cc241d'>睊</span>";
               };
-              on-click = "$TERM --class nmtui -e nmtui";
+              on-click = "${terminal} -e nmtui";
             };
             "pulseaudio" = {
               format = "{icon}";
@@ -207,7 +208,7 @@ in
                 # hmdi = "﴿";
                 # speaker = "蓼";
               };
-              on-click = "$TERM --class pulsemixer -e pulsemixer";
+              on-click = "${terminal} -e pulsemixer";
               scroll-step = 1.0;
               tooltip-format = "{desc}: {volume}%";
             };
