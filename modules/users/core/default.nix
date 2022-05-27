@@ -27,7 +27,7 @@ in
         EDITOR = "emacsclient -c";
         VISUAL = "nvim";
         BROWSER = "qutebrowser";
-        TERM = "alacritty";
+        TERM = config.richard.terminal.emulator.program;
         READER = "zathura";
         VIDEO = "mpv";
       };

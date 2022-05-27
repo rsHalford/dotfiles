@@ -132,7 +132,7 @@
             };
             suite.enable = true;
             terminal = {
-              emulator.enable = true;
+              emulator.program = "footclient";
               shell.enable = true;
               utilities.enable = true;
             };
