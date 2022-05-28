@@ -128,6 +128,7 @@
               gammastep.enable = true;
               kanshi.enable = true;
               mpd.enable = true;
+              mpris.enable = true;
               syncthing.enable = true;
             };
             suite.enable = true;
