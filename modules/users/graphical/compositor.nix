@@ -111,9 +111,9 @@ in
 
               "Mod4+a" = "exec rofi -show drun";
               "Mod4+Shift+a" = "exec ${terminal} -e ncmpcpp";
-              # "Mod4+b" = "exec ${terminal} -e pkill -USR1 gammastep";
+              "Mod4+b" = "exec ${terminal} -e pkill -USR1 gammastep";
               "Mod4+Shift+b" = "exec blueman-manager";
-              "Mod4+c" = "exec chatterino";
+              # "Mod4+c" = "exec chatterino";
               # "Mod4+c" = "wyrd";
               # "Mod4+Shift+c" = "clipmenu";
               # "Mod4+d" = "discord";
@@ -136,7 +136,7 @@ in
               "Mod4+p" = "exec swaymsg bar hidden_state toggle";
               "Mod4+q" = "kill";
               "Mod4+Shift+q" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
-              # "Mod4+r" = "retroarch";
+              "Mod4+r" = "retroarch";
               # "Mod4+Shift+r" = "newsboat";
               # "Mod4+s" = "dmainu";
               # "Mod4+Shift+s" = "passmenu";
@@ -189,10 +189,10 @@ in
               "XF86AudioRaiseVolume" = "exec pulsemixer --change-volume +5";
               "XF86AudioLowerVolume" = "exec pulsemixer --change-volume -5";
               "XF86AudioMicMute" = "exec amixer set Capture toggle";
-              "XF86AudioPlay" = "exec mpc toggle";
-              "XF86AudioStop" = "exec mpc stop";
-              "XF86AudioNext" = "exec mpc next";
-              "XF86AudioPrev" = "exec mpc prev";
+              "XF86AudioPlay" = "exec playerctl play-pause";
+              "XF86AudioStop" = "exec playerctl stop";
+              "XF86AudioNext" = "exec playerctl next";
+              "XF86AudioPrev" = "exec playerctl previous";
             };
             menu = "rofi -show drun";
             modes = {

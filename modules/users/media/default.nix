@@ -42,7 +42,7 @@ in
           mpvScripts.thumbnail
           mpvScripts.youtube-quality
           mpvScripts.mpv-playlistmanager
-          # mpvScripts.mppris
+          mpvScripts.mpris
         ];
       };
       ncmpcpp = {

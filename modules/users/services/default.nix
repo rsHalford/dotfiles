@@ -30,6 +30,12 @@ in
       default = false;
     };
 
+    mpris.enable = mkOption {
+      description = "Enable MPRIS";
+      type = types.bool;
+      default = false;
+    };
+
     syncthing.enable = mkOption {
       description = "Enable syncthing";
       type = types.bool;
@@ -42,6 +48,8 @@ in
       gammastep
       kanshi
       mpd
+      mpdris2
+      playerctl
       scripts.wallpaperTools
       syncthing
     ];
@@ -106,12 +114,25 @@ in
             format "44100:16:2"
           }
         '';
-        musicDirectory = "~/Media/Music";
+        musicDirectory = ~/Media/Music;
         network = {
         #   listenAddress = "127.0.0.1";
         #   port = "9001";
           startWhenNeeded = true;
         };
+      };
+      mpdris2 = {
+        enable = cfg.mpd.enable;
+        # mpd = {
+        #   host = "127.0.0.1";
+        #   port = "9001";
+        # };
+        # multimediaKeys = false;
+        # notifications = false;
+      };
+      mpris-proxy.enable = cfg.mpris.enable;
+      playerctld = {
+        enable = cfg.mpris.enable;
       };
       syncthing = {
         enable = cfg.syncthing.enable;
