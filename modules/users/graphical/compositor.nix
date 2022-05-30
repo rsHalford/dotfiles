@@ -117,7 +117,6 @@ in
               # "Mod4+c" = "wyrd";
               # "Mod4+Shift+c" = "clipmenu";
               # "Mod4+d" = "discord";
-              # "Mod4+Shift+d" = "signal-desktop";
               "Mod4+e" = "exec emacsclient -c";
               "Mod4+Shift+e" = "exec ${terminal} -e nvim";
               # "Mod4+g" = "steam";
@@ -136,9 +135,9 @@ in
               "Mod4+p" = "exec swaymsg bar hidden_state toggle";
               "Mod4+q" = "kill";
               "Mod4+Shift+q" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
-              "Mod4+r" = "retroarch";
+              "Mod4+r" = "exec retroarch";
               # "Mod4+Shift+r" = "newsboat";
-              # "Mod4+s" = "dmainu";
+              "Mod4+s" = "exec signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
               # "Mod4+Shift+s" = "passmenu";
               "Mod4+t" = "exec telegram-desktop";
               # "Mod4+Shift+t" = "qBittorent";
