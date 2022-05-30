@@ -76,6 +76,7 @@ in
       godo
       khal
       khard
+      libreoffice-fresh
       vdirsyncer
     ];
     programs = {
