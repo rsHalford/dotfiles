@@ -18,6 +18,10 @@ let
             elif [ "$2" = "--user" ] || [ "$2" = "-u" ] ; then
                 nix build --impure .#homeManagerConfigurations."''${USER}".activationPackage
                 ./result/activate
+            elif [ "$2" = "--all" ] || [ "$2" = "-a" ] ; then
+                nixos-rebuild switch --use-remote-sudo --flake '.#'
+                nix build --impure .#homeManagerConfigurations."''${USER}".activationPackage
+                ./result/activate
             elif [ "$2" = "--boot" ] || [ "$2" = "-b" ] ; then
                 nixos-rebuild boot --use-remote-sudo --flake '.#'
             elif [ "$2" = "--test" ] || [ "$2" = "-t" ] ; then
