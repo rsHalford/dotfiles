@@ -50,6 +50,15 @@ in
           terminal = true;
           icon = "multimedia-photo-viewer";
         };
+        signal-desktop = {
+          name = "Signal";
+          type = "Application";
+          exec = "signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland %U";
+          terminal = false;
+          icon = "signal-desktop";
+          categories = [ "Network" "InstantMessaging" "Chat" ];
+          mimeType = [ "x-scheme-handler/sgnl" "x-scheme-handler/signalcaptcha" ];
+        };
       };
       mimeApps = {
         enable = true;
