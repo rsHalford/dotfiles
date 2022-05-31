@@ -113,7 +113,7 @@ in
               "Mod4+Shift+a" = "exec ${terminal} -e ncmpcpp";
               "Mod4+b" = "exec ${terminal} -e pkill -USR1 gammastep";
               "Mod4+Shift+b" = "exec blueman-manager";
-              # "Mod4+c" = "exec chatterino";
+              "Mod4+c" = "exec element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
               # "Mod4+c" = "wyrd";
               # "Mod4+Shift+c" = "clipmenu";
               # "Mod4+d" = "discord";
@@ -137,9 +137,9 @@ in
               "Mod4+Shift+q" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
               "Mod4+r" = "exec retroarch";
               # "Mod4+Shift+r" = "newsboat";
-              "Mod4+s" = "exec signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
+              # "Mod4+s" = "exec signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
               # "Mod4+Shift+s" = "passmenu";
-              "Mod4+t" = "exec telegram-desktop";
+              # "Mod4+t" = "exec telegram-desktop";
               # "Mod4+Shift+t" = "qBittorent";
               "Mod4+u" = "mode resize";
               "Mod4+v" = "exec ${terminal} -e pulsemixer";

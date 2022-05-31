@@ -50,14 +50,14 @@ in
           terminal = true;
           icon = "multimedia-photo-viewer";
         };
-        signal-desktop = {
-          name = "Signal";
+        element-desktop = {
+          name = "Element";
+          genericName = "Matrix Client";
           type = "Application";
-          exec = "signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland %U";
-          terminal = false;
-          icon = "signal-desktop";
+          exec = "element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland %u";
+          icon = "element";
           categories = [ "Network" "InstantMessaging" "Chat" ];
-          mimeType = [ "x-scheme-handler/sgnl" "x-scheme-handler/signalcaptcha" ];
+          mimeType = [ "x-scheme-handler/element" ];
         };
       };
       mimeApps = {

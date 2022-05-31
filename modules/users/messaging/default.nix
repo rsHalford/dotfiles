@@ -15,8 +15,7 @@ in
 
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
-      tdesktop
-      signal-desktop
+      element-desktop
     ];
   };
 }
