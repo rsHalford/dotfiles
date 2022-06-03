@@ -22,10 +22,6 @@ keymap('n', '<leader>fs', [[<cmd>lua require('telescope.builtin').grep_string()<
 keymap('n', '<leader>fz', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], {
   noremap = true,
 })
--- keymap('n', '<leader>ft', [[<cmd>Telescope termfinder find<CR>]], { noremap = true })
-
--- Flutter
--- keymap('n', '<leader>fc', [[<cmd>lua require('telescope').extensions.flutter.commands()<CR>]], { noremap = true })
 
 -- Spell Suggest
 keymap('n', '<leader>s', [[<cmd>lua require('telescope.builtin').spell_suggest()<CR>]], { noremap = true })
@@ -38,20 +34,7 @@ keymap('n', '<leader>gf', [[<cmd>lua require('telescope.builtin').git_files()<CR
 keymap('n', '<leader>gst', [[<cmd>lua require('telescope.builtin').git_status()<CR>]], { noremap = true })
 keymap('n', '<leader>gsa', [[<cmd>lua require('telescope.builtin').git_stash()<CR>]], { noremap = true })
 
--- Git Worktree
-keymap(
-  'n',
-  '<leader>w',
-  [[<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>]],
-  { noremap = true }
-)
-keymap(
-  'n',
-  '<leader>aw',
-  [[<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>]],
-  { noremap = true }
-)
-
+-- Telescope
 telescope.setup {
   defaults = {
     prompt_prefix = ' ',
@@ -99,9 +82,5 @@ harpoon.setup {
 }
 
 -- Extensions
--- telescope.load_extension 'fzf'
--- telescope.load_extension 'flutter'
 telescope.load_extension 'file_browser'
-telescope.load_extension 'git_worktree'
 telescope.load_extension 'harpoon'
--- telescope.load_extension 'termfinder'

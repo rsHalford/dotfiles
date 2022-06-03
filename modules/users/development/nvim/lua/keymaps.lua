@@ -30,10 +30,10 @@ keymap('i', '{', '{<c-g>u', { noremap = true })
 keymap('i', '(', '(<c-g>u', { noremap = true })
 
 -- Navigation
-keymap('n', '<leader>h', ':wincmd h<CR>', { noremap = true })
-keymap('n', '<leader>j', ':wincmd j<CR>', { noremap = true })
-keymap('n', '<leader>k', ':wincmd k<CR>', { noremap = true })
-keymap('n', '<leader>l', ':wincmd l<CR>', { noremap = true })
+keymap('n', '<leader>wh', ':wincmd h<CR>', { noremap = true })
+keymap('n', '<leader>wj', ':wincmd j<CR>', { noremap = true })
+keymap('n', '<leader>wk', ':wincmd k<CR>', { noremap = true })
+keymap('n', '<leader>wl', ':wincmd l<CR>', { noremap = true })
 keymap('n', 'k', [[(v:count > 5 ? "m'" . v:count : "") . 'k']], { noremap = true, expr = true })
 keymap('n', 'j', [[(v:count > 5 ? "m'" . v:count : "") . 'j']], { noremap = true, expr = true })
 
@@ -42,25 +42,14 @@ keymap('v', 'J', [[:m '>+1<CR>gv=gv]], { noremap = true })
 keymap('v', 'K', [[:m '<-2<CR>gv=gv]], { noremap = true })
 keymap('i', '<C-j>', '<esc>:m .+1<CR>==', { noremap = true })
 keymap('i', '<C-k>', '<esc>:m .-2<CR>==', { noremap = true })
--- keymap('n', '<leader>j', ':m .+1<CR>==', { noremap = true })
--- keymap('n', '<leader>k', ':m .-2<CR>==', { noremap = true })
-
--- Ditto
-keymap('n', '-d', '<Plug>DittoPrev', {})
-keymap('n', '=d', '<Plug>DittoNext', {})
-keymap('n', '+d', '<Plug>DittoGood', {})
-keymap('n', '_d', '<Plug>DittoBad', {})
-keymap('n', ']d', '<Plug>DittoMore', {})
-keymap('n', '[d', '<Plug>DittoLess', {})
+keymap('n', '<leader>j', ':m .+1<CR>==', { noremap = true })
+keymap('n', '<leader>k', ':m .-2<CR>==', { noremap = true })
 
 -- Rezising Windows
 keymap('n', 'zh', ':vertical resize -5<CR>', { noremap = true, silent = true })
 keymap('n', 'zj', ':resize +2<CR>', { noremap = true, silent = true })
 keymap('n', 'zk', ':resize -2<CR>', { noremap = true, silent = true })
 keymap('n', 'zl', ':vertical resize +5<CR>', { noremap = true, silent = true })
-
--- Markdown Preview
-keymap('n', '<leader>m', '<Plug>MarkdownPreviewToggle', {})
 
 -- Undotree
 keymap('n', '<leader>z', ':UndotreeToggle<CR>', { noremap = true })
