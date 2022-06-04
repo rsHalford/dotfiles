@@ -84,7 +84,7 @@ in
           (plugin "lewis6991/gitsigns.nvim")
 
           # Tree-sitter
-          (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+          (nvim-treesitter)
           (plugin "p00f/nvim-ts-rainbow")
         ];
         viAlias = true;
