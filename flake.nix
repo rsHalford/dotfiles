@@ -57,6 +57,7 @@
           bluetooth.enable = true;
           printing.enable = true;
           sound.enable = true;
+          vpn.enable = true;
         };
         core.enable = true;
       };

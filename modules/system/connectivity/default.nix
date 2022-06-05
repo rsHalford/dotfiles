@@ -23,6 +23,12 @@ in
       type = types.bool;
       default = false;
     };
+
+    vpn.enable = mkOption {
+      description = "Enable vpn using mullvad and wireguard";
+      type = types.bool;
+      default = false;
+    };
   };
 
   config = {
@@ -43,5 +49,8 @@ in
       alsa.support32Bit = cfg.sound.enable;
       pulse.enable = cfg.sound.enable;
     };
+
+    networking.wireguard.enable = cfg.vpn.enable;
+    services.mullvad-vpn.enable = cfg.vpn.enable;
   };
 }

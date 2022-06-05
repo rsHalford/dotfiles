@@ -45,6 +45,7 @@ in
         jq
         libnotify
         neovim
+        mullvad-vpn
         scripts.sysTools
         tldr
         zsh
