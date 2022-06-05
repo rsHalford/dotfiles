@@ -1,7 +1,7 @@
 local lspconfig = require 'lspconfig'
 
 local on_attach = function()
-  vim.cmd 'autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()'
+  vim.cmd 'autocmd BufWritePre <buffer> lua vim.lsp.buf.format()'
 end
 
 -- null-ls
