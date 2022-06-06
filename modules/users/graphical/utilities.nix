@@ -363,18 +363,6 @@ in
         package = pkgs.papirus-icon-theme;
         name = "Papirus Dark";
       };
-      theme = {
-        package = pkgs.gnome.gnome-themes-extra;
-        name = "Adwaita";
-      };
-    };
-    qt = {
-      enable = true;
-      platformTheme = "gnome";
-      style = {
-        package = pkgs.adwaita-qt;
-        name = "adwaita-dark";
-      };
     };
   };
 }
