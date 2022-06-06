@@ -40,20 +40,6 @@ in
             luafile ${builtins.toString ./nvim/lua/config/ux.lua}
           ''
         ];
-        extraPackages = with pkgs; [
-          # Language Server
-          nodePackages.bash-language-server
-          nodePackages.vim-language-server
-          nodePackages.vscode-langservers-extracted
-          nodePackages.yaml-language-server
-          rnix-lsp
-          shellcheck
-          stylua
-
-          # Tree-sitter
-          tree-sitter
-          gcc
-        ];
         plugins = with pkgs.vimPlugins; [
           # UI/UX
           (plugin "gruvbox-community/gruvbox")
