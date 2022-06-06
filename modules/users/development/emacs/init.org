@@ -1836,19 +1836,20 @@ Wrappers to load the Elfeed db from disk before opening, and write to it when cl
 
 TODO: figure out how to have dashboard just display agenda link descriptions and not the url too
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp :tangle yes
 
   (use-package dashboard
     :init
+    (add-hook 'after-init-hook #'dashboard-insert-startupify-lists)
     :config
-    (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+    (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
     (setq dashboard-banner-logo-title "Welcome to Emacs")
     (setq dashboard-startup-banner 'official)
     (setq dashboard-set-heading-icons t)
     (setq dashboard-items '((projects . 5)
-                          (bookmarks . 5)
-                          (recents . 5)
-                          (agenda . 5)))
+                            (bookmarks . 5)
+                            (recents . 5)
+                            (agenda . 5)))
     (setq dashboard-item-names '(("Agenda for the coming week:" . "Agenda:")))
     (setq dashboard-agenda-sort-strategy '(time-up))
     (setq dashboard-projects-backend 'project-el)
