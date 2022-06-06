@@ -20,11 +20,15 @@ in
         git-chglog
         golangci-lint
         gopls
+        nodejs
+        nodePackages.typescript
         pre-commit
         python310Packages.markdown2
 
         # Language Server
         nodePackages.bash-language-server
+        nodePackages.svelte-language-server
+        nodePackages.typescript-language-server
         nodePackages.vim-language-server
         nodePackages.vscode-langservers-extracted
         nodePackages.yaml-language-server
