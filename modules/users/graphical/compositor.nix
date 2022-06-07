@@ -229,7 +229,12 @@ in
           };
           # extraConfig = "";
           # extraOptions = ""; # CLI arguments pass when sway launches
-          # extraSessionCommands = ""; Shell commands exectuted before Sway
+          extraSessionCommands = ''
+            export SDL_VIDEODRIVER=wayland
+            export QT_QPA_PLATFORM=wayland
+            export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+            export _JAVA_AWT_WM_NONREPARENTING=1
+          '';
           swaynag = {
             enable = true;
             # settings = { }; # swaynag(5)
@@ -238,7 +243,7 @@ in
           wrapperFeatures = {
             gtk = true;
           };
-          xwayland = false;
+          xwayland = true;
         };
       };
     };

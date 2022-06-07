@@ -18,6 +18,7 @@ in
     home.packages = with pkgs; [
       grim
       mako
+      qt6.qtwayland
       slurp
       waybar
       wl-clipboard
