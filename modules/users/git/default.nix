@@ -52,7 +52,11 @@ in
         fetch.prune = true;
         diff.colorMoved = "zebra";
       };
-      # ignores = [ ];
+      ignores = [
+        ".direnv"
+        ".env"
+        ".envrc"
+      ];
       # includes = [ ];
       signing = {
         key = null;
