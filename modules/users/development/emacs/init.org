@@ -1832,6 +1832,24 @@ Wrappers to load the Elfeed db from disk before opening, and write to it when cl
 
 #+end_src
 
+* Direnv
+
+Per-buffer environment variables.
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package envrc
+    :init
+    (envrc-global-mode))
+
+  (rsh/leader-key-def
+    "d" '(:ignore t :which-key "envrc")
+    "da" 'envrc-allow
+    "dr" 'envrc-reload
+    "dd" 'envrc-deny)
+
+#+end_src
+
 * Dashboard
 
 TODO: figure out how to have dashboard just display agenda link descriptions and not the url too

@@ -104,7 +104,7 @@
               };
               neovim.enable = true;
             };
-            # direnv.enable = true;
+            direnv.enable = true;
             gaming.enable = true;
             git = {
               enable = true;
