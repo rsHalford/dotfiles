@@ -31,12 +31,11 @@ in
     };
 
     environment = {
-      loginShellInit =
-        ''
-          if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-            exec sway
-          fi
-        '';
+      loginShellInit = ''
+        if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+          exec sway
+        fi
+      '';
       pathsToLink = [ "/share/zsh" ];
       shells = [ pkgs.zsh ];
       systemPackages = with pkgs; [
@@ -65,12 +64,11 @@ in
         options = "--delete-older-than 14d";
         persistent = true;
       };
-      extraOptions =
-        ''
-          keep-outputs = true;
-          keep-derivations = true;
-          experimental-features = nix-command flakes
-        '';
+      extraOptions = ''
+        keep-outputs = true
+        keep-derivations = true
+        experimental-features = nix-command flakes
+      '';
       settings = {
         substituters = [ "https://nix-community.cachix.org" ];
         trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
