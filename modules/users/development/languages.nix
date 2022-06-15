@@ -16,10 +16,14 @@ in
   config = {
     home = {
       packages = with pkgs; [
+        android-tools
+        dart
+        flutter
         gcc
         git-chglog
         golangci-lint
         gopls
+        jdk
         nodejs
         nodePackages.typescript
         pre-commit
