@@ -24,8 +24,7 @@ in
       ];
 
       sessionVariables = {
-        EDITOR = "emacsclient -c";
-        VISUAL = "nvim";
+        VISUAL = "$EDITOR";
         BROWSER = "qutebrowser";
         TERM = config.richard.terminal.emulator.program;
         READER = "zathura";
