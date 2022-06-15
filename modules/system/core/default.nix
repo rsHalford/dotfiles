@@ -76,6 +76,7 @@ in
     };
 
     programs.sway.enable = true;
+    programs.zsh.enable = true;
     # security.pam.services.swaylock = mkIf (cfg.swaylock-pam) { };
 
     # security.sudo.extraConfig = "Defaults env_reset,timestamp_timeout=5";
