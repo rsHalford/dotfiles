@@ -143,7 +143,7 @@ in
               # "Mod4+Shift+t" = "qBittorent";
               "Mod4+u" = "mode resize";
               "Mod4+v" = "exec ${terminal} -e pulsemixer";
-              # "Mod4+Shift+v" = "virt-manager";
+              "Mod4+Shift+v" = "exec mullvad-vpn";
               "Mod4+w" = "exec $BROWSER";
               "Mod4+Shift+w" = "exec ${terminal} -e nmtui";
               # "Mod4+Shift+x" = "exec ledger-live-desktop";
