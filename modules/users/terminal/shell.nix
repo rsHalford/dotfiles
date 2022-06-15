@@ -178,6 +178,7 @@ in
             setopt correct
             setopt globdots
             setopt hist_ignore_all_dups
+            bindkey -v
             bindkey "^[[A" history-substring-search-up
             bindkey "^[[B" history-substring-search-down
             bindkey -M vicmd "k" history-substring-search-up
