@@ -446,7 +446,7 @@ Improve the modeline look, with a nicer layout, theme integration and greater ic
 #+begin_src emacs-lisp :tangle yes
 
   (use-package doom-modeline
-    :hook (after-init . doom-modeline-init)
+    :init (doom-modeline-mode t)
     :config
     (setq doom-modeline-height 15)
     (setq all-the-icons-scale-factor 1)
