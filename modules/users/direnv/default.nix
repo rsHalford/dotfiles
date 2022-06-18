@@ -15,6 +15,11 @@ in
 
   config = mkIf (cfg.enable) {
     programs.direnv = {
+      config = {
+        global = {
+          load_dotenv = true;
+        };
+      };
       enable = true;
       enableZshIntegration = true;
       nix-direnv.enable = true;
