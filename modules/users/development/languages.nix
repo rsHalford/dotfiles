@@ -28,6 +28,7 @@ in
         nodePackages.typescript
         pre-commit
         python310Packages.markdown2
+        python3Full
 
         # Language Server
         nodePackages.bash-language-server
