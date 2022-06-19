@@ -884,6 +884,15 @@ TODO: think about creating keybinds to start completion-at-point with specific c
 
 ** Code Checking
 
+*** Flyspell
+
+#+begin_src emacs-lisp :tangle yes
+
+  (dolist (hook '(text-mode-hook))
+    (add-hook hook (lambda () (flyspell-mode 1))))
+
+#+end_src
+
 *** Flycheck
 
 #+begin_src emacs-lisp :tangle yes
