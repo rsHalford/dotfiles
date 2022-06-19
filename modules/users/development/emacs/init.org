@@ -771,6 +771,17 @@ diff-hl provides a colour indicator in the left fringe, quickly showing added/ch
 
 #+end_src
 
+* Tree-sitter
+
+#+begin_src emacs-lisp :tangle yes
+
+  (use-package tree-sitter)
+  (use-package tree-sitter-langs)
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
+
+#+end_src
+
 * Language Server Protocol
 
 ** Setup
