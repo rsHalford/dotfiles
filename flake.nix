@@ -99,6 +99,7 @@
             core.enable = true;
             development = {
               emacs.enable = true;
+              helix.enable = true;
               languages = {
                 go.enable = true;
               };
