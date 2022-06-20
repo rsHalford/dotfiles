@@ -65,10 +65,13 @@ in
           };
           keys = {
             normal = {
-              space = {
-                space = "file_picker";
-              };
+              n = [ "search_next" "align_view_center" ];
+              N = [ "search_prev" "align_view_center" ];
             };
+            # picker = {
+            #   "C-j" = "next_entry";
+            #   "C-k" = "previous_entry";
+            # };
           };
         };
       };
