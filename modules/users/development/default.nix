@@ -3,6 +3,7 @@
 {
   imports = [
     ./emacs.nix
+    ./helix.nix
     ./languages.nix
     ./neovim.nix
   ];
