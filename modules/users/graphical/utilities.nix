@@ -12,6 +12,12 @@ in
       type = types.bool;
       default = false;
     };
+
+    editor = mkOption {
+      description = "Choose your preferred graphical editor";
+      type = types.enum [ "emacs" "emacsclient -c" ];
+      default = "emacs";
+    };
   };
 
   config = mkIf (cfg.enable) {

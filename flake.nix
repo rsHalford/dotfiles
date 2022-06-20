@@ -116,7 +116,10 @@
             graphical = {
               compositor.enable = true;
               menu.enable = true;
-              utilities.enable = true;
+              utilities = {
+                enable = true;
+                editor = "emacsclient -c";
+              };
             };
             media.enable = true;
             messaging.enable = true;
@@ -137,7 +140,10 @@
             terminal = {
               emulator.program = "footclient";
               shell.enable = true;
-              utilities.enable = true;
+              utilities = {
+                enable = true;
+                editor = "hx";
+              };
             };
           };
           username = "richard";
