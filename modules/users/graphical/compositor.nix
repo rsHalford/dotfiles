@@ -5,6 +5,8 @@ let
   cfg = config.richard.graphical.compositor;
   screenshot = "${pkgs.scripts.screenshotTools}/bin/screenshot";
   terminal = config.richard.terminal.emulator.program;
+  terminal-editor = config.richard.terminal.utilities.editor;
+  graphical-editor = config.richard.graphical.utilities.editor;
 in
 {
   options.richard.graphical.compositor = {
@@ -117,8 +119,8 @@ in
               # "Mod4+c" = "wyrd";
               # "Mod4+Shift+c" = "clipmenu";
               # "Mod4+d" = "discord";
-              "Mod4+e" = "exec emacsclient -c";
-              "Mod4+Shift+e" = "exec ${terminal} -e nvim";
+              "Mod4+e" = "exec ${graphical-editor}";
+              "Mod4+Shift+e" = "exec ${terminal} -e ${terminal-editor}";
               # "Mod4+g" = "steam";
               "Mod4+h" = "focus left";
               "Mod4+Shift+h" = "move left";

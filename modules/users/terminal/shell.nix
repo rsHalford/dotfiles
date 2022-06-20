@@ -3,6 +3,7 @@ with lib;
 
 let
   cfg = config.richard.terminal.shell;
+  terminal-editor = config.richard.terminal.utilities.editor;
 in
 {
   options.richard.terminal.shell = {
@@ -203,7 +204,7 @@ in
           dl = "$HOME/Downloads";
           dc = "$HOME/Documents";
           dot = "$HOME/.dotfiles";
-          e = "emacsclient -c";
+          e = "${terminal-editor}";
           fd = "fd -HI";
           # find = "fd";
           g = "git";
@@ -233,6 +234,7 @@ in
           gwa = "git worktree add";
           gwr = "git worktree remove";
           gwp = "git worktree prune";
+          h = "${terminal-editor}";
           la = "exa -T -L=3 --group-directories-first";
           lc = "$HOME/.local/";
           lcb = "$HOME/.local/bin/";
@@ -242,7 +244,7 @@ in
           mv = "mv -i";
           pro = "$HOME/Projects";
           # rm = "rm -i";
-          v = "nvim";
+          v = "${terminal-editor}";
         };
         shellGlobalAliases = { }; # aliases substituted anywhere on a line
       };

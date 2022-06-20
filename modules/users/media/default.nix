@@ -3,6 +3,7 @@ with lib;
 
 let
   cfg = config.richard.media;
+  terminal-editor = config.richard.terminal.utilities.editor;
 in
 {
   options.richard.media = {
@@ -139,7 +140,7 @@ in
           discard_colors_if_item_is_selected = "yes";
           follow_now_playing_lyrics = "yes";
           fetch_lyrics_for_current_song_in_background = "yes";
-          external_editor = "nvim";
+          external_editor = "${terminal-editor}";
           use_console_editor = "yes";
           header_visibility = "yes";
           statusbar_visibility = "yes";

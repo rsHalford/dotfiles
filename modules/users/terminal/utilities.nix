@@ -11,6 +11,12 @@ in
       type = types.bool;
       default = true;
     };
+
+    editor = mkOption {
+      description = "Choose your preferred terminal editor";
+      type = types.enum [ "nvim" "emacs -nw" "emacsclient -nw" "hx" ];
+      default = "nvim";
+    };
   };
 
   config = mkIf (cfg.enable) {

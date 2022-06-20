@@ -4,6 +4,7 @@ with lib;
 let
   cfg = config.richard.browser;
   terminal = config.richard.terminal.emulator.program;
+  terminal-editor = config.richard.terminal.utilities.editor;
   bg0_hard = "#1d2021";
   bg0_soft = "#32302f";
   bg0_normal = "#282828";
@@ -118,7 +119,7 @@ in
           position = "bottom";
           remove_finished = 180000;
         };
-        editor.command = [ "${terminal}" "-e" "nvim" "{}" ];
+        editor.command = [ "${terminal}" "-e" "${terminal-editor}" "{}" ];
         keyhint.delay = 0;
         scrolling = {
           bar = "never";
