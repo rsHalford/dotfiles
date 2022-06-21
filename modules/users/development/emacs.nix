@@ -30,7 +30,8 @@ in
       packages = with pkgs; [
         emacsPkg
         emacs-all-the-icons-fonts
-        ispell
+        hunspell
+        hunspellDicts.en-gb-large
         mu
       ];
     };

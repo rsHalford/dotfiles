@@ -891,6 +891,12 @@ TODO: think about creating keybinds to start completion-at-point with specific c
   (dolist (hook '(text-mode-hook))
     (add-hook hook (lambda () (flyspell-mode 1))))
 
+  (with-eval-after-load "ispell"
+    (setq ispell-program-name "hunspell")
+    (setq ispell-dictionary "en_GB")
+    (ispell-set-spellchecker-params)
+    (ispell-hunspell-add-multi-dic "en_GB"))
+
 #+end_src
 
 *** Flycheck
