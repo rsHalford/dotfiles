@@ -3,6 +3,7 @@ with lib;
 
 let
   cfg = config.richard.git;
+  terminal-editor = config.richard.terminal.utilities.editor;
 in
 {
   options.richard.git = {
@@ -47,10 +48,11 @@ in
       #   options = { };
       # };
       extraConfig = {
+        core.editor = "${terminal-editor}";
+        diff.colorMoved = "zebra";
+        fetch.prune = true;
         init.defaultBranch = "main";
         pull.rebase = true;
-        fetch.prune = true;
-        diff.colorMoved = "zebra";
       };
       ignores = [
         ".direnv"
