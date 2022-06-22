@@ -23,11 +23,11 @@ in
     home.packages = with pkgs; [
       alsa-utils
       bat
+      bottom
       curl
       exa
       fd
       fzf
-      htop
       jq
       neofetch
       pulsemixer
@@ -49,15 +49,10 @@ in
         config = {
           theme = "gruvbox-dark";
           italic-text = "always";
-          #paging = never;
-          #pager = "less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse";
-          #map-syntax = [
-          # "*.ino:C++";
-          # ".ignore:Git Ignore";
-          #];
           style = "numbers,changes,grid";
         };
       };
+      bottom.enable = true;
       exa.enable = true;
       fzf = {
         enable = true;
@@ -71,10 +66,6 @@ in
         fileWidgetCommand = null; # source command with CTRL-T
         fileWidgetOptions = [ ]; # CTRL-T options
         historyWidgetOptions = [ ]; # CTRL-R options
-      };
-      htop = {
-        enable = true;
-        settings = { };
       };
     };
   };
