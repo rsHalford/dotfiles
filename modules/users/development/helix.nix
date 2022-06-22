@@ -130,6 +130,7 @@ in
             "diff.plus" = green1;
             "diff.minus" = red1;
             "diff.delta" = orange1;
+            "diff.delta.moved" = aqua1;
             "function" = {
               fg = green1;
               modifiers = [ "bold" ];
@@ -169,7 +170,6 @@ in
 
             # "constant.builtin.boolean" "constant.numeric[ .integer .float ]"
             # "comment[ .line .block[ .documentation ]]"
-            # "diff.delta.moved"
             # "function[ .method .special ]"
             # "keyword[ .control[ .conditional .repeat .import .return .exception ] .operator .function ]"
             # "markup[ .heading[ .marker .1-6 ] .list[ .unnumbered .numbered ] .link[ .label ] .quote .raw[ .inline .block ] ]"
