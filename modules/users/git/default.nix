@@ -43,15 +43,19 @@ in
       userEmail = cfg.userEmail;
       # aliases = { };
       # attributes = [ ];
-      # delta = {
-      #   enable = false;
-      #   options = { };
-      # };
+      delta.enable = true;
       extraConfig = {
         core.editor = "${terminal-editor}";
+        delta = {
+          line-numbers = true;
+          navigate = true;
+          side-by-side = true;
+          syntax-theme = "gruvbox-dark";
+        };
         diff.colorMoved = "zebra";
         fetch.prune = true;
         init.defaultBranch = "main";
+        merge.conflictStyle = "diff3";
         pull.rebase = true;
       };
       ignores = [
