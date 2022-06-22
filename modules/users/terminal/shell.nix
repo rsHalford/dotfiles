@@ -180,8 +180,8 @@ in
             setopt globdots
             setopt hist_ignore_all_dups
             bindkey -v
-            bindkey "^[[A" history-substring-search-up
-            bindkey "^[[B" history-substring-search-down
+            bindkey "$terminfo[kcuu1]" history-substring-search-up
+            bindkey "$terminfo[kcud1]" history-substring-search-down
             bindkey -M vicmd "k" history-substring-search-up
             bindkey -M vicmd "j" history-substring-search-down
             typeset -g HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=default,fg=magenta,underline"
