@@ -3,6 +3,8 @@ with lib;
 
 let
   cfg = config.richard.core;
+  terminal-editor = config.richard.terminal.utilities.editor;
+  graphical-editor = config.richard.graphical.utilities.editor;
 in
 {
   options.richard.core = {
@@ -24,7 +26,8 @@ in
       ];
 
       sessionVariables = {
-        VISUAL = "$EDITOR";
+        EDITOR = "${terminal-editor}";
+        VISUAL = "${graphical-editor}";
         BROWSER = "qutebrowser";
         TERM = config.richard.terminal.emulator.program;
         READER = "zathura";
@@ -66,8 +69,8 @@ in
           "image/jpeg" = "img.desktop";
           "image/gif" = "img.desktop";
           "x-scheme-handler/mailto" = "emacsclient-mail.desktop";
-          "text/plain" = "emacsclient.desktop";
-          "text/x-shellscript" = "emacsclient.desktop";
+          # "text/plain" = "emacsclient.desktop";
+          # "text/x-shellscript" = "emacsclient.desktop";
           "application/pdf" = "org.pwmt.zathura.desktop";
           "application/postscript" = "org.pwmt.zathura.desktop";
           "x-scheme-handler/magnet" = "org.qbittorrent.qBittorrent.desktop";
