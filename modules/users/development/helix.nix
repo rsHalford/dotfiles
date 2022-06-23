@@ -23,7 +23,7 @@ in
             auto-completion = true;
             auto-format = true;
             auto-info = true;
-            completion-trigger-len = 2;
+            completion-trigger-len = 0;
             gutters = [ "diagnostics" "line-numbers" ];
             idle-timeout = 0;
             line-number = "relative";
