@@ -74,6 +74,7 @@ in
     };
     home.packages = with pkgs; [
       godo
+      inkscape
       khal
       khard
       libreoffice-fresh
