@@ -71,6 +71,7 @@ in
           "x-scheme-handler/mailto" = "emacsclient-mail.desktop";
           # "text/plain" = "emacsclient.desktop";
           # "text/x-shellscript" = "emacsclient.desktop";
+          "text/html" = "org.qutebrowser.qutebrowser.desktop";
           "application/pdf" = "org.pwmt.zathura.desktop";
           "application/postscript" = "org.pwmt.zathura.desktop";
           "x-scheme-handler/magnet" = "org.qbittorrent.qBittorrent.desktop";
