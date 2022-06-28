@@ -141,7 +141,7 @@ in
               # "Mod4+Shift+r" = "newsboat";
               # "Mod4+s" = "exec signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
               # "Mod4+Shift+s" = "passmenu";
-              # "Mod4+t" = "exec telegram-desktop";
+              "Mod4+t" = "exec thunderbird";
               # "Mod4+Shift+t" = "qBittorent";
               "Mod4+u" = "mode resize";
               "Mod4+v" = "exec ${terminal} -e pulsemixer";
