@@ -1418,7 +1418,7 @@ Close the ~use-package org-mode~ block.
 
 NOTE: subsequent sections are part of the same block.
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
 
   (use-package mu4e
     :ensure nil
@@ -1449,7 +1449,7 @@ Setup mu4e to use multiple email accounts with their own set of variables.
 
 TODO: Improve the compose signature for both accounts.
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
 
   (setq mu4e-contexts
         `( ,(make-mu4e-context
@@ -1509,7 +1509,7 @@ TODO: Improve the compose signature for both accounts.
 
 This function prevents mu4e from permanently deleting mail moved to the trash folder. This is done by modifying the trash mark definition from the default ~+T-N~ to just ~-N~. This code snippet is completely /killy-yanksted/ from [[http://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and-/][Caches to Caches]]. 
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
 
   (defun remove-nth-element (nth list)
     (if (zerop nth) (cdr list)
@@ -1564,7 +1564,7 @@ Add extra bookmarked queries to the start page.
 
 TODO: work out how to remove items already listed by mu4e
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
 
   (add-to-list 'mu4e-bookmarks
                (make-mu4e-bookmark
@@ -1584,7 +1584,7 @@ TODO: work out how to remove items already listed by mu4e
 
 Create custom search and capture queries to be used within keybinds or notifications, etc.
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
 
   ;; Save current query as a link to be inserted in org-mode (C-c C-l)
   (defun rsh/store-link-to-mu4e-query ()
@@ -1618,7 +1618,7 @@ Create custom search and capture queries to be used within keybinds or notificat
 
 Map usefule keybinds to issue common mu4e commands.
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
 
   (rsh/leader-key-def
     "m" '(:ignore t :which-key "mail")
@@ -1636,7 +1636,7 @@ Map usefule keybinds to issue common mu4e commands.
 
 Synchronise email via mu4e running in the background of emacs.
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
 
   (mu4e t)
 
@@ -1646,7 +1646,7 @@ Synchronise email via mu4e running in the background of emacs.
 
 Show notifications for all new unread mail after a sync.
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
 
   (use-package mu4e-alert
     :after mu4e
@@ -1662,7 +1662,7 @@ Show notifications for all new unread mail after a sync.
 
 Close the ~use-package mu4e~ block.
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
   )
 #+end_src
 

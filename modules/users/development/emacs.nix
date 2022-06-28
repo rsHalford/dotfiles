@@ -32,7 +32,6 @@ in
         emacs-all-the-icons-fonts
         hunspell
         hunspellDicts.en-gb-large
-        mu
       ];
     };
     services.emacs = {

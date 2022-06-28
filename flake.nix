@@ -136,7 +136,10 @@
               mpris.enable = true;
               syncthing.enable = true;
             };
-            suite.enable = true;
+            suite = {
+              office.enable = true;
+              mail.enable = false;
+            };
             terminal = {
               emulator.program = "footclient";
               shell.enable = true;

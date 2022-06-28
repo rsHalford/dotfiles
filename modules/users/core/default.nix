@@ -68,7 +68,7 @@ in
           "image/png" = "img.desktop";
           "image/jpeg" = "img.desktop";
           "image/gif" = "img.desktop";
-          "x-scheme-handler/mailto" = "emacsclient-mail.desktop";
+          "x-scheme-handler/mailto" = "thunderbird.desktop";
           # "text/plain" = "emacsclient.desktop";
           # "text/x-shellscript" = "emacsclient.desktop";
           "text/html" = "org.qutebrowser.qutebrowser.desktop";
