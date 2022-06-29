@@ -340,8 +340,8 @@ in
       enable = true;
       font = {
         # package = with pkgs; (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-        name = "JetBrainsMono Nerd Font";
-        size = 10;
+        name = "Lexend";
+        size = 11;
       };
       gtk2 = {
         configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
