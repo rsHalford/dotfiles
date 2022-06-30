@@ -338,6 +338,11 @@ in
     };
     gtk = {
       enable = true;
+      cursorTheme = {
+        package = pkgs.quintom-cursor-theme;
+        name = "Quintom_Ink";
+        size = 16;
+      };
       font = {
         # package = with pkgs; (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
         name = "Lexend";
@@ -369,6 +374,10 @@ in
       iconTheme = {
         package = pkgs.papirus-icon-theme;
         name = "Papirus Dark";
+      };
+      theme = {
+        package = pkgs.gnome.gnome-themes-extra;
+        name = "Adwaita";
       };
     };
   };
