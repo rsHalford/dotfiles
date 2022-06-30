@@ -218,6 +218,7 @@ in
             seat = {
               "*" = {
                 hide_cursor = "5000";
+                xcursor_theme = "Quintom_Ink";
               };
             };
             # startup = [ ]; # startup commands { command = ""; always = bool; }
