@@ -57,6 +57,7 @@
           bluetooth.enable = true;
           printing.enable = true;
           sound.enable = true;
+          virtualisation.enable = true;
           vpn.enable = true;
         };
         core.enable = true;
@@ -78,6 +79,7 @@
         description = "Richard Halford";
         groups = [
           "audio"
+          "libvirtd"
           "input"
           "networkmanager"
           "storage"
@@ -120,6 +122,7 @@
                 enable = true;
                 editor = "emacsclient -c";
               };
+              virtualisation.enable = true;
             };
             media.enable = true;
             messaging.enable = true;

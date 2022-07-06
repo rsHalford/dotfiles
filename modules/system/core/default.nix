@@ -76,6 +76,7 @@ in
       };
     };
 
+    programs.dconf.enable = true;
     programs.sway.enable = true;
     programs.zsh.enable = true;
     # security.pam.services.swaylock = mkIf (cfg.swaylock-pam) { };
