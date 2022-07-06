@@ -22,6 +22,12 @@ in
       description = "Enable sound with default options";
       type = types.bool;
       default = false;
+    };        
+
+    virtualisation.enable = mkOption {
+      description = "Enable virtualisation for system users";
+      type = types.bool;
+      default = false;
     };
 
     vpn.enable = mkOption {
@@ -52,5 +58,7 @@ in
 
     networking.wireguard.enable = cfg.vpn.enable;
     services.mullvad-vpn.enable = cfg.vpn.enable;
+
+    virtualisation.libvirtd.enable = cfg.virtualisation.enable;
   };
 }
