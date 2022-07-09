@@ -26,6 +26,7 @@ in
         jdk
         nodejs
         nodePackages.typescript
+        poetry
         pre-commit
         python310Packages.markdown2
         python3Full
