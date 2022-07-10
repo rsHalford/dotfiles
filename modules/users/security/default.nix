@@ -29,6 +29,7 @@ in
     home.packages = with pkgs; [
       git-secret
       gnupg
+      gopass
       pinentry-qt
     ];
 
