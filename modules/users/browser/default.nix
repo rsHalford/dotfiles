@@ -2,6 +2,7 @@
 
 {
   imports = [
-    ./qutebrowser
+    ./qutebrowser.nix
+    ./firefox.nix
   ];
 }

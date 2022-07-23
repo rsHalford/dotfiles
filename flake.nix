@@ -96,6 +96,7 @@
         richard = user.mkHMUser {
           userConfig = {
             browser = {
+              firefox.enable = true;
               qutebrowser.enable = true;
             };
             core.enable = true;
