@@ -3,6 +3,7 @@ with lib;
 
 let
   cfg = config.richard.core;
+  terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
 in
@@ -29,7 +30,7 @@ in
         EDITOR = "${terminal-editor}";
         VISUAL = "${graphical-editor}";
         BROWSER = "qutebrowser";
-        TERM = config.richard.terminal.emulator.program;
+        TERM = if "${terminal}" == "footclient" then "foot" else "${terminal}";
         READER = "zathura";
         VIDEO = "mpv";
       };
