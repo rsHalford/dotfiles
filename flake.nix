@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     emacs-unstable = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,8 +30,15 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, emacs-unstable, godo-flake, neovim-nightly, ... }@inputs:
-    let
+  outputs = {
+    nixpkgs,
+    home-manager,
+    nur,
+    emacs-unstable,
+    godo-flake,
+    neovim-nightly,
+    ...
+  }@inputs: let
       inherit (nixpkgs) lib;
 
       util = import ./lib {
@@ -38,8 +50,17 @@
       };
 
       inherit (import ./overlays {
-        inherit system pkgs lib emacs-unstable godo-flake neovim-nightly scripts;
-      }) overlays;
+        inherit
+          system
+          pkgs
+          lib
+          nur
+          emacs-unstable
+          godo-flake
+          neovim-nightly
+          scripts;
+      })
+      overlays;
 
       inherit (util) user;
       inherit (util) host;
