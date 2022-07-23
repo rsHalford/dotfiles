@@ -90,9 +90,12 @@ in
     xdg = {
       portal = {
         enable = true;
+        extraPortals = with pkgs; [
+          xdg-desktop-portal-gtk
+        ];
         wlr = {
           enable = true;
-          # settings = { };
+          # settings = { }; # man xdg-desktop-portal-wlr
         };
       };
     };
