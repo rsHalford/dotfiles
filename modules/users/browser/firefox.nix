@@ -45,7 +45,7 @@ in
           decentraleyes
           honey
           ublock-origin
-          vim-vixen
+          vimium
         ];
         profiles = {
           richard = {
