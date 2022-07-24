@@ -6,6 +6,7 @@ let
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
+  preferred-browser = config.richard.browser.preferred;
 in
 {
   options.richard.core = {
@@ -29,7 +30,7 @@ in
       sessionVariables = {
         EDITOR = "${terminal-editor}";
         VISUAL = "${graphical-editor}";
-        BROWSER = "qutebrowser";
+        BROWSER = "${preferred-browser}";
         TERM = if "${terminal}" == "footclient" then "foot" else "${terminal}";
         READER = "zathura";
         VIDEO = "mpv";

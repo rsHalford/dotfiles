@@ -119,6 +119,7 @@
             browser = {
               firefox.enable = true;
               qutebrowser.enable = true;
+              preferred = "firefox";
             };
             core.enable = true;
             development = {
