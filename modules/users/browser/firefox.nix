@@ -75,7 +75,7 @@ in
                     "${activityStream}.feeds.telemetry" = false;
                     "browser.bookmarks.addedImportButton" = false;
                     "browser.bookmarks.restore_default_bookmarks" = false;
-                    "browser.download.userDownloadDir" = false;
+                    "browser.download.useDownloadDir" = false;
                     "browser.download.viewableInternally.typeWasRegistered.avif" = true;
                     "browser.download.viewableInternally.typeWasRegistered.webp" = true;
                     "browser.fullscreen.autohide" = false;
@@ -172,10 +172,10 @@ in
                 };
               in
               browser // extensions // telemetry // misc // dom // graphics // passwords;
-            extraConfig = ""; # user.js
-            userChrome = ""; # User chrome css
-            userContent = ""; # User content css
-            bookmarks = [ ]; # imports = [ ~/.dotfiles/secrets/firefox ];
+            # extraConfig = ""; # user.js
+            # userChrome = ""; # User chrome css
+            # userContent = ""; # User content css
+            # bookmarks = [ ]; # imports = [ ~/.dotfiles/secrets/firefox ];
           };
         };
       };
