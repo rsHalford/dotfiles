@@ -73,9 +73,9 @@ in
           "x-scheme-handler/mailto" = "thunderbird.desktop";
           # "text/plain" = "emacsclient.desktop";
           # "text/x-shellscript" = "emacsclient.desktop";
-          "text/html" = "org.qutebrowser.qutebrowser.desktop";
-          "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
-          "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
+          "text/html" = "firefox.desktop";
+          "x-scheme-handler/http" = "firefox.desktop";
+          "x-scheme-handler/https" = "firefox.desktop";
           "application/pdf" = "org.pwmt.zathura.desktop";
           "application/postscript" = "org.pwmt.zathura.desktop";
           "x-scheme-handler/magnet" = "org.qbittorrent.qBittorrent.desktop";
