@@ -4,3 +4,5 @@ result
 secrets/qutebrowser/default.nix
 secrets/qutebrowser/quickmarks.nix
 secrets/qutebrowser/searchengines.nix
+secrets/newsboat/default.nix
+secrets/newsboat/urls.nix
