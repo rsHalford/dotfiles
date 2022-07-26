@@ -159,7 +159,6 @@ in
       newsboat = {
         enable = cfg.newsboat.enable;
         autoReload = true;
-        browser = "\${pkgs.xdg-utils}/bin/xdg-open";
         maxItems = 0; # infinite
         reloadThreads = 5;
         reloadTime = 120;
@@ -169,12 +168,12 @@ in
         show-read-articles yes
         show-read-feeds no
         delete-read-articles-on-quit no
-        # browser "lynx %u"
         player "mpv --no-video %u"
         datetime-format "%Y-%m-%d %a"
         article-sort-order date-desc
         save-path ~/.local/share/newsboat/saved/
         download-path ~/Media/Music/Podcasts/
+        macro v set browser "setsid -f umpv" ; open-in-browser ; set browser "${pkgs.xdg-utils}/bin/xdg-open";
 
         # Keys
         bind-key ; macro-prefix
