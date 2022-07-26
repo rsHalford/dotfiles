@@ -147,7 +147,10 @@
               };
               virtualisation.enable = true;
             };
-            media.enable = true;
+            media = {
+              enable = true;
+              newsboat.enable = true;
+            };
             messaging.enable = true;
             security = {
               gpg.enable = true;

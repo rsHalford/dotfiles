@@ -6,9 +6,17 @@ let
   terminal-editor = config.richard.terminal.utilities.editor;
 in
 {
+  imports = [ ~/.dotfiles/secrets/newsboat ];
+
   options.richard.media = {
     enable = mkOption {
       description = "Enable media applications";
+      type = types.bool;
+      default = false;
+    };
+
+    newsboat.enable = mkOption {
+      description = "Enable newsboat RSS reader";
       type = types.bool;
       default = false;
     };
@@ -18,6 +26,7 @@ in
     home.packages = with pkgs; [
       imv
       mpc-cli
+      newsboat
       streamlink
       whipper
     ];
@@ -147,7 +156,58 @@ in
           titles_visibility = "yes";
         };
       };
+      newsboat = {
+        enable = cfg.newsboat.enable;
+        autoReload = true;
+        browser = "\${pkgs.xdg-utils}/bin/xdg-open";
+        maxItems = 0; # infinite
+        reloadThreads = 5;
+        reloadTime = 120;
+        extraConfig =
+        ''
+        # General
+        show-read-articles yes
+        show-read-feeds no
+        delete-read-articles-on-quit no
+        # browser "lynx %u"
+        player "mpv --no-video %u"
+        datetime-format "%Y-%m-%d %a"
+        article-sort-order date-desc
+        save-path ~/.local/share/newsboat/saved/
+        download-path ~/Media/Music/Podcasts/
+
+        # Keys
+        bind-key ; macro-prefix
+        bind-key j down
+        bind-key k up
+        bind-key j next articlelist
+        bind-key k prev articlelist
+        bind-key J next-feed articlelist
+        bind-key K prev-feed articlelist
+        bind-key G end
+        bind-key g home
+        bind-key d pagedown
+        bind-key u pageup
+        bind-key l open
+        bind-key h quit
+        bind-key a toggle-article-read
+        bind-key n next-unread
+        bind-key N prev-unread
+        bind-key D pb-download
+        bind-key U show-urls
+        bind-key x pb-delete
+        bind-key r reload
+        bind-key R reload-all
+
+        # Colours
+        color listnormal white default
+        color listfocus default default
+        color listnormal_unread magenta default
+        color listfocus_unread red default bold
+        color info white default
+        color article white default bold
+        '';
+      };
     };
   };
 }
-
