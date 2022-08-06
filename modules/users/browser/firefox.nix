@@ -38,6 +38,7 @@ in
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           betterttv
           browserpass
+          bypass-paywalls-clean
           clearurls
           consent-o-matic
           cookie-autodelete
