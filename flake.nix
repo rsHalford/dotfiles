@@ -184,9 +184,9 @@
 
       nixosConfigurations = {
         desktop = host.mkHost {
-          name = "nixos-desktop";
-          NICs = [ "enp1s0" ];
-          initrdMods = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+          name = "desktop";
+          NICs = [ "wlp14s0" "enp13s0" ];
+          initrdMods = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
           kernelMods = [ "kvm-intel" ];
           kernelPackage = pkgs.linuxPackages_latest;
           kernelParams = [ ];
