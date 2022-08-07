@@ -123,12 +123,12 @@
             };
             core.enable = true;
             development = {
-              emacs.enable = true;
+              emacs.enable = false;
               helix.enable = true;
               languages = {
                 go.enable = true;
               };
-              neovim.enable = true;
+              neovim.enable = false;
             };
             direnv.enable = true;
             gaming.enable = true;
