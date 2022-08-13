@@ -53,7 +53,7 @@ in
           indicator-format = "line"; # "line", "percentage", "none"
         };
         url = {
-          launch = "xdg-open \${url}";
+          launch = "${pkgs.xdg-utils}/bin/xdg-open \${url}";
           osc8-underline = "url-mode"; # "url-mode", "always" (even when not clickable)
           # label-letters = "sadfjklewcmpgh";
           # protocols = "http, https, ftp, ftps, file, gemini, gopher";
