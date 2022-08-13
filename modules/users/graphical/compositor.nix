@@ -102,6 +102,9 @@ in
                 pointer_accel = "0.5";
                 tap = "enabled";
               };
+              "9494:32:CM_Storm_Quickfire_Rapid_i" = {
+                xkb_options = "caps:escape_shifted_capslock";
+              };
             };
             modifier = "Mod4";
             keybindings = {
