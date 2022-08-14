@@ -24,6 +24,12 @@ in
       default = false;
     };
 
+    kde-connect.enable = mkOption {
+      description = "Enable KDE Connect";
+      type = types.bool;
+      default = false;
+    };
+
     mpd.enable = mkOption {
       description = "Enable mpd";
       type = types.bool;
@@ -117,6 +123,10 @@ in
             ];
           };
         };
+      };
+      kdeconnect = {
+        enable = cfg.kde-connect.enable;
+        indicator = true;
       };
       mpd = {
         enable = cfg.mpd.enable;

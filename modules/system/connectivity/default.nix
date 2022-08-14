@@ -12,6 +12,12 @@ in
       default = false;
     };
 
+    kde-connect.enable = mkOption {
+      description = "Enable KDE connect with default options";
+      type = types.bool;
+      default = false;
+    };
+
     printing.enable = mkOption {
       description = "Enable printing with default options";
       type = types.bool;
@@ -40,6 +46,8 @@ in
   config = {
     hardware.bluetooth.enable = cfg.bluetooth.enable;
     services.blueman.enable = cfg.bluetooth.enable;
+
+    programs.kdeconnect.enable = cfg.kde-connect.enable;
 
     services.printing = {
       enable = cfg.printing.enable;

@@ -76,6 +76,7 @@
         boot = "encrypted-efi";
         connectivity = {
           bluetooth.enable = true;
+          kde-connect.enable = true;
           printing.enable = true;
           sound.enable = true;
           virtualisation.enable = true;
@@ -161,6 +162,7 @@
               blueman.enable = true;
               gammastep.enable = true;
               kanshi.enable = true;
+              kde-connect.enable = true;
               mpd.enable = true;
               mpris.enable = true;
               syncthing.enable = true;
