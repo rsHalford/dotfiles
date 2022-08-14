@@ -29,6 +29,7 @@ in
       fd
       fzf
       jq
+      mmv-go
       neofetch
       pulsemixer
       ripgrep
