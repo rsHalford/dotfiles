@@ -164,21 +164,23 @@ in
       services = {
         bing-wp = {
           Service = {
+            Type = "simple";
             ExecStart = "${pkgs.scripts.wallpaperTools}/bin/bing-wp";
           };
           Unit = {
             Description = "Daily Bing wallpaper service";
+            After = "network-online.target";
           };
         };
       };
       timers = {
         bing-wp = {
           Install = {
-            WantedBy = [ "timers.target" ];
+            WantedBy = [ "graphical-session.target" ];
           };
           Timer = {
-            OnBootSec = "10s";
-            OnUnitActiveSec = "1d";
+            OnCalendar = "*-*-* 01:00:00";
+            Persistent = true;
           };
           Unit = {
             Description = "Daily Bing wallpaper timer";
