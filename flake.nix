@@ -172,7 +172,7 @@
               mail.enable = false;
             };
             terminal = {
-              emulator.program = "footclient";
+              emulator.program = "foot";
               shell.enable = true;
               utilities = {
                 enable = true;

@@ -5,10 +5,10 @@ let
   cfg = config.richard.terminal.emulator;
 in
 {
-  config = mkIf (cfg.program == "footclient") {
+  config = mkIf (cfg.program == "foot") {
     programs.foot = {
       enable = true;
-      server.enable = true;
+      server.enable = false;
       settings = {
         main = {
           # shell = "\$SHELL"; # (if set, otherwise user's default shell from /etc/passwd)
