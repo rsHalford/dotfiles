@@ -26,6 +26,7 @@ in
       bottom
       curl
       exa
+      exfat
       fd
       fzf
       jq
