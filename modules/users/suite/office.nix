@@ -19,6 +19,7 @@ in
       inkscape
       libreoffice-fresh
       protonmail-bridge
+      qbittorrent
       thunderbird
     ];
     systemd.user = {
