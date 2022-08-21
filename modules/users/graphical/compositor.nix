@@ -122,8 +122,8 @@ in
               # "Mod4+c" = "wyrd";
               # "Mod4+Shift+c" = "clipmenu";
               # "Mod4+d" = "discord";
-              "Mod4+e" = "exec ${graphical-editor}";
-              "Mod4+Shift+e" = "exec ${terminal} -e ${terminal-editor}";
+              "Mod4+e" = "exec ${terminal} -e ${terminal-editor}";
+              "Mod4+ShifT+e" = "exec ${graphical-editor}";
               "Mod4+f" = "exec ${terminal} -e newsboat";
               # "Mod4+g" = "steam";
               "Mod4+h" = "focus left";
