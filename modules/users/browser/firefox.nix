@@ -40,7 +40,6 @@ in
           browserpass
           bypass-paywalls-clean
           clearurls
-          consent-o-matic
           cookie-autodelete
           darkreader
           decentraleyes
