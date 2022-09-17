@@ -49,10 +49,11 @@ in
         profiles = { };
         # TODO: figure out why mpv doesn't the youtube-quality and thumbnail scripts
         scripts = with pkgs; [
+          mpvScripts.mpris
+          mpvScripts.mpv-playlistmanager
+          mpvScripts.sponsorblock
           mpvScripts.thumbnail
           mpvScripts.youtube-quality
-          mpvScripts.mpv-playlistmanager
-          mpvScripts.mpris
         ];
       };
       ncmpcpp = {
