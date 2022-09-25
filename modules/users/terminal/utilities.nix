@@ -32,6 +32,7 @@ in
       jq
       mmv-go
       neofetch
+      pciutils
       pulsemixer
       ripgrep
       translate-shell
@@ -41,7 +42,6 @@ in
       # acpi
       # manix
       # nix-index
-      # pciutils
       # pstree
       # wget
     ];
