@@ -4,6 +4,7 @@
     ./boot
     ./connectivity
     ./core
+    ./desktop
     ./laptop
   ];
 }

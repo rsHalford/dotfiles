@@ -82,7 +82,9 @@
         core.enable = true;
       };
 
-      desktopConfig = defaultConfig // { };
+      desktopConfig = defaultConfig // {
+        desktop.enable = true;
+      };
 
       laptopConfig = defaultConfig // {
         laptop = {
