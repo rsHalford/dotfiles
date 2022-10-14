@@ -37,6 +37,7 @@ in
       ripgrep
       translate-shell
       unzip
+      ventoy-bin
       wev
 
       # acpi
