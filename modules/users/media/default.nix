@@ -166,7 +166,7 @@ in
         extraConfig =
         ''
         # General
-        show-read-articles yes
+        show-read-articles no
         show-read-feeds no
         delete-read-articles-on-quit no
         player "mpv --no-video %u"
