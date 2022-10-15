@@ -88,10 +88,10 @@ let
     bing="http://www.bing.com"
     xmlURL="http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=en-WW"
     saveDir=$XDG_CACHE_HOME'/bing-wp/'
-    mkdir -p "$saveDir"
+    ${coreutils}/bin/mkdir -p "$saveDir"
     picName="bing.jpg"
-    picURL=$bing$(printf '%s\n' "$(curl -s "$xmlURL")" | grep -oP "<url>(.*)</url>" | cut -d ">" -f2 | cut -d "<" -f1)
-    curl -s -o "$saveDir""$picName" "$picURL"
+    picURL=$bing$(${coreutils}/bin/printf '%s\n' "$(${curl}/bin/curl -s "$xmlURL")" | ${gnugrep}/bin/grep -oP "<url>(.*)</url>" | ${coreutils-full}/bin/cut -d ">" -f2 | ${coreutils-full}/bin/cut -d "<" -f1)
+    ${curl}/bin/curl -s -o "$saveDir""$picName" "$picURL"
     exit
   '';
 

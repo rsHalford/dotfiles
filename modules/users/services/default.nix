@@ -179,13 +179,17 @@ in
     systemd.user = {
       services = {
         bing-wp = {
+          Install = {
+            WantedBy = [ "multi-user.target" ];
+          };
           Service = {
             Type = "simple";
             ExecStart = "${pkgs.scripts.wallpaperTools}/bin/bing-wp";
           };
           Unit = {
             Description = "Daily Bing wallpaper service";
-            After = "network-online.target";
+            After = [ "network-online.target" ];
+            Wants = [ "network-online.target" ];
           };
         };
         newsboat = {
