@@ -45,6 +45,7 @@ in
       # attributes = [ ];
       delta.enable = true;
       extraConfig = {
+        branch.autoSetupRebase = "always";
         core.editor = "${terminal-editor}";
         delta = {
           line-numbers = true;
