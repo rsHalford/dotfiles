@@ -42,6 +42,12 @@ in
       default = false;
     };
 
+    newsboat.enable = mkOption {
+      description = "Newsboat feed reloads";
+      type = types.bool;
+      default = false;
+    };
+
     syncthing.enable = mkOption {
       description = "Enable syncthing";
       type = types.bool;
@@ -144,8 +150,8 @@ in
         '';
         musicDirectory = ~/Media/Music;
         network = {
-        #   listenAddress = "127.0.0.1";
-        #   port = "9001";
+          #   listenAddress = "127.0.0.1";
+          #   port = "9001";
           startWhenNeeded = true;
         };
       };
@@ -182,6 +188,19 @@ in
             After = "network-online.target";
           };
         };
+        newsboat = {
+          Install = {
+            WantedBy = [ "multi-user.target" ];
+          };
+          Service = {
+            ExecStart = "${pkgs.newsboat}/bin/newsboat -x reload";
+          };
+          Unit = {
+            Description = "Newsboat automatic reload service";
+            After = [ "network-online.target" ];
+            Wants = [ "network-online.target" ];
+          };
+        };
       };
       timers = {
         bing-wp = {
@@ -194,6 +213,18 @@ in
           };
           Unit = {
             Description = "Daily Bing wallpaper timer";
+          };
+        };
+        newsboat = {
+          Install = {
+            WantedBy = [ "timers.target" ];
+          };
+          Timer = {
+            OnStartupSec = "1min";
+            OnUnitActiveSec = "1h";
+          };
+          Unit = {
+            Description = "Newsboat automatic reload timer";
           };
         };
       };

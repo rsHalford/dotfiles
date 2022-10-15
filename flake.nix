@@ -165,6 +165,7 @@
               kde-connect.enable = true;
               mpd.enable = true;
               mpris.enable = true;
+              newsboat.enable = true;
               syncthing.enable = true;
             };
             suite = {
