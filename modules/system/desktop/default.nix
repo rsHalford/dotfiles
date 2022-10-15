@@ -9,7 +9,7 @@ in
     enable = mkOption {
       description = "Enable desktop options";
       type = types.bool;
-      default = true;
+      default = false;
     };
   };
 

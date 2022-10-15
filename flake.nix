@@ -27,15 +27,16 @@
     };
   };
 
-  outputs = {
-    nixpkgs,
-    home-manager,
-    nur,
-    emacs-unstable,
-    godo-flake,
-    neovim-nightly,
-    ...
-  }@inputs: let
+  outputs =
+    { nixpkgs
+    , home-manager
+    , nur
+    , emacs-unstable
+    , godo-flake
+    , neovim-nightly
+    , ...
+    }@inputs:
+    let
       inherit (nixpkgs) lib;
 
       util = import ./lib {
@@ -57,7 +58,7 @@
           neovim-nightly
           scripts;
       })
-      overlays;
+        overlays;
 
       inherit (util) user;
       inherit (util) host;
