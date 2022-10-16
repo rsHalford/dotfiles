@@ -66,7 +66,7 @@ in
             active-background = mkLiteral "var(gruvbox-yellow-dark)";
             urgent-background = mkLiteral "var(gruvbox-red-dark)";
             selected-normal-background = mkLiteral "var(gruvbox-blue-dark)";
-            selected-active-background = mkLiteral "var(gruvbox-yellow-ljght)";
+            selected-active-background = mkLiteral "var(gruvbox-yellow-light)";
             selected-urgent-background = mkLiteral "var(gruvbox-red-light)";
             foreground = mkLiteral "var(gruvbox-fg1)";
             normal-foreground = mkLiteral "var(foreground)";
