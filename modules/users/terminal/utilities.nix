@@ -30,6 +30,7 @@ in
       fd
       fzf
       jq
+      libwebp
       mmv-go
       neofetch
       pciutils
