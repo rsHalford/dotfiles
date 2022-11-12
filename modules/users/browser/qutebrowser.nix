@@ -2,7 +2,7 @@
 with lib;
 
 let
-  cfg = config.richard.browser;
+  cfg = config.richard.browser.http;
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   bg0_hard = "#1d2021";
@@ -38,7 +38,7 @@ in
 {
   imports = [ ~/.dotfiles/secrets/qutebrowser ];
 
-  options.richard.browser.qutebrowser = {
+  options.richard.browser.http.qutebrowser = {
     enable = mkOption {
       description = "Enable qutebrowser";
       type = types.bool;

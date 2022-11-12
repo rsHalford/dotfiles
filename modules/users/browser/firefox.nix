@@ -2,14 +2,11 @@
 with lib;
 
 let
-  cfg = config.richard.browser;
-  terminal = config.richard.terminal.emulator.program;
-  terminal-editor = config.richard.terminal.utilities.editor;
+  cfg = config.richard.browser.http;
 in
 {
-  # imports = [ ~/.dotfiles/secrets/qutebrowser ];
 
-  options.richard.browser.firefox = {
+  options.richard.browser.http.firefox = {
     enable = mkOption {
       description = "Enable firefox";
       type = types.bool;

@@ -118,9 +118,11 @@
         richard = user.mkHMUser {
           userConfig = {
             browser = {
-              firefox.enable = true;
-              qutebrowser.enable = true;
-              preferred = "firefox";
+              http = {
+                firefox.enable = true;
+                qutebrowser.enable = true;
+                preferred = "firefox";
+              };
             };
             core.enable = true;
             development = {
