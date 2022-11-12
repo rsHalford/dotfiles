@@ -123,6 +123,9 @@
                 qutebrowser.enable = true;
                 preferred = "firefox";
               };
+              gemini = {
+                amfora.enable = true;
+              };
             };
             core.enable = true;
             development = {

@@ -3,6 +3,7 @@ with lib;
 
 {
   imports = [
+    ./amfora.nix
     ./firefox.nix
     ./qutebrowser.nix
   ];
