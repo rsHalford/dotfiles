@@ -28,6 +28,7 @@ in
       mpc-cli
       newsboat
       streamlink
+      toot
       whipper
     ];
     programs = {
