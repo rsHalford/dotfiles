@@ -17,6 +17,12 @@ in
     programs = {
       helix = {
         enable = true;
+        languages = [
+          {
+            name = "markdown";
+            file-types = ["md" "mdx" "markdown"];
+          }
+        ];
         settings = {
           theme = "gruvbox_dark";
           editor = {
