@@ -33,7 +33,7 @@ in
       mako = {
         enable = true;
         actions = true;
-        anchor = "top-right";
+        anchor = "bottom-right";
         backgroundColor = "#282828";
         borderColor = "#458588";
         borderRadius = 0;
