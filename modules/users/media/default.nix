@@ -41,6 +41,7 @@ in
           "l" = "seek 20";
         };
         config = {
+          keep-open = "yes";
           ytdl-format = "bestvideo[height<=?720]+bestaudio/best";
           osd-font = "JetBrainsMono Nerd Font";
           osd-font-size = 20;
