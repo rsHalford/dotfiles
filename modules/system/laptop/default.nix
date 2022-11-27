@@ -68,10 +68,10 @@ in
             "SOUND_POWER_SAVE_ON_AC" = 1;
             "SOUND_POWER_SAVE_ON_BAT" = 1;
             "SOUND_POWER_SAVE_CONTROLLER" = "Y";
-            "START_CHARGE_THRESH_BAT0" = 45;
-            "STOP_CHARGE_THRESH_BAT0" = 75;
-            "START_CHARGE_THRESH_BAT1" = 45;
-            "STOP_CHARGE_THRESH_BAT1" = 75;
+            "START_CHARGE_THRESH_BAT0" = 40;
+            "STOP_CHARGE_THRESH_BAT0" = 85;
+            "START_CHARGE_THRESH_BAT1" = 40;
+            "STOP_CHARGE_THRESH_BAT1" = 85;
             "DISK_APM_LEVEL_ON_AC" = "254 254";
             "DISK_APM_LEVEL_ON_BAT" = "128 128";
             "DISK_IOSCHED" = "mq-deadline mq-deadline";
@@ -100,7 +100,7 @@ in
             "RUNTIME_PM_ON_BAT" = "auto";
             "PCIE_ASPM_ON_AC" = "default";
             "PCIE_ASPM_ON_BAT" = "powersupersave";
-            "USB_AUTOSUSPEND" = 0;
+            "USB_AUTOSUSPEND" = 1;
           };
         };
       };
