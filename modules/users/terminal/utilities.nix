@@ -38,6 +38,7 @@ in
       ripgrep
       translate-shell
       unzip
+      usbutils
       ventoy-bin
       wev
 
