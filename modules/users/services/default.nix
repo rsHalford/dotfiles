@@ -94,14 +94,15 @@ in
               {
                 criteria = "Dell Inc. DELL U2515H 9X2VY5CA0QTL";
                 mode = "2560x1440@60Hz";
-                position = "0,0";
+                position = "1920,0";
+                transform = "270";
                 scale = 1.0;
                 status = "enable";
               }
               {
                 criteria = "BenQ Corporation BenQ EX2510 9BL02077019";
                 mode = "1920x1080@144Hz";
-                position = "2560,0";
+                position = "0,740";
                 scale = 1.0;
                 status = "enable";
               }
