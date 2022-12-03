@@ -96,13 +96,13 @@ in
                 mode = "2560x1440@60Hz";
                 position = "1920,0";
                 transform = "270";
-                scale = 1.0;
+                scale = 1.5;
                 status = "enable";
               }
               {
                 criteria = "BenQ Corporation BenQ EX2510 9BL02077019";
                 mode = "1920x1080@144Hz";
-                position = "0,740";
+                position = "0,370";
                 scale = 1.0;
                 status = "enable";
               }
