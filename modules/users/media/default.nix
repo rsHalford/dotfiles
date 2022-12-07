@@ -24,6 +24,7 @@ in
 
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
+      calibre
       imv
       mpc-cli
       newsboat
