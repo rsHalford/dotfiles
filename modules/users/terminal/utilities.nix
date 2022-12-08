@@ -29,6 +29,8 @@ in
       exfat
       fd
       fzf
+      gnumake
+      hevea
       jq
       libwebp
       mmv-go
