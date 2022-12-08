@@ -174,8 +174,9 @@
               syncthing.enable = true;
             };
             suite = {
-              office.enable = true;
               mail.enable = false;
+              office.enable = true;
+              tex.enable = true;
             };
             terminal = {
               emulator.program = "foot";

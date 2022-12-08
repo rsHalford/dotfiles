@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ./office.nix
     ./mail.nix
+    ./office.nix
+    ./tex.nix
   ];
 }
