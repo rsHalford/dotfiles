@@ -24,22 +24,47 @@ in
           }
         ];
         settings = {
-          theme = "gruvbox_dark";
+          theme = "rose_pine_moon";
           editor = {
             auto-completion = true;
             auto-format = true;
             auto-info = true;
+            auto-save = true;
+            bufferline = "multiple";
+            color-modes = true;
             completion-trigger-len = 0;
-            gutters = [ "diagnostics" "line-numbers" ];
+            cursorline = true;
+            cursorcolumn = true;
+            gutters = [ "diff" "diagnostics" "line-numbers" ];
             idle-timeout = 0;
             line-number = "relative";
-            lsp.display-messages = true;
+            lsp = {
+              auto-signature-help = true;
+              display-messages = true;
+              display-signature-help-docs = true;
+            };
             middle-click-paste = true;
             mouse = true;
             rulers = [ 80 120 ];
             scroll-lines = 2;
             scrolloff = 8;
             shell = [ "sh" "-c" ];
+            statusline = {
+              left = [ "mode" "spinner" "file-name" ];
+              center = [ ];
+              right = [
+                "diagnostics"
+                "file-encoding"
+                "file-type"
+                "position"
+              ];
+              separator = "│";
+              mode = {
+                normal = "NORMAL";
+                insert = "INSERT";
+                select = "SELECT";
+              };
+            };
             true-color = true;
             auto-pairs = true;
             cursor-shape = {
