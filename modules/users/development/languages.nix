@@ -32,13 +32,13 @@ in
         python3Full
 
         # Language Server
+        nil
         nodePackages.bash-language-server
         nodePackages.svelte-language-server
         nodePackages.typescript-language-server
         nodePackages.vim-language-server
         nodePackages.vscode-langservers-extracted
         nodePackages.yaml-language-server
-        rnix-lsp
         shellcheck
         stylua
 
