@@ -39,6 +39,7 @@ in
           cookie-autodelete
           darkreader
           decentraleyes
+          firefox-color
           honey
           ublock-origin
           vimium
