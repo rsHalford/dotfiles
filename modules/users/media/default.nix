@@ -205,7 +205,7 @@ in
         # Colours
         color listnormal white default
         color listfocus default default
-        color listnormal_unread magenta default
+        color listnormal_unread green default
         color listfocus_unread red default bold
         color info white default
         color article white default bold
