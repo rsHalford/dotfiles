@@ -7,6 +7,17 @@ let
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
+  background = "232136";
+  foreground = "e0def4";
+  black = "393552"; # black base
+  red = "eb6f92"; # red love
+  green = "3e8fb0"; # green pine
+  yellow = "f6c177"; # yellow gold
+  blue = "9ccfd8"; # blue foam
+  magenta = "c4a7e7"; # magenta iris
+  cyan = "ea9a97"; # cyan rose
+  white = "e0def4"; # white text
+  inactive = "908caa";
 in
 {
   options.richard.graphical.compositor = {
@@ -29,34 +40,34 @@ in
               mode = "hide";
             }];
             colors = {
-              background = "#282828";
+              background = background;
               focused = {
-                background = "#458588";
-                border = "#458588";
-                childBorder = "#458588";
-                indicator = "#b16286";
-                text = "#fbf1c7";
+                background = green;
+                border = green;
+                childBorder = green;
+                indicator = magenta;
+                text = white;
               };
               focusedInactive = {
-                background = "#504945";
-                border = "#504945";
-                childBorder = "#504945";
-                indicator = "#504945";
-                text = "#fbf1c7";
+                background = inactive;
+                border = inactive;
+                childBorder = inactive;
+                indicator = inactive;
+                text = white;
               };
               unfocused = {
-                background = "#282828";
-                border = "#282828";
-                childBorder = "#282828";
-                indicator = "#282828";
-                text = "#fbf1c7";
+                background = background;
+                border = background;
+                childBorder = background;
+                indicator = background;
+                text = white;
               };
               urgent = {
-                background = "#d65d0e";
-                border = "#d65d0e";
-                childBorder = "#d65d0e";
-                indicator = "#d65d0e";
-                text = "#fbf1c7";
+                background = yellow;
+                border = yellow;
+                childBorder = yellow;
+                indicator = yellow;
+                text = white;
               };
             };
             defaultWorkspace = "workspace number 1";
