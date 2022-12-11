@@ -54,9 +54,17 @@ in
       bat = {
         enable = true;
         config = {
-          theme = "gruvbox-dark";
+          theme = "rose-pine";
           italic-text = "always";
           style = "numbers,changes,grid";
+        };
+        themes = {
+          rose-pine = builtins.readFile (pkgs.fetchFromGitHub {
+            owner = "rose-pine";
+            repo = "sublime-text"; # Bat uses sublime syntax for its themes
+            rev = "ed9ace4c571426070e1046853c13c45d9f12441c";
+            sha256 = "sha256-d5CCk15KaIEXFd1LP7q82tcX9evE5G/ZS2GxPCA1K0I=";
+          } + "/rose-pine.tmTheme");
         };
       };
       bottom.enable = true;
