@@ -35,7 +35,7 @@ in
             completion-trigger-len = 0;
             cursorline = true;
             cursorcolumn = true;
-            gutters = [ "diff" "diagnostics" "line-numbers" ];
+            gutters = [ "diff" "diagnostics" "line-numbers" "spacer" ];
             idle-timeout = 0;
             line-number = "relative";
             lsp = {
