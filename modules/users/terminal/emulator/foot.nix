@@ -104,7 +104,7 @@ in
           bright5 = regular5; # magenta
           bright6 = regular6; # cyan
           bright7 = regular7; # white
-          alpha = "1.0";
+          alpha = "0.95";
           # Misc colors
           selection-foreground = selection-foreground;
           selection-background = selection-background;
