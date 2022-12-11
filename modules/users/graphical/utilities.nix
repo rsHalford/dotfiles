@@ -4,6 +4,17 @@ with lib;
 let
   cfg = config.richard.graphical.utilities;
   terminal = config.richard.terminal.emulator.program;
+  background = "#232136";
+  foreground = "#e0def4";
+  black = "#393552"; # black base
+  red = "#eb6f92"; # red love
+  green = "#3e8fb0"; # green pine
+  yellow = "#f6c177"; # yellow gold
+  blue = "#9ccfd8"; # blue foam
+  magenta = "#c4a7e7"; # magenta iris
+  cyan = "#ea9a97"; # cyan rose
+  white = "#e0def4"; # white text
+  inactive = "#908caa";
 in
 {
   options.richard.graphical.utilities = {
@@ -34,10 +45,10 @@ in
         enable = true;
         actions = true;
         anchor = "bottom-right";
-        backgroundColor = "#282828";
-        borderColor = "#458588";
-        borderRadius = 0;
-        borderSize = 3;
+        backgroundColor = background;
+        borderColor = green;
+        borderRadius = 2;
+        borderSize = 2;
         defaultTimeout = 10000;
         extraConfig = "";
         font = "JetBrainsMono Nerd Font";
@@ -54,9 +65,9 @@ in
         maxVisible = 5;
         output = null;
         padding = "0,10,20";
-        progressColor = "over #665c54";
+        progressColor = "over ${inactive}";
         sort = "-time";
-        textColor = "#fbf1c7";
+        textColor = white;
         width = 300;
       };
       waybar = {
@@ -97,39 +108,39 @@ in
               format-time = "{H}:{M}";
               format-icons = {
                 default = [
-                  "<span font='12' color='#cc241d'></span>"
-                  "<span font='12' color='#cc241d'></span>"
-                  "<span font='12' color='#cc241d'></span>"
-                  "<span font='12' color='#d65d0e'></span>"
-                  "<span font='12' color='#d65d0e'></span>"
-                  "<span font='12' color='#d79921'></span>"
-                  "<span font='12' color='#d79921'></span>"
-                  "<span font='12' color='#b8bb26'></span>"
-                  "<span font='12' color='#b8bb26'></span>"
-                  "<span font='12' color='#458588'></span>"
-                  "<span font='12' color='#458588'></span>"
+                  "<span font='12' color='${red}'></span>"
+                  "<span font='12' color='${red}'></span>"
+                  "<span font='12' color='${red}'></span>"
+                  "<span font='12' color='${cyan}'></span>"
+                  "<span font='12' color='${cyan}'></span>"
+                  "<span font='12' color='${yellow}'></span>"
+                  "<span font='12' color='${yellow}'></span>"
+                  "<span font='12' color='${blue}'></span>"
+                  "<span font='12' color='${blue}'></span>"
+                  "<span font='12' color='${green}'></span>"
+                  "<span font='12' color='${green}'></span>"
                 ];
                 charging = [
-                  "<span font='12' color='#b8bb26'> </span>"
-                  "<span font='12' color='#b8bb26'> </span>"
-                  "<span font='12' color='#b8bb26'> </span>"
-                  "<span font='12' color='#b8bb26'> </span>"
-                  "<span font='12' color='#b8bb26'> </span>"
-                  "<span font='12' color='#b8bb26'> </span>"
-                  "<span font='12' color='#b8bb26'> </span>"
+                  "<span font='12' color='${magenta}'> </span>"
+                  "<span font='12' color='${magenta}'> </span>"
+                  "<span font='12' color='${magenta}'> </span>"
+                  "<span font='12' color='${magenta}'> </span>"
+                  "<span font='12' color='${magenta}'> </span>"
+                  "<span font='12' color='${magenta}'> </span>"
+                  "<span font='12' color='${magenta}'> </span>"
                 ];
               };
               # on-click = ""; # tlp powersave
               tooltip-format = "{capacity}%";
             };
             "clock" = {
-              format = "<span font='12' color='#fabd2f'></span> {:%H:%M}";
+              format = "<span font='12' color='${yellow}'></span> {:%H:%M}";
               # on-click = "${terminal} -e khal";
-              today-format = "<span color='#b16286'><b>{}</b></span>";
-              tooltip-format = "<big>{:%B <span color='#cc241d'>%Y}</span></big>\n<tt><small>{calendar}</small></tt>";
+              today-format = "<span color='${magenta}'><b>{}</b></span>";
+              tooltip-format = "<big>{:%B <span color='${red}'>%Y}</span></big>\n<tt><small>{calendar}</small></tt>";
             };
             "cpu" = {
-              format = "<span font='12' color='#689d6a'>﬙</span> {usage}%";
+              format = "<span font='12' color='${green}'>﬙</span> {usage}%";
             };
             "custom/weather" = {
               exec = "curl -sf wttr.in/Halifax?format=%c%t";
@@ -137,11 +148,11 @@ in
             };
             "disk" = {
               path = "/";
-              format = "<span font='12' color='#fabd2f'></span> {percentage_used}%";
+              format = "<span font='12' color='${yellow}'></span> {percentage_used}%";
               tooltip-format = "{used} / {total}";
             };
             "memory" = {
-              format = "<span font='12' color='#b16286'></span> {percentage}%";
+              format = "<span font='12' color='${magenta}'></span> {percentage}%";
               tooltip-format = "{used:0.1f}GiB / {total:0.1f}GiB";
             };
             "mpd" = {
@@ -172,43 +183,43 @@ in
               format-linked = "{icon}";
               format-disabled = "{icon}";
               format-icons = {
-                wifi = "<span font='12' color='#689d6a'>直</span>";
-                ethernet = "<span font='12' color='#b16286'></span>";
-                linked = "<span font='12' color='#d65d0e'></span>";
-                disconnected = "<span font='12' color='#d65d0e'></span>";
-                disabled = "<span font='12' color='#cc241d'>睊</span>";
+                wifi = "<span font='12' color='${blue}'>直</span>";
+                ethernet = "<span font='12' color='${magenta}'></span>";
+                linked = "<span font='12' color='${cyan}'></span>";
+                disconnected = "<span font='12' color='${cyan}'></span>";
+                disabled = "<span font='12' color='${red}'>睊</span>";
               };
               on-click = "${terminal} -e nmtui";
             };
             "pulseaudio" = {
               format = "{icon}";
-              format-muted = "<span font='12' color='#cc241d'>ﱝ</span>";
-              format-bluetooth = "<span font='12' color='#458588'></span>";
-              format-bluetooth-muted = "<span font='12' color='#cc241d'></span>";
-              format-source = "<span font='12' color='#fbf1c7'></span>";
-              format-source-muted = "<span font='12' color='#cc241d'></span>";
+              format-muted = "<span font='12' color='${red}'>ﱝ</span>";
+              format-bluetooth = "<span font='12' color='${green}'></span>";
+              format-bluetooth-muted = "<span font='12' color='${red}'></span>";
+              format-source = "<span font='12' color='${white}'></span>";
+              format-source-muted = "<span font='12' color='${red}'></span>";
               format-icons = {
                 default = [
-                  "<span font='12' color='#fb4934'>婢</span>"
-                  "<span font='12' color='#fbf1c7'>奄</span>"
-                  "<span font='12' color='#fbf1c7'>奄</span>"
-                  "<span font='12' color='#fbf1c7'>奄</span>"
-                  "<span font='12' color='#fbf1c7'>奄</span>"
-                  "<span font='12' color='#fbf1c7'>奔</span>"
-                  "<span font='12' color='#fbf1c7'>奔</span>"
-                  "<span font='12' color='#fbf1c7'>奔</span>"
-                  "<span font='12' color='#fbf1c7'>奔</span>"
-                  "<span font='12' color='#fbf1c7'>奔</span>"
-                  "<span font='12' color='#fbf1c7'>奔</span>"
-                  "<span font='12' color='#fbf1c7'>奔</span>"
-                  "<span font='12' color='#fbf1c7'>墳</span>"
-                  "<span font='12' color='#fbf1c7'>墳</span>"
-                  "<span font='12' color='#fbf1c7'>墳</span>"
-                  "<span font='12' color='#fbf1c7'>墳</span>"
-                  "<span font='12' color='#fbf1c7'>墳</span>"
-                  "<span font='12' color='#fbf1c7'>墳</span>"
-                  "<span font='12' color='#fbf1c7'>墳</span>"
-                  "<span font='12' color='#fbf1c7'>墳</span>"
+                  "<span font='12' color='${red}'>婢</span>"
+                  "<span font='12' color='${white}'>奄</span>"
+                  "<span font='12' color='${white}'>奄</span>"
+                  "<span font='12' color='${white}'>奄</span>"
+                  "<span font='12' color='${white}'>奄</span>"
+                  "<span font='12' color='${white}'>奔</span>"
+                  "<span font='12' color='${white}'>奔</span>"
+                  "<span font='12' color='${white}'>奔</span>"
+                  "<span font='12' color='${white}'>奔</span>"
+                  "<span font='12' color='${white}'>奔</span>"
+                  "<span font='12' color='${white}'>奔</span>"
+                  "<span font='12' color='${white}'>奔</span>"
+                  "<span font='12' color='${white}'>墳</span>"
+                  "<span font='12' color='${white}'>墳</span>"
+                  "<span font='12' color='${white}'>墳</span>"
+                  "<span font='12' color='${white}'>墳</span>"
+                  "<span font='12' color='${white}'>墳</span>"
+                  "<span font='12' color='${white}'>墳</span>"
+                  "<span font='12' color='${white}'>墳</span>"
+                  "<span font='12' color='${white}'>墳</span>"
                 ];
                 headset = "";
                 # hifi = "蓼";
@@ -224,12 +235,12 @@ in
               critical-threshold = 100;
               format = "{icon} {temperatureC}°C";
               format-icons = [
-                "<span font='12' color='#458588'>﨎</span>"
-                "<span font='12' color='#689d6a'>﨎</span>"
-                "<span font='12' color='#98971a'>﨎</span>"
-                "<span font='12' color='#d79921'>﨏</span>"
-                "<span font='12' color='#d65d0e'>﨏</span>"
-                "<span font='12' color='#cc241d'>﨏</span>"
+                "<span font='12' color='${magenta}'>﨎</span>"
+                "<span font='12' color='${green}'>﨎</span>"
+                "<span font='12' color='${blue}'>﨎</span>"
+                "<span font='12' color='${yellow}'>﨏</span>"
+                "<span font='12' color='${cyan}'>﨏</span>"
+                "<span font='12' color='${red}'>﨏</span>"
               ];
             };
             "tray" = {
@@ -247,8 +258,8 @@ in
             }
 
             window#waybar {
-              background-color: #282828;
-              color: #fbf1c7;
+              background-color: ${background};
+              color: ${white};
             }
         
             #window,
@@ -262,8 +273,8 @@ in
         
             #workspaces button {
               padding: 0 5px;
-              background-color: #282828;
-              color: #bdae93;
+              background-color: ${background};
+              color: ${inactive};
               border: none;
               border-radius: 0;
               box-shadow: none;
@@ -271,23 +282,23 @@ in
             }
         
             #workspaces button:hover {
-              box-shadow: inset 0 3px #458588;
+              box-shadow: inset 0 3px ${blue};
               transition-property: box-shadow;
               transition-duration: 250ms;
             }
         
             #workspaces button.focused {
-              background-color: #458588;
+              background-color: ${blue};
               color: #fbf1c7;
             }
         
             #workspaces button.urgent {
-              background-color: #d65d0e;
+              background-color: ${cyan};
             }
         
             #mode {
-              background: #282828;
-              border-top: 3px solid #fbf1c7;
+              background: ${background};
+              border-top: 3px solid ${white};
             }
         
             #battery,
@@ -301,36 +312,37 @@ in
             #temperature,
             #tray {
               padding: 0 8pt;
-              background: #282828;
-              color: #bdae93;
+              background: ${background};
+              color: ${inactive};
             }
 
             #mpd {
               padding: 0 8pt;
-              background: #1d2021;
+              border-radius: 0;
+              background: ${black};
             }
 
             #mpd.disconnected {
-              color: #bdae93;
+              color: ${inactive};
             }
 
             #mpd.playing {
-              color: #98971a;
+              color: ${green};
             }
 
             #mpd.paused {
-              color: #d79921;
+              color: ${yellow};
             }
 
             #mpd.stopped {
-              color: #d65d0e;
+              color: ${cyan};
             }
 
             tooltip {
-              background-color: #1d2021;
-              color: #fbf1c7;
-              border: 3px solid #458588;
-              border-radius: 0;
+              background-color: ${background};
+              color: ${white};
+              border: 2px solid ${green};
+              border-radius: 2px;
             }
           '';
         systemd.enable = true;
@@ -344,8 +356,8 @@ in
         size = 16;
       };
       font = {
-        # package = with pkgs; (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-        name = "Lexend";
+        package = with pkgs; (nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
+        name = "JetBrainsMono Nerd Font";
         size = 11;
       };
       gtk2 = {
@@ -354,19 +366,12 @@ in
       };
       gtk3 = {
         extraConfig = { gtk-application-prefer-dark-theme = true; };
-        extraCss =
-          ''
-            menu {
-              border-radius: 0;
-              border: 3px solid #458588;
-              background-color: #282828;
-              color: #fbf1c7;
-            }
-            menuitem:hover {
-              background-color: #458588;
-              color: #fbf1c7;
-            }
-          '';
+        extraCss = ''
+          menu {
+            border-radius: 2px;
+            border: 2px solid ${magenta};
+          }
+        '';
       };
       gtk4 = {
         extraConfig = { };
@@ -376,8 +381,8 @@ in
         name = "Papirus Dark";
       };
       theme = {
-        package = pkgs.gnome.gnome-themes-extra;
-        name = "Adwaita";
+        package = pkgs.rose-pine-gtk-theme;
+        name = "Rose-Pine";
       };
     };
   };
