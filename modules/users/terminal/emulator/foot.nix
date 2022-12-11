@@ -3,6 +3,19 @@ with lib;
 
 let
   cfg = config.richard.terminal.emulator;
+  background = "232136";
+  foreground = "e0def4";
+  regular0 = "393552"; # black base
+  regular1 = "eb6f92"; # red love
+  regular2 = "3e8fb0"; # green pine
+  regular3 = "f6c177"; # yellow gold
+  regular4 = "9ccfd8"; # blue foam
+  regular5 = "c4a7e7"; # magenta iris
+  regular6 = "ea9a97"; # cyan rose
+  regular7 = "e0def4"; # white text
+  selection-background = "44415a";
+  selection-foreground = "e0def4";
+  jump-labels = "232136 c4a7e7";
 in
 {
   config = mkIf (cfg.program == "foot") {
@@ -71,44 +84,31 @@ in
           alternate-scroll-mode = "yes";
         };
         colors = {
-          foreground = "ebdbb2";
-          background = "1d2021";
+          foreground = foreground;
+          background = background;
           # Normal/regular colors (color palette 0-7)
-          regular0 = "1d2021"; # black
-          regular1 = "cc241d"; # red
-          regular2 = "98971a"; # green
-          regular3 = "d79921"; # yellow
-          regular4 = "458588"; # blue
-          regular5 = "b16286"; # magenta
-          regular6 = "689d6a"; # cyan
-          regular7 = "a89984"; # white
+          regular0 = regular0; # black
+          regular1 = regular1; # red
+          regular2 = regular2; # green
+          regular3 = regular3; # yellow
+          regular4 = regular4; # blue
+          regular5 = regular5; # magenta
+          regular6 = regular6; # cyan
+          regular7 = regular7; # white
           # Bright colors (color palette 8-15)
-          bright0 = "928374"; # bright black
-          bright1 = "fb4934"; # bright red
-          bright2 = "b8bb26"; # bright green
-          bright3 = "fabd2f"; # bright yellow
-          bright4 = "83a598"; # bright blue
-          bright5 = "d3869b"; # bright magenta
-          bright6 = "8ec07c"; # bright cyan
-          bright7 = "ebdbb2"; # bright white
-          # Dimmed colors (see foot.ini(5) man page)
-          dim0 = "32302f"; # dim black
-          dim1 = "9d0006"; # dim red
-          dim2 = "79740e"; # dim green
-          dim3 = "b57614"; # dim yellow
-          dim4 = "076678"; # dim blue
-          dim5 = "8f3f71"; # dim magenta
-          dim6 = "427b58"; # dim cyan
-          dim7 = "928374"; # dim white
-          # The remaining 256-color palette
-          # 16 = "<256-color palette #16>";
-          # ...
-          # 255 = "<256-color palette #255>";
+          bright0 = regular0; # black
+          bright1 = regular1; # red
+          bright2 = regular2; # green
+          bright3 = regular3; # yellow
+          bright4 = regular4; # blue
+          bright5 = regular5; # magenta
+          bright6 = regular6; # cyan
+          bright7 = regular7; # white
           alpha = "1.0";
           # Misc colors
-          # selection-foreground = "<inverse foreground/background>";
-          selection-background = "32302f";
-          jump-labels = "1d2021 fe8019";
+          selection-foreground = selection-foreground;
+          selection-background = selection-background;
+          jump-labels = jump-labels;
           # scrollback-indicator = "<regular0> <bright4>";
           # urls = "<regular3>";
         };
