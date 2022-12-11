@@ -51,7 +51,7 @@ in
           line-numbers = true;
           navigate = true;
           side-by-side = true;
-          syntax-theme = "gruvbox-dark";
+          syntax-theme = "rose-pine";
         };
         diff.colorMoved = "zebra";
         fetch.prune = true;
