@@ -245,7 +245,9 @@ in
             };
             workspaceAutoBackAndForth = true;
           };
-          # extraConfig = "";
+          extraConfig = ''
+            exec_always autotiling
+          '';
           # extraOptions = ""; # CLI arguments pass when sway launches
           extraSessionCommands = ''
             export SDL_VIDEODRIVER=wayland

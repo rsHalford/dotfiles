@@ -33,6 +33,7 @@ in
 
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
+      autotiling
       grim
       mako
       qt6.qtwayland
