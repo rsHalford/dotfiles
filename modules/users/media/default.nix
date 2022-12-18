@@ -203,12 +203,12 @@ in
         bind-key R reload-all
 
         # Colours
-        color listnormal white default
-        color listfocus default default
-        color listnormal_unread green default
-        color listfocus_unread red default bold
-        color info white default
-        color article white default bold
+        color listnormal black default
+        color listfocus white default bold
+        color listnormal_unread cyan default
+        color listfocus_unread yellow default bold
+        color info white default bold
+        color article white default
         '';
       };
     };
