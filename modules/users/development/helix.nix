@@ -22,6 +22,10 @@ in
             name = "markdown";
             file-types = ["md" "mdx" "markdown"];
           }
+          {
+            name = "scheme";
+            file-types = ["ss" "scm"];
+          }
         ];
         settings = {
           theme = "rose_pine_moon";
