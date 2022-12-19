@@ -3,6 +3,7 @@ with lib;
 
 let
   cfg = config.richard.graphical.menu;
+  terminal = config.richard.terminal.emulator.program;
   inherit (config.lib.formats.rasi) mkLiteral;
 in
 {
@@ -35,7 +36,7 @@ in
           click-to-exit = true;
           icon-theme = "Papirus-Dark";
           font = "JetBrainsMono Nerd Font 13";
-          # terminal = "\${pkgs.alacritty}/bin/alacritty";
+          terminal = "${pkgs.${terminal}}/bin/${terminal}";
           kb-row-down = "Down,Control+j";
           kb-row-up = "Up,Control+k";
           kb-accept-entry = "Control+m,Return,KP_Enter";
