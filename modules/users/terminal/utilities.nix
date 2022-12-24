@@ -43,6 +43,7 @@ in
       usbutils
       ventoy-bin
       wev
+      wtype
 
       # acpi
       # manix

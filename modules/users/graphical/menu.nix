@@ -22,7 +22,7 @@ in
         package = pkgs.rofi-wayland;
         cycle = true;
         extraConfig = {
-          modi = "run,drun,ssh,filebrowser,calc,keys"; # custom mode <name>:<script>
+          modi = "drun,emoji,calc,ssh,filebrowser,run,keys"; # custom mode <name>:<script>
           cache-dir = "${config.xdg.cacheHome}/rofi/";
           scroll-method = 1;
           show-icons = true;
@@ -44,6 +44,7 @@ in
         };
         plugins = with pkgs; [
           rofi-calc
+          rofi-emoji
         ];
         theme = {
           "*" = {
