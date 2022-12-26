@@ -62,6 +62,7 @@ in
       mpd
       mpdris2
       playerctl
+      scripts.bingTools
       scripts.wallpaperTools
       syncthing
     ];
@@ -185,7 +186,7 @@ in
           };
           Service = {
             Type = "simple";
-            ExecStart = "${pkgs.scripts.wallpaperTools}/bin/bing-wp";
+            ExecStart = "${pkgs.scripts.bingTools}/bin/bing-wp";
           };
           Unit = {
             Description = "Daily Bing wallpaper service";
@@ -204,6 +205,18 @@ in
             Description = "Newsboat automatic reload service";
             After = [ "network-online.target" ];
             Wants = [ "network-online.target" ];
+          };
+        };
+        random-wallpaper = {
+          Install = {
+            WantedBy = [ "multi-user.target" ];
+          };
+          Service = {
+            Type = "simple";
+            ExecStart = "${pkgs.scripts.wallpaperTools}/bin/random-wallpaper";
+          };
+          Unit = {
+            Description = "Random wallpaper service";
           };
         };
       };
@@ -230,6 +243,18 @@ in
           };
           Unit = {
             Description = "Newsboat automatic reload timer";
+          };
+        };
+        random-wallpaper = {
+          Install = {
+            WantedBy = [ "timers.target" ];
+          };
+          Timer = {
+            OnCalendar = "*:0/10";
+            Persistent = true;
+          };
+          Unit = {
+            Description = "Random wallpaper timer";
           };
         };
       };

@@ -83,7 +83,7 @@ let
     esac
   '';
 
-  wallpaperTools = with pkgs; writeScriptBin "bing-wp" ''
+  bingTools = with pkgs; writeScriptBin "bing-wp" ''
     #!${runtimeShell}
     bing="http://www.bing.com"
     xmlURL="http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=en-WW"
@@ -93,6 +93,11 @@ let
     picURL=$bing$(${coreutils}/bin/printf '%s\n' "$(${curl}/bin/curl -s "$xmlURL")" | ${gnugrep}/bin/grep -oP "<url>(.*)</url>" | ${coreutils-full}/bin/cut -d ">" -f2 | ${coreutils-full}/bin/cut -d "<" -f1)
     ${curl}/bin/curl -s -o "$saveDir""$picName" "$picURL"
     exit
+  '';
+
+  wallpaperTools = with pkgs; writeScriptBin "random-wallpaper" ''
+    #!${runtimeShell}
+    ${sway}/bin/swaymsg "output * bg `${findutils}/bin/find ~/.dotfiles/wallpapers -type f | ${coreutils}/bin/shuf -n1` fill"
   '';
 
   worktreeTools = with pkgs; writeScriptBin "worktree-clone" ''
@@ -113,6 +118,7 @@ in
   overlay = (final: prev: {
     scripts.screenshotTools = screenshotTools;
     scripts.sysTools = sysTools;
+    scripts.bingTools = bingTools;
     scripts.wallpaperTools = wallpaperTools;
     scripts.worktreeTools = worktreeTools;
   });

@@ -7,6 +7,7 @@ let
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
+  random-wallpaper = "`find ~/.dotfiles/wallpapers -type f | shuf -n1` fill";
   background = "232136";
   foreground = "e0def4";
   black = "393552"; # black base
@@ -227,7 +228,7 @@ in
             };
             output = {
               "*" = {
-                bg = "~/Media/Pictures/Wallpapers/gruvbox-dark-rainbow.png fill";
+                bg = "${random-wallpaper}";
               };
             };
             seat = {
