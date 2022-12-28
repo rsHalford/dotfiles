@@ -38,6 +38,7 @@ in
       mako
       qt6.qtwayland
       slurp
+      tag
       waybar
       wl-clipboard
     ];

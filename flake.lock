@@ -191,7 +191,28 @@
         "home-manager": "home-manager",
         "neovim-nightly": "neovim-nightly",
         "nixpkgs": "nixpkgs",
-        "nur": "nur"
+        "nur": "nur",
+        "tag-flake": "tag-flake"
+      }
+    },
+    "tag-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1672244919,
+        "narHash": "sha256-jhG3j46ompGQ9dkKwwSzWVATLJhdQTboApxRpN+lg+4=",
+        "owner": "rsHalford",
+        "repo": "tag",
+        "rev": "97a4058f2b38dc258f31aaa903387fdf33523522",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rsHalford",
+        "repo": "tag",
+        "type": "github"
       }
     },
     "utils": {

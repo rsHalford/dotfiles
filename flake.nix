@@ -21,6 +21,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    tag-flake = {
+      url = "github:rsHalford/tag";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +38,7 @@
     , nur
     , emacs-unstable
     , godo-flake
+    , tag-flake
     , neovim-nightly
     , ...
     }@inputs:
@@ -55,6 +61,7 @@
           nur
           emacs-unstable
           godo-flake
+          tag-flake
           neovim-nightly
           scripts;
       })
