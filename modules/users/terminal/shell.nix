@@ -235,6 +235,8 @@ in
           grb = "git rebase";
           grep = "grep -i --color=auto --exclude-dir={.git,node_modules}";
           grm = "git rm";
+          gsh = "git secret hide";
+          gsr = "git secret reveal -f";
           gst = "git status -u";
           gw = "git worktree";
           gwa = "git worktree add";
