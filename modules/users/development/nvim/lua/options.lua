@@ -8,7 +8,6 @@ opt.cursorcolumn = true
 opt.cursorline = true
 opt.errorbells = false
 opt.expandtab = true
-opt.guicursor = ''
 opt.hlsearch = false
 opt.ignorecase = true
 opt.number = true
