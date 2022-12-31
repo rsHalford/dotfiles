@@ -33,7 +33,7 @@ local servers = {
   'eslint',
   'html',
   'jsonls',
-  'rnix',
+  'nil_ls',
   'vimls',
   'yamlls',
 }
