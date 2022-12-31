@@ -5,13 +5,14 @@ local keymap = vim.api.nvim_set_keymap
 local colorizer = require 'colorizer'
 
 colorizer.setup({
-  'css',
-  'javascript',
-  'vim',
-  'html',
-}, {
-  mode = 'background',
-  css = true,
+  user_default_options = {
+    css = true,
+  },
+  mode = "background",
+  tailwind = true,
+  sass = {
+    enable = true,
+  }
 })
 
 -- nvim-tree
