@@ -27,7 +27,6 @@ ntree.setup {
     },
   },
   disable_netrw = false,
-  open_on_setup = true,
   ignore_ft_on_setup = { 'vim' },
   hijack_cursor = true,
   diagnostics = {
@@ -35,12 +34,8 @@ ntree.setup {
   },
   view = {
     width = 20,
-    height = 8,
     side = 'right',
-    auto_resize = true,
-  },
-  git = {
-    ignore = true,
+    adaptive_size = true,
   },
   renderer = {
     highlight_git = true,
