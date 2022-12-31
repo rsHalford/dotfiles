@@ -137,7 +137,7 @@
             core.enable = true;
             development = {
               emacs.enable = false;
-              helix.enable = true;
+              helix.enable = false;
               languages = {
                 go.enable = true;
               };
@@ -190,7 +190,7 @@
               shell.enable = true;
               utilities = {
                 enable = true;
-                editor = "hx";
+                editor = "nvim";
               };
             };
           };
