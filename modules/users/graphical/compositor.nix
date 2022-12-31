@@ -135,7 +135,7 @@ in
               # "Mod4+Shift+c" = "clipmenu";
               # "Mod4+d" = "discord";
               "Mod4+e" = "exec ${terminal} -e ${terminal-editor}";
-              "Mod4+ShifT+e" = "exec ${graphical-editor}";
+              "Mod4+Shift+e" = "exec ${graphical-editor}";
               "Mod4+f" = "exec ${terminal} -e newsboat";
               # "Mod4+g" = "steam";
               "Mod4+h" = "focus left";
@@ -164,6 +164,7 @@ in
               "Mod4+Shift+v" = "exec mullvad-vpn";
               "Mod4+w" = "exec $BROWSER";
               "Mod4+Shift+w" = "exec ${terminal} -e nmtui";
+              "Mod4+x" = "exec swaylock";
               # "Mod4+Shift+x" = "exec ledger-live-desktop";
 
               "Mod4+Up" = "focus up";

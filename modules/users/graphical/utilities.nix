@@ -72,6 +72,13 @@ in
         textColor = white;
         width = 300;
       };
+      swaylock.settings = {
+        show-failed-attempts = true;
+        color = "191724";
+        font = "JetBrainsMono Nerd Font";
+        font-size = 24;
+        indicator-idle-visible = false;
+      };
       waybar = {
         enable = true;
         settings = [
