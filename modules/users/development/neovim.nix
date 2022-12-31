@@ -3,16 +3,6 @@ with lib;
 
 let
   cfg = config.richard.development.neovim;
-
-  pluginGit = ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "${lib.strings.sanitizeDerivationName repo}";
-    version = ref;
-    src = builtins.fetchGit {
-      url = "https://github.com/${repo}.git";
-      ref = ref;
-    };
-  };
-  plugin = pluginGit "HEAD";
 in
 {
   options.richard.development.neovim = {
@@ -28,50 +18,48 @@ in
       neovim = {
         enable = true;
         package = pkgs.neovim-nightly;
-        extraConfig = builtins.concatStringsSep "\n" [
-          ''
-            luafile ${builtins.toString ./nvim/init_lua.lua}
-            luafile ${builtins.toString ./nvim/lua/keymaps.lua}
-            luafile ${builtins.toString ./nvim/lua/options.lua}
-            luafile ${builtins.toString ./nvim/lua/config/git.lua}
-            luafile ${builtins.toString ./nvim/lua/config/lsp.lua}
-            luafile ${builtins.toString ./nvim/lua/config/telescope.lua}
-            luafile ${builtins.toString ./nvim/lua/config/treesitter.lua}
-            luafile ${builtins.toString ./nvim/lua/config/ux.lua}
-          ''
-        ];
+        extraConfig = ''
+          luafile ${builtins.toString ./nvim/init_lua.lua}
+          luafile ${builtins.toString ./nvim/lua/keymaps.lua}
+          luafile ${builtins.toString ./nvim/lua/options.lua}
+          luafile ${builtins.toString ./nvim/lua/config/git.lua}
+          luafile ${builtins.toString ./nvim/lua/config/lsp.lua}
+          luafile ${builtins.toString ./nvim/lua/config/telescope.lua}
+          luafile ${builtins.toString ./nvim/lua/config/treesitter.lua}
+          luafile ${builtins.toString ./nvim/lua/config/ux.lua}
+        '';
         plugins = with pkgs.vimPlugins; [
           # UI/UX
-          (plugin "gruvbox-community/gruvbox")
-          (plugin "norcalli/nvim-colorizer.lua")
-          (plugin "kyazdani42/nvim-web-devicons")
-          (plugin "kyazdani42/nvim-tree.lua")
-          (plugin "nvim-lualine/lualine.nvim")
-          (plugin "tpope/vim-surround")
-          (plugin "tpope/vim-repeat")
-          (plugin "windwp/nvim-autopairs")
-          (plugin "numToStr/Comment.nvim")
+          gruvbox
+          nvim-colorizer-lua
+          nvim-web-devicons
+          nvim-tree-lua
+          lualine-nvim
+          vim-surround
+          vim-repeat
+          nvim-autopairs
+          comment-nvim
 
           # Language Server
-          (plugin "neovim/nvim-lspconfig")
-          (plugin "jose-elias-alvarez/null-ls.nvim")
+          nvim-lspconfig
+          null-ls-nvim
 
           # Telescope
-          (plugin "nvim-telescope/telescope.nvim")
-          (plugin "nvim-lua/popup.nvim")
-          (plugin "nvim-lua/plenary.nvim")
-          (plugin "nvim-telescope/telescope-file-browser.nvim")
-          (plugin "ThePrimeagen/harpoon")
+          telescope-nvim
+          popup-nvim
+          plenary-nvim
+          telescope-file-browser-nvim
+          harpoon
 
           # Undotree
-          (plugin "mbbill/undotree")
+          undotree
 
           # Git
-          (plugin "lewis6991/gitsigns.nvim")
+          gitsigns-nvim
 
           # Tree-sitter
-          (nvim-treesitter)
-          (plugin "p00f/nvim-ts-rainbow")
+          nvim-treesitter.withAllGrammars
+          nvim-ts-rainbow
         ];
         viAlias = true;
         vimAlias = true;

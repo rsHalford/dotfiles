@@ -141,7 +141,7 @@
               languages = {
                 go.enable = true;
               };
-              neovim.enable = false;
+              neovim.enable = true;
             };
             direnv.enable = true;
             gaming.enable = true;
