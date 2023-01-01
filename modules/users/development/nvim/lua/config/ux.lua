@@ -7,7 +7,7 @@ local rpine = require 'rose-pine'
 
 rpine.setup({
   dark_variant = 'moon',
-  disable_background = true,
+  disable_background = false,
   disable_float_background = false,
   dim_nc_background = false,
 })
@@ -80,9 +80,9 @@ ntree.setup {
       symlink_arrow = ' -> ',
       show = {
         file = true,
-	      folder = true,
-	      folder_arrow = true,
-	      git = true,
+        folder = true,
+        folder_arrow = true,
+        git = true,
       },
     },
   },

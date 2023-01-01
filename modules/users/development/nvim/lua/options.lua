@@ -29,3 +29,4 @@ opt.title = true
 opt.undofile = true
 opt.updatetime = 50
 opt.wildmode = { 'longest', 'full' }
+opt.wrap = false

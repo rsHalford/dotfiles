@@ -4,6 +4,7 @@ local keymap = api.nvim_set_keymap
 
 -- Leader Keys
 g.mapleader = [[ ]]
+g.maplocalleader = [[ ]]
 g.user_emmet_leader_key = [[<C-,>]]
 
 -- Über Yoinking
