@@ -41,6 +41,7 @@ in
         nodePackages.yaml-language-server
         shellcheck
         stylua
+        sumneko-lua-language-server
 
         # Tree-sitter
         tree-sitter

@@ -33,6 +33,18 @@ in
           gitsigns-nvim
           neogit
 
+          # LSP
+          nvim-lspconfig
+          nvim-cmp
+          luasnip
+          cmp-buffer
+          cmp-cmdline
+          cmp_luasnip
+          cmp-nvim-lsp
+          cmp-nvim-lua
+          cmp-path
+          lspkind-nvim
+
           # UI/UX
           rose-pine
           nvim-colorizer-lua
@@ -43,10 +55,7 @@ in
           vim-repeat
           nvim-autopairs
           comment-nvim
-
-          # Language Server
-          nvim-lspconfig
-          null-ls-nvim
+          fidget-nvim
 
           # Telescope
           telescope-nvim

@@ -1,48 +1,32 @@
-local telescope = require 'telescope'
-local previewers = require 'telescope.previewers'
-local actions = require 'telescope.actions'
-local keymap = vim.api.nvim_set_keymap
-local harpoon = require 'harpoon'
+local tele = require 'telescope'
+local telebuilt = require 'telescope.builtin'
 
 -- Navigate buffers and repos
-keymap('n', '<leader>fb', [[<cmd>lua require('telescope').extensions.file_browser.file_browser({hidden=true})<CR>]], {
-  noremap = true,
-})
-keymap('n', '<leader>fd', [[<cmd>lua require('telescope.builtin').lsp_definitions()<CR>]], { noremap = true })
-keymap('n', '<leader>fe', [[<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>]], {
-  noremap = true,
-})
-keymap('n', '<leader>fh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], { noremap = true })
-keymap('n', '<leader>fi', [[<cmd>lua require('telescope.builtin').lsp_implementations()<CR>]], { noremap = true })
-keymap('n', '<leader>fk', [[<cmd>lua require('telescope.builtin').keymaps()<CR>]], { noremap = true })
-keymap('n', '<leader>fl', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true })
-keymap('n', '<leader>fo', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true })
-keymap('n', '<leader>fr', [[<cmd>lua require('telescope.builtin').registers()<CR>]], { noremap = true })
-keymap('n', '<leader>fs', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]], { noremap = true })
-keymap('n', '<leader>fz', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], {
-  noremap = true,
-})
+vim.keymap.set('<leader>fb', tele.extensions.file_browser.file_browser({ hidden = true }), desc = '[F]ile [B]rowser')
+vim.keymap.set('<leader>wd', telebuilt.lsp_workspace_diagnostics, desc = '[W]orkspace [D]iagnostics')
+vim.keymap.set('<leader>fh', telebuilt.help_tags, desc = '[H]elp Tags')
+-- vim.keymap.set('<leader>fi', telebuilt.lsp_implementations, desc = '[F]ind [I]mplementations')
+vim.keymap.set('<leader>fk', telebuilt.keymaps, desc = 'List [K]eymaps')
+vim.keymap.set('<leader>fl', telebuilt.live_grep, desc = '[L]ive Grep')
+vim.keymap.set('<leader>fo', telebuilt.oldfiles, desc = '[O]ld [F]iles')
+vim.keymap.set('<leader>fr', telebuilt.registers, desc = 'List [R]egisters')
+vim.keymap.set('<leader>fs', telebuilt.grep_string, desc = 'Grep [S]tring')
+vim.keymap.set('<leader>fz', telebuilt.current_buffer_fuzzy_find, desc = 'Buffer [F]u[Z]zy Find')
 
 -- Spell Suggest
-keymap('n', '<leader>s', [[<cmd>lua require('telescope.builtin').spell_suggest()<CR>]], { noremap = true })
-
--- Git Pickers
-keymap('n', '<leader>gc', [[<cmd>lua require('telescope.builtin').git_commits()<CR>]], { noremap = true })
-keymap('n', '<leader>gbc', [[<cmd>lua require('telescope.builtin').git_bcommits()<CR>]], { noremap = true })
-keymap('n', '<leader>gbr', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]], { noremap = true })
-keymap('n', '<leader>gf', [[<cmd>lua require('telescope.builtin').git_files()<CR>]], { noremap = true })
-keymap('n', '<leader>gst', [[<cmd>lua require('telescope.builtin').git_status()<CR>]], { noremap = true })
-keymap('n', '<leader>gsa', [[<cmd>lua require('telescope.builtin').git_stash()<CR>]], { noremap = true })
+vim.keymap.set('<leader>sp', telebuilt.spell_suggest, desc = '[SP]ell Suggest')
 
 -- Telescope
-telescope.setup {
+local teleprev = require 'telescope.previewers'
+
+tele.setup {
   defaults = {
     prompt_prefix = ' ',
     layout_strategy = 'flex',
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
-    file_previewer = previewers.vim_buffer_cat.new,
-    grep_previewer = previewers.vim_buffer_vimgrep.new,
-    qflist_previewer = previewers.vim_buffer_qflist.new,
+    file_previewer = teleprev.vim_buffer_cat.new,
+    grep_previewer = teleprev.vim_buffer_vimgrep.new,
+    qflist_previewer = teleprev.vim_buffer_qflist.new,
     vimgrep_arguments = {
       'rg',
       '--no-heading',
@@ -54,24 +38,22 @@ telescope.setup {
     },
     mappings = {
       i = {
-        ['<C-k>'] = actions.preview_scrolling_up,
-        ['<C-j>'] = actions.preview_scrolling_down,
-      },
-      n = {
-        ['<C-k>'] = actions.preview_scrolling_up,
-        ['<C-j>'] = actions.preview_scrolling_down,
+        ['<C-u>'] = false,
+        ['<C-d>'] = false,
       },
     },
   },
 }
 
 -- Harpoon
-keymap('n', '<leader>ha', [[:lua require("harpoon.mark").add_file()<CR>]], { noremap = true })
-keymap('n', '<C-h>', [[:lua require("harpoon.ui").nav_file(1)<CR>]], { noremap = true })
-keymap('n', '<C-j>', [[:lua require("harpoon.ui").nav_file(2)<CR>]], { noremap = true })
-keymap('n', '<C-k>', [[:lua require("harpoon.ui").nav_file(3)<CR>]], { noremap = true })
-keymap('n', '<C-l>', [[:lua require("harpoon.ui").nav_file(4)<CR>]], { noremap = true })
-keymap('n', '<leader>hm', [[:lua require("harpoon.ui").toggle_quick_menu()<CR>]], { noremap = true })
+local harpoon = require 'harpoon'
+
+vim.keymap.set('<leader>ha', require("harpoon.mark").add_file)
+vim.keymap.set('<C-h>', require("harpoon.ui").nav_file(1))
+vim.keymap.set('<C-j>', require("harpoon.ui").nav_file(2))
+vim.keymap.set('<C-k>', require("harpoon.ui").nav_file(3))
+vim.keymap.set('<C-l>', require("harpoon.ui").nav_file(4))
+vim.keymap.set('<leader>hm', require("harpoon.ui").toggle_quick_menu)
 
 harpoon.setup {
   global_settings = {
@@ -82,5 +64,5 @@ harpoon.setup {
 }
 
 -- Extensions
-telescope.load_extension 'file_browser'
-telescope.load_extension 'harpoon'
+tele.load_extension 'file_browser'
+tele.load_extension 'harpoon'

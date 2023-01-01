@@ -11,7 +11,6 @@ gitsigns.setup {
   signcolumn = false,
 }
 
-
 local neogit = require 'neogit'
 
 neogit.setup {}
