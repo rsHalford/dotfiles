@@ -29,6 +29,10 @@ in
           luafile ${builtins.toString ./nvim/lua/config/ux.lua}
         '';
         plugins = with pkgs.vimPlugins; [
+          # Git
+          gitsigns-nvim
+          neogit
+
           # UI/UX
           rose-pine
           nvim-colorizer-lua
@@ -54,8 +58,6 @@ in
           # Undotree
           undotree
 
-          # Git
-          gitsigns-nvim
 
           # Tree-sitter
           nvim-treesitter.withAllGrammars
