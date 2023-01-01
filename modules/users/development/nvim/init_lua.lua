@@ -27,27 +27,3 @@ endfunction
 
 -- Undotree
 g.undotree_SetFocusWhenToggle = 1
-
--- Gruvbox
-g.gruvbox_contrast_dark = 'hard'
-cmd [[
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-]]
-g.gruvbox_invert_selection = '0'
-cmd [[
-colorscheme gruvbox
-highlight ColorColumn guibg=#282828
-highlight CursorColumn guibg=#282828
-highlight CursorLine guibg=#282828
-highlight CursorLineNR guibg=#282828
-highlight GitSignsAddNr guibg=None guifg=#b8bb26
-highlight GitSignsChangeNr guibg=None guifg=#8ec07c
-highlight GitSignsDeleteNr guibg=None guifg=#fb4934
-highlight EndOfBuffer guifg=#1d2021
-highlight VertSplit guifg=#282828
-highlight VertSplit guibg=#282828
-highlight Comment gui=italic
-]]

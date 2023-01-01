@@ -30,7 +30,7 @@ in
         '';
         plugins = with pkgs.vimPlugins; [
           # UI/UX
-          gruvbox
+          rose-pine
           nvim-colorizer-lua
           nvim-web-devicons
           nvim-tree-lua

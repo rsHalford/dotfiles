@@ -1,5 +1,18 @@
+local cmd = vim.cmd
 local g = vim.g
 local keymap = vim.api.nvim_set_keymap
+
+-- Rose Pine
+local rpine = require 'rose-pine'
+
+rpine.setup({
+  dark_variant = 'moon',
+  disable_background = true,
+  disable_float_background = false,
+  dim_nc_background = false,
+})
+
+cmd('colorscheme rose-pine')
 
 -- Colorizer
 local colorizer = require 'colorizer'
@@ -8,7 +21,7 @@ colorizer.setup({
   user_default_options = {
     css = true,
   },
-  mode = "background",
+  mode = 'background',
   tailwind = true,
   sass = {
     enable = true,
@@ -81,7 +94,6 @@ local lualine = require 'lualine'
 
 lualine.setup {
   options = {
-    theme = 'gruvbox_dark',
     section_separators = '',
     component_separators = '',
   },
