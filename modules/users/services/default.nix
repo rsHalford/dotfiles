@@ -101,7 +101,7 @@ in
                 status = "enable";
               }
               {
-                criteria = "BenQ Corporation BenQ EX2510 9BL02077019";
+                criteria = "BNQ BenQ EX2510 9BL02077019";
                 mode = "1920x1080@144Hz";
                 position = "0,275";
                 scale = 1.0;
