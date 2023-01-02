@@ -24,9 +24,9 @@ local on_attach = function(_, bufnr)
   nmap('<leader>ws', require('telescope.builtin').lsp_workspace_symbols, '[W]orkspace [S]ymbols')
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+  vim.api.nvim_create_autocmd('BufWritePre', { callback = function()
     vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
+  end, desc = 'Format current buffer with LSP' })
 end
 
 local cmp = require 'cmp'
