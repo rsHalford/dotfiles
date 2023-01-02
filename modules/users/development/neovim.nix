@@ -73,6 +73,7 @@ in
           nvim-treesitter.withAllGrammars
           nvim-treesitter-textobjects
           nvim-ts-rainbow
+          nvim-ts-autotag
 
           # Writing
           markdown-preview-nvim
