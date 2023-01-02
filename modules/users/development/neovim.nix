@@ -69,6 +69,7 @@ in
 
           # Tree-sitter
           nvim-treesitter.withAllGrammars
+          nvim-treesitter-textobjects
           nvim-ts-rainbow
         ];
         viAlias = true;
