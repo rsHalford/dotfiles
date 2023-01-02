@@ -24,6 +24,7 @@ in
           luafile ${builtins.toString ./nvim/lua/options.lua}
           luafile ${builtins.toString ./nvim/lua/config/git.lua}
           luafile ${builtins.toString ./nvim/lua/config/lsp.lua}
+          luafile ${builtins.toString ./nvim/lua/config/prose.lua}
           luafile ${builtins.toString ./nvim/lua/config/telescope.lua}
           luafile ${builtins.toString ./nvim/lua/config/treesitter.lua}
           luafile ${builtins.toString ./nvim/lua/config/ux.lua}
@@ -72,6 +73,11 @@ in
           nvim-treesitter.withAllGrammars
           nvim-treesitter-textobjects
           nvim-ts-rainbow
+
+          # Writing
+          markdown-preview-nvim
+          zen-mode-nvim
+          twilight-nvim
         ];
         viAlias = true;
         vimAlias = true;
