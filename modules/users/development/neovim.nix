@@ -43,6 +43,7 @@ in
           cmp-nvim-lua
           cmp-path
           lspkind-nvim
+          friendly-snippets
 
           # UI/UX
           rose-pine

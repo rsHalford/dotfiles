@@ -91,6 +91,8 @@ luasnip.config.set_config {
   enable_autosnippets = true,
 }
 
+require('luasnip.loaders.from_vscode').lazy_load()
+
 lspconfig['astro'].setup {
   on_attach = on_attach,
   capabilities = capabilities,
