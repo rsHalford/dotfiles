@@ -57,16 +57,14 @@ in
           comment-nvim
           fidget-nvim
           which-key-nvim
+          undotree
 
           # Telescope
           telescope-nvim
           popup-nvim
           plenary-nvim
-          telescope-file-browser-nvim
+          telescope-fzf-native-nvim
           harpoon
-
-          # Undotree
-          undotree
 
 
           # Tree-sitter

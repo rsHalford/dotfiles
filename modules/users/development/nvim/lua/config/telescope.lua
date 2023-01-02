@@ -20,6 +20,9 @@ tmap('<leader>sp', [[<cmd>lua require('telescope.builtin').spell_suggest()<CR>]]
 -- Telescope
 local previewers = require 'telescope.previewers'
 
+telescope.load_extension 'fzf'
+telescope.load_extension 'harpoon'
+
 telescope.setup {
   defaults = {
     prompt_prefix = ' ',
@@ -63,7 +66,3 @@ harpoon.setup {
     enter_on_sendcmd = false,
   },
 }
-
--- Extensions
-telescope.load_extension 'file_browser'
-telescope.load_extension 'harpoon'
