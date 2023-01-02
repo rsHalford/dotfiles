@@ -132,7 +132,7 @@ end
 
 vim.api.nvim_create_autocmd('TermOpen', { pattern = 'term://*toggleterm#*', callback = function()
   set_terminal_keymaps()
-end, desc = 'Format current buffer with LSP' })
+end, desc = 'Set terminal keymaps when the terminal buffer opens' })
 
 term.setup {
   persist_size = false,
