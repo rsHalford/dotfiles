@@ -38,7 +38,6 @@ in
           nvim-cmp
           luasnip
           cmp-buffer
-          cmp-cmdline
           cmp_luasnip
           cmp-nvim-lsp
           cmp-nvim-lua

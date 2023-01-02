@@ -65,7 +65,6 @@ cmp.setup {
     { name = 'path' },
     { name = 'luasnip' },
     { name = 'buffer', keyword_length = 5 },
-    { name = 'cmdline' },
   },
   snippet = {
     expand = function(args)
@@ -81,7 +80,6 @@ cmp.setup {
         path = '[path]',
         luasnip = '[snip]',
         buffer = '[buf]',
-        cmdline = '[cmd]',
       },
     },
   }
