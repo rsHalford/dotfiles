@@ -44,6 +44,7 @@ in
           cmp-path
           lspkind-nvim
           friendly-snippets
+          neodev-nvim
 
           # UI/UX
           rose-pine

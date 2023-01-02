@@ -111,6 +111,8 @@ lspconfig['nil_ls'].setup {
   capabilities = capabilities,
 }
 
+require('neodev').setup()
+
 lspconfig['sumneko_lua'].setup {
   on_attach = on_attach,
   capabilities = capabilities,
