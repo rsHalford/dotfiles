@@ -1,5 +1,4 @@
 local cmd = vim.cmd
-local g = vim.g
 local keymap = vim.api.nvim_set_keymap
 
 -- Rose Pine
@@ -29,7 +28,7 @@ colorizer.setup({
 })
 
 -- nvim-tree
-keymap('n', '<leader>b', [[<cmd>NvimTreeToggle<CR>]], { noremap = true, silent = true })
+keymap('n', '<leader>tb', [[<cmd>NvimTreeToggle<CR>]], { noremap = true, silent = true })
 
 local ntree = require 'nvim-tree'
 
@@ -103,13 +102,44 @@ lualine.setup {
     lualine_c = { 'filename' },
     lualine_x = { 'diff', 'branch' },
     lualine_y = { 'filetype' },
-    lualine_z = { 'progress' },
+    lualine_z = { 'location' },
   },
   extensions = {
-    'fugitive',
     'fzf',
     'nvim-tree',
     'toggleterm',
+  },
+}
+
+-- toggleterm
+local term = require 'toggleterm'
+
+keymap('n', '<leader>tt', [[<cmd>ToggleTerm<CR>]], { noremap = true, silent = true, desc = 'Toggle Terminal' })
+
+local set_terminal_keymaps = function()
+
+  local tmap = function(keys, func)
+    vim.keymap.set('t', keys, func, { buffer = 0 })
+  end
+
+  tmap('<esc>', [[<C-\><C-n>]])
+  tmap('<C-h>', [[<Cmd>wincmd h<CR>]])
+  tmap('<C-j>', [[<Cmd>wincmd j<CR>]])
+  tmap('<C-k>', [[<Cmd>wincmd k<CR>]])
+  tmap('<C-l>', [[<Cmd>wincmd l<CR>]])
+
+end
+
+vim.api.nvim_create_autocmd('TermOpen', { pattern = 'term://*toggleterm#*', callback = function()
+  set_terminal_keymaps()
+end, desc = 'Format current buffer with LSP' })
+
+term.setup {
+  open_mapping = [[<leader>tt]],
+  persist_size = false,
+  direction = 'tab',
+  float_opts = {
+    border = 'curved',
   },
 }
 

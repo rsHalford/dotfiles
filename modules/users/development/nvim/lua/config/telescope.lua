@@ -10,8 +10,8 @@ tmap('<leader>ws', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], '[
 tmap('<leader>fb', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], '[F]ile [B]uffers')
 tmap('<leader>fo', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], '[F]ile [O]ld')
 tmap('<leader>fs', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], '[F]ile [S]earch')
-tmap('<leader>vh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], '[V]im [H]elp')
-tmap('<leader>vk', [[<cmd>lua require('telescope.builtin').keymaps()<CR>]], '[V]im [K]eymaps')
+tmap('<leader>vh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], '[V]iew [H]elp')
+tmap('<leader>vk', [[<cmd>lua require('telescope.builtin').keymaps()<CR>]], '[V]iew [K]eymaps')
 tmap('<leader>rl', [[<cmd>lua require('telescope.builtin').registers()<CR>]], '[R]egister [L]ist')
 
 -- Spell Suggest

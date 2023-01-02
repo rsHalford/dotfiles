@@ -58,6 +58,7 @@ in
           fidget-nvim
           which-key-nvim
           undotree
+          toggleterm-nvim
 
           # Telescope
           telescope-nvim
@@ -65,7 +66,6 @@ in
           plenary-nvim
           telescope-fzf-native-nvim
           harpoon
-
 
           # Tree-sitter
           nvim-treesitter.withAllGrammars
