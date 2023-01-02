@@ -28,7 +28,7 @@ colorizer.setup({
 })
 
 -- nvim-tree
-keymap('n', '<leader>tb', [[<cmd>NvimTreeToggle<CR>]], { noremap = true, silent = true })
+keymap('n', '<leader>tb', [[<cmd>NvimTreeToggle<CR>]], { noremap = true, silent = true, desc = 'Toggle NvimTree' })
 
 local ntree = require 'nvim-tree'
 
@@ -135,7 +135,6 @@ vim.api.nvim_create_autocmd('TermOpen', { pattern = 'term://*toggleterm#*', call
 end, desc = 'Format current buffer with LSP' })
 
 term.setup {
-  open_mapping = [[<leader>tt]],
   persist_size = false,
   direction = 'tab',
   float_opts = {
