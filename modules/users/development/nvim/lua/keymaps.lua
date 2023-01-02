@@ -10,65 +10,74 @@ g.mapleader = [[ ]]
 g.maplocalleader = [[ ]]
 g.user_emmet_leader_key = [[<C-,>]]
 
+local nmap = function(keys, func, desc, silent)
+  vim.keymap.set('n', keys, func, { noremap = true, desc = desc, silent = silent })
+end
+
+local vmap = function(keys, func, desc, silent)
+  vim.keymap.set('v', keys, func, { noremap = true, desc = desc, silent = silent })
+end
+
+local imap = function(keys, func, desc, silent)
+  vim.keymap.set('i', keys, func, { noremap = true, desc = desc, silent = silent })
+end
+
 -- Über Yoinking
-keymap('n', 'Y', 'yg$', { noremap = true })
-keymap('n', '<leader>y', [["+y]], { noremap = true })
-keymap('v', '<leader>y', [["+y]], { noremap = true })
-keymap('n', '<leader>Y', [[gg"+yG]], { noremap = true })
-keymap('x', '<leader>p', [["_dP]], { noremap = true })
-keymap('n', '<leader>d', [["_d]], { noremap = true })
-keymap('v', '<leader>d', [["_d]], { noremap = true })
+nmap('<leader>y', [["+y]], '[Y]ank movement to clipboard')
+vmap('<leader>y', [["+y]], '[Y]ank selection to clipboard')
+nmap('<leader>Y', [[gg"+yG]], '[Y]ank file to clipboard')
+nmap('<leader>d', [["_d]], '[D]elete movement')
+vmap('<leader>d', [["_d]], '[D]elete selection')
 
 -- Center Next
-keymap('n', 'n', 'nzzzv', { noremap = true })
-keymap('n', 'N', 'Nzzzv', { noremap = true })
-keymap('n', 'J', 'mzJ`z', { noremap = true })
+nmap('n', 'nzzzv', 'Centre next match')
+nmap('N', 'Nzzzv', 'Centre prev match')
 
 -- Undo Breakpoints
-keymap('i', ',', ',<c-g>u', { noremap = true })
-keymap('i', '.', '.<c-g>u', { noremap = true })
-keymap('i', '?', '?<c-g>u', { noremap = true })
-keymap('i', '!', '!<c-g>u', { noremap = true })
-keymap('i', '[', '[<c-g>u', { noremap = true })
-keymap('i', '{', '{<c-g>u', { noremap = true })
-keymap('i', '(', '(<c-g>u', { noremap = true })
+imap(',', ',<c-g>u')
+imap('.', '.<c-g>u')
+imap('?', '?<c-g>u')
+imap('!', '!<c-g>u')
+imap('[', '[<c-g>u')
+imap('{', '{<c-g>u')
+imap('(', '(<c-g>u')
 
 -- Navigation
-keymap('n', '<leader>wh', ':wincmd h<CR>', { noremap = true })
-keymap('n', '<leader>wj', ':wincmd j<CR>', { noremap = true })
-keymap('n', '<leader>wk', ':wincmd k<CR>', { noremap = true })
-keymap('n', '<leader>wl', ':wincmd l<CR>', { noremap = true })
-keymap('n', 'k', [[(v:count > 5 ? "m'" . v:count : "") . 'k']], { noremap = true, expr = true })
-keymap('n', 'j', [[(v:count > 5 ? "m'" . v:count : "") . 'j']], { noremap = true, expr = true })
+nmap('<leader>wh', ':wincmd h<CR>', 'Focus window left')
+nmap('<leader>wj', ':wincmd j<CR>', 'Focus window down')
+nmap('<leader>wk', ':wincmd k<CR>', 'Focus window up')
+nmap('<leader>wl', ':wincmd l<CR>', 'Focus window right')
+vim.keymap.set('n', 'k', [[(v:count > 5 ? "m'" . v:count : "") . 'k']],
+  { noremap = true, desc = 'Mark to jumplist', expr = true })
+vim.keymap.set('n', 'j', [[(v:count > 5 ? "m'" . v:count : "") . 'j']],
+  { noremap = true, desc = 'Mark to jumplist', expr = true })
 
 -- Moving Text
-keymap('v', 'J', [[:m '>+1<CR>gv=gv]], { noremap = true })
-keymap('v', 'K', [[:m '<-2<CR>gv=gv]], { noremap = true })
-keymap('i', '<C-j>', '<esc>:m .+1<CR>==', { noremap = true })
-keymap('i', '<C-k>', '<esc>:m .-2<CR>==', { noremap = true })
-keymap('n', '<leader>j', ':m .+1<CR>==', { noremap = true })
-keymap('n', '<leader>k', ':m .-2<CR>==', { noremap = true })
+vmap('J', [[:m '>+1<CR>gv=gv]], 'Move selection down')
+vmap('K', [[:m '<-2<CR>gv=gv]], 'Move selection up')
+imap('<C-j>', '<esc>:m .+1<CR>==', 'Move cursor down')
+imap('<C-k>', '<esc>:m .-2<CR>==', 'Move cursor up')
+nmap('<leader>j', ':m .+1<CR>==', 'Move line down')
+nmap('<leader>k', ':m .-2<CR>==', 'Move line up')
 
 -- Rezising Windows
-keymap('n', 'zh', ':vertical resize -5<CR>', { noremap = true, silent = true })
-keymap('n', 'zj', ':resize +2<CR>', { noremap = true, silent = true })
-keymap('n', 'zk', ':resize -2<CR>', { noremap = true, silent = true })
-keymap('n', 'zl', ':vertical resize +5<CR>', { noremap = true, silent = true })
+nmap('zh', ':vertical resize -5<CR>', 'Reduce window width', true)
+nmap('zj', ':resize +2<CR>', 'Increase window height', true)
+nmap('zk', ':resize -2<CR>', 'Reduce window height', true)
+nmap('zl', ':vertical resize +5<CR>', 'Increase window width', true)
 
 -- Undotree
-keymap('n', '<leader>z', ':UndotreeToggle<CR>', { noremap = true })
+nmap('<leader>z', ':UndotreeToggle<CR>', 'Toggle Undotree')
 
--- Chmod Execute
-keymap('n', '<leader>x', ':!chmod +x %<CR>', { noremap = true, silent = true })
-
--- Compile Execute
-keymap('n', '<C-c>', ':w<CR>:!compiler %:p<CR><CR>', { noremap = true, silent = true })
+-- Run Scripts
+nmap('<leader>x', ':!chmod +x %<CR>', 'Make e[X]ecutable', true)
+nmap('<C-c>', ':w<CR>:!compiler %:p<CR><CR>', 'Run [C]ompiler script', true)
 
 -- List document's URLs
-keymap('n', '<leader>u', ':w<Home>silent <End> !urlview<CR>', { noremap = true })
+nmap('<leader>u', ':w<Home>silent <End> !urlview<CR>', 'List [U]RLs in buffer')
 
 -- Netrw
-keymap('n', '<leader>pv', ':wincmd v<BAR> :Ex <BAR> :vertical resize 20<CR>', { noremap = true })
+nmap('<leader>pv', ':wincmd v<BAR> :Ex <BAR> :vertical resize 20<CR>', 'Open Netrw')
 g.netrw_banner = 0
 g.netrw_winsize = 25
 g.netrw_browse_split = 3
