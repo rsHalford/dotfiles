@@ -56,6 +56,7 @@ in
           nvim-autopairs
           comment-nvim
           fidget-nvim
+          which-key-nvim
 
           # Telescope
           telescope-nvim

@@ -1,6 +1,9 @@
 local g = vim.g
 local api = vim.api
 local keymap = api.nvim_set_keymap
+local wk = require 'which-key'
+
+wk.register()
 
 -- Leader Keys
 g.mapleader = [[ ]]
