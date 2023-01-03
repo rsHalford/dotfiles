@@ -55,9 +55,9 @@ g.mkdp_open_to_the_world = 0
 g.mkdp_filetypes = { 'markdown' }
 
 local proseG = vim.api.nvim_create_augroup('Prose', { clear = true })
-vim.api.nvim_create_autocmd('FileType', {
+vim.api.nvim_create_autocmd('VimEnter', {
   group = proseG,
-  pattern = { 'groff', 'markdown', 'latex', 'org', 'text', 'mail' },
+  pattern = { '*.ms', '*.mom', '*.me', '.man', '*.md', '*.tex', '*.org', '*.norg', '*.txt' },
   callback = function()
     require('zen-mode').toggle()
     vim.opt.spell = true
