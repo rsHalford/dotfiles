@@ -53,7 +53,7 @@ in
           nvim-web-devicons
           nvim-tree-lua
           lualine-nvim
-          vim-surround
+          nvim-surround
           vim-repeat
           nvim-autopairs
           comment-nvim
