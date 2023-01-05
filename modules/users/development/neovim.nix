@@ -46,6 +46,7 @@ in
           lspkind-nvim
           friendly-snippets
           neodev-nvim
+          todo-comments-nvim
 
           # UI/UX
           rose-pine

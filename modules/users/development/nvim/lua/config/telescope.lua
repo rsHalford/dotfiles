@@ -66,3 +66,10 @@ harpoon.setup {
     enter_on_sendcmd = false,
   },
 }
+
+-- todo-comments
+local todo = require 'todo-comments'
+
+todo.setup {}
+
+tmap('<leader>wc', [[<cmd>TodoTelescope<CR>]], '[W]orkspace [C]omments')
