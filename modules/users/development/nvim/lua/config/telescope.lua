@@ -19,6 +19,7 @@ tmap('<leader>sp', [[<cmd>lua require('telescope.builtin').spell_suggest()<CR>]]
 
 -- Telescope
 local previewers = require 'telescope.previewers'
+local actions = require 'telescope.actions'
 
 telescope.load_extension 'fzf'
 telescope.load_extension 'harpoon'
@@ -41,7 +42,15 @@ telescope.setup {
       '--hidden',
     },
     mappings = {
+      n = {
+        ['<C-k>'] = actions.preview_scrolling_up,
+        ['<C-j>'] = actions.preview_scrolling_down,
+      },
       i = {
+        ['<C-k>'] = actions.preview_scrolling_up,
+        ['<C-j>'] = actions.preview_scrolling_down,
+        ['<M-k>'] = actions.move_selection_previous,
+        ['<M-j>'] = actions.move_selection_next,
         ['<C-u>'] = false,
         ['<C-d>'] = false,
       },
