@@ -25,6 +25,7 @@ opt.splitbelow = true
 opt.splitright = true
 opt.tabstop = 2
 opt.termguicolors = true
+opt.timeoutlen = 500
 opt.title = true
 opt.undofile = true
 opt.updatetime = 50
