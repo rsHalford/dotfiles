@@ -113,6 +113,18 @@ let
     git fetch origin
     cd - || exit
   '';
+
+  ytTools = with pkgs; writeScriptBin "ytfuzzy" ''
+    #!${runtimeShell}
+    VID=$(ytfzf -L -T "$IMAGE" -t "$1")
+    PID=$(pidof mpv)
+    if [ -z "$PID" ]
+    then
+      umpv "$VID" &
+    else
+      umpv "$VID"
+    fi
+  '';
 in
 {
   overlay = (final: prev: {
@@ -121,5 +133,6 @@ in
     scripts.bingTools = bingTools;
     scripts.wallpaperTools = wallpaperTools;
     scripts.worktreeTools = worktreeTools;
+    scripts.ytTools = ytTools;
   });
 }

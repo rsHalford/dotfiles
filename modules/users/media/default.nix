@@ -28,9 +28,11 @@ in
       imv
       mpc-cli
       newsboat
+      scripts.ytTools
       streamlink
       toot
       whipper
+      ytfzf
     ];
     programs = {
       mpv = {

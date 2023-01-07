@@ -35,6 +35,7 @@ in
         TERM = if "${terminal}" == "footclient" then "foot" else "${terminal}";
         READER = "zathura";
         VIDEO = "mpv";
+        IMAGE = "imv";
       };
     };
 
