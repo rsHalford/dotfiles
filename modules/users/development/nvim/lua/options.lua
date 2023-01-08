@@ -16,6 +16,7 @@ opt.relativenumber = true
 opt.scrolloff = 8
 opt.shiftwidth = 2
 opt.shortmess:append 'c'
+opt.showmode = false
 opt.signcolumn = 'no'
 opt.smartcase = true
 opt.smartindent = true
