@@ -96,31 +96,20 @@ luasnip.config.set_config {
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
-lspconfig['astro'].setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
-lspconfig['gopls'].setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
-lspconfig['nil_ls'].setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
 require('neodev').setup()
 
-lspconfig['sumneko_lua'].setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      diagnostics = { globals = { 'vim' } },
-      workspace = { vim.api.nvim_get_runtime_file('', true) },
-      telemetry = { enable = false },
-    },
-  },
+-- Install and configure servers
+local servers = {
+  astro = {},
+  gopls = {},
+  nil_ls = {},
+  sumneko_lua = {},
 }
+
+for lsp, _ in pairs(servers) do
+  lspconfig[lsp].setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = lsp['settings'],
+  }
+end
