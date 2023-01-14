@@ -102,6 +102,7 @@ require('neodev').setup()
 local servers = {
   astro = {},
   gopls = {},
+  marksman = {},
   nil_ls = {},
   sumneko_lua = {},
 }

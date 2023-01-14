@@ -24,6 +24,7 @@ in
         golangci-lint
         gopls
         jdk
+        marksman
         nodejs
         nodePackages.typescript
         poetry
