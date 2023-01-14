@@ -4,19 +4,19 @@ local keymap = vim.api.nvim_set_keymap
 -- Rose Pine
 local rpine = require 'rose-pine'
 
-rpine.setup({
+rpine.setup {
   dark_variant = 'moon',
   disable_background = false,
   disable_float_background = false,
   dim_nc_background = false,
-})
+}
 
-cmd('colorscheme rose-pine')
+cmd 'colorscheme rose-pine'
 
 -- Colorizer
 local colorizer = require 'colorizer'
 
-colorizer.setup({
+colorizer.setup {
   user_default_options = {
     css = true,
   },
@@ -24,8 +24,8 @@ colorizer.setup({
   tailwind = true,
   sass = {
     enable = true,
-  }
-})
+  },
+}
 
 -- nvim-tree
 keymap('n', '<leader>tb', [[<cmd>NvimTreeToggle<CR>]], { noremap = true, silent = true, desc = 'Toggle NvimTree' })
@@ -117,7 +117,6 @@ local term = require 'toggleterm'
 keymap('n', '<leader>tt', [[<cmd>ToggleTerm<CR>]], { noremap = true, silent = true, desc = 'Toggle Terminal' })
 
 local set_terminal_keymaps = function()
-
   local tmap = function(keys, func)
     vim.keymap.set('t', keys, func, { buffer = 0 })
   end
@@ -127,12 +126,15 @@ local set_terminal_keymaps = function()
   tmap('<C-j>', [[<Cmd>wincmd j<CR>]])
   tmap('<C-k>', [[<Cmd>wincmd k<CR>]])
   tmap('<C-l>', [[<Cmd>wincmd l<CR>]])
-
 end
 
-vim.api.nvim_create_autocmd('TermOpen', { pattern = 'term://*toggleterm#*', callback = function()
-  set_terminal_keymaps()
-end, desc = 'Set terminal keymaps when the terminal buffer opens' })
+vim.api.nvim_create_autocmd('TermOpen', {
+  pattern = 'term://*toggleterm#*',
+  callback = function()
+    set_terminal_keymaps()
+  end,
+  desc = 'Set terminal keymaps when the terminal buffer opens',
+})
 
 term.setup {
   persist_size = false,

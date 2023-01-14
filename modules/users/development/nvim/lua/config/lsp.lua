@@ -6,7 +6,6 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- on_attach
 local on_attach = function(_, bufnr)
-
   local nmap = function(keys, func, desc)
     if desc then
       desc = '[L]SP: ' .. desc
@@ -29,9 +28,12 @@ local on_attach = function(_, bufnr)
   nmap(']d', vim.diagnostic.goto_next, 'Goto next [D]iagnostic error')
   nmap('[d', vim.diagnostic.goto_prev, 'Goto prev [D]iagnostic error')
 
-  vim.api.nvim_create_autocmd('BufWritePre', { callback = function()
-    vim.lsp.buf.format()
-  end, desc = 'Format current buffer with LSP' })
+  vim.api.nvim_create_autocmd('BufWritePre', {
+    callback = function()
+      vim.lsp.buf.format()
+    end,
+    desc = 'Format current buffer with LSP',
+  })
 end
 
 -- cmp
@@ -88,20 +90,20 @@ cmp.setup {
         buffer = '[buf]',
       },
     },
-  }
+  },
 }
 
 -- luasnip
 luasnip.config.set_config {
   history = true,
-  updateevents = "TextChanged,TextChangedI",
+  updateevents = 'TextChanged,TextChangedI',
   enable_autosnippets = true,
 }
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
 -- null-ls
-local null = require "null-ls"
+local null = require 'null-ls'
 local bc = null.builtins.code_actions
 local bd = null.builtins.diagnostics
 local bf = null.builtins.formatting

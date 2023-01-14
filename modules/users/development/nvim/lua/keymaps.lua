@@ -48,15 +48,31 @@ nmap('<leader>wh', ':wincmd h<CR>', 'Focus window left')
 nmap('<leader>wj', ':wincmd j<CR>', 'Focus window down')
 nmap('<leader>wk', ':wincmd k<CR>', 'Focus window up')
 nmap('<leader>wl', ':wincmd l<CR>', 'Focus window right')
-vim.keymap.set('n', 'k', [[(v:count > 5 ? "m'" . v:count : "") . 'k']],
-  { noremap = true, desc = 'Mark to jumplist', expr = true })
-vim.keymap.set('n', 'j', [[(v:count > 5 ? "m'" . v:count : "") . 'j']],
-  { noremap = true, desc = 'Mark to jumplist', expr = true })
+vim.keymap.set(
+  'n',
+  'k',
+  [[(v:count > 5 ? "m'" . v:count : "") . 'k']],
+  { noremap = true, desc = 'Mark to jumplist', expr = true }
+)
+vim.keymap.set(
+  'n',
+  'j',
+  [[(v:count > 5 ? "m'" . v:count : "") . 'j']],
+  { noremap = true, desc = 'Mark to jumplist', expr = true }
+)
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', [[v:count == 0 ? 'gk' : 'k']],
-  { desc = "Moves cursor up a line, including wrapped lines", expr = true, silent = true })
-vim.keymap.set('n', 'j', [[v:count == 0 ? 'gj' : 'j']],
-  { desc = "Moves cursor down a line, including wrapped lines", expr = true, silent = true })
+vim.keymap.set(
+  'n',
+  'k',
+  [[v:count == 0 ? 'gk' : 'k']],
+  { desc = 'Moves cursor up a line, including wrapped lines', expr = true, silent = true }
+)
+vim.keymap.set(
+  'n',
+  'j',
+  [[v:count == 0 ? 'gj' : 'j']],
+  { desc = 'Moves cursor down a line, including wrapped lines', expr = true, silent = true }
+)
 
 -- Moving Text
 vmap('J', [[:m '>+1<CR>gv=gv]], 'Move selection down')

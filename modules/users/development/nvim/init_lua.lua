@@ -1,15 +1,6 @@
 local g = vim.g
 local cmd = vim.cmd
 
--- require 'filetypes'
--- require 'keymaps'
--- require 'options'
--- require 'plugins'
-
--- TODO: find a home for the below commands and convert to lua.
--- Python Venv
--- g.python3_host_prog = '/usr/bin/python3'
-
 --  Highlight on Yank
 cmd [[ autocmd TextYankPost * silent! lua vim.highlight.on_yank() ]]
 

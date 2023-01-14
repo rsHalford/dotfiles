@@ -59,16 +59,17 @@ vim.api.nvim_create_autocmd('VimEnter', {
   group = proseG,
   pattern = { '*.ms', '*.mom', '*.me', '.man', '*.md', '*.tex', '*.org', '*.norg', '*.txt' },
   callback = function()
-    require('zen-mode').toggle({
+    require('zen-mode').toggle {
       plugins = {
         options = {
           wrap = true,
           linebreak = true,
         },
       },
-    })
+    }
     vim.opt.spell = true
-  end, desc = 'Enter Prose writing mode'
+  end,
+  desc = 'Enter Prose writing mode',
 })
 
 vim.keymap.set('n', '<leader>tp', [[<cmd>lua require('zen-mode').toggle()<CR>]], { desc = 'Toggle Zen Mode' })
