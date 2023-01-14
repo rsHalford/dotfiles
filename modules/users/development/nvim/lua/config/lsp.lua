@@ -1,8 +1,10 @@
 local lspconfig = require 'lspconfig'
 
+-- capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+-- on_attach
 local on_attach = function(_, bufnr)
 
   local nmap = function(keys, func, desc)
@@ -32,6 +34,7 @@ local on_attach = function(_, bufnr)
   end, desc = 'Format current buffer with LSP' })
 end
 
+-- cmp
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 local lspkind = require 'lspkind'
@@ -88,6 +91,7 @@ cmp.setup {
   }
 }
 
+-- luasnip
 luasnip.config.set_config {
   history = true,
   updateevents = "TextChanged,TextChangedI",
@@ -95,6 +99,33 @@ luasnip.config.set_config {
 }
 
 require('luasnip.loaders.from_vscode').lazy_load()
+
+-- null-ls
+local null = require "null-ls"
+local bc = null.builtins.code_actions
+local bd = null.builtins.diagnostics
+local bf = null.builtins.formatting
+
+null.setup {
+  sources = {
+    sources = {
+      bc.gitsigns,
+      bd.shellcheck,
+      bd.flake8.with {
+        extra_args = {
+          '--max-doc-length=72',
+          '--max-line-length=88',
+          '--extend-ignore=E203',
+        },
+      },
+      bf.black,
+      bf.isort,
+      bf.stylua,
+    },
+    on_attach = on_attach,
+    capabilities = capabilities,
+  },
+}
 
 require('neodev').setup()
 

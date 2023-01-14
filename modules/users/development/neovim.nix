@@ -36,6 +36,7 @@ in
 
           # LSP
           nvim-lspconfig
+          null-ls-nvim
           nvim-cmp
           luasnip
           cmp-buffer
