@@ -45,6 +45,8 @@ in {
         shellcheck
         stylua
         sumneko-lua-language-server
+        taplo
+        vale
 
         # Tree-sitter
         tree-sitter

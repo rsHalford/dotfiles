@@ -5,7 +5,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- on_attach
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
       desc = '[L]SP: ' .. desc
@@ -30,7 +30,11 @@ local on_attach = function(_, bufnr)
 
   vim.api.nvim_create_autocmd('BufWritePre', {
     callback = function()
-      vim.lsp.buf.format()
+      if client.supports_method 'textDocument/formatting' then
+        vim.lsp.buf.format()
+      else
+        vim.cmd 'FormatWrite'
+      end
     end,
     desc = 'Format current buffer with LSP',
   })
@@ -112,20 +116,64 @@ null.setup {
   sources = {
     sources = {
       bc.gitsigns,
-      bd.shellcheck,
-      bd.flake8.with {
-        extra_args = {
-          '--max-doc-length=72',
-          '--max-line-length=88',
-          '--extend-ignore=E203',
-        },
-      },
+      bc.refactoring,
+      bc.shellcheck,
+      -- bc.statix, -- nix code linter
       bf.black,
-      bf.isort,
-      bf.stylua,
+      -- bf.cbfmt,
+      -- bf.codespell,
+      -- bf.emacs_scheme_mode,
+      -- bf.gofmt,
+      bf.prettier,
+      -- bf.remark,
+      -- bf.ruff,
+      -- bf.shellharden,
+      -- bf.shfmt,
+      bf.taplo,
     },
     on_attach = on_attach,
     capabilities = capabilities,
+  },
+}
+
+-- nvim-lint
+local lint = require 'lint'
+
+lint.linters_by_ft = {
+  go = { 'golangcilint' },
+  lua = { 'selene' },
+  markdown = { 'vale' }, -- 'markdownlint',
+  nix = { 'nix' }, --, 'statix' },
+  python = { 'mypy', 'ruff' },
+  sh = { 'shellcheck' },
+  -- { 'codespell' },
+}
+
+local lintG = vim.api.nvim_create_augroup('Lint', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', {
+  group = lintG,
+  callback = function()
+    require('lint').try_lint()
+  end,
+  desc = 'Run linter after writing to the file',
+})
+
+-- formatter
+local format = require 'formatter'
+
+format.setup {
+  logging = true,
+  log_level = vim.log.levels.WARN,
+  filetype = {
+    lua = {
+      require('formatter.filetypes.lua').stylua,
+    },
+    nix = {
+      require('formatter.filetypes.nix').alejandra,
+    },
+  },
+  ['*'] = {
+    require('formatter.filetypes.any').remove_trailing_whitespace,
   },
 }
 

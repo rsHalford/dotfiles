@@ -1,10 +1,12 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
-  cfg = config.richard.development.neovim;
-in
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.richard.development.neovim;
+in {
   options.richard.development.neovim = {
     enable = mkOption {
       description = "Enable editing with neovim";
@@ -47,7 +49,8 @@ in
           lspkind-nvim
           friendly-snippets
           neodev-nvim
-          todo-comments-nvim
+          nvim-lint
+          formatter-nvim
 
           # UI/UX
           rose-pine
@@ -70,6 +73,8 @@ in
           plenary-nvim
           telescope-fzf-native-nvim
           harpoon
+          todo-comments-nvim
+          refactoring-nvim
 
           # Tree-sitter
           nvim-treesitter.withAllGrammars
