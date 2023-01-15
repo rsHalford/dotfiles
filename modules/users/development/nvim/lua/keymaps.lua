@@ -81,6 +81,7 @@ imap('<C-j>', '<esc>:m .+1<CR>==', 'Move cursor down')
 imap('<C-k>', '<esc>:m .-2<CR>==', 'Move cursor up')
 nmap('<leader>j', ':m .+1<CR>==', 'Move line down')
 nmap('<leader>k', ':m .-2<CR>==', 'Move line up')
+nmap('J', 'mzJ`z', 'Concatenate with line below')
 
 -- Rezising Windows
 nmap('zh', ':vertical resize -5<CR>', 'Reduce window width', true)

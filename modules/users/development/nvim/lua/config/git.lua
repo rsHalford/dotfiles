@@ -1,7 +1,14 @@
-local keymap = vim.api.nvim_set_keymap
+local nmap = function(keys, func, desc, silent)
+  vim.keymap.set('n', keys, func, { noremap = true, desc = desc, silent = silent })
+end
 
-keymap('n', '<leader>gh', ':diffget //2<CR>', { noremap = true })
-keymap('n', '<leader>gl', ':diffget //3<CR>', { noremap = true })
+nmap('<leader>gh', ':diffget //2<CR>')
+nmap('<leader>gl', ':diffget //3<CR>')
+nmap(
+  '<leader>td',
+  [[<cmd>lua require('gitsigns').toggle_linehl() require('gitsigns').toggle_deleted()<CR>]],
+  'Toggle Diff View'
+)
 
 local gitsigns = require 'gitsigns'
 
@@ -14,4 +21,4 @@ local neogit = require 'neogit'
 
 neogit.setup {}
 
-keymap('n', '<leader>ng', [[<cmd>lua require('neogit').open()<CR>]], { noremap = true })
+nmap('<leader>ng', [[<cmd>lua require('neogit').open()<CR>]], 'Open NeoGit')
