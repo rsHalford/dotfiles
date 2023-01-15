@@ -22,28 +22,26 @@ in {
         android-tools
         dart
         flutter
-        gcc
         git-chglog
         golangci-lint
         gopls
         jdk
         marksman
-        nodejs
-        nodePackages.typescript
-        poetry
-        pre-commit
-        python310Packages.markdown2
-        python3Full
-
-        # Language Server
         nil
         nodePackages."@astrojs/language-server"
         nodePackages.bash-language-server
         nodePackages.svelte-language-server
+        nodePackages.typescript
         nodePackages.typescript-language-server
         nodePackages.vim-language-server
         nodePackages.vscode-langservers-extracted
         nodePackages.yaml-language-server
+        nodejs
+        poetry
+        pre-commit
+        python310Packages.markdown2
+        python3Full
+        selene
         shellcheck
         stylua
         sumneko-lua-language-server
