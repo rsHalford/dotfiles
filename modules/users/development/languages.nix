@@ -1,10 +1,12 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
-  cfg = config.richard.development.languages;
-in
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.richard.development.languages;
+in {
   options.richard.development.languages = {
     go.enable = mkOption {
       description = "Enable Go language and tools for development";
@@ -16,6 +18,7 @@ in
   config = {
     home = {
       packages = with pkgs; [
+        alejandra
         android-tools
         dart
         flutter
