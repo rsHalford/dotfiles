@@ -22,16 +22,16 @@ zen.setup {
     twilight = { enabled = true },
     gitsigns = { enabled = false },
   },
-  -- on_open = function(_)
-  --   vim.cmd 'cabbrev <buffer> q let b:quitting = 1 <bar> q'
-  --   vim.cmd 'cabbrev <buffer> wq let b:quitting = 1 <bar> wq'
-  -- end,
-  -- on_close = function()
-  --   if vim.b.quitting == 1 then
-  --     vim.b.quitting = 0
-  --     vim.cmd 'q'
-  --   end
-  -- end,
+  on_open = function(_)
+    vim.cmd 'cabbrev <buffer> q let b:quitting = 1 <bar> q'
+    vim.cmd 'cabbrev <buffer> wq let b:quitting = 1 <bar> wq'
+  end,
+  on_close = function()
+    if vim.b.quitting == 1 then
+      vim.b.quitting = 0
+      vim.cmd 'q'
+    end
+  end,
 }
 
 -- twilight
@@ -57,7 +57,7 @@ g.mkdp_filetypes = { 'markdown' }
 local proseG = vim.api.nvim_create_augroup('Prose', { clear = true })
 vim.api.nvim_create_autocmd('VimEnter', {
   group = proseG,
-  pattern = { '*.ms', '*.mom', '*.me', '.man', '*.md', '*.tex', '*.org', '*.norg', '*.txt' },
+  pattern = { '*.ms', '*.mom', '*.me', '*.man', '*.md', '*.mdx*', '*.tex', '*.org', '*.norg', '*.txt' },
   callback = function()
     require('zen-mode').toggle {
       plugins = {
