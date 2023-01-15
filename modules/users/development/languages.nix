@@ -34,6 +34,7 @@ in
 
         # Language Server
         nil
+        nodePackages."@astrojs/language-server"
         nodePackages.bash-language-server
         nodePackages.svelte-language-server
         nodePackages.typescript-language-server
