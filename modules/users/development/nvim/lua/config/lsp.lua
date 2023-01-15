@@ -140,10 +140,12 @@ local servers = {
   sumneko_lua = {},
 }
 
-for lsp, _ in pairs(servers) do
-  lspconfig[lsp].setup {
+for server, config in pairs(servers) do
+  lspconfig[server].setup(vim.tbl_deep_extend('force', {
     capabilities = capabilities,
     on_attach = on_attach,
-    settings = lsp['settings'],
-  }
+    flags = {
+      debounce_text_changes = 150,
+    },
+  }, config))
 end
