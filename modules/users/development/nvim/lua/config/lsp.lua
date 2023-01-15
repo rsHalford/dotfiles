@@ -138,6 +138,7 @@ local servers = {
   marksman = {},
   nil_ls = {},
   sumneko_lua = {},
+  tsserver = {},
 }
 
 for server, config in pairs(servers) do
