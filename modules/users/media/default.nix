@@ -1,12 +1,14 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.richard.media;
   terminal-editor = config.richard.terminal.utilities.editor;
-in
-{
-  imports = [ ~/.dotfiles/secrets/newsboat ];
+in {
+  imports = [~/.dotfiles/secrets/newsboat];
 
   options.richard.media = {
     enable = mkOption {
@@ -50,8 +52,8 @@ in
           osd-font-size = 20;
           osc = "no";
         };
-        defaultProfiles = [ ];
-        profiles = { };
+        defaultProfiles = [];
+        profiles = {};
         # TODO: figure out why mpv doesn't the youtube-quality and thumbnail scripts
         scripts = with pkgs; [
           mpvScripts.mpris
@@ -63,37 +65,124 @@ in
       };
       ncmpcpp = {
         enable = true;
-        package = pkgs.ncmpcpp.override { visualizerSupport = true; };
+        package = pkgs.ncmpcpp.override {visualizerSupport = true;};
         bindings = [
-          { key = "j"; command = "scroll_down"; }
-          { key = "shift-down"; command = [ "select_item" "scroll_down" ]; }
-          { key = "k"; command = "scroll_up"; }
-          { key = "shift-up"; command = [ "select_item" "scroll_up" ]; }
-          { key = "ctrl-u"; command = "page_up"; }
-          { key = "ctrl-d"; command = "page_down"; }
-          { key = "h"; command = "previous_column"; }
-          { key = "l"; command = "next_column"; }
-          { key = "L"; command = "show_lyrics"; }
-          { key = "alt-f"; command = "toggle_lyrics_fetcher"; }
-          { key = "n"; command = "next_found_item"; }
-          { key = "N"; command = "previous_found_item"; }
-          { key = "J"; command = "move_sort_order_down"; }
-          { key = "K"; command = "move_sort_order_up"; }
-          { key = "h"; command = "jump_to_parent_directory"; }
-          { key = "l"; command = "enter_directory"; }
-          { key = "l"; command = "run_action"; }
-          { key = "l"; command = "play_item"; }
-          { key = "m"; command = "toggle_media_library_columns_mode"; }
-          { key = "g"; command = "move_home"; }
-          { key = "G"; command = "move_end"; }
-          { key = "b"; command = "change_browse_mode"; }
-          { key = "d"; command = "delete_playlist_items"; }
-          { key = "."; command = "seek_forward"; }
-          { key = ","; command = "seek_backward"; }
-          { key = "ctrl-v"; command = "select_range"; }
-          { key = "V"; command = "remove_selection"; }
-          { key = "ctrl-k"; command = "move_selected_items_up"; }
-          { key = "ctrl-j"; command = "move_selected_items_down"; }
+          {
+            key = "j";
+            command = "scroll_down";
+          }
+          {
+            key = "shift-down";
+            command = ["select_item" "scroll_down"];
+          }
+          {
+            key = "k";
+            command = "scroll_up";
+          }
+          {
+            key = "shift-up";
+            command = ["select_item" "scroll_up"];
+          }
+          {
+            key = "ctrl-u";
+            command = "page_up";
+          }
+          {
+            key = "ctrl-d";
+            command = "page_down";
+          }
+          {
+            key = "h";
+            command = "previous_column";
+          }
+          {
+            key = "l";
+            command = "next_column";
+          }
+          {
+            key = "L";
+            command = "show_lyrics";
+          }
+          {
+            key = "alt-f";
+            command = "toggle_lyrics_fetcher";
+          }
+          {
+            key = "n";
+            command = "next_found_item";
+          }
+          {
+            key = "N";
+            command = "previous_found_item";
+          }
+          {
+            key = "J";
+            command = "move_sort_order_down";
+          }
+          {
+            key = "K";
+            command = "move_sort_order_up";
+          }
+          {
+            key = "h";
+            command = "jump_to_parent_directory";
+          }
+          {
+            key = "l";
+            command = "enter_directory";
+          }
+          {
+            key = "l";
+            command = "run_action";
+          }
+          {
+            key = "l";
+            command = "play_item";
+          }
+          {
+            key = "m";
+            command = "toggle_media_library_columns_mode";
+          }
+          {
+            key = "g";
+            command = "move_home";
+          }
+          {
+            key = "G";
+            command = "move_end";
+          }
+          {
+            key = "b";
+            command = "change_browse_mode";
+          }
+          {
+            key = "d";
+            command = "delete_playlist_items";
+          }
+          {
+            key = ".";
+            command = "seek_forward";
+          }
+          {
+            key = ",";
+            command = "seek_backward";
+          }
+          {
+            key = "ctrl-v";
+            command = "select_range";
+          }
+          {
+            key = "V";
+            command = "remove_selection";
+          }
+          {
+            key = "ctrl-k";
+            command = "move_selected_items_up";
+          }
+          {
+            key = "ctrl-j";
+            command = "move_selected_items_down";
+          }
         ];
         mpdMusicDir = null;
         settings = {
@@ -168,49 +257,48 @@ in
         maxItems = 0; # infinite
         reloadThreads = 5;
         reloadTime = 120;
-        extraConfig =
-        ''
-        # General
-        show-read-articles no
-        show-read-feeds no
-        delete-read-articles-on-quit no
-        player "mpv --no-video %u"
-        datetime-format "%Y-%m-%d %a"
-        article-sort-order date-desc
-        save-path ~/.local/share/newsboat/saved/
-        download-path ~/Media/Music/Podcasts/
-        macro v set browser "setsid -f umpv" ; open-in-browser ; set browser "${pkgs.xdg-utils}/bin/xdg-open";
+        extraConfig = ''
+          # General
+          show-read-articles no
+          show-read-feeds no
+          delete-read-articles-on-quit no
+          player "mpv --no-video %u"
+          datetime-format "%Y-%m-%d %a"
+          article-sort-order date-desc
+          save-path ~/.local/share/newsboat/saved/
+          download-path ~/Media/Music/Podcasts/
+          macro v set browser "setsid -f umpv" ; open-in-browser ; set browser "${pkgs.xdg-utils}/bin/xdg-open";
 
-        # Keys
-        bind-key ; macro-prefix
-        bind-key j down
-        bind-key k up
-        bind-key j next articlelist
-        bind-key k prev articlelist
-        bind-key J next-feed articlelist
-        bind-key K prev-feed articlelist
-        bind-key G end
-        bind-key g home
-        bind-key d pagedown
-        bind-key u pageup
-        bind-key l open
-        bind-key h quit
-        bind-key a toggle-article-read
-        bind-key n next-unread
-        bind-key N prev-unread
-        bind-key D pb-download
-        bind-key U show-urls
-        bind-key x pb-delete
-        bind-key r reload
-        bind-key R reload-all
+          # Keys
+          bind-key ; macro-prefix
+          bind-key j down
+          bind-key k up
+          bind-key j next articlelist
+          bind-key k prev articlelist
+          bind-key J next-feed articlelist
+          bind-key K prev-feed articlelist
+          bind-key G end
+          bind-key g home
+          bind-key d pagedown
+          bind-key u pageup
+          bind-key l open
+          bind-key h quit
+          bind-key a toggle-article-read
+          bind-key n next-unread
+          bind-key N prev-unread
+          bind-key D pb-download
+          bind-key U show-urls
+          bind-key x pb-delete
+          bind-key r reload
+          bind-key R reload-all
 
-        # Colours
-        color listnormal black default
-        color listfocus white default bold
-        color listnormal_unread cyan default
-        color listfocus_unread yellow default bold
-        color info white default bold
-        color article white default
+          # Colours
+          color listnormal black default
+          color listfocus white default bold
+          color listnormal_unread cyan default
+          color listfocus_unread yellow default bold
+          color info white default bold
+          color article white default
         '';
       };
     };

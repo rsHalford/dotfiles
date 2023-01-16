@@ -1,10 +1,12 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
-  cfg = config.richard.connectivity;
-in
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.richard.connectivity;
+in {
   options.richard.connectivity = {
     bluetooth.enable = mkOption {
       description = "Enable bluetooth with default options";
@@ -28,7 +30,7 @@ in
       description = "Enable sound with default options";
       type = types.bool;
       default = false;
-    };        
+    };
 
     virtualisation.enable = mkOption {
       description = "Enable virtualisation for system users";

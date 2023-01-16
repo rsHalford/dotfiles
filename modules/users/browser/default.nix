@@ -1,7 +1,10 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; {
   imports = [
     ./amfora.nix
     ./firefox.nix
@@ -11,7 +14,7 @@ with lib;
   options.richard.browser = {
     http.preferred = mkOption {
       description = "Choose preferred http GUI browser. Default is firefox.";
-      type = types.enum [ "firefox" "qutebrowser" ];
+      type = types.enum ["firefox" "qutebrowser"];
       default = "firefox";
     };
   };

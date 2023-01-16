@@ -1,11 +1,13 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.richard.terminal.shell;
   terminal-editor = config.richard.terminal.utilities.editor;
-in
-{
+in {
   options.richard.terminal.shell = {
     enable = mkOption {
       description = "Enable terminal shell";
@@ -32,8 +34,14 @@ in
           battery = {
             discharging_symbol = "";
             display = [
-              { threshold = 10; style = "bold red"; }
-              { threshold = 30; style = "bold yellow"; }
+              {
+                threshold = 10;
+                style = "bold red";
+              }
+              {
+                threshold = 30;
+                style = "bold yellow";
+              }
             ];
           };
           character = {
@@ -168,40 +176,38 @@ in
         history = {
           expireDuplicatesFirst = true;
           ignoreDups = false;
-          ignorePatterns = [ ];
+          ignorePatterns = [];
           ignoreSpace = true;
           path = "${config.xdg.dataHome}/zsh/.zsh_history";
           save = 1000000;
           size = 1000000;
         };
-        initExtra =
-          ''
-            zmodload -i zsh/complist
-            zstyle ":completion:*" menu select
-            zstyle ":completion:*" matcher-list "" "m:{a-z}={A-Z}" "m:{a-zA-Z}={A-Za-z}" "r:|[._-]=* r:|=*" "l:|=* r:|=*"
-            zle -N history-substring-search-up
-            zle -N history-substring-search-down
-            setopt auto_pushd
-            setopt correct
-            setopt globdots
-            setopt hist_ignore_all_dups
-            bindkey -v
-            bindkey "$terminfo[kcuu1]" history-substring-search-up
-            bindkey "$terminfo[kcud1]" history-substring-search-down
-            bindkey -M vicmd "k" history-substring-search-up
-            bindkey -M vicmd "j" history-substring-search-down
-            typeset -g HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=default,fg=magenta,underline"
-            typeset -g HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="bg=default,fg=yellow,underline"
-            export GPG_TTY="$(tty)"
-            export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-            gpgconf --launch gpg-agent
-          '';
-        initExtraBeforeCompInit =
-          ''
-            source .nix-profile/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-          '';
+        initExtra = ''
+          zmodload -i zsh/complist
+          zstyle ":completion:*" menu select
+          zstyle ":completion:*" matcher-list "" "m:{a-z}={A-Z}" "m:{a-zA-Z}={A-Za-z}" "r:|[._-]=* r:|=*" "l:|=* r:|=*"
+          zle -N history-substring-search-up
+          zle -N history-substring-search-down
+          setopt auto_pushd
+          setopt correct
+          setopt globdots
+          setopt hist_ignore_all_dups
+          bindkey -v
+          bindkey "$terminfo[kcuu1]" history-substring-search-up
+          bindkey "$terminfo[kcud1]" history-substring-search-down
+          bindkey -M vicmd "k" history-substring-search-up
+          bindkey -M vicmd "j" history-substring-search-down
+          typeset -g HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=default,fg=magenta,underline"
+          typeset -g HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="bg=default,fg=yellow,underline"
+          export GPG_TTY="$(tty)"
+          export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+          gpgconf --launch gpg-agent
+        '';
+        initExtraBeforeCompInit = ''
+          source .nix-profile/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+        '';
         initExtraFirst = "";
-        plugins = [ ];
+        plugins = [];
         shellAliases = {
           ca = "$HOME/.cache/";
           cat = "bat";
@@ -254,7 +260,7 @@ in
           # rm = "rm -i";
           v = "${terminal-editor}";
         };
-        shellGlobalAliases = { }; # aliases substituted anywhere on a line
+        shellGlobalAliases = {}; # aliases substituted anywhere on a line
       };
     };
   };

@@ -1,7 +1,10 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.richard.graphical.compositor;
   screenshot = "${pkgs.scripts.screenshotTools}/bin/screenshot";
   terminal = config.richard.terminal.emulator.program;
@@ -19,8 +22,7 @@ let
   cyan = "ea9a97"; # cyan rose
   white = "e0def4"; # white text
   inactive = "908caa";
-in
-{
+in {
   options.richard.graphical.compositor = {
     enable = mkOption {
       description = "Enable compositor";
@@ -35,11 +37,13 @@ in
         sway = {
           enable = true;
           config = {
-            bars = [{
-              command = "\${pkgs.waybar}/bin/waybar";
-              hiddenState = "show";
-              mode = "hide";
-            }];
+            bars = [
+              {
+                command = "\${pkgs.waybar}/bin/waybar";
+                hiddenState = "show";
+                mode = "hide";
+              }
+            ];
             colors = {
               background = background;
               focused = {
@@ -75,8 +79,8 @@ in
             floating = {
               border = 3;
               criteria = [
-                { app_id = "pulsemixer"; }
-                { app_id = "nmtui"; }
+                {app_id = "pulsemixer";}
+                {app_id = "nmtui";}
               ];
             };
             focus = {
@@ -85,7 +89,7 @@ in
               mouseWarping = true;
             };
             fonts = {
-              names = [ "JetBrainsMono Nerd Font" ];
+              names = ["JetBrainsMono Nerd Font"];
               style = "Bold";
               size = 10.0;
             };

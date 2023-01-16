@@ -1,10 +1,12 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
-  cfg = config.richard.laptop;
-in
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.richard.laptop;
+in {
   options.richard.laptop = {
     enable = mkOption {
       description = "Whether to enable laptop settings. Also tags laptop for user settings";
@@ -22,7 +24,7 @@ in
   };
 
   config = mkIf (cfg.enable) (mkMerge [
-    ({
+    {
       environment.systemPackages = with pkgs; [
         acpid
         powertop
@@ -104,7 +106,7 @@ in
           };
         };
       };
-    })
+    }
     (mkIf cfg.fprint.enable {
       services.fprintd.enable = true;
     })

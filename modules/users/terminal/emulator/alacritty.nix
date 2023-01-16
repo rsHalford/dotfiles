@@ -1,12 +1,14 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
-  cfg = config.richard.terminal.emulator;
-in
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.richard.terminal.emulator;
+in {
   config = mkIf (cfg.program == "alacritty") {
-    home.packages = with pkgs; [ alacritty ];
+    home.packages = with pkgs; [alacritty];
     programs.alacritty = {
       enable = true;
       settings = {

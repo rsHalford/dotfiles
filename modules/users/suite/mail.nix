@@ -1,7 +1,10 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.richard.suite.mail;
 
   mbsyncConfig = {
@@ -54,8 +57,7 @@ let
     mu.enable = true;
     passwordCommand = "${pkgs.pass}/bin/pass Email/richardh.1995@googlemail.com";
   };
-in
-{
+in {
   options.richard.suite.mail = {
     enable = mkOption {
       description = "Enable for mu4e setup";

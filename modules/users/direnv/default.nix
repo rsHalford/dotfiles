@@ -1,10 +1,12 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
-  cfg = config.richard.direnv;
-in
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.richard.direnv;
+in {
   options.richard.direnv = {
     enable = mkOption {
       description = "Enable direnv";

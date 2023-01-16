@@ -1,15 +1,17 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.richard.development.emacs;
-  emacsPkg = (pkgs.emacsWithPackagesFromUsePackage {
+  emacsPkg = pkgs.emacsWithPackagesFromUsePackage {
     package = pkgs.emacsPgtkNativeComp;
     config = ./emacs/init.org;
     alwaysEnsure = true;
-  });
-in
-{
+  };
+in {
   options.richard.development.emacs = {
     enable = mkOption {
       description = "Enable development with emacs";
@@ -21,7 +23,7 @@ in
   config = mkIf (cfg.enable) {
     home = {
       file = {
-        "${config.xdg.configHome}/emacs/init.el".source = pkgs.runCommand "init.el" { } ''
+        "${config.xdg.configHome}/emacs/init.el".source = pkgs.runCommand "init.el" {} ''
           cp ${./emacs/init.org} init.org
           ${pkgs.emacs}/bin/emacs -Q --batch ./init.org -f org-babel-tangle
           mv init.el $out

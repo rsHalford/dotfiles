@@ -1,13 +1,15 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
-  cfg = config.richard.boot;
-in
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.richard.boot;
+in {
   options.richard.boot = mkOption {
     description = "Type of boot. Default encrypted-efi";
-    type = types.enum [ "encrypted-efi" ];
+    type = types.enum ["encrypted-efi"];
     default = null;
   };
 
@@ -21,17 +23,16 @@ in
         grub = {
           enable = true;
           # backgroundColor = "";
-          devices = [ "nodev" ];
+          devices = ["nodev"];
           efiSupport = true;
-          extraEntries =
-            ''
-              menuentry "Reboot" {
-                reboot
-              }
-              menuentry "Shutdown" {
-                halt
-              }
-            '';
+          extraEntries = ''
+            menuentry "Reboot" {
+              reboot
+            }
+            menuentry "Shutdown" {
+              halt
+            }
+          '';
           # font = "${pkgs.grub2}/share/grub/unicode.pf2";
           # fontSize = null;
           # splashImage = null;
@@ -58,7 +59,7 @@ in
     };
 
     swapDevices = [
-      { device = "/dev/disk/by-label/SWAP"; }
+      {device = "/dev/disk/by-label/SWAP";}
     ];
   };
 }

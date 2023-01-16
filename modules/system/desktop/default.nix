@@ -1,11 +1,13 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
-  cfg = config.richard.desktop;
-in
 {
-  options.richard.desktop= {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.richard.desktop;
+in {
+  options.richard.desktop = {
     enable = mkOption {
       description = "Enable desktop options";
       type = types.bool;

@@ -1,15 +1,14 @@
-{ pkgs
-, nur
-, emacs-unstable
-, godo-flake
-, tag-flake
-, neovim-nightly
-, scripts
-, system
-, lib
-}:
-
 {
+  pkgs,
+  nur,
+  emacs-unstable,
+  godo-flake,
+  tag-flake,
+  neovim-nightly,
+  scripts,
+  system,
+  lib,
+}: {
   overlays = [
     nur.overlay
     emacs-unstable.overlay

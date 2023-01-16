@@ -1,7 +1,10 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.richard.browser.http;
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
@@ -34,9 +37,8 @@ let
   dark_aqua = "#689d6a";
   dark_gray = "#a89984";
   dark_orange = "#d65d0e";
-in
-{
-  imports = [ ~/.dotfiles/secrets/qutebrowser ];
+in {
+  imports = [~/.dotfiles/secrets/qutebrowser];
 
   options.richard.browser.http.qutebrowser = {
     enable = mkOption {
@@ -92,13 +94,13 @@ in
         changelog_after_upgrade = "patch";
         completion = {
           height = "33%";
-          open_categories = [ "searchengines" "quickmarks" "filesystem" "history" ];
+          open_categories = ["searchengines" "quickmarks" "filesystem" "history"];
           scrollbar.padding = 1;
           scrollbar.width = 7;
           shrink = true;
           timestamp_format = "%H:%M %d-%m-%y";
         };
-        confirm_quit = [ "downloads" ];
+        confirm_quit = ["downloads"];
         content = {
           autoplay = false;
           blocking.adblock.lists = [
@@ -119,17 +121,17 @@ in
           position = "bottom";
           remove_finished = 180000;
         };
-        editor.command = [ "${terminal}" "-e" "${terminal-editor}" "{}" ];
+        editor.command = ["${terminal}" "-e" "${terminal-editor}" "{}"];
         keyhint.delay = 0;
         scrolling = {
           bar = "never";
           smooth = true;
         };
         session.default_name = "default";
-        spellcheck.languages = [ "en-GB" ];
+        spellcheck.languages = ["en-GB"];
         statusbar = {
           show = "in-mode";
-          widgets = [ "keypress" "history" "url" "progress" "scroll" "tabs" ];
+          widgets = ["keypress" "history" "url" "progress" "scroll" "tabs"];
         };
         tabs = {
           indicator.width = 0;
@@ -146,7 +148,7 @@ in
         url = {
           default_page = "/home/richard/.dotfiles/modules/users/browser/start/index.html";
           open_base_url = true;
-          start_pages = [ "/home/richard/.dotfiles/modules/users/browser/start/index.html" ];
+          start_pages = ["/home/richard/.dotfiles/modules/users/browser/start/index.html"];
         };
         window.title_format = "{perc}{audio}{private}{current_title}{title_sep}qutebrowser";
         zoom.levels = [
@@ -179,7 +181,7 @@ in
               fg = bright_yellow;
             };
             even.bg = bg0_hard;
-            fg = [ fg1 bright_blue bright_yellow ];
+            fg = [fg1 bright_blue bright_yellow];
             item.selected = {
               bg = bg1;
               border = {
@@ -386,7 +388,7 @@ in
         # };
         fonts = {
           contextmenu = "Noto Sans";
-          default_family = [ "JetBrainsMono Nerd Font" ];
+          default_family = ["JetBrainsMono Nerd Font"];
           default_size = "14px";
           web.family = {
             sans_serif = "Noto Sans";

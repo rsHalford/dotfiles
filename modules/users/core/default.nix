@@ -1,14 +1,16 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.richard.core;
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
   preferred-browser = config.richard.browser.http.preferred;
-in
-{
+in {
   options.richard.core = {
     enable = mkOption {
       description = "Enable a set of common settings for user setup";
@@ -20,7 +22,7 @@ in
   config = mkIf (cfg.enable) {
     home = {
       packages = with pkgs; [
-        (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+        (nerdfonts.override {fonts = ["JetBrainsMono"];})
         google-fonts
         twemoji-color-font
         xdg-utils
@@ -32,7 +34,10 @@ in
         EDITOR = "${terminal-editor}";
         VISUAL = "${graphical-editor}";
         BROWSER = "${preferred-browser}";
-        TERM = if "${terminal}" == "footclient" then "foot" else "${terminal}";
+        TERM =
+          if "${terminal}" == "footclient"
+          then "foot"
+          else "${terminal}";
         READER = "zathura";
         VIDEO = "mpv";
         IMAGE = "imv";
@@ -101,8 +106,8 @@ in
           type = "Application";
           exec = "element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland %u";
           icon = "element";
-          categories = [ "Network" "InstantMessaging" "Chat" ];
-          mimeType = [ "x-scheme-handler/element" ];
+          categories = ["Network" "InstantMessaging" "Chat"];
+          mimeType = ["x-scheme-handler/element"];
         };
       };
       mimeApps = {

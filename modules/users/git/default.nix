@@ -1,11 +1,13 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.richard.git;
   terminal-editor = config.richard.terminal.utilities.editor;
-in
-{
+in {
   options.richard.git = {
     enable = mkOption {
       description = "Enable git";

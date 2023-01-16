@@ -1,10 +1,12 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
-  cfg = config.richard.graphical.virtualisation;
-in
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.richard.graphical.virtualisation;
+in {
   options.richard.graphical.virtualisation = {
     enable = mkOption {
       description = "Enable virt-manager";

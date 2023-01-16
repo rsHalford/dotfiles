@@ -1,12 +1,14 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.richard.graphical.menu;
   terminal = config.richard.terminal.emulator.program;
   inherit (config.lib.formats.rasi) mkLiteral;
-in
-{
+in {
   options.richard.graphical.menu = {
     enable = mkOption {
       description = "Enable menu";
@@ -162,7 +164,7 @@ in
             spacing = mkLiteral "0";
             text-color = mkLiteral "@foreground";
             padding = mkLiteral "1px";
-            children = map mkLiteral [ "prompt" "textbox-prompt-sep" "entry" "case-indicator" ];
+            children = map mkLiteral ["prompt" "textbox-prompt-sep" "entry" "case-indicator"];
           };
           "case-indicator" = {
             spacing = mkLiteral "0";

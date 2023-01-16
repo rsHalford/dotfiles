@@ -1,14 +1,15 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   boot = {
     loader = {
@@ -18,17 +19,16 @@
       };
       grub = {
         enable = true;
-        devices = [ "nodev" ];
+        devices = ["nodev"];
         efiSupport = true;
-        extraEntries =
-          ''
-            menuentry "Reboot" {
-              reboot
-            }
-            menuentry "Shutdown" {
-              halt
-            }
-          '';
+        extraEntries = ''
+          menuentry "Reboot" {
+            reboot
+          }
+          menuentry "Shutdown" {
+            halt
+          }
+        '';
         useOSProber = true;
         version = 2;
       };
@@ -53,14 +53,13 @@
   };
 
   environment = {
-    loginShellInit =
-      ''
-        if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-          exec sway
-        fi
-      '';
-    pathsToLink = [ "/share/zsh" ];
-    shells = [ pkgs.zsh ];
+    loginShellInit = ''
+      if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+        exec sway
+      fi
+    '';
+    pathsToLink = ["/share/zsh"];
+    shells = [pkgs.zsh];
     systemPackages = with pkgs; [
       brightnessctl
       cachix
@@ -86,10 +85,9 @@
       options = "--delete-older-than 14d";
       persistent = true;
     };
-    extraOptions =
-      ''
-        experimental-features = nix-command flakes
-      '';
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
   };
 
   programs.sway.enable = true;
@@ -126,4 +124,3 @@
 
   system.stateVersion = "21.11";
 }
-

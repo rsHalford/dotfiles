@@ -1,10 +1,12 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
-  cfg = config.richard.suite.office;
-in
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.richard.suite.office;
+in {
   options.richard.suite.office = {
     enable = mkOption {
       description = "Enable office suite";
@@ -26,7 +28,7 @@ in
       services = {
         protonmail-bridge = {
           Install = {
-            WantedBy = [ "default.target" ];
+            WantedBy = ["default.target"];
           };
           Service = {
             Restart = "always";
@@ -34,7 +36,7 @@ in
           };
           Unit = {
             Description = "Proton Mail Bridge";
-            After = [ "network-target" ];
+            After = ["network-target"];
           };
         };
       };

@@ -1,11 +1,12 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
-  cfg = config.richard.browser.gemini;
-in
 {
-
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.richard.browser.gemini;
+in {
   options.richard.browser.gemini.amfora = {
     enable = mkOption {
       description = "Enable amfora";
@@ -20,12 +21,12 @@ in
         [a-general]
         # Press Ctrl-H to access it
         home = "gemini://gemini.circumlunar.space"
-        
+
         # Follow up to 5 Gemini redirects without prompting.
         # A prompt is always shown after the 5th redirect and for redirects to protocols other than Gemini.
         # If set to false, a prompt will be shown before following redirects.
         auto_redirect = false
-        
+
         # What command to run to open a HTTP(S) URL.
         # Set to "default" to try to guess the browser, or set to "off" to not open HTTP(S) URLs.
         # If a command is set, than the URL will be added (in quotes) to the end of the command.
@@ -40,56 +41,56 @@ in
         # Note the use of single quotes, so that backslashes will not be escaped.
         # Using just a string will also work, but it is deprecated, and will degrade if
         # you use paths with spaces.
-        
+
         http = 'default'
-        
+
         # Any URL that will accept a query string can be put here
         search = "gemini://geminispace.info/search"
-        
+
         # Whether colors will be used in the terminal
         color = true
-        
+
         # Whether ANSI color codes from the page content should be rendered
         ansi = true
-        
+
         # Whether or not to support source code highlighting in preformatted blocks based on alt text
         highlight_code = true
-        
+
         # Which highlighting style to use (see https://xyproto.github.io/splash/docs/)
         highlight_style = "monokai"
-        
+
         # Whether to replace list asterisks with unicode bullets
         bullets = true
-        
+
         # Whether to show link after link text
         show_link = false
-        
+
         # The max number of columns to wrap a page's text to. Preformatted blocks are not wrapped.
         max_width = 80
-        
+
         # 'downloads' is the path to a downloads folder.
         # An empty value means the code will find the default downloads folder for your system.
         # If the path does not exist it will be created.
         # Note the use of single quotes, so that backslashes will not be escaped.
         downloads = ""
-        
+
         # Max size for displayable content in bytes - after that size a download window pops up
         page_max_size = 2097152  # 2 MiB
         # Max time it takes to load a page in seconds - after that a download window pops up
         page_max_time = 10
-        
+
         # When a scrollbar appears. "never", "auto", and "always" are the only valid values.
         # "auto" means the scrollbar only appears when the page is longer than the window.
         scrollbar = "auto"
-        
+
         # Underline non-gemini URLs
         # This is done to help color blind users
         underline = true
-        
+
         [auth]
         # Authentication settings
         # Note the use of single quotes for values, so that backslashes will not be escaped.
-        
+
         [auth.certs]
         # Client certificates
         # Set URL equal to path to client cert file
@@ -99,11 +100,11 @@ in
         #
         # See the comment at the beginning of this file for examples of all valid types of
         # URLs, ports and schemes can be used too
-        
+
         [auth.keys]
         # Client certificate keys
         # Same as [auth.certs] but the path is to the client key file.
-        
+
         [keybindings]
         # If you have a non-US keyboard, use bind_tab1 through bind_tab0 to
         # setup the shift-number bindings: Eg, for US keyboards (the default):
@@ -117,27 +118,27 @@ in
         # bind_tab8 = "*"
         # bind_tab9 = "("
         # bind_tab0 = ")"
-        
+
         # Whitespace is not allowed in any of the keybindings! Use 'Space' and 'Tab' to bind to those keys.
         # Multiple keys can be bound to one command, just use a TOML array.
         # To add the Alt modifier, the binding must start with Alt-, should be reasonably universal
         # Ctrl- won't work on all keys, see this for a list:
         # https://github.com/gdamore/tcell/blob/cb1e5d6fa606/key.go#L83
-        
+
         # An example of a TOML array for multiple keys being bound to one command is the default
         # binding for reload:
         # bind_reload = ["R","Ctrl-R"]
         # One thing to note here is that "R" is capitalization sensitive, so it means shift-r.
         # "Ctrl-R" means both ctrl-r and ctrl-shift-R (this is a quirk of what ctrl-r means on
         # an ANSI terminal)
-        
+
         # The default binding for opening the bottom bar for entering a URL or link number is:
         # bind_bottom = "Space"
         # This is how to get the Spacebar as a keybinding, if you try to use " ", it won't work.
         # And, finally, an example of a simple, unmodified character is:
         # bind_edit = "e"
         # This binds the "e" key to the command to edit the current URL.
-        
+
         # The bind_link[1-90] options are for the commands to go to the first 10 links on a page,
         # typically these are bound to the number keys:
         # bind_link1 = "1"
@@ -150,7 +151,7 @@ in
         # bind_link8 = "8"
         # bind_link9 = "9"
         # bind_link0 = "0"
-        
+
         # All keybindings:
         #
         # bind_bottom
@@ -181,7 +182,7 @@ in
         # bind_beginning: moving to beginning of page (top left)
         # bind_end: same but the for the end (bottom left)
         # bind_url_handler_open: Open highlighted URL with URL handler (#143)
-        
+
         [url-handlers]
         # Allows setting the commands to run for various URL schemes.
         # E.g. to open FTP URLs with FileZilla set the following key:
@@ -203,13 +204,13 @@ in
         # Note the use of single quotes, so that backslashes will not be escaped.
         # Using just a string will also work, but it is deprecated, and will degrade if
         # you use paths with spaces.
-        
+
         # This is a special key that defines the handler for all URL schemes for which
         # no handler is defined.
         # It uses the special value 'default', which will try and use the default
         # application on your computer for opening this kind of URI.
         other = 'default'
-        
+
         [url-prompts]
         # Specify whether a confirmation prompt should be shown before following URL schemes.
         # The special key 'other' matches all schemes that don't match any other key.
@@ -222,7 +223,7 @@ in
         # other = false
         # http = true
         # https = true
-        
+
         # [[mediatype-handlers]] section
         # ---------------------------------
         #
@@ -290,18 +291,18 @@ in
         # 1. Full media type: "image/jpeg"
         # 2. Just type: "image"
         # 3. Catch-all: "*"
-        
+
         [cache]
         # Options for page cache - which is only for text pages
         # Increase the cache size to speed up browsing at the expense of memory
         # Zero values mean there is no limit
-        
+
         max_size = 0  # Size in bytes
         max_pages = 30 # The maximum number of pages the cache will store
-        
+
         # How long a page will stay in cache, in seconds.
         timeout = 1800 # 30 mins
-        
+
         [proxies]
         # Allows setting a Gemini proxy for different schemes.
         # The settings are similar to the url-handlers section above.
@@ -314,31 +315,31 @@ in
         # the url-handlers section.
         #
         # Note that HTTP and HTTPS are treated as separate protocols here.
-        
+
         [subscriptions]
         # For tracking feeds and pages
-        
+
         # Whether a pop-up appears when viewing a potential feed
         popup = true
-        
+
         # How often to check for updates to subscriptions in the background, in seconds.
         # Set it to 0 to disable this feature. You can still update individual feeds
         # manually, or restart the browser.
         #
         # Note Amfora will check for updates on browser start no matter what this setting is.
         update_interval = 1800 # 30 mins
-        
+
         # How many subscriptions can be checked at the same time when updating.
         # If you have many subscriptions you may want to increase this for faster
         # update times. Any value below 1 will be corrected to 1.
         workers = 3
-        
+
         # The number of subscription updates displayed per page.
         entries_per_page = 20
-        
+
         # Set to false to remove the explanatory text from the top of the subscription page
         header = true
-        
+
         [theme]
         # This section is for changing the COLORS used in Amfora.
         # These colors only apply if 'color' is enabled above.
@@ -347,12 +348,12 @@ in
         # If your terminal has transparency, set any background to "default" to keep it transparent
         # The key "bg" is already set to "default", but this can be used on other backgrounds,
         # like for modals.
-        
+
         # Note that not all colors will work on terminals that do not have truecolor support.
         # If you want to stick to the standard 16 or 256 colors, you can get
         # a list of those here: https://jonasjacek.github.io/colors/
         # DO NOT use the names from that site, just the hex codes.
-        
+
         # Definitions:
         #   bg = background
         #   fg = foreground
@@ -361,14 +362,14 @@ in
         #   hdg = heading
         #   bkmk = bookmark
         #   modal = a popup window/box in the middle of the screen
-        
+
         # EXAMPLES:
         # hdg_1 = "green"
         # hdg_2 = "#5f0000"
         # bg = "default"
-        
+
         # Available keys to set:
-        
+
         # bg: background for pages, tab row, app in general
         # tab_num: The number/highlight of the tabs at the top
         # tab_divider: The color of the divider character between tab numbers: |
@@ -376,7 +377,7 @@ in
         # bottombar_text: The color of the text you type
         # bottombar_bg
         # scrollbar: The scrollbar that appears on the right for long pages
-        
+
         # You can also set an 'include' key to process another TOML file that contains theme keys.
         # Example:
         #   include = "my/path/to/special-theme.toml"
@@ -384,7 +385,7 @@ in
         # Any other theme keys will override this external file.
         # You can use this special key to switch between themes easily.
         # Download other themes here: https://github.com/makeworld-the-better-one/amfora/tree/master/contrib/themes
-        
+
         # hdg_1
         # hdg_2
         # hdg_3
@@ -395,10 +396,10 @@ in
         # quote_text
         # preformatted_text
         # list_text
-        
+
         # btn_bg: The bg color for all modal buttons
         # btn_text: The text color for all modal buttons
-        
+
         # dl_choice_modal_bg
         # dl_choice_modal_text
         # dl_modal_bg
@@ -413,12 +414,12 @@ in
         # tofu_modal_text
         # subscription_modal_bg
         # subscription_modal_text
-        
+
         # input_modal_bg
         # input_modal_text
         # input_modal_field_bg: The bg of the input field, where you type the text
         # input_modal_field_text: The color of the text you type
-        
+
         # bkmk_modal_bg
         # bkmk_modal_text
         # bkmk_modal_label

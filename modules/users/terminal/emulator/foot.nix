@@ -1,7 +1,10 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.richard.terminal.emulator;
   background = "232136";
   foreground = "e0def4";
@@ -16,8 +19,7 @@ let
   selection-background = "44415a";
   selection-foreground = "e0def4";
   jump-labels = "232136 c4a7e7";
-in
-{
+in {
   config = mkIf (cfg.program == "foot") {
     programs.foot = {
       enable = true;

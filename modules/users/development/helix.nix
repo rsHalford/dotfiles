@@ -1,10 +1,12 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
-  cfg = config.richard.development.helix;
-in
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.richard.development.helix;
+in {
   options.richard.development.helix = {
     enable = mkOption {
       description = "Enable editing with helix editor";
@@ -39,7 +41,7 @@ in
             completion-trigger-len = 0;
             cursorline = true;
             cursorcolumn = true;
-            gutters = [ "diff" "diagnostics" "line-numbers" "spacer" ];
+            gutters = ["diff" "diagnostics" "line-numbers" "spacer"];
             idle-timeout = 0;
             line-number = "relative";
             lsp = {
@@ -49,13 +51,13 @@ in
             };
             middle-click-paste = true;
             mouse = true;
-            rulers = [ 80 120 ];
+            rulers = [80 120];
             scroll-lines = 2;
             scrolloff = 8;
-            shell = [ "sh" "-c" ];
+            shell = ["sh" "-c"];
             statusline = {
-              left = [ "mode" "spinner" "file-name" ];
-              center = [ ];
+              left = ["mode" "spinner" "file-name"];
+              center = [];
               right = [
                 "diagnostics"
                 "file-encoding"
@@ -100,8 +102,8 @@ in
           };
           keys = {
             normal = {
-              n = [ "search_next" "align_view_center" ];
-              N = [ "search_prev" "align_view_center" ];
+              n = ["search_next" "align_view_center"];
+              N = ["search_prev" "align_view_center"];
             };
             # picker = {
             #   "C-j" = "next_entry";
@@ -124,43 +126,43 @@ in
             fg2 = "#d5c4a1";
             fg3 = "#bdae93";
             fg4 = "#a89984";
-            red1= "#fb4934";
-            green1= "#b8bb26";
-            yellow1= "#fabd2f";
-            blue1= "#83a598";
-            purple1= "#d3869b";
-            aqua1= "#8ec07c";
-            gray1= "#928374";
-            orange1= "#fe8019";
+            red1 = "#fb4934";
+            green1 = "#b8bb26";
+            yellow1 = "#fabd2f";
+            blue1 = "#83a598";
+            purple1 = "#d3869b";
+            aqua1 = "#8ec07c";
+            gray1 = "#928374";
+            orange1 = "#fe8019";
             red0 = "#cc241d";
             green0 = "#98971a";
             yellow0 = "#d79921";
             blue0 = "#458588";
             purple0 = "#b16286";
-            aqua0 = "#689d6"r;
+            aqua0 = "#689d6" r;
             gray0 = "#a89984";
             orange0 = "#d65d0e";
           in {
-          # Syntax Highlighting
+            # Syntax Highlighting
             "comment" = {
               fg = gray1;
-              modifiers = [ "italic" ];
+              modifiers = ["italic"];
             };
             "constant" = {
               fg = purple1;
             };
             "constant.builtin" = {
               fg = purple1;
-              modifiers = [ "bold" ];
+              modifiers = ["bold"];
             };
             "constant.character.escape" = {
               fg = fg2;
-              modifiers = [ "bold" ];
+              modifiers = ["bold"];
             };
             "constant.numeric" = purple1;
             "constructor" = {
               fg = purple1;
-              modifiers = [ "bold" ];
+              modifiers = ["bold"];
             };
             "diff.plus" = green1;
             "diff.minus" = red1;
@@ -168,7 +170,7 @@ in
             "diff.delta.moved" = aqua1;
             "function" = {
               fg = green1;
-              modifiers = [ "bold" ];
+              modifiers = ["bold"];
             };
             "function.builtin" = yellow1;
             "function.macro" = aqua1;
@@ -179,14 +181,14 @@ in
             "label" = aqua1;
             "markup.heading" = aqua1;
             "markup.bold" = {
-              modifiers = [ "bold" ];
+              modifiers = ["bold"];
             };
             "markup.italic" = {
-              modifiers = [ "italic" ];
+              modifiers = ["italic"];
             };
             "markup.link.url" = {
               fg = green1;
-              modifiers = [ "underlined" ];
+              modifiers = ["underlined"];
             };
             "markup.link.text" = red1;
             "markup.raw" = red1;
@@ -212,7 +214,7 @@ in
             # "string.regexp" "string.special[ .path .url .symbol ]"
             # "variable.function"
 
-          # Helix Interface
+            # Helix Interface
             # "markup[ .heading[ .completion .hover ] .normal[ .completion .hover ] .raw[ inline[ .completion .hover ] ] ] ]"
 
             "attribute" = aqua1;
@@ -226,7 +228,7 @@ in
             };
             "hint" = {
               bg = bg0_hard;
-              fg = blue1; 
+              fg = blue1;
             };
             "info" = {
               bg = bg0_hard;
@@ -239,7 +241,7 @@ in
 
             # Editing Area
             "diagnostic" = {
-              modifiers = [ "underlined" ];
+              modifiers = ["underlined"];
             };
             "diagnostic.error" = {
               bg = bg0_hard;
@@ -247,7 +249,7 @@ in
             };
             "diagnostic.hint" = {
               bg = bg0_hard;
-              fg = yellow1; 
+              fg = yellow1;
             };
             "diagnostic.info" = {
               bg = bg0_hard;
@@ -261,7 +263,8 @@ in
             "ui.background" = {
               bg = bg0_hard;
             };
-            "ui.background.separator" = { # line beneath picker input
+            "ui.background.separator" = {
+              # line beneath picker input
               fg = bg4;
             };
             # "ui.cursor"
@@ -272,7 +275,7 @@ in
               bg = bg3;
             };
             "ui.cursor.primary" = {
-              modifiers = [ "reversed" ];
+              modifiers = ["reversed"];
             };
             "ui.cursor.select" = {
               bg = gray1;
@@ -295,7 +298,7 @@ in
             "ui.menu.selected" = {
               bg = blue1;
               fg = bg1;
-              modifiers = [ "bold" ];
+              modifiers = ["bold"];
             };
             "ui.popup" = {
               bg = bg1;

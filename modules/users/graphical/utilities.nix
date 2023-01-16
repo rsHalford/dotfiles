@@ -1,7 +1,10 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.richard.graphical.utilities;
   terminal = config.richard.terminal.emulator.program;
   background = "#232136";
@@ -15,8 +18,7 @@ let
   cyan = "#ea9a97"; # cyan rose
   white = "#e0def4"; # white text
   inactive = "#908caa";
-in
-{
+in {
   options.richard.graphical.utilities = {
     enable = mkOption {
       description = "Enable graphical utilities";
@@ -26,7 +28,7 @@ in
 
     editor = mkOption {
       description = "Choose your preferred graphical editor";
-      type = types.enum [ "emacs" "emacsclient -c" ];
+      type = types.enum ["emacs" "emacsclient -c"];
       default = "emacs";
     };
   };
@@ -87,16 +89,16 @@ in
             spacing = 0;
             fixed-center = false;
             ipc = true;
-            modules-left = [ "sway/workspaces" "sway/mode" ];
+            modules-left = ["sway/workspaces" "sway/mode"];
             "sway/workspaces" = {
               disable-scroll = true;
             };
             "sway/mode" = {
               format = "<span style=\"italic\">{}</span>";
             };
-            modules-center = [ "sway/window" ];
+            modules-center = ["sway/window"];
             "sway/window" = {
-              format = { };
+              format = {};
             };
             modules-right = [
               "mpd"
@@ -178,10 +180,10 @@ in
                 "playing" = "⏵";
                 "paused" = "⏸";
               };
-              consume-icons = { "on" = "c"; };
-              random-icons = { "on" = "z"; };
-              repeat-icons = { "on" = "r"; };
-              single-icons = { "on" = "s"; };
+              consume-icons = {"on" = "c";};
+              random-icons = {"on" = "z";};
+              repeat-icons = {"on" = "r";};
+              single-icons = {"on" = "s";};
             };
             "network" = {
               format-wifi = "{icon}";
@@ -259,101 +261,100 @@ in
             };
           }
         ];
-        style =
-          ''
-            * {
-              font-family: JetBrainsMono Nerd Font;
-              font-size: 11.5pt;
-            }
+        style = ''
+          * {
+            font-family: JetBrainsMono Nerd Font;
+            font-size: 11.5pt;
+          }
 
-            window#waybar {
-              background-color: ${background};
-              color: ${white};
-            }
-        
-            #window,
-            #workspaces {
-              margin: 0 4px;
-            }
-        
-            .modules-left > widget:first-child > #workspaces {
-              margin-left: 0;
-            }
-        
-            #workspaces button {
-              padding: 0 5px;
-              background-color: ${background};
-              color: ${inactive};
-              border: none;
-              border-radius: 0;
-              box-shadow: none;
-              text-shadow: none;
-            }
-        
-            #workspaces button:hover {
-              box-shadow: inset 0 3px ${blue};
-              transition-property: box-shadow;
-              transition-duration: 250ms;
-            }
-        
-            #workspaces button.focused {
-              background-color: ${blue};
-              color: #fbf1c7;
-            }
-        
-            #workspaces button.urgent {
-              background-color: ${cyan};
-            }
-        
-            #mode {
-              background: ${background};
-              border-top: 3px solid ${white};
-            }
-        
-            #battery,
-            #clock,
-            #cpu,
-            #custom-weather,
-            #disk,
-            #memory,
-            #network,
-            #pulseaudio,
-            #temperature,
-            #tray {
-              padding: 0 8pt;
-              background: ${background};
-              color: ${inactive};
-            }
+          window#waybar {
+            background-color: ${background};
+            color: ${white};
+          }
 
-            #mpd {
-              padding: 0 8pt;
-              border-radius: 0;
-              background: ${black};
-            }
+          #window,
+          #workspaces {
+            margin: 0 4px;
+          }
 
-            #mpd.disconnected {
-              color: ${inactive};
-            }
+          .modules-left > widget:first-child > #workspaces {
+            margin-left: 0;
+          }
 
-            #mpd.playing {
-              color: ${green};
-            }
+          #workspaces button {
+            padding: 0 5px;
+            background-color: ${background};
+            color: ${inactive};
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            text-shadow: none;
+          }
 
-            #mpd.paused {
-              color: ${yellow};
-            }
+          #workspaces button:hover {
+            box-shadow: inset 0 3px ${blue};
+            transition-property: box-shadow;
+            transition-duration: 250ms;
+          }
 
-            #mpd.stopped {
-              color: ${cyan};
-            }
+          #workspaces button.focused {
+            background-color: ${blue};
+            color: #fbf1c7;
+          }
 
-            tooltip {
-              background-color: ${background};
-              color: ${white};
-              border: 2px solid ${green};
-              border-radius: 2px;
-            }
-          '';
+          #workspaces button.urgent {
+            background-color: ${cyan};
+          }
+
+          #mode {
+            background: ${background};
+            border-top: 3px solid ${white};
+          }
+
+          #battery,
+          #clock,
+          #cpu,
+          #custom-weather,
+          #disk,
+          #memory,
+          #network,
+          #pulseaudio,
+          #temperature,
+          #tray {
+            padding: 0 8pt;
+            background: ${background};
+            color: ${inactive};
+          }
+
+          #mpd {
+            padding: 0 8pt;
+            border-radius: 0;
+            background: ${black};
+          }
+
+          #mpd.disconnected {
+            color: ${inactive};
+          }
+
+          #mpd.playing {
+            color: ${green};
+          }
+
+          #mpd.paused {
+            color: ${yellow};
+          }
+
+          #mpd.stopped {
+            color: ${cyan};
+          }
+
+          tooltip {
+            background-color: ${background};
+            color: ${white};
+            border: 2px solid ${green};
+            border-radius: 2px;
+          }
+        '';
         systemd.enable = true;
       };
     };
@@ -365,7 +366,7 @@ in
         size = 16;
       };
       font = {
-        package = with pkgs; (nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
+        package = with pkgs; (nerdfonts.override {fonts = ["JetBrainsMono"];});
         name = "JetBrainsMono Nerd Font";
         size = 11;
       };
@@ -374,7 +375,7 @@ in
         extraConfig = "";
       };
       gtk3 = {
-        extraConfig = { gtk-application-prefer-dark-theme = true; };
+        extraConfig = {gtk-application-prefer-dark-theme = true;};
         extraCss = ''
           menu {
             border-radius: 2px;
@@ -383,7 +384,7 @@ in
         '';
       };
       gtk4 = {
-        extraConfig = { };
+        extraConfig = {};
       };
       iconTheme = {
         package = pkgs.papirus-icon-theme;

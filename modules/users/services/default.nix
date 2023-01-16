@@ -1,10 +1,12 @@
-{ pkgs, config, lib, ... }:
-with lib;
-
-let
-  cfg = config.richard.services;
-in
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.richard.services;
+in {
   options.richard.services = {
     blueman.enable = mkOption {
       description = "Enable blueman applet";
@@ -110,11 +112,13 @@ in
             ];
           };
           laptop_undocked = {
-            outputs = [{
-              criteria = "eDP-1";
-              position = "0,0";
-              status = "enable";
-            }];
+            outputs = [
+              {
+                criteria = "eDP-1";
+                position = "0,0";
+                status = "enable";
+              }
+            ];
           };
           laptop_docked = {
             outputs = [
@@ -182,7 +186,7 @@ in
       services = {
         bing-wp = {
           Install = {
-            WantedBy = [ "multi-user.target" ];
+            WantedBy = ["multi-user.target"];
           };
           Service = {
             Type = "simple";
@@ -190,26 +194,26 @@ in
           };
           Unit = {
             Description = "Daily Bing wallpaper service";
-            After = [ "network-online.target" ];
-            Wants = [ "network-online.target" ];
+            After = ["network-online.target"];
+            Wants = ["network-online.target"];
           };
         };
         newsboat = {
           Install = {
-            WantedBy = [ "multi-user.target" ];
+            WantedBy = ["multi-user.target"];
           };
           Service = {
             ExecStart = "${pkgs.newsboat}/bin/newsboat -x reload";
           };
           Unit = {
             Description = "Newsboat automatic reload service";
-            After = [ "network-online.target" ];
-            Wants = [ "network-online.target" ];
+            After = ["network-online.target"];
+            Wants = ["network-online.target"];
           };
         };
         random-wallpaper = {
           Install = {
-            WantedBy = [ "multi-user.target" ];
+            WantedBy = ["multi-user.target"];
           };
           Service = {
             Type = "simple";
@@ -223,7 +227,7 @@ in
       timers = {
         bing-wp = {
           Install = {
-            WantedBy = [ "graphical-session.target" ];
+            WantedBy = ["graphical-session.target"];
           };
           Timer = {
             OnCalendar = "*-*-* 01:00:00";
@@ -235,7 +239,7 @@ in
         };
         newsboat = {
           Install = {
-            WantedBy = [ "timers.target" ];
+            WantedBy = ["timers.target"];
           };
           Timer = {
             OnStartupSec = "1min";
@@ -247,7 +251,7 @@ in
         };
         random-wallpaper = {
           Install = {
-            WantedBy = [ "timers.target" ];
+            WantedBy = ["timers.target"];
           };
           Timer = {
             OnCalendar = "*:0/10";
