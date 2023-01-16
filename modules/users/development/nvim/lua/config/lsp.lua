@@ -5,7 +5,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- on_attach
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
       desc = '[L]SP: ' .. desc
@@ -28,13 +28,9 @@ local on_attach = function(client, bufnr)
   nmap(']d', vim.diagnostic.goto_next, 'Goto next [D]iagnostic error')
   nmap('[d', vim.diagnostic.goto_prev, 'Goto prev [D]iagnostic error')
 
-  vim.api.nvim_create_autocmd('BufWritePre', {
+  vim.api.nvim_create_autocmd('BufWritePost', {
     callback = function()
-      if client.supports_method 'textDocument/formatting' then
-        vim.lsp.buf.format()
-      else
-        vim.cmd 'FormatWrite'
-      end
+      vim.cmd 'FormatWrite'
     end,
     desc = 'Format current buffer with LSP',
   })
@@ -109,7 +105,6 @@ require('luasnip.loaders.from_vscode').lazy_load()
 -- null-ls
 local null = require 'null-ls'
 local bc = null.builtins.code_actions
-local bd = null.builtins.diagnostics
 local bf = null.builtins.formatting
 
 null.setup {
