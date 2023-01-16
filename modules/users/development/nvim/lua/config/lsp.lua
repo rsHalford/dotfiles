@@ -132,26 +132,25 @@ null.setup {
 }
 
 -- nvim-lint
-local lint = require 'lint'
-
-lint.linters_by_ft = {
-  go = { 'golangcilint' },
-  lua = { 'selene' },
-  markdown = { 'vale' }, -- 'markdownlint',
-  nix = { 'nix' }, --, 'statix' },
-  python = { 'mypy', 'ruff' },
-  sh = { 'shellcheck' },
-  -- { 'codespell' },
-}
-
-local lintG = vim.api.nvim_create_augroup('Lint', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-  group = lintG,
-  callback = function()
-    require('lint').try_lint()
-  end,
-  desc = 'Run linter after writing to the file',
-})
+do
+  local lint = require 'lint'
+  lint.linters_by_ft = {
+    go = { 'golangcilint' },
+    lua = { 'selene' },
+    markdown = { 'vale' }, -- 'markdownlint',
+    nix = { 'nix' }, --, 'statix' },
+    python = { 'mypy', 'ruff' },
+    sh = { 'shellcheck' },
+    -- { 'codespell' },
+  }
+  vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufEnter', 'BufLeave' }, {
+    group = vim.api.nvim_create_augroup('Lint', { clear = true }),
+    callback = function()
+      lint.try_lint()
+    end,
+    desc = 'Run linter after writing to the file',
+  })
+end
 
 -- formatter
 local format = require 'formatter'
