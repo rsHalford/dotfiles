@@ -30,6 +30,7 @@ in {
         nil
         nodePackages."@astrojs/language-server"
         nodePackages.bash-language-server
+        nodePackages.prettier
         nodePackages.svelte-language-server
         nodePackages.typescript
         nodePackages.typescript-language-server

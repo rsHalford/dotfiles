@@ -105,7 +105,6 @@ require('luasnip.loaders.from_vscode').lazy_load()
 -- null-ls
 local null = require 'null-ls'
 local bc = null.builtins.code_actions
-local bf = null.builtins.formatting
 
 null.setup {
   sources = {
@@ -114,17 +113,13 @@ null.setup {
       bc.refactoring,
       bc.shellcheck,
       -- bc.statix, -- nix code linter
-      bf.black,
       -- bf.cbfmt,
       -- bf.codespell,
       -- bf.emacs_scheme_mode,
-      -- bf.gofmt,
-      bf.prettier,
       -- bf.remark,
       -- bf.ruff,
       -- bf.shellharden,
       -- bf.shfmt,
-      bf.taplo,
     },
     on_attach = on_attach,
     capabilities = capabilities,
@@ -156,15 +151,20 @@ end
 local format = require 'formatter'
 
 format.setup {
-  logging = true,
-  log_level = vim.log.levels.WARN,
+  logging = false,
   filetype = {
-    lua = {
-      require('formatter.filetypes.lua').stylua,
-    },
-    nix = {
-      require('formatter.filetypes.nix').alejandra,
-    },
+    css = { require('formatter.filetypes.css').prettier },
+    html = { require('formatter.filetypes.html').prettier },
+    javascript = { require('formatter.filetypes.javascript').prettier },
+    go = { require('formatter.filetypes.go').gofmt, require('formatter.filetypes.go').gofumpt },
+    lua = { require('formatter.filetypes.lua').stylua },
+    markdown = { require('formatter.filetypes.markdown').prettier },
+    nix = { require('formatter.filetypes.nix').alejandra },
+    python = { require('formatter.filetypes.python').black },
+    rust = { require('formatter.filetypes.rust').rustfmt },
+    toml = { require('formatter.filetypes.toml').taplo },
+    typescript = { require('formatter.filetypes.typescript').prettier },
+    yaml = { require('formatter.filetypes.yaml').prettier },
   },
   ['*'] = {
     require('formatter.filetypes.any').remove_trailing_whitespace,
