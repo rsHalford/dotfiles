@@ -129,30 +129,6 @@ luasnip.config.set_config {
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
--- null-ls
-local null = require 'null-ls'
-local bc = null.builtins.code_actions
-
-null.setup {
-  sources = {
-    sources = {
-      bc.gitsigns,
-      bc.refactoring,
-      bc.shellcheck,
-      -- bc.statix, -- nix code linter
-      -- bf.cbfmt,
-      -- bf.codespell,
-      -- bf.emacs_scheme_mode,
-      -- bf.remark,
-      -- bf.ruff,
-      -- bf.shellharden,
-      -- bf.shfmt,
-    },
-    on_attach = on_attach,
-    capabilities = capabilities,
-  },
-}
-
 -- nvim-lint
 do
   local lint = require 'lint'
