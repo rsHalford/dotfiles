@@ -14,19 +14,26 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap('<leader>lr', vim.lsp.buf.rename, '[R]ename')
-  nmap('<leader>la', vim.lsp.buf.code_action, 'Code [A]ction')
-  nmap('<leader>ld', vim.lsp.buf.definition, '[D]efinition')
-  nmap('<leader>lf', require('telescope.builtin').lsp_references, '[F]ind References')
-  nmap('<leader>li', vim.lsp.buf.implementation, '[I]mplementation')
-  nmap('<leader>lt', vim.lsp.buf.type_definition, '[T]ype Definition')
-  nmap('<leader>lh', vim.lsp.buf.signature_help, 'Signature [H]elp')
+  local vmap = function(keys, func, desc)
+    if desc then
+      desc = '[L]SP: ' .. desc
+    end
+
+    vim.keymap.set('v', keys, func, { buffer = bufnr, desc = desc })
+  end
+
+  nmap('<leader>lr', '<cmd>Lspsaga rename<CR>', '[R]ename')
+  nmap('<leader>la', '<cmd>Lspsaga code_action<CR>', 'Code [A]ction')
+  vmap('<leader>la', '<cmd>Lspsaga code_action<CR>', 'Code [A]ction')
+  nmap('<leader>ld', '<cmd>Lspsaga peek_definition<CR>', 'Peek [D]efinition')
+  nmap('<leader>lf', '<cmd>Lspsaga lsp_finder<CR>', '[F]ind References')
+  nmap('<leader>o', '<cmd>Lspsaga outline<CR>', 'Symbols Outline')
   nmap('<leader>sd', require('telescope.builtin').lsp_document_symbols, '[S]ymbols [D]ocument')
   nmap('<leader>sw', require('telescope.builtin').lsp_workspace_symbols, '[S]ymbols [W]orkspace')
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<leader>e', vim.diagnostic.open_float, 'List Diagnostic [E]rrors')
-  nmap(']d', vim.diagnostic.goto_next, 'Goto next [D]iagnostic error')
-  nmap('[d', vim.diagnostic.goto_prev, 'Goto prev [D]iagnostic error')
+  nmap('K', '<cmd>Lspsaga hover_doc<CR>', 'Hover Documentation')
+  nmap('<leader>e', '<cmd>Lspsaga show_buf_diagnostics<CR>', 'List Diagnostic [E]rrors')
+  nmap(']d', '<cmd>Lspsaga diagnostic_jump_next<CR>', 'Goto next [D]iagnostic error')
+  nmap('[d', '<cmd>Lspsaga diagnostic_jump_prev<CR>', 'Goto prev [D]iagnostic error')
 
   vim.api.nvim_create_autocmd('BufWritePost', {
     callback = function()
@@ -171,6 +178,48 @@ format.setup {
   },
 }
 
+-- lsp-saga
+local saga = require 'lspsaga'
+
+saga.init_lsp_saga {
+  --  scroll_preview = {
+  --    scroll_down = '<M-j>',
+  --    scroll_up = '<M-k>',
+  --  },
+  --  definition = {
+  --    edit = '<CR>',
+  --    quit = { 'q', '<Esc>' },
+  --  },
+  --  code_action = {
+  --    keys = {
+  --      quit = { 'q', '<Esc>' },
+  --      exec = '<CR>',
+  --    },
+  --  },
+  --  lightbulb = {
+  --    enable_in_insert = false,
+  --  },
+  --  diagnostic = {
+  --    keys = {
+  --      exec_action = '<CR>',
+  --      quit = { 'q', '<Esc>' },
+  --    },
+  --  },
+  --  rename = {
+  --    quit = '<Esc>',
+  --    exec = '<CR>',
+  --    in_select = true,
+  --  },
+  --  outline = {
+  --    keys = {
+  --      jump = '<CR>',
+  --      expand_collapse = { 'l', '<Tab>' },
+  --      quit = { 'q', '<Esc>' },
+  --    },
+  --  },
+}
+
+-- neodev
 require('neodev').setup()
 
 -- Install and configure servers

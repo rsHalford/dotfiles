@@ -53,6 +53,7 @@ in {
           formatter-nvim
 
           # UI/UX
+          lspsaga-nvim-original
           rose-pine
           nvim-colorizer-lua
           nvim-web-devicons
