@@ -34,6 +34,26 @@ local on_attach = function(_, bufnr)
   nmap('<leader>e', '<cmd>Lspsaga show_buf_diagnostics<CR>', 'List Diagnostic [E]rrors')
   nmap(']d', '<cmd>Lspsaga diagnostic_jump_next<CR>', 'Goto next [D]iagnostic error')
   nmap('[d', '<cmd>Lspsaga diagnostic_jump_prev<CR>', 'Goto prev [D]iagnostic error')
+  vmap('<leader>rf', [[<Esc><cmd>lua require('refactoring').refactor('Extract Function')<CR>]], 'Extract function')
+  vmap(
+    '<leader>rF',
+    [[<Esc><cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]],
+    'Extract to file'
+  )
+  vmap('<leader>rv', [[<Esc><cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], 'Extract variable')
+  vmap('<leader>ri', [[<Esc><cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], 'Inline variable')
+  nmap('<leader>rb', [[<cmd>lua require('refactoring').refactor('Extract Block')<CR>]], 'Extract block')
+  nmap('<leader>rB', [[<cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]], 'Extract block to file')
+  nmap('<leader>ri', [[<cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], 'Inline variable')
+  vmap('<leader>rl', [[<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>]], 'List refactors')
+  nmap('<leader>rp', [[<cmd>lua require('refactoring').debug.printf({below = false})<CR>]], 'Create printf statement')
+  nmap(
+    '<leader>rP',
+    [[<cmd>lua require('refactoring').debug.print_var({normal = true})<CR>]],
+    'Create print var statement'
+  )
+  vmap('<leader>rP', [[<cmd>lua require('refactoring').debug.print_var()<CR>]], 'Create print var statement')
+  nmap('<leader>rc', [[<cmd>lua require('refactoring').debug.cleanup({})<CR>]], 'Cleanup printf statements')
 
   vim.api.nvim_create_autocmd('BufWritePost', {
     callback = function()
@@ -218,6 +238,11 @@ saga.init_lsp_saga {
   --    },
   --  },
 }
+
+-- refactoring
+local refactor = require 'refactoring'
+
+refactor.setup {}
 
 -- neodev
 require('neodev').setup()
