@@ -12,7 +12,7 @@ tmap('<leader>fo', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], '[F
 tmap('<leader>fs', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], '[F]ile [S]earch')
 tmap('<leader>vh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], '[V]iew [H]elp')
 tmap('<leader>vk', [[<cmd>lua require('telescope.builtin').keymaps()<CR>]], '[V]iew [K]eymaps')
-tmap('<leader>rl', [[<cmd>lua require('telescope.builtin').registers()<CR>]], '[R]egister [L]ist')
+tmap('<leader>vr', [[<cmd>lua require('telescope.builtin').registers()<CR>]], '[V]iew [R]egister')
 
 -- Spell Suggest
 tmap('<leader>sp', [[<cmd>lua require('telescope.builtin').spell_suggest()<CR>]], '[S][P]ell Suggest')
