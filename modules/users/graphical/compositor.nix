@@ -85,7 +85,7 @@ in {
             };
             focus = {
               followMouse = "always";
-              forceWrapping = true;
+              wrapping = "yes";
               mouseWarping = true;
             };
             fonts = {
