@@ -177,42 +177,42 @@ format.setup {
 -- lsp-saga
 local saga = require 'lspsaga'
 
-saga.init_lsp_saga {
-  --  scroll_preview = {
-  --    scroll_down = '<M-j>',
-  --    scroll_up = '<M-k>',
-  --  },
-  --  definition = {
-  --    edit = '<CR>',
-  --    quit = { 'q', '<Esc>' },
-  --  },
-  --  code_action = {
-  --    keys = {
-  --      quit = { 'q', '<Esc>' },
-  --      exec = '<CR>',
-  --    },
-  --  },
-  --  lightbulb = {
-  --    enable_in_insert = false,
-  --  },
-  --  diagnostic = {
-  --    keys = {
-  --      exec_action = '<CR>',
-  --      quit = { 'q', '<Esc>' },
-  --    },
-  --  },
-  --  rename = {
-  --    quit = '<Esc>',
-  --    exec = '<CR>',
-  --    in_select = true,
-  --  },
-  --  outline = {
-  --    keys = {
-  --      jump = '<CR>',
-  --      expand_collapse = { 'l', '<Tab>' },
-  --      quit = { 'q', '<Esc>' },
-  --    },
-  --  },
+saga.setup {
+  scroll_preview = {
+    scroll_down = '<M-j>',
+    scroll_up = '<M-k>',
+  },
+  definition = {
+    edit = '<CR>',
+    quit = { 'q', '<Esc>' },
+  },
+  code_action = {
+    keys = {
+      quit = { 'q', '<Esc>' },
+      exec = '<CR>',
+    },
+  },
+  lightbulb = {
+    enable_in_insert = false,
+  },
+  diagnostic = {
+    keys = {
+      exec_action = '<CR>',
+      quit = { 'q', '<Esc>' },
+    },
+  },
+  rename = {
+    quit = '<Esc>',
+    exec = '<CR>',
+    in_select = true,
+  },
+  outline = {
+    keys = {
+      jump = '<CR>',
+      expand_collapse = { 'l', '<Tab>' },
+      quit = { 'q', '<Esc>' },
+    },
+  },
 }
 
 -- refactoring
