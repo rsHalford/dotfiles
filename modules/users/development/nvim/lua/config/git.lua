@@ -7,7 +7,7 @@ nmap('<leader>gl', ':diffget //3<CR>')
 nmap(
   '<leader>td',
   [[<cmd>lua require('gitsigns').toggle_linehl() require('gitsigns').toggle_deleted()<CR>]],
-  'Toggle Diff View'
+  'Toggle diff view'
 )
 
 local gitsigns = require 'gitsigns'

@@ -1,3 +1,8 @@
+local cmd = vim.cmd
+local nmap = function(keys, func, desc)
+  vim.keymap.set('n', keys, func, { desc = desc })
+end
+
 -- zen mode
 local zen = require 'zen-mode'
 
@@ -18,18 +23,20 @@ zen.setup {
       enabled = true,
       ruler = true,
       showcmd = false,
+      wrap = true,
+      linebreak = true,
     },
     twilight = { enabled = true },
     gitsigns = { enabled = false },
   },
   on_open = function(_)
-    vim.cmd 'cabbrev <buffer> q let b:quitting = 1 <bar> q'
-    vim.cmd 'cabbrev <buffer> wq let b:quitting = 1 <bar> wq'
+    cmd 'cabbrev <buffer> q let b:quitting = 1 <bar> q'
+    cmd 'cabbrev <buffer> wq let b:quitting = 1 <bar> wq'
   end,
   on_close = function()
     if vim.b.quitting == 1 then
       vim.b.quitting = 0
-      vim.cmd 'q'
+      cmd 'q'
     end
   end,
 }
@@ -54,22 +61,17 @@ g.mkdp_command_for_global = 0
 g.mkdp_open_to_the_world = 0
 g.mkdp_filetypes = { 'markdown' }
 
-local proseG = vim.api.nvim_create_augroup('Prose', { clear = true })
+-- writing mode
+local writingG = vim.api.nvim_create_augroup('Writing', { clear = true })
 vim.api.nvim_create_autocmd('VimEnter', {
-  group = proseG,
-  pattern = { '*.ms', '*.mom', '*.me', '*.man', '*.md', '*.mdx*', '*.tex', '*.org', '*.norg', '*.txt' },
+  group = writingG,
+  pattern = { '*.ms', '*.mom', '*.me', '*.man', '*.md', '*.mdx', '*.tex', '*.org', '*.norg', '*.txt' },
   callback = function()
-    require('zen-mode').toggle {
-      plugins = {
-        options = {
-          wrap = true,
-          linebreak = true,
-        },
-      },
-    }
-    vim.opt.spell = true
+    require('zen-mode').toggle()
   end,
-  desc = 'Enter Prose writing mode',
+  desc = 'Enter writing mode',
 })
 
-vim.keymap.set('n', '<leader>tp', [[<cmd>lua require('zen-mode').toggle()<CR>]], { desc = 'Toggle Zen Mode' })
+nmap('<leader>tw', [[<cmd>lua require('zen-mode').toggle()<CR>]], 'Toggle writing mode')
+nmap('<leader>tp', '<cmd>MarkdownPreviewToggle<CR>', 'Toggle markdown preview')
+nmap('<leader>ts', '<cmd>set spell!<CR>', 'Toggle spell suggestions')
