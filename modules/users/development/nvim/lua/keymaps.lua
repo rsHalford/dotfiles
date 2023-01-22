@@ -21,12 +21,12 @@ local imap = function(keys, func, desc, silent)
 end
 
 -- Über Yoinking
-nmap('<leader>y', [["+y]], '[Y]ank movement to clipboard')
-vmap('<leader>y', [["+y]], '[Y]ank selection to clipboard')
-nmap('<leader>Y', [[gg"+yG]], '[Y]ank file to clipboard')
-nmap('<leader>p', [["_dP]], '[P]reserve Yank')
-nmap('<leader>d', [["_d]], '[D]elete movement')
-vmap('<leader>d', [["_d]], '[D]elete selection')
+nmap('<leader>y', [["+y]], 'Yank movement to clipboard')
+vmap('<leader>y', [["+y]], 'Yank selection to clipboard')
+nmap('<leader>Y', [[gg"+yG]], 'Yank file to clipboard')
+nmap('<leader>p', [["_dP]], 'Preserve yank')
+nmap('<leader>d', [["_d]], 'Delete movement')
+vmap('<leader>d', [["_d]], 'Delete selection')
 
 -- Center Next
 nmap('n', 'nzzzv', 'Centre next match')
@@ -93,11 +93,11 @@ nmap('zl', ':vertical resize +5<CR>', 'Increase window width', true)
 nmap('<leader>tu', ':UndotreeToggle<CR>', 'Toggle Undotree')
 
 -- Run Scripts
-nmap('<leader>x', ':!chmod +x %<CR>', 'Make e[X]ecutable', true)
-nmap('<C-c>', ':w<CR>:!compiler %:p<CR><CR>', 'Run [C]ompiler script', true)
+nmap('<leader>x', ':!chmod +x %<CR>', 'Make executable', true)
+nmap('<C-c>', ':w<CR>:!compiler %:p<CR><CR>', 'Run compiler script', true)
 
 -- List document's URLs
-nmap('<leader>u', ':w<Home>silent <End> !urlview<CR>', 'List [U]RLs in buffer')
+nmap('<leader>u', ':w<Home>silent <End> !urlview<CR>', 'List URLs in buffer')
 
 -- Netrw
 g.netrw_banner = 0

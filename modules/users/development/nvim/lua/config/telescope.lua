@@ -5,17 +5,17 @@ local tmap = function(keys, func, desc)
 end
 
 -- Navigate buffers and repos
-tmap('<leader>wf', [[<cmd>lua require('telescope.builtin').git_files()<CR>]], '[W]orkspace [F]ile')
-tmap('<leader>ws', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], '[W]orkspace [S]tring')
-tmap('<leader>fb', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], '[F]ile [B]uffers')
-tmap('<leader>fo', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], '[F]ile [O]ld')
-tmap('<leader>fs', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], '[F]ile [S]earch')
-tmap('<leader>vh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], '[V]iew [H]elp')
-tmap('<leader>vk', [[<cmd>lua require('telescope.builtin').keymaps()<CR>]], '[V]iew [K]eymaps')
-tmap('<leader>vr', [[<cmd>lua require('telescope.builtin').registers()<CR>]], '[V]iew [R]egister')
+tmap('<leader>wf', [[<cmd>lua require('telescope.builtin').git_files()<CR>]], 'Workspace file')
+tmap('<leader>ws', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], 'Workspace String')
+tmap('<leader>fb', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], 'File buffers')
+tmap('<leader>fo', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], 'File old')
+tmap('<leader>fs', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], 'File search')
+tmap('<leader>vh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], 'View help')
+tmap('<leader>vk', [[<cmd>lua require('telescope.builtin').keymaps()<CR>]], 'View keymaps')
+tmap('<leader>vr', [[<cmd>lua require('telescope.builtin').registers()<CR>]], 'View register')
 
 -- Spell Suggest
-tmap('<leader>sp', [[<cmd>lua require('telescope.builtin').spell_suggest()<CR>]], '[S][P]ell Suggest')
+tmap('<leader>sp', [[<cmd>lua require('telescope.builtin').spell_suggest()<CR>]], 'Spell suggest')
 
 -- Telescope
 local previewers = require 'telescope.previewers'
@@ -62,12 +62,12 @@ telescope.setup {
 -- Harpoon
 local harpoon = require 'harpoon'
 
-tmap('<leader>ha', [[<cmd>lua require("harpoon.mark").add_file()<CR>]], '[H]arpoon [A]dd')
+tmap('<leader>ha', [[<cmd>lua require("harpoon.mark").add_file()<CR>]], 'Harpoon add')
 tmap('<C-h>', [[<cmd>lua require("harpoon.ui").nav_file(1)<CR>]])
 tmap('<C-j>', [[<cmd>lua require("harpoon.ui").nav_file(2)<CR>]])
 tmap('<C-k>', [[<cmd>lua require("harpoon.ui").nav_file(3)<CR>]])
 tmap('<C-l>', [[<cmd>lua require("harpoon.ui").nav_file(4)<CR>]])
-tmap('<leader>hm', [[<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>]], '[H]arpoon [M]enu')
+tmap('<leader>hm', [[<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>]], 'Harpoon menu')
 
 harpoon.setup {
   global_settings = {
@@ -82,4 +82,4 @@ local todo = require 'todo-comments'
 
 todo.setup {}
 
-tmap('<leader>wc', [[<cmd>TodoTelescope<CR>]], '[W]orkspace [C]omments')
+tmap('<leader>wc', [[<cmd>TodoTelescope<CR>]], 'Workspace comments')

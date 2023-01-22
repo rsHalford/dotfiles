@@ -114,7 +114,7 @@ lualine.setup {
 -- toggleterm
 local term = require 'toggleterm'
 
-keymap('n', '<leader>tt', [[<cmd>ToggleTerm<CR>]], { noremap = true, silent = true, desc = 'Toggle Terminal' })
+keymap('n', '<leader>tt', [[<cmd>ToggleTerm<CR>]], { noremap = true, silent = true, desc = 'Toggle terminal' })
 
 local set_terminal_keymaps = function()
   local tmap = function(keys, func)

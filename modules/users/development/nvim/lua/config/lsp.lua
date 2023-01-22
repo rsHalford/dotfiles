@@ -8,7 +8,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
-      desc = '[L]SP: ' .. desc
+      desc = 'LSP: ' .. desc
     end
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
@@ -16,24 +16,24 @@ local on_attach = function(_, bufnr)
 
   local vmap = function(keys, func, desc)
     if desc then
-      desc = '[L]SP: ' .. desc
+      desc = 'LSP: ' .. desc
     end
 
     vim.keymap.set('v', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap('<leader>lr', '<cmd>Lspsaga rename<CR>', '[R]ename')
-  nmap('<leader>la', '<cmd>Lspsaga code_action<CR>', 'Code [A]ction')
-  vmap('<leader>la', '<cmd>Lspsaga code_action<CR>', 'Code [A]ction')
-  nmap('<leader>ld', '<cmd>Lspsaga peek_definition<CR>', 'Peek [D]efinition')
-  nmap('<leader>lf', '<cmd>Lspsaga lsp_finder<CR>', '[F]ind References')
-  nmap('<leader>o', '<cmd>Lspsaga outline<CR>', 'Symbols Outline')
-  nmap('<leader>sd', require('telescope.builtin').lsp_document_symbols, '[S]ymbols [D]ocument')
-  nmap('<leader>sw', require('telescope.builtin').lsp_workspace_symbols, '[S]ymbols [W]orkspace')
+  nmap('<leader>lr', '<cmd>Lspsaga rename<CR>', 'Rename')
+  nmap('<leader>la', '<cmd>Lspsaga code_action<CR>', 'Code action')
+  vmap('<leader>la', '<cmd>Lspsaga code_action<CR>', 'Code action')
+  nmap('<leader>ld', '<cmd>Lspsaga peek_definition<CR>', 'Peek definition')
+  nmap('<leader>lf', '<cmd>Lspsaga lsp_finder<CR>', 'Find references')
+  nmap('<leader>o', '<cmd>Lspsaga outline<CR>', 'Symbols outline')
+  nmap('<leader>sd', require('telescope.builtin').lsp_document_symbols, 'Symbols document')
+  nmap('<leader>sw', require('telescope.builtin').lsp_workspace_symbols, 'Symbols workspace')
   nmap('K', '<cmd>Lspsaga hover_doc<CR>', 'Hover Documentation')
-  nmap('<leader>e', '<cmd>Lspsaga show_buf_diagnostics<CR>', 'List Diagnostic [E]rrors')
-  nmap(']d', '<cmd>Lspsaga diagnostic_jump_next<CR>', 'Goto next [D]iagnostic error')
-  nmap('[d', '<cmd>Lspsaga diagnostic_jump_prev<CR>', 'Goto prev [D]iagnostic error')
+  nmap('<leader>e', '<cmd>Lspsaga show_buf_diagnostics<CR>', 'List diagnostic errors')
+  nmap(']d', '<cmd>Lspsaga diagnostic_jump_next<CR>', 'Goto next diagnostic error')
+  nmap('[d', '<cmd>Lspsaga diagnostic_jump_prev<CR>', 'Goto prev diagnostic error')
   vmap('<leader>rf', [[<Esc><cmd>lua require('refactoring').refactor('Extract Function')<CR>]], 'Extract function')
   vmap(
     '<leader>rF',
