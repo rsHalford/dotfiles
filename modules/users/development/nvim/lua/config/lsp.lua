@@ -23,8 +23,8 @@ local on_attach = function(_, bufnr)
   end
 
   nmap('<leader>lr', '<cmd>Lspsaga rename<CR>', 'Rename')
-  nmap('<leader>la', '<cmd>Lspsaga code_action<CR>', 'Code action')
-  vmap('<leader>la', '<cmd>Lspsaga code_action<CR>', 'Code action')
+  nmap('<leader>la', '<cmd>CodeActionMenu<CR>', 'Code action')
+  vmap('<leader>la', '<cmd>CodeActionMenu<CR>', 'Code action')
   nmap('<leader>ld', '<cmd>Lspsaga peek_definition<CR>', 'Peek definition')
   nmap('<leader>lf', '<cmd>Lspsaga lsp_finder<CR>', 'Find references')
   nmap('<leader>o', '<cmd>SymbolsOutline<CR>', 'Symbols outline')
@@ -183,6 +183,18 @@ symbols.setup {
   winblend = 0,
 }
 
+-- nvim-lightbulb
+local bulb = require 'nvim-lightbulb'
+
+bulb.setup {
+  sign = {
+    enabled = false,
+  },
+  virtual_text = {
+    enabled = true,
+  },
+}
+
 -- lsp-saga
 local saga = require 'lspsaga'
 
@@ -195,15 +207,6 @@ saga.setup {
     edit = '<CR>',
     quit = { 'q', '<Esc>' },
   },
-  code_action = {
-    keys = {
-      quit = { 'q', '<Esc>' },
-      exec = '<CR>',
-    },
-  },
-  lightbulb = {
-    enable_in_insert = false,
-  },
   diagnostic = {
     keys = {
       exec_action = '<CR>',
@@ -214,13 +217,6 @@ saga.setup {
     quit = '<Esc>',
     exec = '<CR>',
     in_select = true,
-  },
-  outline = {
-    keys = {
-      jump = '<CR>',
-      expand_collapse = { 'l', '<Tab>' },
-      quit = { 'q', '<Esc>' },
-    },
   },
 }
 

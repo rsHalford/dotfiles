@@ -52,6 +52,7 @@ in {
           nvim-lint
           formatter-nvim
           symbols-outline-nvim
+          nvim-code-action-menu
 
           # UI/UX
           lspsaga-nvim-original
@@ -68,6 +69,7 @@ in {
           which-key-nvim
           undotree
           toggleterm-nvim
+          nvim-lightbulb
 
           # Telescope
           telescope-nvim
