@@ -42,6 +42,7 @@ in {
           luasnip
           cmp-buffer
           cmp_luasnip
+          cmp-nvim-lsp-signature-help
           cmp-nvim-lsp
           cmp-nvim-lua
           cmp-path
