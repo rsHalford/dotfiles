@@ -259,6 +259,7 @@ in {
           pro = "$HOME/Projects";
           # rm = "rm -i";
           v = "${terminal-editor}";
+          zt = "$HOME/Documents/Zettelkasten && ${terminal-editor}";
         };
         shellGlobalAliases = {}; # aliases substituted anywhere on a line
       };
