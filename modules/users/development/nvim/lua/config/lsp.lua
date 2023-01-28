@@ -27,7 +27,7 @@ local on_attach = function(_, bufnr)
   vmap('<leader>la', '<cmd>Lspsaga code_action<CR>', 'Code action')
   nmap('<leader>ld', '<cmd>Lspsaga peek_definition<CR>', 'Peek definition')
   nmap('<leader>lf', '<cmd>Lspsaga lsp_finder<CR>', 'Find references')
-  nmap('<leader>o', '<cmd>Lspsaga outline<CR>', 'Symbols outline')
+  nmap('<leader>o', '<cmd>SymbolsOutline<CR>', 'Symbols outline')
   nmap('<leader>sd', require('telescope.builtin').lsp_document_symbols, 'Symbols document')
   nmap('<leader>sw', require('telescope.builtin').lsp_workspace_symbols, 'Symbols workspace')
   nmap('K', '<cmd>Lspsaga hover_doc<CR>', 'Hover Documentation')
@@ -173,6 +173,14 @@ format.setup {
   ['*'] = {
     require('formatter.filetypes.any').remove_trailing_whitespace,
   },
+}
+
+-- symbols-outline
+local symbols = require 'symbols-outline'
+
+symbols.setup {
+  show_symbol_details = false,
+  winblend = 0,
 }
 
 -- lsp-saga

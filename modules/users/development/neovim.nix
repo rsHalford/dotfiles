@@ -51,6 +51,7 @@ in {
           neodev-nvim
           nvim-lint
           formatter-nvim
+          symbols-outline-nvim
 
           # UI/UX
           lspsaga-nvim-original
