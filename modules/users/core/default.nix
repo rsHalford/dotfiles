@@ -110,10 +110,10 @@ in {
           mimeType = ["x-scheme-handler/element"];
         };
         mullvad-vpn = {
-          name = "Mullvad VPN";
+          name = "Mullvad GUI";
           genericName = "Mullvad VPN Client";
           type = "Application";
-          exec = "mullvad-vpn";
+          exec = "mullvad-gui";
           icon = "mullvad-vpn";
           categories = ["Network"];
         };
