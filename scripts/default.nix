@@ -50,7 +50,16 @@
           ;;
 
           "pkgs")
-              nix-store -qR /run/current-system | sed -n -e 's/\/nix\/store\/[0-9a-z]\{32\}-//p' | sort | uniq
+              nix-store -qR /run/current-system | \
+              sed -n -e 's/\/nix\/store\/[0-9a-z]\{32\}-//p' | sort | uniq
+          ;;
+
+          "search")
+              nix search nixpkgs --json "''${@:2}" | \
+              sed 's/^//' | \
+              jq -r '.[] | "\(.pname)\t\(.description)"' | \
+              column -t -s "$(printf '\t')" | \
+              rg -S --color always "$2"
           ;;
 
           "update")
@@ -61,7 +70,8 @@
           ;;
 
           "which")
-              nix show-derivation "$(which "$2")" | jq -r '.[].outputs.out.path'
+              nix show-derivation "$(which "$2")" | \
+              jq -r '.[].outputs.out.path'
           ;;
 
           "help"|*)
@@ -69,20 +79,31 @@
       clean
       depends
       pkgs
+      search
       update
       which"
+
+              OPTIONS="<argument>
+
+
+
+      <package> -e <pattern>
+
+      <package>"
 
               DESCRIPTIONS="Applies current system configuration defined in dotfiles.
       Runs garbage collection and creates hard-links within nix store.
       Lists dependencies for package.
       Lists all installed packages in nix store.
+      Searches in nixpkgs for a package using the provided arguments.
       Updates the dotfiles flake.lock.
       Returns the path of the given command."
 
               printf "%s\n" "Usage: sys [COMMAND] [OPTIONS]"
               printf "%s\n\n" "Utility tool to manage your NixOS system"
               printf "%s\n" "Commands:"
-              paste <(printf %s "$COMMANDS") <(printf %s "$DESCRIPTIONS")
+              paste <(printf %s "$COMMANDS") <(printf %s "$OPTIONS") <(printf %s "$DESCRIPTIONS") | \
+              column -t -s "$(printf '\t')"
           ;;
       esac
     '';
