@@ -144,7 +144,9 @@ in {
         createDirectories = true;
         desktop = "$HOME";
         extraConfig = {
-          XDG_PROJECTS_DIR = "$HOME/Projects";
+          DOTFILES_DIR = "$HOME/.dotfiles";
+          PROJECTS_DIR = "$HOME/Projects";
+          ZETTELKASTEN_DIR = "$HOME/Documents/Zettelkasten";
         };
         music = "$HOME/Media/Music";
         pictures = "$HOME/Media/Pictures";
