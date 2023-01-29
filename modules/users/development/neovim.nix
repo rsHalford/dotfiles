@@ -71,6 +71,7 @@ in {
           undotree
           toggleterm-nvim
           nvim-lightbulb
+          FixCursorHold-nvim
 
           # Telescope
           telescope-nvim
