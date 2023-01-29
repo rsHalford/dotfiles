@@ -209,13 +209,13 @@ in {
         initExtraFirst = "";
         plugins = [];
         shellAliases = {
-          ca = "$HOME/.cache/";
+          ca = "$XDG_CACHE_HOME";
           cat = "bat";
-          cf = "$HOME/.config/";
+          cf = "$XDG_CONFIG_HOME";
           cp = "cp -i";
-          dl = "$HOME/Downloads";
-          dc = "$HOME/Documents";
-          dot = "$HOME/.dotfiles";
+          dc = "$XDG_DOCUMENTS_DIR";
+          dl = "$XDG_DOWNLOAD_DIR";
+          dot = "$DOTFILES_DIR";
           e = "${terminal-editor}";
           fd = "fd -HI";
           # find = "fd";
@@ -253,14 +253,14 @@ in {
           la = "exa -T -L=3 --group-directories-first";
           lc = "$HOME/.local/";
           lcb = "$HOME/.local/bin/";
-          lcs = "$HOME/.local/share/";
+          lcs = "$XDG_DATA_HOME";
           ls = "exa -lagh -s=.Name --time-style=iso --git --group-directories-first --colour-scale";
           mkdir = "mkdir -pv";
           mv = "mv -i";
-          pro = "$HOME/Projects";
+          pro = "$PROJECTS_DIR";
           # rm = "rm -i";
           v = "${terminal-editor}";
-          zt = "$HOME/Documents/Zettelkasten && ${terminal-editor}";
+          zt = "$ZETTELKASTEN_DIR";
         };
         shellGlobalAliases = {}; # aliases substituted anywhere on a line
       };
