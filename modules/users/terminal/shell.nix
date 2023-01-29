@@ -241,6 +241,7 @@ in {
           grb = "git rebase";
           grep = "grep -i --color=auto --exclude-dir={.git,node_modules}";
           grm = "git rm";
+          grs = "git restore --staged .";
           gsh = "git secret hide";
           gsr = "git secret reveal -f";
           gst = "git status -u";
