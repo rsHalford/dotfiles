@@ -202,10 +202,6 @@ bulb.setup {
 local saga = require 'lspsaga'
 
 saga.setup {
-  scroll_preview = {
-    scroll_down = '<M-j>',
-    scroll_up = '<M-k>',
-  },
   definition = {
     edit = '<CR>',
     quit = { 'q', '<Esc>' },
@@ -223,6 +219,13 @@ saga.setup {
     quit = '<Esc>',
     exec = '<CR>',
     in_select = true,
+  },
+  scroll_preview = {
+    scroll_down = '<M-j>',
+    scroll_up = '<M-k>',
+  },
+  symbol_in_winbar = {
+    enable = false,
   },
 }
 
