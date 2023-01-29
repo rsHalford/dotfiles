@@ -63,6 +63,7 @@ in {
         jq
         libnotify
         neovim
+        ripgrep
         scripts.sysTools
         tldr
         zsh
