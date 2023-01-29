@@ -109,6 +109,14 @@ in {
           categories = ["Network" "InstantMessaging" "Chat"];
           mimeType = ["x-scheme-handler/element"];
         };
+        mullvad-vpn = {
+          name = "Mullvad VPN";
+          genericName = "Mullvad VPN Client";
+          type = "Application";
+          exec = "mullvad-vpn";
+          icon = "mullvad-vpn";
+          categories = ["Network"];
+        };
       };
       mimeApps = {
         enable = true;

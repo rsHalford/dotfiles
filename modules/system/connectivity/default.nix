@@ -67,7 +67,10 @@ in {
     };
 
     networking.wireguard.enable = cfg.vpn.enable;
-    services.mullvad-vpn.enable = cfg.vpn.enable;
+    services.mullvad-vpn = {
+      enable = cfg.vpn.enable;
+      package = pkgs.mullvad-vpn;
+    };
 
     virtualisation.libvirtd.enable = cfg.virtualisation.enable;
   };
