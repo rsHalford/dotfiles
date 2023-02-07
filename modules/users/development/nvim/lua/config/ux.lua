@@ -169,7 +169,6 @@ ntree.setup {
     },
   },
   disable_netrw = false,
-  ignore_ft_on_setup = { 'vim' },
   hijack_cursor = true,
   diagnostics = {
     enable = true,
