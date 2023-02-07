@@ -32,23 +32,23 @@ in {
             ExtensionSettings = {};
           };
         };
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          betterttv
-          browserpass
-          bypass-paywalls-clean
-          clearurls
-          cookie-autodelete
-          darkreader
-          decentraleyes
-          firefox-color
-          honey
-          ublock-origin
-          vimium
-        ];
         profiles = {
           richard = {
             id = 0;
             isDefault = true;
+            extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+              betterttv
+              browserpass
+              bypass-paywalls-clean
+              clearurls
+              cookie-autodelete
+              darkreader
+              decentraleyes
+              firefox-color
+              honey
+              ublock-origin
+              vimium-c
+            ];
             settings = let
               browser = let
                 activityStream = "browser.newtabpage.activity-stream";
