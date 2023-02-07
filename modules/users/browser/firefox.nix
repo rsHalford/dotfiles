@@ -131,6 +131,7 @@ in {
                 "dom.security.https_only_mode" = true;
                 "dom.security.https_only_mode_ever_enabled" = true;
                 "dom.webnotifications.enabled" = false;
+                "ui.systemUsesDarkTheme" = 1;
               };
 
               # webrtc = {

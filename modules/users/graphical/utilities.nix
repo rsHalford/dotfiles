@@ -358,6 +358,11 @@ in {
         systemd.enable = true;
       };
     };
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
+    };
     gtk = {
       enable = true;
       cursorTheme = {
@@ -375,7 +380,7 @@ in {
         extraConfig = "";
       };
       gtk3 = {
-        extraConfig = {gtk-application-prefer-dark-theme = true;};
+        extraConfig = {};
         extraCss = ''
           menu {
             border-radius: 2px;
@@ -392,7 +397,7 @@ in {
       };
       theme = {
         package = pkgs.rose-pine-gtk-theme;
-        name = "Rose-Pine";
+        name = "rose-pine-moon";
       };
     };
   };
