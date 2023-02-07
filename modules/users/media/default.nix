@@ -25,17 +25,37 @@ in {
   };
 
   config = mkIf (cfg.enable) {
-    home.packages = with pkgs; [
-      calibre
-      imv
-      mpc-cli
-      newsboat
-      scripts.ytTools
-      streamlink
-      toot
-      whipper
-      ytfzf
-    ];
+    home = {
+      file."${config.xdg.configHome}/whipper/whipper.conf".text = ''
+        [drive:HL-DT-ST%#ADVDRAM%20GP60NB60%20%3ARF01]
+        vendor = HL-DT-ST
+        model = DVDRAM GP60NB60
+        release = RF01
+        read_offset = 6
+        defeats_cache = False
+
+        [whipper.cd.rip]
+        prompt = False
+        unknown = False
+        cover_art = complete
+        logger = whipper
+        output_directory = ~/Media/Music/
+        working_directory = ~/Media/Music/
+        track_template = %%A/%%d/%%t. %%a - %%n
+        disc_template = %%A/%%d/%%A - %%d
+      '';
+      packages = with pkgs; [
+        calibre
+        imv
+        mpc-cli
+        newsboat
+        scripts.ytTools
+        streamlink
+        toot
+        whipper
+        ytfzf
+      ];
+    };
     programs = {
       mpv = {
         enable = true;
