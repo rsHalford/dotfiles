@@ -21,7 +21,6 @@ in {
       inkscape
       libreoffice-fresh
       qbittorrent
-      thunderbird
     ];
   };
 }

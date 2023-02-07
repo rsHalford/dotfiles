@@ -67,6 +67,9 @@ in {
   };
 
   config = mkIf (cfg.enable) {
+    home.packages = with pkgs; [
+      thunderbird
+    ];
     accounts.email = {
       accounts = {
         inherit "richard@xhalford.com";
