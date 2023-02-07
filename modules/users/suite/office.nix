@@ -20,26 +20,8 @@ in {
       godo
       inkscape
       libreoffice-fresh
-      protonmail-bridge
       qbittorrent
       thunderbird
     ];
-    systemd.user = {
-      services = {
-        protonmail-bridge = {
-          Install = {
-            WantedBy = ["default.target"];
-          };
-          Service = {
-            Restart = "always";
-            ExecStart = "${pkgs.protonmail-bridge}/bin/protonmail-bridge --no-window --log-level info --noninteractive";
-          };
-          Unit = {
-            Description = "Proton Mail Bridge";
-            After = ["network-target"];
-          };
-        };
-      };
-    };
   };
 }

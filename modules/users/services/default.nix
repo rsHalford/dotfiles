@@ -50,6 +50,12 @@ in {
       default = false;
     };
 
+    protonmail-bridge.enable = mkOption {
+      description = "Enable protonmail-bridge";
+      type = types.bool;
+      default = false;
+    };
+
     syncthing.enable = mkOption {
       description = "Enable syncthing";
       type = types.bool;
@@ -64,6 +70,7 @@ in {
       mpd
       mpdris2
       playerctl
+      protonmail-bridge
       scripts.bingTools
       scripts.wallpaperTools
       syncthing
@@ -209,6 +216,19 @@ in {
             Description = "Newsboat automatic reload service";
             After = ["network-online.target"];
             Wants = ["network-online.target"];
+          };
+        };
+        protonmail-bridge = {
+          Install = {
+            WantedBy = ["default.target"];
+          };
+          Service = {
+            Restart = "always";
+            ExecStart = "${pkgs.protonmail-bridge}/bin/protonmail-bridge --no-window --log-level info --noninteractive";
+          };
+          Unit = {
+            Description = "Proton Mail Bridge";
+            After = ["network-target"];
           };
         };
         random-wallpaper = {
