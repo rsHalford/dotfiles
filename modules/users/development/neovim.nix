@@ -19,7 +19,6 @@ in {
     programs = {
       neovim = {
         enable = true;
-        package = pkgs.neovim-nightly;
         extraConfig = ''
           luafile ${builtins.toString ./nvim/init_lua.lua}
           luafile ${builtins.toString ./nvim/lua/keymaps.lua}
