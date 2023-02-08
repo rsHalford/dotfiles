@@ -181,7 +181,10 @@
             syncthing.enable = true;
           };
           suite = {
-            mail.enable = false;
+            mail = {
+              enable = true;
+              client = "thunderbird";
+            };
             office.enable = true;
             tex.enable = true;
           };

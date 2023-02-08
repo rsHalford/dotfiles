@@ -60,15 +60,25 @@ with lib; let
 in {
   options.richard.suite.mail = {
     enable = mkOption {
-      description = "Enable for mu4e setup";
+      description = "Set up user email accounts";
       type = types.bool;
       default = false;
+    };
+
+    client = mkOption {
+      description = "Choose email client. Default is neomutt.";
+      type = types.enum ["neomutt" "thunderbird"];
+      default = "neomutt";
     };
   };
 
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
-      thunderbird
+      (
+        if cfg.client == "thunderbird"
+        then thunderbird
+        else neomutt
+      )
     ];
     accounts.email = {
       accounts = {
