@@ -85,6 +85,7 @@ in {
         enable = true;
         settings = [
           {
+            position = "bottom";
             height = 20;
             spacing = 0;
             fixed-center = false;

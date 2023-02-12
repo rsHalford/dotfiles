@@ -41,7 +41,8 @@ in {
               {
                 command = "\${pkgs.waybar}/bin/waybar";
                 hiddenState = "show";
-                mode = "hide";
+                mode = "dock";
+                position = "bottom";
               }
             ];
             colors = {
