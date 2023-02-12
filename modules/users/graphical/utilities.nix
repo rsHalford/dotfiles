@@ -293,18 +293,19 @@ in {
           }
 
           #workspaces button:hover {
-            box-shadow: inset 0 3px ${blue};
+            box-shadow: inset 0 3px ${green};
             transition-property: box-shadow;
             transition-duration: 250ms;
           }
 
           #workspaces button.focused {
-            background-color: ${blue};
-            color: #fbf1c7;
+            background-color: ${green};
+            color: ${white};
           }
 
           #workspaces button.urgent {
-            background-color: ${cyan};
+            background-color: ${red};
+            color: ${white};
           }
 
           #mode {
