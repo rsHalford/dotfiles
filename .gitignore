@@ -6,3 +6,5 @@ secrets/qutebrowser/quickmarks.nix
 secrets/qutebrowser/searchengines.nix
 secrets/newsboat/default.nix
 secrets/newsboat/urls.nix
+secrets/security/default.nix
+secrets/security/ssh.nix

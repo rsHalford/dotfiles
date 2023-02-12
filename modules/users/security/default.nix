@@ -7,6 +7,8 @@
 with lib; let
   cfg = config.richard.security;
 in {
+  imports = [~/.dotfiles/secrets/security];
+
   options.richard.security = {
     gpg.enable = mkOption {
       description = "Enable gpg";
@@ -64,47 +66,6 @@ in {
         # forwardAgent = false;
         # hashKnownHosts = false;
         # includes = [ ];
-        matchBlocks = {
-          "hydrogen" = {
-            hostname = "xhalford.com";
-            user = "richard";
-            port = 22;
-            identitiesOnly = true;
-            identityFile = "~/.ssh/id_rsa_yubikey.pub";
-          };
-          "github.com" = {
-            hostname = "github.com";
-            identitiesOnly = true;
-            identityFile = "~/.ssh/id_rsa_yubikey.pub";
-          };
-          #   <name> = {
-          #     addressFamily = null;
-          #     certificateFile = [ ];
-          #     checkHostIP = true;
-          #     compression = null;
-          #     dynamicForwards = [
-          #       address = "localhost";
-          #       port = null;
-          #     ];
-          #     extraOptions = { };
-          #     forwardAgent = null;
-          #     forwardX11 = false;
-          #     forwardX11Trusted = false;
-          #     host = "";
-          #     hostname = null;
-          #     identitiesOnly = false;
-          #     identityFile = "";
-          #     localForwards = [ ];
-          #     port = null;
-          #     proxyCommand = null;
-          #     proxyJump = null;
-          #     remoteForwards = [ ];
-          #     sendEnv = [ ];
-          #     serverAliveCountMax = 3;
-          #     serverAliveInterval = 0;
-          #     user = "";
-          #   };
-        };
         # serverAliveCountMax = 3;
         # serverAliveInterval = 0;
         # userKnownHostsFile = "~/.ssh/known_hosts";
