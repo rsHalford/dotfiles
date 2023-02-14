@@ -176,7 +176,7 @@
             kde-connect.enable = true;
             mpd.enable = true;
             mpris.enable = true;
-            newsboat.enable = true;
+            newsboat.enable = false;
             protonmail-bridge.enable = true;
             syncthing.enable = true;
           };

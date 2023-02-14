@@ -205,7 +205,7 @@ in {
             Wants = ["network-online.target"];
           };
         };
-        newsboat = {
+        newsboat = mkIf (cfg.newsboat.enable) {
           Install = {
             WantedBy = ["multi-user.target"];
           };
@@ -218,7 +218,7 @@ in {
             Wants = ["network-online.target"];
           };
         };
-        protonmail-bridge = {
+        protonmail-bridge = mkIf (cfg.protonmail-bridge.enable) {
           Install = {
             WantedBy = ["default.target"];
           };
@@ -257,7 +257,7 @@ in {
             Description = "Daily Bing wallpaper timer";
           };
         };
-        newsboat = {
+        newsboat = mkIf (cfg.newsboat.enable) {
           Install = {
             WantedBy = ["timers.target"];
           };
