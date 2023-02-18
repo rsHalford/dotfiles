@@ -243,7 +243,7 @@ local servers = {
   gopls = {},
   marksman = {},
   nil_ls = {},
-  sumneko_lua = {},
+  lua_ls = {},
   tsserver = {},
 }
 
