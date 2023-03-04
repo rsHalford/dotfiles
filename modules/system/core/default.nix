@@ -59,6 +59,7 @@ in {
       shells = [pkgs.zsh];
       systemPackages = with pkgs; [
         cachix
+        cryptsetup
         git
         jq
         libnotify
