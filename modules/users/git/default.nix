@@ -24,7 +24,7 @@ in {
     userEmail = mkOption {
       description = "Email for git";
       type = types.str;
-      default = "richard@xhalford.com";
+      default = "dev@rshalford.com";
     };
 
     signByDefault = mkOption {
@@ -68,7 +68,7 @@ in {
       ];
       # includes = [ ];
       signing = {
-        key = null;
+        key = "908E7F42";
         signByDefault = cfg.signByDefault;
       };
     };

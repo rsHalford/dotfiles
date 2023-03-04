@@ -147,7 +147,7 @@
           git = {
             enable = true;
             userName = "Richard Halford";
-            userEmail = "richard@xhalford.com";
+            userEmail = "dev@rshalford.com";
             signByDefault = true;
           };
           graphical = {
