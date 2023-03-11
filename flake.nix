@@ -178,7 +178,7 @@
             mpd.enable = true;
             mpris.enable = true;
             newsboat.enable = false;
-            protonmail-bridge.enable = true;
+            protonmail-bridge.enable = false;
             syncthing.enable = true;
           };
           suite = {
