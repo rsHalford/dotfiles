@@ -154,6 +154,29 @@
         umpv "$VID"
       fi
     '';
+
+  mpvTools = with pkgs;
+    writeScriptBin "ff2mpv" ''
+      #!${runtimeShell}
+      FOCUS=$(${sway}/bin/swaymsg -t get_tree | jq -r '..|try select(.focused == true)' | jq ."app_id")
+      PID=$(${procps}/bin/pidof mpv)
+      TIME="0.8"
+      if [ "$FOCUS" = '"firefox"' ]
+      then
+        ${wtype}/bin/wtype yy
+        ${coreutils}/bin/sleep "$TIME"
+        URL="$(${wl-clipboard}/bin/wl-paste)"
+        ${libnotify}/bin/notify-send "Added to MPV Playlist" -t 2000
+        if [ -z "$PID" ]
+        then
+          ${mpv}/bin/umpv "$URL" &
+        else
+          ${mpv}/bin/umpv "$URL"
+        fi
+      else
+        ${libnotify}/bin/notify-send "Firefox not focussed" "Current focus $FOCUS" -t 2000
+      fi
+    '';
 in {
   overlay = final: prev: {
     scripts.screenshotTools = screenshotTools;
@@ -162,5 +185,6 @@ in {
     scripts.wallpaperTools = wallpaperTools;
     scripts.worktreeTools = worktreeTools;
     scripts.ytTools = ytTools;
+    scripts.mpvTools = mpvTools;
   };
 }
