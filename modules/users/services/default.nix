@@ -6,6 +6,10 @@
 }:
 with lib; let
   cfg = config.richard.services;
+  background = "#232136";
+  green = "3e8fb0"; # green pine
+  white = "e0def4"; # white text
+  inactive = "908caa";
 in {
   options.richard.services = {
     blueman.enable = mkOption {
@@ -28,6 +32,12 @@ in {
 
     kde-connect.enable = mkOption {
       description = "Enable KDE Connect";
+      type = types.bool;
+      default = false;
+    };
+
+    mako.enable = mkOption {
+      description = "Enable mako";
       type = types.bool;
       default = false;
     };
@@ -67,6 +77,7 @@ in {
     home.packages = with pkgs; [
       gammastep
       kanshi
+      mako
       mpd
       mpdris2
       playerctl
@@ -146,6 +157,35 @@ in {
       kdeconnect = {
         enable = cfg.kde-connect.enable;
         indicator = true;
+      };
+      mako = {
+        enable = true;
+        actions = true;
+        anchor = "bottom-right";
+        backgroundColor = background;
+        borderColor = green;
+        borderRadius = 2;
+        borderSize = 2;
+        defaultTimeout = 10000;
+        extraConfig = "";
+        font = "JetBrainsMono Nerd Font";
+        format = ''<b>%s</b>\n%b'';
+        groupBy = null;
+        height = 100;
+        iconPath = null;
+        icons = true;
+        ignoreTimeout = false;
+        layer = "overlay";
+        margin = "10,10,5";
+        markup = true;
+        maxIconSize = 32;
+        maxVisible = 5;
+        output = null;
+        padding = "0,10,20";
+        progressColor = "over ${inactive}";
+        sort = "-time";
+        textColor = white;
+        width = 300;
       };
       mpd = {
         enable = cfg.mpd.enable;

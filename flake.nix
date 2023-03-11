@@ -174,6 +174,7 @@
             gammastep.enable = true;
             kanshi.enable = true;
             kde-connect.enable = true;
+            mako.enable = true;
             mpd.enable = true;
             mpris.enable = true;
             newsboat.enable = false;

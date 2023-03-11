@@ -37,7 +37,6 @@ in {
     home.packages = with pkgs; [
       autotiling
       grim
-      mako
       qt6.qtwayland
       slurp
       tag
@@ -45,35 +44,6 @@ in {
       wl-clipboard
     ];
     programs = {
-      mako = {
-        enable = true;
-        actions = true;
-        anchor = "bottom-right";
-        backgroundColor = background;
-        borderColor = green;
-        borderRadius = 2;
-        borderSize = 2;
-        defaultTimeout = 10000;
-        extraConfig = "";
-        font = "JetBrainsMono Nerd Font";
-        format = ''<b>%s</b>\n%b'';
-        groupBy = null;
-        height = 100;
-        iconPath = null;
-        icons = true;
-        ignoreTimeout = false;
-        layer = "overlay";
-        margin = "10,10,5";
-        markup = true;
-        maxIconSize = 32;
-        maxVisible = 5;
-        output = null;
-        padding = "0,10,20";
-        progressColor = "over ${inactive}";
-        sort = "-time";
-        textColor = white;
-        width = 300;
-      };
       swaylock.settings = {
         show-failed-attempts = true;
         color = "191724";
