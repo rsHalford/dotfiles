@@ -7,9 +7,9 @@
 with lib; let
   cfg = config.richard.services;
   background = "#232136";
-  green = "3e8fb0"; # green pine
-  white = "e0def4"; # white text
-  inactive = "908caa";
+  green = "#3e8fb0"; # green pine
+  white = "#e0def4"; # white text
+  inactive = "#908caa";
 in {
   options.richard.services = {
     blueman.enable = mkOption {
