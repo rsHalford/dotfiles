@@ -46,6 +46,7 @@ in {
       '';
       packages = with pkgs; [
         calibre
+        ffmpeg
         imv
         mpc-cli
         newsboat
