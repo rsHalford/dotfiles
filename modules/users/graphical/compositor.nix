@@ -11,7 +11,7 @@ with lib; let
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
-  random-wallpaper = "`find ~/.dotfiles/wallpapers -type f | shuf -n1` fill";
+  random-wallpaper = "${pkgs.scripts.wallpaperTools}/bin/random-wallpaper";
   background = "232136";
   foreground = "e0def4";
   black = "393552"; # black base
@@ -236,7 +236,7 @@ in {
             };
             output = {
               "*" = {
-                bg = "${random-wallpaper}";
+                # bg = "${random-wallpaper} fill";
               };
             };
             seat = {
@@ -245,7 +245,12 @@ in {
                 xcursor_theme = "Quintom_Ink";
               };
             };
-            # startup = [ ]; # startup commands { command = ""; always = bool; }
+            startup = [
+              {
+                command = "swww init";
+                always = true;
+              }
+            ]; # startup commands { command = ""; always = bool; }
             terminal = "${terminal}";
             window = {
               border = 2;

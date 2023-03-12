@@ -39,6 +39,7 @@ in {
       grim
       qt6.qtwayland
       slurp
+      swww
       tag
       waybar
       wl-clipboard

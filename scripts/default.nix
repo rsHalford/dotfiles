@@ -124,7 +124,8 @@
   wallpaperTools = with pkgs;
     writeScriptBin "random-wallpaper" ''
       #!${runtimeShell}
-      ${sway}/bin/swaymsg "output * bg `${findutils}/bin/find ~/.dotfiles/wallpapers -type f | ${coreutils}/bin/shuf -n1` fill"
+      IMAGE=$(${findutils}/bin/find ~/.dotfiles/wallpapers -type f | ${coreutils}/bin/shuf -n1)
+      ${swww}/bin/swww img "$IMAGE"
     '';
 
   worktreeTools = with pkgs;
