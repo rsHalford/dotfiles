@@ -179,6 +179,7 @@
             mpris.enable = true;
             newsboat.enable = false;
             protonmail-bridge.enable = false;
+            random-wallpaper.enable = true;
             syncthing.enable = true;
           };
           suite = {

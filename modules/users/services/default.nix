@@ -66,6 +66,12 @@ in {
       default = false;
     };
 
+    random-wallpaper.enable = mkOption {
+      description = "Enable random-wallpaper";
+      type = types.bool;
+      default = false;
+    };
+
     syncthing.enable = mkOption {
       description = "Enable syncthing";
       type = types.bool;
@@ -271,7 +277,7 @@ in {
             After = ["network-target"];
           };
         };
-        random-wallpaper = {
+        random-wallpaper = mkIf (cfg.random-wallpaper.enable) {
           Install = {
             WantedBy = ["multi-user.target"];
           };
@@ -309,7 +315,7 @@ in {
             Description = "Newsboat automatic reload timer";
           };
         };
-        random-wallpaper = {
+        random-wallpaper = mkIf (cfg.random-wallpaper.enable) {
           Install = {
             WantedBy = ["timers.target"];
           };
