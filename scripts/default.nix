@@ -170,9 +170,9 @@
         ${libnotify}/bin/notify-send "Added to MPV Playlist" -t 2000
         if [ -z "$PID" ]
         then
-          ${mpv}/bin/umpv "$URL" &
+          umpv "$URL" &
         else
-          ${mpv}/bin/umpv "$URL"
+          umpv "$URL"
         fi
       else
         ${libnotify}/bin/notify-send "Firefox not focussed" "Current focus $FOCUS" -t 2000
