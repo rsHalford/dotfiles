@@ -40,6 +40,7 @@ in {
       pciutils
       pulsemixer
       ripgrep
+      shell_gpt
       translate-shell
       unzip
       usbutils
