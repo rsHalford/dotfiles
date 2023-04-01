@@ -71,3 +71,5 @@ ts_config.setup {
     enable = true,
   },
 }
+
+require('treesitter-context').setup {}

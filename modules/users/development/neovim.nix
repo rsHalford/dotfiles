@@ -83,6 +83,7 @@ in {
 
           # Tree-sitter
           nvim-treesitter.withAllGrammars
+          nvim-treesitter-context
           nvim-treesitter-textobjects
           nvim-ts-rainbow
           nvim-ts-autotag
