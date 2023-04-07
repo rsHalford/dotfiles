@@ -240,6 +240,7 @@ require('neodev').setup()
 -- Install and configure servers
 local servers = {
   astro = {},
+  cssls = {},
   gopls = {},
   marksman = {},
   nil_ls = {},
