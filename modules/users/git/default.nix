@@ -60,6 +60,7 @@ in {
         init.defaultBranch = "main";
         merge.conflictStyle = "diff3";
         pull.rebase = true;
+        push.autoSetupRemote = true;
       };
       ignores = [
         ".direnv"
