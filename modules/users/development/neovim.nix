@@ -55,7 +55,7 @@ in {
 
           # UI/UX
           lspsaga-nvim-original
-          rose-pine
+          tokyonight-nvim
           alpha-nvim
           nvim-colorizer-lua
           nvim-web-devicons

@@ -1,17 +1,16 @@
 local cmd = vim.cmd
 local keymap = vim.api.nvim_set_keymap
 
--- Rose Pine
-local rpine = require 'rose-pine'
+-- Tokyo Night
+local tokyo = require 'tokyonight'
 
-rpine.setup {
-  dark_variant = 'moon',
-  disable_background = false,
-  disable_float_background = false,
-  dim_nc_background = false,
+tokyo.setup {
+  style = 'night',
+  transparent = false,
+  terminal_colors = true,
 }
 
-cmd 'colorscheme rose-pine'
+cmd 'colorscheme tokyonight'
 
 -- Dashboard
 local alpha = require 'alpha'

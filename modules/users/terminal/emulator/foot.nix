@@ -6,19 +6,30 @@
 }:
 with lib; let
   cfg = config.richard.terminal.emulator;
-  background = "232136";
-  foreground = "e0def4";
-  regular0 = "393552"; # black base
-  regular1 = "eb6f92"; # red love
-  regular2 = "3e8fb0"; # green pine
-  regular3 = "f6c177"; # yellow gold
-  regular4 = "9ccfd8"; # blue foam
-  regular5 = "c4a7e7"; # magenta iris
-  regular6 = "ea9a97"; # cyan rose
-  regular7 = "e0def4"; # white text
-  selection-background = "44415a";
-  selection-foreground = "e0def4";
-  jump-labels = "232136 c4a7e7";
+  foreground = "c0caf5";
+  background = "1a1b26";
+  regular0 = "15161e"; # black
+  regular1 = "f7768e"; # red
+  regular2 = "9ece6a"; # green
+  regular3 = "e0af68"; # yellow
+  regular4 = "7aa2f7"; # blue
+  regular5 = "bb9af7"; # magenta
+  regular6 = "7dcfff"; # cyan
+  regular7 = "a9b1d6"; # white
+  bright0 = "414868"; # black
+  bright1 = "f7768e"; # red
+  bright2 = "9ece6a"; # green
+  bright3 = "e0af68"; # yellow
+  bright4 = "7aa2f7"; # blue
+  bright5 = "bb9af7"; # magenta
+  bright6 = "7dcfff"; # cyan
+  bright7 = "c0caf5"; # white
+  color16 = "ff9e64";
+  color17 = "db4b4b";
+  selection-foreground = "c0caf5";
+  selection-background = "33467c";
+  urls-color = "73daca";
+  cursor-color = "c0caf5 33467c";
 in {
   config = mkIf (cfg.program == "foot") {
     programs.foot = {
@@ -77,7 +88,7 @@ in {
         cursor = {
           style = "block";
           blink = "no";
-          # color = "<inverse foreground/background>";
+          color = cursor-color;
           beam-thickness = "1.5";
           # underline-thickness = "<font underline thickness>";
         };
@@ -86,6 +97,7 @@ in {
           alternate-scroll-mode = "yes";
         };
         colors = {
+          alpha = "0.95";
           foreground = foreground;
           background = background;
           # Normal/regular colors (color palette 0-7)
@@ -98,21 +110,22 @@ in {
           regular6 = regular6; # cyan
           regular7 = regular7; # white
           # Bright colors (color palette 8-15)
-          bright0 = regular0; # black
-          bright1 = regular1; # red
-          bright2 = regular2; # green
-          bright3 = regular3; # yellow
-          bright4 = regular4; # blue
-          bright5 = regular5; # magenta
-          bright6 = regular6; # cyan
-          bright7 = regular7; # white
-          alpha = "0.95";
+          bright0 = bright0; # black
+          bright1 = bright1; # red
+          bright2 = bright2; # green
+          bright3 = bright3; # yellow
+          bright4 = bright4; # blue
+          bright5 = bright5; # magenta
+          bright6 = bright6; # cyan
+          bright7 = bright7; # white
+          "16" = color16;
+          "17" = color17;
           # Misc colors
           selection-foreground = selection-foreground;
           selection-background = selection-background;
-          jump-labels = jump-labels;
+          # jump-labels = "<regular0> <regular3>";
           # scrollback-indicator = "<regular0> <bright4>";
-          # urls = "<regular3>";
+          urls = urls-color;
         };
         csd = {
           preferred = "server";

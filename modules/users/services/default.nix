@@ -6,10 +6,10 @@
 }:
 with lib; let
   cfg = config.richard.services;
-  background = "#232136";
-  green = "#3e8fb0"; # green pine
-  white = "#e0def4"; # white text
-  inactive = "#908caa";
+  foreground = "c0caf5"; # white
+  background = "1a1b26"; # black
+  regular3 = "e0af68"; # yellow
+  regular4 = "7aa2f7"; # blue
 in {
   options.richard.services = {
     blueman.enable = mkOption {
@@ -168,8 +168,8 @@ in {
         enable = true;
         actions = true;
         anchor = "bottom-right";
-        backgroundColor = background;
-        borderColor = green;
+        backgroundColor = "#${background}";
+        borderColor = "#${regular4}";
         borderRadius = 2;
         borderSize = 2;
         defaultTimeout = 10000;
@@ -188,9 +188,9 @@ in {
         maxVisible = 5;
         output = null;
         padding = "0,10,20";
-        progressColor = "over ${inactive}";
+        progressColor = "over #${regular3}";
         sort = "-time";
-        textColor = white;
+        textColor = "#${foreground}";
         width = 300;
       };
       mpd = {

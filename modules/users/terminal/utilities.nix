@@ -58,18 +58,18 @@ in {
       bat = {
         enable = true;
         config = {
-          theme = "rose-pine";
+          theme = "tokyo-night";
           italic-text = "always";
           style = "numbers,changes,grid";
         };
         themes = {
-          rose-pine = builtins.readFile (pkgs.fetchFromGitHub {
-              owner = "rose-pine";
-              repo = "sublime-text"; # Bat uses sublime syntax for its themes
-              rev = "ed9ace4c571426070e1046853c13c45d9f12441c";
-              sha256 = "sha256-d5CCk15KaIEXFd1LP7q82tcX9evE5G/ZS2GxPCA1K0I=";
+          tokyo-night = builtins.readFile (pkgs.fetchFromGitHub {
+              owner = "folke";
+              repo = "tokyonight.nvim"; # Bat uses sublime syntax for its themes
+              rev = "56945bd0d312dc3ed84466d7a6cbfc5e44fbbb4e";
+              sha256 = "sha256-/a4DMUvLos4TI0SpnnV0Lw2adJXOUNdm2KT125WM1yg=";
             }
-            + "/rose-pine.tmTheme");
+            + "/extras/sublime/tokyonight_night.tmTheme");
         };
       };
       bottom.enable = true;

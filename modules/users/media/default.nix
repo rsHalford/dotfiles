@@ -314,8 +314,8 @@ in {
           bind-key R reload-all
 
           # Colours
-          color listnormal black default
-          color listfocus white default bold
+          color listnormal white default
+          color listfocus default default bold
           color listnormal_unread cyan default
           color listfocus_unread yellow default bold
           color info white default bold

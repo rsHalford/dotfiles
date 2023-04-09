@@ -7,6 +7,20 @@
 with lib; let
   cfg = config.richard.graphical.menu;
   terminal = config.richard.terminal.emulator.program;
+  foreground = "c0caf5"; # white
+  background = "1a1b26"; # black
+  regular0 = "15161e"; # black
+  regular1 = "f7768e"; # red
+  regular2 = "9ece6a"; # green
+  regular3 = "e0af68"; # yellow
+  regular4 = "7aa2f7"; # blue
+  regular5 = "bb9af7"; # magenta
+  regular6 = "7dcfff"; # cyan
+  regular7 = "a9b1d6"; # white
+  bright0 = "414868"; # black
+  bright7 = "c0caf5"; # white
+  color16 = "ff9e64"; # orange
+  color17 = "db4b4b"; # orange
   inherit (config.lib.formats.rasi) mkLiteral;
 in {
   options.richard.graphical.menu = {
@@ -50,25 +64,26 @@ in {
         ];
         theme = {
           "*" = {
-            bg = mkLiteral "#2a273f";
-            cur = mkLiteral "#393552";
-            fgd = mkLiteral "#e0def4";
-            blu = mkLiteral "#817c9c";
-            cya = mkLiteral "#9ccfd8";
-            grn = mkLiteral "#3e8fb0";
-            ora = mkLiteral "#ea9a97";
-            pur = mkLiteral "#c4a7e7";
-            red = mkLiteral "#eb6f92";
-            yel = mkLiteral "#f6c177";
-            foreground = mkLiteral "@fgd";
+            cur = mkLiteral "#${bright0}";
+            bg = mkLiteral "#${background}";
+            fg = mkLiteral "#${foreground}";
+            red = mkLiteral "#${regular1}";
+            grn = mkLiteral "#${regular2}";
+            yel = mkLiteral "#${regular3}";
+            blu = mkLiteral "#${regular4}";
+            pur = mkLiteral "#${regular5}";
+            cya = mkLiteral "#${regular6}";
+            ora = mkLiteral "#${color16}";
+            foreground = mkLiteral "@fg";
             background = mkLiteral "@bg";
-            active-background = mkLiteral "@grn";
+            active-background = mkLiteral "@blu";
             urgent-background = mkLiteral "@red";
             selected-background = mkLiteral "@active-background";
             selected-urgent-background = mkLiteral "@urgent-background";
             selected-active-background = mkLiteral "@active-background";
+            selected-foreground = mkLiteral "@bg";
             separatorcolor = mkLiteral "@active-background";
-            bordercolor = mkLiteral "@ora";
+            bordercolor = mkLiteral "@pur";
             background-color = mkLiteral "@background";
           };
           "window" = {
@@ -117,15 +132,15 @@ in {
           };
           "element.selected.normal" = {
             background-color = mkLiteral "@selected-background";
-            text-color = mkLiteral "@foreground";
+            text-color = mkLiteral "@selected-foreground";
           };
           "element.selected.urgent" = {
             background-color = mkLiteral "@selected-urgent-background";
-            text-color = mkLiteral "@foreground";
+            text-color = mkLiteral "@selected-foreground";
           };
           "element.selected.active" = {
             background-color = mkLiteral "@selected-active-background";
-            text-color = mkLiteral "@background";
+            text-color = mkLiteral "@selected-foreground";
           };
           "element.alternate.normal" = {
             background-color = mkLiteral "@background";
@@ -176,13 +191,13 @@ in {
           };
           "prompt" = {
             spacing = mkLiteral "0";
-            text-color = mkLiteral "@grn";
+            text-color = mkLiteral "@blu";
           };
           "textbox-prompt-sep" = {
             expand = mkLiteral "false";
             str = ":";
             margin = mkLiteral "0px 0.3em 0em 0em";
-            text-color = mkLiteral "@grn";
+            text-color = mkLiteral "@blu";
           };
         };
       };

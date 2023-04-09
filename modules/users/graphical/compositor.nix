@@ -12,17 +12,20 @@ with lib; let
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
   random-wallpaper = "${pkgs.scripts.wallpaperTools}/bin/random-wallpaper";
-  background = "232136";
-  foreground = "e0def4";
-  black = "393552"; # black base
-  red = "eb6f92"; # red love
-  green = "3e8fb0"; # green pine
-  yellow = "f6c177"; # yellow gold
-  blue = "9ccfd8"; # blue foam
-  magenta = "c4a7e7"; # magenta iris
-  cyan = "ea9a97"; # cyan rose
-  white = "e0def4"; # white text
-  inactive = "908caa";
+  foreground = "c0caf5"; # white
+  background = "1a1b26"; # black
+  regular0 = "15161e"; # black
+  regular1 = "f7768e"; # red
+  regular2 = "9ece6a"; # green
+  regular3 = "e0af68"; # yellow
+  regular4 = "7aa2f7"; # blue
+  regular5 = "bb9af7"; # magenta
+  regular6 = "7dcfff"; # cyan
+  regular7 = "a9b1d6"; # white
+  bright0 = "414868"; # black
+  bright7 = "c0caf5"; # white
+  color16 = "ff9e64"; # orange
+  color17 = "db4b4b"; # orange
 in {
   options.richard.graphical.compositor = {
     enable = mkOption {
@@ -49,32 +52,32 @@ in {
             colors = {
               background = background;
               focused = {
-                background = green;
-                border = green;
-                childBorder = green;
-                indicator = magenta;
-                text = white;
+                background = regular4;
+                border = regular4;
+                childBorder = regular4;
+                indicator = regular5;
+                text = bright7;
               };
               focusedInactive = {
-                background = inactive;
-                border = inactive;
-                childBorder = inactive;
-                indicator = inactive;
-                text = white;
+                background = bright0;
+                border = bright0;
+                childBorder = bright0;
+                indicator = bright0;
+                text = bright7;
               };
               unfocused = {
                 background = background;
                 border = background;
                 childBorder = background;
                 indicator = background;
-                text = white;
+                text = bright7;
               };
               urgent = {
-                background = yellow;
-                border = yellow;
-                childBorder = yellow;
-                indicator = yellow;
-                text = white;
+                background = regular3;
+                border = regular3;
+                childBorder = regular3;
+                indicator = regular3;
+                text = bright7;
               };
             };
             defaultWorkspace = "workspace number 1";

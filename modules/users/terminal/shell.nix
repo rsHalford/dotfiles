@@ -7,6 +7,16 @@
 with lib; let
   cfg = config.richard.terminal.shell;
   terminal-editor = config.richard.terminal.utilities.editor;
+  foreground = "c0caf5"; # white
+  background = "1a1b26"; # black
+  regular0 = "15161e"; # black
+  regular1 = "f7768e"; # red
+  regular3 = "e0af68"; # yellow
+  regular4 = "7aa2f7"; # blue
+  regular5 = "bb9af7"; # magenta
+  regular6 = "7dcfff"; # cyan
+  regular7 = "a9b1d6"; # white
+  color16 = "ff9e64"; # orange
 in {
   options.richard.terminal.shell = {
     enable = mkOption {
@@ -168,10 +178,10 @@ in {
         dotDir = ".config/zsh";
         envExtra = ''
           export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
-            --color=fg:#e0def4,bg:#2a273f,hl:#6e6a86
-            --color=fg+:#908caa,bg+:#232136,hl+:#908caa
-            --color=info:#9ccfd8,prompt:#f6c177,pointer:#c4a7e7
-            --color=marker:#ea9a97,spinner:#eb6f92,header:#ea9a97"
+            --color=fg:#${foreground},bg:#${background},hl:#${regular7}
+            --color=fg+:#${regular3},bg+:#${regular0},hl+:#${regular3}
+            --color=info:#${regular6},prompt:#${regular4},pointer:#${regular5}
+            --color=marker:#${color16},spinner:#${regular1},header:#${color16}"
         '';
         history = {
           expireDuplicatesFirst = true;
