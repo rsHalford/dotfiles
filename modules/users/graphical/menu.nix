@@ -54,9 +54,11 @@ in {
           icon-theme = "Papirus-Dark";
           font = "JetBrainsMono Nerd Font 13";
           terminal = "${pkgs.${terminal}}/bin/${terminal}";
-          kb-row-down = "Down,Control+j";
-          kb-row-up = "Up,Control+k";
-          kb-accept-entry = "Control+m,Return,KP_Enter";
+          kb-row-down = "Down,Alt+j";
+          kb-row-up = "Up,Alt+k";
+          kb-accept-entry = "Alt+m,Return,KP_Enter";
+          kb-mode-previous = "Alt+h";
+          kb-mode-next = "Alt+l";
           kb-remove-to-eol = "";
         };
         plugins = with pkgs; [
@@ -117,8 +119,7 @@ in {
           };
           "element" = {
             border = mkLiteral "0";
-            padding = mkLiteral "1px";
-            cursor = mkLiteral "pointer";
+            padding = mkLiteral "4px 8px";
           };
           "element.normal.normal" = {
             background-color = mkLiteral "@background";
@@ -159,6 +160,7 @@ in {
           "element-text" = {
             background-color = mkLiteral "inherit";
             text-color = mkLiteral "inherit";
+            padding = mkLiteral "2px 8px";
           };
           "element-icon" = {
             background-color = mkLiteral "inherit";
