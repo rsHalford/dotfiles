@@ -76,16 +76,14 @@ in {
               format = {};
             };
             modules-right = [
-              "mpd"
+              "mpris"
               "cpu"
-              "temperature"
               "memory"
               "disk"
               "pulseaudio"
               "network"
               "battery"
               "tray"
-              "custom/weather"
               "clock"
             ];
             "battery" = {
@@ -95,25 +93,25 @@ in {
               format-icons = {
                 default = [
                   "<span font='12' color='#${regular1}'></span>"
-                  "<span font='12' color='#${regular1}'></span>"
-                  "<span font='12' color='#${regular1}'></span>"
-                  "<span font='12' color='#${regular6}'></span>"
-                  "<span font='12' color='#${regular6}'></span>"
+                  "<span font='12' color='#${color17}'></span>"
+                  "<span font='12' color='#${color17}'></span>"
+                  "<span font='12' color='#${color16}'></span>"
+                  "<span font='12' color='#${color16}'></span>"
                   "<span font='12' color='#${regular3}'></span>"
-                  "<span font='12' color='#${regular3}'></span>"
+                  "<span font='12' color='#${regular6}'></span>"
                   "<span font='12' color='#${regular4}'></span>"
-                  "<span font='12' color='#${regular4}'></span>"
-                  "<span font='12' color='#${regular4}'></span>"
-                  "<span font='12' color='#${regular4}'></span>"
+                  "<span font='12' color='#${regular5}'></span>"
+                  "<span font='12' color='#${regular5}'></span>"
+                  "<span font='12' color='#${regular5}'></span>"
                 ];
                 charging = [
-                  "<span font='12' color='#${regular5}'> </span>"
-                  "<span font='12' color='#${regular5}'> </span>"
-                  "<span font='12' color='#${regular5}'> </span>"
-                  "<span font='12' color='#${regular5}'> </span>"
-                  "<span font='12' color='#${regular5}'> </span>"
-                  "<span font='12' color='#${regular5}'> </span>"
-                  "<span font='12' color='#${regular5}'> </span>"
+                  "<span font='12' color='#${regular2}'> </span>"
+                  "<span font='12' color='#${regular2}'> </span>"
+                  "<span font='12' color='#${regular2}'> </span>"
+                  "<span font='12' color='#${regular2}'> </span>"
+                  "<span font='12' color='#${regular2}'> </span>"
+                  "<span font='12' color='#${regular2}'> </span>"
+                  "<span font='12' color='#${regular2}'> </span>"
                 ];
               };
               # on-click = ""; # tlp powersave
@@ -127,38 +125,30 @@ in {
             };
             "cpu" = {
               format = "<span font='12' color='#${regular4}'>﬙</span> {usage}%";
-            };
-            "custom/weather" = {
-              exec = "curl -sf wttr.in/Halifax?format=%c%t";
-              interval = 3600;
+              on-click = "btm";
             };
             "disk" = {
               path = "/";
               format = "<span font='12' color='#${regular3}'></span> {percentage_used}%";
               tooltip-format = "{used} / {total}";
+              on-click = "btm";
             };
             "memory" = {
               format = "<span font='12' color='#${regular5}'></span> {percentage}%";
               tooltip-format = "{used:0.1f}GiB / {total:0.1f}GiB";
+              on-click = "btm";
             };
-            "mpd" = {
-              format = "{stateIcon} <span color='#${regular7}'>{title}</span> by <span color='#${regular6}'>{artist}</span>";
-              format-stopped = "Stopped";
-              format-disconnected = "Disconnected";
-              tooltip-format = "Volume: {volume}% [{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}]\n{elapsedTime:%M:%S}/{totalTime:%M:%S}";
-              rotate = "1";
-              max-length = "24";
-              on-click = "mpc toggle";
-              on-click-middle = "${terminal} -e ncmpcpp";
-              on-click-right = "mpc next";
-              state-icons = {
-                "playing" = "<span color='#${regular2}'>⏵</span>";
-                "paused" = "⏸";
+            "mpris" = {
+              format = "{player_icon} <span color='#${regular3}'>\"{title}\"</span> by <span color='#${regular5}'>{artist}</span>";
+              format-paused = "{status_icon} \"{title}\" by {artist}";
+              player-icons = {
+                "default" = "<span color='#${regular2}'>⏵</span>";
+                "mpv" = "<span color='#${regular2}'>⏵</span>";
+                "mpd" = "<span color='#${regular6}'>⏵</span>";
               };
-              consume-icons = {"on" = "c";};
-              random-icons = {"on" = "z";};
-              repeat-icons = {"on" = "r";};
-              single-icons = {"on" = "s";};
+              status-icons = {
+                "paused" = "<span color='#${color16}'>⏸</span>";
+              };
             };
             "network" = {
               format-wifi = "{icon}";
@@ -169,13 +159,13 @@ in {
               format-linked = "{icon}";
               format-disabled = "{icon}";
               format-icons = {
-                wifi = "<span font='12' color='#${regular4}'>直</span>";
+                wifi = "<span font='12' color='#${regular2}'>直</span>";
                 ethernet = "<span font='12' color='#${regular5}'></span>";
                 linked = "<span font='12' color='#${regular6}'></span>";
-                disconnected = "<span font='12' color='#${regular6}'></span>";
+                disconnected = "<span font='12' color='#${color16}'></span>";
                 disabled = "<span font='12' color='#${regular1}'>睊</span>";
               };
-              on-click = "${terminal} -e nmtui";
+              on-click = "nmtui";
             };
             "pulseaudio" = {
               format = "{icon}";
@@ -212,32 +202,20 @@ in {
                 # hmdi = "﴿";
                 # speaker = "蓼";
               };
-              on-click = "${terminal} -e pulsemixer";
+              on-click = "pulsemixer";
               scroll-step = 1.0;
               tooltip-format = "{desc}: {volume}%";
             };
-            "temperature" = {
-              hwmon-path = "/sys/class/hwmon/hwmon7/temp1_input";
-              critical-threshold = 100;
-              format = "{icon} {temperatureC}°C";
-              format-icons = [
-                "<span font='12' color='#${regular5}'>﨎</span>"
-                "<span font='12' color='#${regular4}'>﨎</span>"
-                "<span font='12' color='#${regular4}'>﨎</span>"
-                "<span font='12' color='#${regular3}'>﨏</span>"
-                "<span font='12' color='#${regular6}'>﨏</span>"
-                "<span font='12' color='#${regular1}'>﨏</span>"
-              ];
-            };
             "tray" = {
               icon-size = 16;
-              show-passive-items = true;
+              show-passive-items = false;
               spacing = 18;
             };
           }
         ];
         style = ''
           * {
+            all: initial;
             font-family: JetBrainsMono Nerd Font;
             font-size: 11.5pt;
           }
@@ -257,7 +235,7 @@ in {
           }
 
           #workspaces button {
-            padding: 0px;
+            padding: 0 8px;
             background-color: #${background};
             color: #${foreground};
             border: none;
@@ -299,45 +277,28 @@ in {
           #battery,
           #clock,
           #cpu,
-          #custom-weather,
           #disk,
           #memory,
           #network,
           #pulseaudio,
-          #temperature,
           #tray {
             padding: 0 8pt;
             background: #${background};
             color: #${foreground};
           }
 
-          #mpd {
+          #mpris {
             padding: 0 8pt;
             border-radius: 0;
+            color: #${regular7};
             background: #${regular0};
-          }
-
-          #mpd.disconnected {
-            color: #${foreground};
-          }
-
-          #mpd.playing {
-            color: #${regular4};
-          }
-
-          #mpd.paused {
-            color: #${regular3};
-          }
-
-          #mpd.stopped {
-            color: #${regular6};
           }
 
           tooltip {
             background-color: #${background};
             color: #${regular7};
             border: 2px solid #${regular4};
-            border-radius: 2px;
+            border-radius: 3px;
           }
         '';
         systemd.enable = true;
