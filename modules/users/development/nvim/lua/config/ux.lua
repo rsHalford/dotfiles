@@ -72,8 +72,7 @@ local function button(sc, txt, keybind)
     cursor = 5,
     width = 24,
     align_shortcut = 'right',
-    hl = 'Todo',
-    hl_shortcut = 'Special',
+    hl_shortcut = 'String',
   }
   if keybind then
     opts.keymap = { 'n', sc_, keybind, { noremap = true, silent = true } }
