@@ -22,6 +22,7 @@ with lib; let
   color16 = "ff9e64"; # orange
   color17 = "db4b4b"; # orange
   inherit (config.lib.formats.rasi) mkLiteral;
+  inherit (lib) getExe;
 in {
   options.richard.graphical.menu = {
     enable = mkOption {
@@ -38,7 +39,7 @@ in {
         package = pkgs.rofi-wayland;
         cycle = true;
         extraConfig = {
-          modi = "drun,emoji,calc,ssh,filebrowser,run,keys"; # custom mode <name>:<script>
+          modi = "drun,emoji,calc,ssh,filebrowser,run,keys,power-menu:${getExe pkgs.rofi-power-menu}"; # custom mode <name>:<script>
           cache-dir = "${config.xdg.cacheHome}/rofi/";
           scroll-method = 1;
           show-icons = true;
@@ -61,6 +62,7 @@ in {
         plugins = with pkgs; [
           rofi-calc
           rofi-emoji
+          rofi-power-menu
         ];
         theme = {
           "*" = {

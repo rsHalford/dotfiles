@@ -161,7 +161,7 @@ in {
               "Mod4+o" = "fullscreen";
               "Mod4+p" = "exec swaymsg bar hidden_state toggle";
               "Mod4+q" = "kill";
-              "Mod4+Shift+q" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
+              "Mod4+Shift+q" = "exec rofi -show power-menu";
               "Mod4+r" = "exec retroarch";
               # "Mod4+Shift+r" = "newsboat";
               # "Mod4+s" = "exec signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
