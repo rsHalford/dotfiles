@@ -18,8 +18,6 @@ in {
   config = mkIf (cfg.enable) {
     console = {
       colors = [
-        "c0caf5"
-        "1a1b26"
         "15161e"
         "f7768e"
         "9ece6a"
