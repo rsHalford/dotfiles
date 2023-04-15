@@ -75,6 +75,7 @@ in {
 
     hardware.enableRedistributableFirmware = true;
     hardware.cpu.intel.updateMicrocode = true;
+    hardware.keyboard.qmk.enable = true;
 
     i18n.defaultLocale = "en_GB.UTF-8";
 

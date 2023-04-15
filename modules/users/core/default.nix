@@ -25,6 +25,8 @@ in {
         (nerdfonts.override {fonts = ["JetBrainsMono"];})
         google-fonts
         xdg-utils
+        qmk
+        via
         # yt-dlp
         zathura
       ];
