@@ -206,6 +206,16 @@ in {
               "Mod4+Shift+8" = "move container to workspace number 8";
               "Mod4+Shift+9" = "move container to workspace number 9";
               "Mod4+Shift+0" = "move container to workspace number 10";
+              "Mod4+F1" = "move container to workspace number 1";
+              "Mod4+F2" = "move container to workspace number 2";
+              "Mod4+F3" = "move container to workspace number 3";
+              "Mod4+F4" = "move container to workspace number 4";
+              "Mod4+F5" = "move container to workspace number 5";
+              "Mod4+F6" = "move container to workspace number 6";
+              "Mod4+F7" = "move container to workspace number 7";
+              "Mod4+F8" = "move container to workspace number 8";
+              "Mod4+F9" = "move container to workspace number 9";
+              "Mod4+F10" = "move container to workspace number 10";
 
               "Mod4+Shift+minus" = "move scratchpad";
               "Mod4+minus" = "scratchpad show";
