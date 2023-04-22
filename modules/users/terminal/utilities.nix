@@ -44,7 +44,7 @@ in {
       translate-shell
       unzip
       usbutils
-      ventoy-bin
+      ventoy
       wev
       wtype
 
