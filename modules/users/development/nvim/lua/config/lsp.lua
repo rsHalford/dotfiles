@@ -246,6 +246,7 @@ local servers = {
   nil_ls = {},
   lua_ls = {},
   tsserver = {},
+  zls = {},
 }
 
 for server, config in pairs(servers) do
