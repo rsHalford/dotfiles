@@ -215,7 +215,6 @@ in {
         ];
         style = ''
           * {
-            all: initial;
             font-family: JetBrainsMono Nerd Font;
             font-size: 11.5pt;
           }
@@ -235,6 +234,7 @@ in {
           }
 
           #workspaces button {
+            all: initial;
             padding: 0 8px;
             background-color: #${background};
             color: #${foreground};
@@ -329,7 +329,7 @@ in {
         extraConfig = {};
         extraCss = ''
           menu {
-            border-radius: 2px;
+            border-radius: 10px;
             border: 2px solid #${regular5};
           }
         '';
