@@ -226,10 +226,10 @@ lualine.setup {
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { { 'diagnostics', sources = { 'nvim_diagnostic' } } },
-    lualine_c = { 'filename' },
+    lualine_c = { { 'filename', newfile_status = true, path = 3 } },
     lualine_x = { 'diff', 'branch' },
     lualine_y = { 'filetype' },
-    lualine_z = { 'location' },
+    lualine_z = { 'location', 'progress' },
   },
   extensions = {
     'fzf',
