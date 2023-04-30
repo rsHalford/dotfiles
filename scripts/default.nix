@@ -70,7 +70,7 @@
           ;;
 
           "which")
-              nix show-derivation "$(which "$2")" | \
+              nix derivation show "$(which "$2")" | \
               jq -r '.[].outputs.out.path'
           ;;
 
