@@ -266,7 +266,6 @@ local servers = {
   gopls = {},
   marksman = {},
   nil_ls = {},
-  lua_ls = {},
   tsserver = {},
   zls = {},
 }
@@ -280,3 +279,28 @@ for server, config in pairs(servers) do
     },
   }, config))
 end
+
+require('lspconfig').lua_ls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = vim.api.nvim_get_runtime_file('', true),
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
