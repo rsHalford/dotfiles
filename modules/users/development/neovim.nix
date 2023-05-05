@@ -54,6 +54,7 @@ in {
           nvim-code-action-menu
 
           # UI/UX
+          trouble-nvim
           lspsaga-nvim-original
           tokyonight-nvim
           alpha-nvim

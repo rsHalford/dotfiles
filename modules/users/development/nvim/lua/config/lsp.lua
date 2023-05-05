@@ -70,10 +70,10 @@ local lspkind = require 'lspkind'
 
 cmp.setup {
   mapping = cmp.mapping.preset.insert {
-    ['<M-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<PageUp>'] = cmp.mapping.scroll_docs(-4),
-    ['<M-f>'] = cmp.mapping.scroll_docs(4),
-    ['<PageDown>'] = cmp.mapping.scroll_docs(4),
+    ['<M-d>'] = cmp.mapping.scroll_docs(-1),
+    ['<PageUp>'] = cmp.mapping.scroll_docs(-1),
+    ['<M-f>'] = cmp.mapping.scroll_docs(1),
+    ['<PageDown>'] = cmp.mapping.scroll_docs(1),
     ['<M-e>'] = cmp.mapping.abort(),
     ['<Left>'] = cmp.mapping.abort(),
     ['<M-y>'] = cmp.mapping.confirm { select = true },

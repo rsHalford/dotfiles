@@ -215,6 +215,28 @@ ntree.setup {
   respect_buf_cwd = true,
 }
 
+-- trouble
+require('trouble').setup {}
+
+keymap(
+  'n',
+  '<leader>te',
+  [[<cmd>TroubleToggle workspace_diagnostics<CR>]],
+  { noremap = true, silent = true, desc = 'Toggle workspace diagnostics' }
+)
+keymap(
+  'n',
+  '<leader>tq',
+  [[<cmd>TroubleToggle quickfix<CR>]],
+  { noremap = true, silent = true, desc = 'Toggle quickfix list' }
+)
+keymap(
+  'n',
+  '<leader>tl',
+  [[<cmd>TroubleToggle loclist<CR>]],
+  { noremap = true, silent = true, desc = 'Toggle loclist' }
+)
+
 -- lualine
 local lualine = require 'lualine'
 
@@ -234,7 +256,10 @@ lualine.setup {
   extensions = {
     'fzf',
     'nvim-tree',
+    'quickfix',
+    'symbols-outline',
     'toggleterm',
+    'trouble',
   },
 }
 
