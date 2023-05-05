@@ -18,36 +18,29 @@ in {
   config = {
     home = {
       packages = with pkgs; [
+        # Nix
         alejandra
-        android-tools
-        dart
-        flutter
-        git-chglog
-        golangci-lint
-        gopls
-        jdk
-        marksman
         nil
-        nodePackages."@astrojs/language-server"
+
+        # Shell
         nodePackages.bash-language-server
-        nodePackages.prettier
-        nodePackages.svelte-language-server
-        nodePackages.typescript
-        nodePackages.typescript-language-server
-        nodePackages.vim-language-server
-        nodePackages.vscode-langservers-extracted
-        nodePackages.yaml-language-server
-        nodejs
-        poetry
-        pre-commit
-        python310Packages.markdown2
-        python3Full
-        selene
         shellcheck
-        stylua
-        sumneko-lua-language-server
-        taplo
+
+        # Writing
         vale
+
+        # Front-end
+        nodePackages.vscode-langservers-extracted
+
+        # Markup
+        marksman
+        nodePackages.yaml-language-server
+        taplo
+
+        # Lua
+        lua-language-server
+        selene
+        stylua
 
         # Tree-sitter
         tree-sitter
