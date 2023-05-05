@@ -35,6 +35,7 @@ in {
       hevea
       jq
       libwebp
+      libsixel
       mmv-go
       neofetch
       pciutils
