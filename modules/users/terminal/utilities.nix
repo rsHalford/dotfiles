@@ -88,6 +88,30 @@ in {
         fileWidgetOptions = []; # CTRL-T options
         historyWidgetOptions = []; # CTRL-R options
       };
+      tmux = {
+        enable = true;
+        baseIndex = 1;
+        clock24 = true;
+        escapeTime = 0;
+        extraConfig = ''
+          bind -T copy-mode-vi v send-keys -X begin-selection
+          bind -T copy-mode-vi V send-keys -X rectangle-toggle
+          bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'wl-copy'
+          bind -r ^ last-window
+          bind -r k select-pane -U
+          bind -r j select-pane -D
+          bind -r h select-pane -L
+          bind -r l select-pane -R
+        '';
+        historyLimit = 50000;
+        keyMode = "vi";
+        mouse = true;
+        prefix = "C-a";
+        shortcut = "a";
+        terminal = "screen-256color";
+        tmuxinator.enable = false;
+        tmuxp.enable = false;
+      };
     };
   };
 }
