@@ -124,8 +124,13 @@
   wallpaperTools = with pkgs;
     writeScriptBin "random-wallpaper" ''
       #!${runtimeShell}
-      IMAGE=$(${findutils}/bin/find ~/.dotfiles/wallpapers -type f | ${coreutils}/bin/shuf -n1)
-      ${swww}/bin/swww img "$IMAGE"
+      if [ -S /run/user/1000/swww.socket ]; then
+        swww kill &> /dev/null
+      fi
+      if [ -d ~/.cache/swww ]; then
+        rm -r ~/.cache/swww &> /dev/null
+      fi
+      swww init && watch -n 600 "${swww}/bin/swww img ""$(find ~/.dotfiles/wallpapers -type f | shuf -n 1)"" &> /dev/null"
     '';
 
   worktreeTools = with pkgs;

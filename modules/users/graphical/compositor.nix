@@ -260,7 +260,7 @@ in {
             };
             startup = [
               {
-                command = "swww init";
+                command = "${random-wallpaper}";
                 always = true;
               }
             ]; # startup commands { command = ""; always = bool; }

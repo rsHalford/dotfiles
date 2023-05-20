@@ -41,6 +41,7 @@ in {
       autotiling
       grim
       qt6.qtwayland
+      scripts.wallpaperTools
       slurp
       swww
       tag

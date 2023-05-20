@@ -66,12 +66,6 @@ in {
       default = false;
     };
 
-    random-wallpaper.enable = mkOption {
-      description = "Enable random-wallpaper";
-      type = types.bool;
-      default = false;
-    };
-
     syncthing.enable = mkOption {
       description = "Enable syncthing";
       type = types.bool;
@@ -89,7 +83,6 @@ in {
       playerctl
       protonmail-bridge
       scripts.bingTools
-      scripts.wallpaperTools
       syncthing
     ];
 
@@ -277,18 +270,6 @@ in {
             After = ["network-target"];
           };
         };
-        random-wallpaper = mkIf (cfg.random-wallpaper.enable) {
-          Install = {
-            WantedBy = ["multi-user.target"];
-          };
-          Service = {
-            Type = "simple";
-            ExecStart = "${pkgs.scripts.wallpaperTools}/bin/random-wallpaper";
-          };
-          Unit = {
-            Description = "Random wallpaper service";
-          };
-        };
       };
       timers = {
         bing-wp = {
@@ -313,18 +294,6 @@ in {
           };
           Unit = {
             Description = "Newsboat automatic reload timer";
-          };
-        };
-        random-wallpaper = mkIf (cfg.random-wallpaper.enable) {
-          Install = {
-            WantedBy = ["timers.target"];
-          };
-          Timer = {
-            OnCalendar = "*:0/10";
-            Persistent = true;
-          };
-          Unit = {
-            Description = "Random wallpaper timer";
           };
         };
       };
