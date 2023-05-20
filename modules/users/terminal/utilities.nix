@@ -6,6 +6,15 @@
 }:
 with lib; let
   cfg = config.richard.terminal.utilities;
+  foreground = "#c0caf5";
+  background = "#1a1b26";
+  regular0 = "#15161e"; # black
+  regular2 = "#9ece6a"; # green
+  regular4 = "#7aa2f7"; # blue
+  regular5 = "#bb9af7"; # magenta
+  regular7 = "#a9b1d6"; # white
+  bright0 = "#414868"; # black
+  color16 = "#ff9e64";
 in {
   options.richard.terminal.utilities = {
     enable = mkOption {
@@ -91,9 +100,9 @@ in {
       tmux = {
         enable = true;
         baseIndex = 1;
-        clock24 = true;
         escapeTime = 0;
         extraConfig = ''
+          # Vim Keybinds
           bind -T copy-mode-vi v send-keys -X begin-selection
           bind -T copy-mode-vi V send-keys -X rectangle-toggle
           bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'wl-copy'
@@ -102,6 +111,28 @@ in {
           bind -r j select-pane -D
           bind -r h select-pane -L
           bind -r l select-pane -R
+
+          # Styling
+          set -g set-titles on
+          set -g mode-style "fg=${regular0},bg=${color16}"
+          set -g message-style "fg=${regular4},bg=${background}"
+          set -g message-command-style "fg=${regular4},bg=${background}"
+          set -g pane-border-style "fg=${background}"
+          set -g pane-active-border-style "fg=${regular5}"
+          set -g status "on"
+          set -g status-justify "left"
+          set -g status-style "fg=${foreground},bg=${background}"
+          set -g status-left-length "100"
+          set -g status-right-length "100"
+          set -g status-left-style NONE
+          set -g status-right-style NONE
+          set -g status-left "#[fg=${bright0},bg=${background}] #S #[fg=${foreground},bg=${background},nobold,nounderscore,noitalics]"
+          set -g status-right "#[fg=${regular4},bg=${background}] #h "
+          setw -g window-status-activity-style "underscore,fg=${regular7},bg=${background}"
+          setw -g window-status-separator ""
+          setw -g window-status-style "NONE,fg=${regular7},bg=${background}"
+          setw -g window-status-format "#[fg=${regular7},bg=${background},nobold,nounderscore,noitalics] #I #W #F #[fg=${foreground},bg=${background},nobold,nounderscore,noitalics]"
+          setw -g window-status-current-format "#[fg=${regular2},bg=${regular0},bold,nounderscore,noitalics] #I #W #F #[fg=${foreground},bg=${background},nobold,nounderscore,noitalics]"
         '';
         historyLimit = 50000;
         keyMode = "vi";
