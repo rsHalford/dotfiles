@@ -97,7 +97,7 @@ in {
             fonts = {
               names = ["${monospace} Nerd Font"];
               style = "Bold";
-              size = 10.0;
+              size = 12.0;
             };
             gaps = {
               bottom = 5;

@@ -94,49 +94,49 @@ in {
               format-time = "{H}:{M}";
               format-icons = {
                 default = [
-                  "<span font='12' color='#${regular1}'></span>"
-                  "<span font='12' color='#${color17}'></span>"
-                  "<span font='12' color='#${color17}'></span>"
-                  "<span font='12' color='#${color16}'></span>"
-                  "<span font='12' color='#${color16}'></span>"
-                  "<span font='12' color='#${regular3}'></span>"
-                  "<span font='12' color='#${regular6}'></span>"
-                  "<span font='12' color='#${regular4}'></span>"
-                  "<span font='12' color='#${regular5}'></span>"
-                  "<span font='12' color='#${regular5}'></span>"
-                  "<span font='12' color='#${regular5}'></span>"
+                  "<span font='14' color='#${regular1}'>󰂎</span>"
+                  "<span font='14' color='#${color17}'>󰁺</span>"
+                  "<span font='14' color='#${color17}'>󰁻</span>"
+                  "<span font='14' color='#${color16}'>󰁼</span>"
+                  "<span font='14' color='#${color16}'>󰁽</span>"
+                  "<span font='14' color='#${regular3}'>󰁾</span>"
+                  "<span font='14' color='#${regular6}'>󰁿</span>"
+                  "<span font='14' color='#${regular4}'>󰂀</span>"
+                  "<span font='14' color='#${regular5}'>󰂁</span>"
+                  "<span font='14' color='#${regular5}'>󰂂</span>"
+                  "<span font='14' color='#${regular5}'>󰁹</span>"
                 ];
                 charging = [
-                  "<span font='12' color='#${regular2}'> </span>"
-                  "<span font='12' color='#${regular2}'> </span>"
-                  "<span font='12' color='#${regular2}'> </span>"
-                  "<span font='12' color='#${regular2}'> </span>"
-                  "<span font='12' color='#${regular2}'> </span>"
-                  "<span font='12' color='#${regular2}'> </span>"
-                  "<span font='12' color='#${regular2}'> </span>"
+                  "<span font='14' color='#${regular2}'>󰂆 </span>"
+                  "<span font='14' color='#${regular2}'>󰂇 </span>"
+                  "<span font='14' color='#${regular2}'>󰂈 </span>"
+                  "<span font='14' color='#${regular2}'>󰂉 </span>"
+                  "<span font='14' color='#${regular2}'>󰂊 </span>"
+                  "<span font='14' color='#${regular2}'>󰂋 </span>"
+                  "<span font='14' color='#${regular2}'>󰂅 </span>"
                 ];
               };
               # on-click = ""; # tlp powersave
               tooltip-format = "{capacity}%";
             };
             "clock" = {
-              format = "<span font='12' color='#${regular3}'></span> {:%H:%M}";
+              format = "<span font='14' color='#${regular3}'>󰃰</span> {:%H:%M}";
               # on-click = "${terminal} -e khal";
               today-format = "<span color='#${regular5}'><b>{}</b></span>";
               tooltip-format = "<big>{:%B <span color='#${regular1}'>%Y}</span></big>\n<tt><small>{calendar}</small></tt>";
             };
             "cpu" = {
-              format = "<span font='12' color='#${regular4}'>﬙</span> {usage}%";
+              format = "<span font='14' color='#${regular4}'>󰘚</span> {usage}%";
               on-click = "btm";
             };
             "disk" = {
               path = "/";
-              format = "<span font='12' color='#${regular3}'></span> {percentage_used}%";
+              format = "<span font='14' color='#${regular3}'>󰉉</span> {percentage_used}%";
               tooltip-format = "{used} / {total}";
               on-click = "btm";
             };
             "memory" = {
-              format = "<span font='12' color='#${regular5}'></span> {percentage}%";
+              format = "<span font='14' color='#${regular5}'>󰍛</span> {percentage}%";
               tooltip-format = "{used:0.1f}GiB / {total:0.1f}GiB";
               on-click = "btm";
             };
@@ -161,48 +161,48 @@ in {
               format-linked = "{icon}";
               format-disabled = "{icon}";
               format-icons = {
-                wifi = "<span font='12' color='#${regular2}'>直</span>";
-                ethernet = "<span font='12' color='#${regular5}'></span>";
-                linked = "<span font='12' color='#${regular6}'></span>";
-                disconnected = "<span font='12' color='#${color16}'></span>";
-                disabled = "<span font='12' color='#${regular1}'>睊</span>";
+                wifi = "<span font='14' color='#${regular2}'>󰖩</span>";
+                ethernet = "<span font='14' color='#${regular5}'>󰈀</span>";
+                linked = "<span font='14' color='#${regular6}'>󰌹</span>";
+                disconnected = "<span font='14' color='#${color16}'></span>";
+                disabled = "<span font='14' color='#${regular1}'>󰖪</span>";
               };
               on-click = "nmtui";
             };
             "pulseaudio" = {
               format = "{icon}";
-              format-muted = "<span font='12' color='#${regular1}'>ﱝ</span>";
-              format-bluetooth = "<span font='12' color='#${regular4}'></span>";
-              format-bluetooth-muted = "<span font='12' color='#${regular1}'></span>";
-              format-source = "<span font='12' color='#${regular7}'></span>";
-              format-source-muted = "<span font='12' color='#${regular1}'></span>";
+              format-muted = "<span font='14' color='#${regular1}'>󰝟</span>";
+              format-bluetooth = "<span font='14' color='#${regular4}'>󰂰</span>";
+              format-bluetooth-muted = "<span font='14' color='#${regular1}'>󰂲</span>";
+              format-source = "<span font='14' color='#${regular7}'></span>";
+              format-source-muted = "<span font='14' color='#${regular1}'></span>";
               format-icons = {
                 default = [
-                  "<span font='12' color='#${regular1}'>婢</span>"
-                  "<span font='12' color='#${regular7}'>奄</span>"
-                  "<span font='12' color='#${regular7}'>奄</span>"
-                  "<span font='12' color='#${regular7}'>奄</span>"
-                  "<span font='12' color='#${regular7}'>奄</span>"
-                  "<span font='12' color='#${regular7}'>奔</span>"
-                  "<span font='12' color='#${regular7}'>奔</span>"
-                  "<span font='12' color='#${regular7}'>奔</span>"
-                  "<span font='12' color='#${regular7}'>奔</span>"
-                  "<span font='12' color='#${regular7}'>奔</span>"
-                  "<span font='12' color='#${regular7}'>奔</span>"
-                  "<span font='12' color='#${regular7}'>奔</span>"
-                  "<span font='12' color='#${regular7}'>墳</span>"
-                  "<span font='12' color='#${regular7}'>墳</span>"
-                  "<span font='12' color='#${regular7}'>墳</span>"
-                  "<span font='12' color='#${regular7}'>墳</span>"
-                  "<span font='12' color='#${regular7}'>墳</span>"
-                  "<span font='12' color='#${regular7}'>墳</span>"
-                  "<span font='12' color='#${regular7}'>墳</span>"
-                  "<span font='12' color='#${regular7}'>墳</span>"
+                  "<span font='14' color='#${regular1}'>󰖁</span>"
+                  "<span font='14' color='#${regular7}'>󰕿</span>"
+                  "<span font='14' color='#${regular7}'>󰕿</span>"
+                  "<span font='14' color='#${regular7}'>󰕿</span>"
+                  "<span font='14' color='#${regular7}'>󰕿</span>"
+                  "<span font='14' color='#${regular7}'>󰖀</span>"
+                  "<span font='14' color='#${regular7}'>󰖀</span>"
+                  "<span font='14' color='#${regular7}'>󰖀</span>"
+                  "<span font='14' color='#${regular7}'>󰖀</span>"
+                  "<span font='14' color='#${regular7}'>󰖀</span>"
+                  "<span font='14' color='#${regular7}'>󰖀</span>"
+                  "<span font='14' color='#${regular7}'>󰖀</span>"
+                  "<span font='14' color='#${regular7}'>󰕾</span>"
+                  "<span font='14' color='#${regular7}'>󰕾</span>"
+                  "<span font='14' color='#${regular7}'>󰕾</span>"
+                  "<span font='14' color='#${regular7}'>󰕾</span>"
+                  "<span font='14' color='#${regular7}'>󰕾</span>"
+                  "<span font='14' color='#${regular7}'>󰕾</span>"
+                  "<span font='14' color='#${regular7}'>󰕾</span>"
+                  "<span font='14' color='#${regular7}'>󰕾</span>"
                 ];
-                headset = "";
-                # hifi = "蓼";
-                # hmdi = "﴿";
-                # speaker = "蓼";
+                headset = "󰋎";
+                # hifi = "󰓃";
+                # hmdi = "󰡁";
+                # speaker = "󰓃";
               };
               on-click = "pulsemixer";
               scroll-step = 1.0;
@@ -218,7 +218,7 @@ in {
         style = ''
           * {
             font-family: ${monospace.name} Nerd Font;
-            font-size: 11.5pt;
+            font-size: 14pt;
           }
 
           window#waybar {
@@ -321,7 +321,7 @@ in {
       font = {
         package = with pkgs; (nerdfonts.override {fonts = ["${monospace.pkg}"];});
         name = "${monospace.name} Nerd Font";
-        size = 11;
+        size = 13;
       };
       gtk2 = {
         configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";

@@ -41,10 +41,10 @@ in {
           # shell = "\$SHELL"; # (if set, otherwise user's default shell from /etc/passwd)
           # term = "foot"; # (or xterm-256color if built with -Dterminfo=disabled)
           # login-shell = "no";
-          font = "${monospace} Nerd Font:style=Regular:size=11.5";
-          font-bold = "${monospace} Nerd Font:style=Bold:size=11.5";
-          font-italic = "${monospace} Nerd Font:style=Italic:size=11.5";
-          font-bold-italic = "${monospace} Nerd Font:style=Bold Italic:size=11.5";
+          font = "${monospace} Nerd Font:style=Regular:size=14";
+          font-bold = "${monospace} Nerd Font:style=Bold:size=14";
+          font-italic = "${monospace} Nerd Font:style=Italic:size=14";
+          font-bold-italic = "${monospace} Nerd Font:style=Bold Italic:size=14";
           # line-height = "";
           letter-spacing = "0";
           horizontal-letter-offset = "0";

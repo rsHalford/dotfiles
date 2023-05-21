@@ -53,7 +53,7 @@ in {
           drun-url-launcher = "xdg-open";
           click-to-exit = true;
           icon-theme = "Papirus-Dark";
-          font = "${monospace} Nerd Font 13";
+          font = "${monospace} Nerd Font 15";
           terminal = "${pkgs.${terminal}}/bin/${terminal}";
           kb-row-down = "Down,Alt+j";
           kb-row-up = "Up,Alt+k";

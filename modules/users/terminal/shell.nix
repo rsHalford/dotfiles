@@ -42,7 +42,7 @@ in {
             symbol = " ";
           };
           battery = {
-            discharging_symbol = "";
+            discharging_symbol = "󰂃";
             display = [
               {
                 threshold = 10;
@@ -101,7 +101,7 @@ in {
           };
           git_status = {
             style = "bold yellow";
-            conflicted = "";
+            conflicted = "󰇼";
             ahead = ''''${count}'';
             behind = ''''${count}'';
             diverged = ''''${ahead_count}⇣''${behind_count}'';
@@ -110,13 +110,13 @@ in {
             modified = "";
             staged = "[\($count\)](green)";
             renamed = "";
-            deleted = "";
+            deleted = "󰆴";
           };
           golang = {
-            symbol = "ﳑ ";
+            symbol = "󰟓 ";
           };
           helm = {
-            symbol = "ﴱ ";
+            symbol = "󰠳 ";
           };
           java = {
             symbol = " ";
@@ -140,7 +140,7 @@ in {
             symbol = " ";
           };
           nodejs = {
-            symbol = " ";
+            symbol = "󰎙 ";
             format = "via [$symbol]($style)";
           };
           openstack = {
@@ -151,7 +151,7 @@ in {
             symbol = " ";
           };
           php = {
-            symbol = " ";
+            symbol = "󰌟 ";
           };
           python = {
             symbol = " ";
@@ -165,7 +165,7 @@ in {
             symbol = " ";
           };
           swift = {
-            symbol = "ﯣ ";
+            symbol = "󰛥 ";
           };
         };
       };

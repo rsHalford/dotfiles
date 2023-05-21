@@ -55,7 +55,7 @@ local heading = {
 
 local plugin_count = {
   type = 'text',
-  val = '└─   ' .. plugins .. ' plugins in total ─┘',
+  val = '└─ 󰏖  ' .. plugins .. ' plugins in total ─┘',
   opts = {
     position = 'center',
     hl = 'Identifier',
@@ -94,8 +94,8 @@ local buttons = {
   val = {
     button('z', '  Zettelkasten', [[<cmd>cd $ZETTELKASTEN_DIR<CR><cmd>e QuickNote.md<CR>]]),
     button('n', '  New file', [[<cmd>ene <BAR> startinsert <CR>]]),
-    button('r', '  Recent', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]]),
-    button('q', '  Quit', [[<cmd>qa<CR>]]),
+    button('r', '󰋚  Recent', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]]),
+    button('q', '󰅚  Quit', [[<cmd>qa<CR>]]),
   },
   opts = {
     spacing = 1,
@@ -189,8 +189,8 @@ ntree.setup {
           unmerged = '',
           renamed = '',
           untracked = '',
-          deleted = '',
-          ignored = '',
+          deleted = '󰆴',
+          ignored = '󰈉',
         },
         folder = {
           arrow_open = '',
