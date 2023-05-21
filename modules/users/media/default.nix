@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.richard.media;
+  monospace = config.richard.fonts.monospace.name;
   terminal-editor = config.richard.terminal.utilities.editor;
 in {
   imports = [~/.dotfiles/secrets/newsboat];
@@ -69,7 +70,7 @@ in {
         config = {
           keep-open = "yes";
           ytdl-format = "bestvideo[height<=?720]+bestaudio/best";
-          osd-font = "JetBrainsMono Nerd Font";
+          osd-font = "${monospace} Nerd Font";
           osd-font-size = 20;
           osc = "no";
         };

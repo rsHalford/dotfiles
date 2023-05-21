@@ -6,23 +6,54 @@
 }:
 with lib; let
   cfg = config.richard.core;
+  monospace = config.richard.fonts.monospace;
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
   preferred-browser = config.richard.browser.http.preferred;
 in {
-  options.richard.core = {
-    enable = mkOption {
-      description = "Enable a set of common settings for user setup";
-      type = types.bool;
-      default = false;
+  options.richard = {
+    core = {
+      enable = mkOption {
+        description = "Enable a set of common settings for user setup";
+        type = types.bool;
+        default = false;
+      };
+    };
+
+    fonts = {
+      monospace = {
+        name = mkOption {
+          description = "Monospace font";
+          type = types.str;
+          default = "";
+        };
+
+        pkg = mkOption {
+          description = "Monospace font";
+          type = types.str;
+          default = "";
+        };
+      };
+
+      sans = mkOption {
+        description = "Sans-serif font";
+        type = types.str;
+        default = "";
+      };
+
+      serif = mkOption {
+        description = "Serif font";
+        type = types.str;
+        default = "";
+      };
     };
   };
 
   config = mkIf (cfg.enable) {
     home = {
       packages = with pkgs; [
-        (nerdfonts.override {fonts = ["JetBrainsMono"];})
+        (nerdfonts.override {fonts = ["${monospace.pkg}"];})
         google-fonts
         xdg-utils
         qmk

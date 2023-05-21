@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.richard.browser.http;
+  monospace = config.richard.fonts.monospace.name;
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   bg0_hard = "#1d2021";
@@ -388,7 +389,7 @@ in {
         # };
         fonts = {
           contextmenu = "Noto Sans";
-          default_family = ["JetBrainsMono Nerd Font"];
+          default_family = ["${monospace} Nerd Font"];
           default_size = "14px";
           web.family = {
             sans_serif = "Noto Sans";

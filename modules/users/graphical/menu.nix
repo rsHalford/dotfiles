@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.richard.graphical.menu;
+  monospace = config.richard.fonts.monospace.name;
   terminal = config.richard.terminal.emulator.program;
   foreground = "c0caf5"; # white
   background = "1a1b26"; # black
@@ -52,7 +53,7 @@ in {
           drun-url-launcher = "xdg-open";
           click-to-exit = true;
           icon-theme = "Papirus-Dark";
-          font = "JetBrainsMono Nerd Font 13";
+          font = "${monospace} Nerd Font 13";
           terminal = "${pkgs.${terminal}}/bin/${terminal}";
           kb-row-down = "Down,Alt+j";
           kb-row-up = "Up,Alt+k";

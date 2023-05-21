@@ -142,6 +142,14 @@
             };
             neovim.enable = true;
           };
+          fonts = {
+            monospace = {
+              name = "BlexMono"; # IBM Plex
+              pkg = "IBMPlexMono";
+            };
+            sans = "Lexend";
+            serif = "Gelasio"; # Georgia
+          };
           direnv.enable = true;
           gaming.enable = true;
           git = {

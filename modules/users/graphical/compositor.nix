@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.richard.graphical.compositor;
+  monospace = config.richard.fonts.monospace.name;
   screenshot = "${pkgs.scripts.screenshotTools}/bin/screenshot";
   ff2mpv = "${pkgs.scripts.mpvTools}/bin/ff2mpv";
   terminal = config.richard.terminal.emulator.program;
@@ -94,7 +95,7 @@ in {
               mouseWarping = true;
             };
             fonts = {
-              names = ["JetBrainsMono Nerd Font"];
+              names = ["${monospace} Nerd Font"];
               style = "Bold";
               size = 10.0;
             };

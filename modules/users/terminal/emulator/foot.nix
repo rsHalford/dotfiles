@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.richard.terminal.emulator;
+  monospace = config.richard.fonts.monospace.name;
   foreground = "c0caf5";
   background = "1a1b26";
   regular0 = "15161e"; # black
@@ -40,10 +41,10 @@ in {
           # shell = "\$SHELL"; # (if set, otherwise user's default shell from /etc/passwd)
           # term = "foot"; # (or xterm-256color if built with -Dterminfo=disabled)
           # login-shell = "no";
-          font = "JetBrainsMono Nerd Font:style=Regular:size=11.5";
-          font-bold = "JetBrainsMono Nerd Font:style=Bold:size=11.5";
-          font-italic = "JetBrainsMono Nerd Font:style=Italic:size=11.5";
-          font-bold-italic = "JetBrainsMono Nerd Font:style=Bold Italic:size=11.5";
+          font = "${monospace} Nerd Font:style=Regular:size=11.5";
+          font-bold = "${monospace} Nerd Font:style=Bold:size=11.5";
+          font-italic = "${monospace} Nerd Font:style=Italic:size=11.5";
+          font-bold-italic = "${monospace} Nerd Font:style=Bold Italic:size=11.5";
           # line-height = "";
           letter-spacing = "0";
           horizontal-letter-offset = "0";

@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.richard.terminal.emulator;
+  monospace = config.richard.fonts.monospace.name;
 in {
   config = mkIf (cfg.program == "alacritty") {
     home.packages = with pkgs; [alacritty];
@@ -33,19 +34,19 @@ in {
         };
         font = {
           normal = {
-            family = "JetBrainsMono Nerd Font";
+            family = "${monospace} Nerd Font";
             style = "Regular";
           };
           bold = {
-            family = "JetBrainsMono Nerd Font";
+            family = "${monospace} Nerd Font";
             style = "Bold";
           };
           italic = {
-            family = "JetBrainsMono Nerd Font";
+            family = "${monospace} Nerd Font";
             style = "Italic";
           };
           bold_italic = {
-            family = "JetBrainsMono Nerd Font";
+            family = "${monospace} Nerd Font";
             style = "Bold Italic";
           };
           size = 11.0;

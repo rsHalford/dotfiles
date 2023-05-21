@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.richard.graphical.utilities;
+  monospace = config.richard.fonts.monospace;
   terminal = config.richard.terminal.emulator.program;
   foreground = "c0caf5"; # white
   background = "1a1b26"; # black
@@ -52,7 +53,7 @@ in {
       swaylock.settings = {
         show-failed-attempts = true;
         color = regular0;
-        font = "JetBrainsMono Nerd Font";
+        font = "${monospace.name} Nerd Font";
         font-size = 24;
         indicator-idle-visible = false;
       };
@@ -216,7 +217,7 @@ in {
         ];
         style = ''
           * {
-            font-family: JetBrainsMono Nerd Font;
+            font-family: ${monospace.name} Nerd Font;
             font-size: 11.5pt;
           }
 
@@ -318,8 +319,8 @@ in {
         size = 16;
       };
       font = {
-        package = with pkgs; (nerdfonts.override {fonts = ["JetBrainsMono"];});
-        name = "JetBrainsMono Nerd Font";
+        package = with pkgs; (nerdfonts.override {fonts = ["${monospace.pkg}"];});
+        name = "${monospace.name} Nerd Font";
         size = 11;
       };
       gtk2 = {

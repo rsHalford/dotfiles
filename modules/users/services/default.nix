@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.richard.services;
+  monospace = config.richard.fonts.monospace.name;
   foreground = "c0caf5"; # white
   background = "1a1b26"; # black
   regular3 = "e0af68"; # yellow
@@ -167,7 +168,7 @@ in {
         borderSize = 2;
         defaultTimeout = 10000;
         extraConfig = "";
-        font = "JetBrainsMono Nerd Font";
+        font = "${monospace} Nerd Font";
         format = ''<b>%s</b>\n%b'';
         groupBy = null;
         height = 100;
