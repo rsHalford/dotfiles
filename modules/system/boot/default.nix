@@ -39,7 +39,6 @@ in {
           # splashMode = "stretch";
           # theme = null;
           useOSProber = true;
-          version = 2;
         };
         timeout = 3;
       };
