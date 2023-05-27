@@ -40,8 +40,8 @@ in {
         unknown = False
         cover_art = complete
         logger = whipper
-        output_directory = ~/Media/Music/
-        working_directory = ~/Media/Music/
+        output_directory = ~/media/music/
+        working_directory = ~/media/music/
         track_template = %%A/%%d/%%t. %%a - %%n
         disc_template = %%A/%%d/%%A - %%d
       '';
@@ -210,7 +210,7 @@ in {
         settings = {
           ncmpcpp_directory = "~/.config/ncmpcpp";
           lyrics_directory = "~/.local/share/lyrics";
-          mpd_music_dir = "~/Media/Music";
+          mpd_music_dir = "~/media/music";
           default_place_to_search_in = "database";
           mpd_crossfade_time = "3";
           visualizer_data_source = "/tmp/mpd.fifo";
@@ -288,7 +288,7 @@ in {
           datetime-format "%Y-%m-%d %a"
           article-sort-order date-desc
           save-path ~/.local/share/newsboat/saved/
-          download-path ~/Media/Music/Podcasts/
+          download-path ~/media/music/podcasts/
           macro v set browser "setsid -f umpv" ; open-in-browser ; set browser "${pkgs.xdg-utils}/bin/xdg-open";
 
           # Keys

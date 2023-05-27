@@ -201,7 +201,7 @@ in {
             format "44100:16:2"
           }
         '';
-        musicDirectory = ~/Media/Music;
+        musicDirectory = ~/media/music;
         network = {
           #   listenAddress = "127.0.0.1";
           #   port = "9001";

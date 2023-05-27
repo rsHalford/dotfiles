@@ -174,15 +174,19 @@ in {
       userDirs = {
         enable = true;
         createDirectories = true;
-        desktop = "$HOME";
+        desktop = "$HOME/desktop";
+        documents = "$HOME/documents";
+        download = "$HOME/downloads";
         extraConfig = {
           DOTFILES_DIR = "$HOME/.dotfiles";
-          PROJECTS_DIR = "$HOME/Projects";
-          ZETTELKASTEN_DIR = "$HOME/Documents/Zettelkasten";
+          PROJECTS_DIR = "$HOME/projects";
+          ZETTELKASTEN_DIR = "$HOME/documents/zettelkasten";
         };
-        music = "$HOME/Media/Music";
-        pictures = "$HOME/Media/Pictures";
-        videos = "$HOME/Media/Videos";
+        music = "$HOME/media/music";
+        pictures = "$HOME/media/pictures";
+        publicShare = "$HOME/public";
+        templates = "$HOME/templates";
+        videos = "$HOME/media/videos";
       };
     };
   };
