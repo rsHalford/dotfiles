@@ -264,7 +264,7 @@ in {
           lc = "$HOME/.local/";
           lcb = "$HOME/.local/bin/";
           lcs = "$XDG_DATA_HOME";
-          ls = "exa -lagh -s=.Name --time-style=iso --git --group-directories-first --colour-scale";
+          ls = "exa -lagh -s=Name --time-style=iso --git --group-directories-first --colour-scale";
           mkdir = "mkdir -pv";
           mv = "mv -i";
           pro = "$PROJECTS_DIR";
