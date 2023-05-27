@@ -134,6 +134,11 @@ in {
                 "ui.systemUsesDarkTheme" = 1;
               };
 
+              font = {
+                "font.size.variable.x-western" = 18;
+                "font.size.monospace.x-western" = 14;
+              };
+
               # webrtc = {
               #   "media.peerconnection.enabled" = false;
               #   "media.navigator.enabled" = false;
@@ -165,7 +170,7 @@ in {
                 "signon.management.page.breach-alerts.enabled" = false;
               };
             in
-              browser // extensions // telemetry // misc // dom // graphics // passwords;
+              browser // extensions // telemetry // misc // dom // font // graphics // passwords;
             # extraConfig = ""; # user.js
             # userChrome = ""; # User chrome css
             # userContent = ""; # User content css
