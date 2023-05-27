@@ -164,7 +164,7 @@ in {
                 wifi = "<span font='14' color='#${regular2}'>󰖩</span>";
                 ethernet = "<span font='14' color='#${regular5}'>󰈀</span>";
                 linked = "<span font='14' color='#${regular6}'>󰌹</span>";
-                disconnected = "<span font='14' color='#${color16}'></span>";
+                disconnected = "<span font='14' color='#${color16}'>󱚵</span>";
                 disabled = "<span font='14' color='#${regular1}'>󰖪</span>";
               };
               on-click = "nmtui";
