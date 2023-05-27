@@ -214,7 +214,7 @@ in {
           gpgconf --launch gpg-agent
         '';
         initExtraBeforeCompInit = ''
-          source .nix-profile/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+          source $HOME/.nix-profile/share/zsh-history-substring-search/zsh-history-substring-search.zsh
         '';
         initExtraFirst = "";
         plugins = [];
