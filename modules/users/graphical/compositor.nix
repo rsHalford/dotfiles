@@ -42,6 +42,9 @@ in {
         sway = {
           enable = true;
           config = {
+            assigns = {
+              "1" = [{app_id = "mpv";}];
+            };
             bars = [
               {
                 command = "\${pkgs.waybar}/bin/waybar";
