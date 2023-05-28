@@ -66,6 +66,8 @@ in {
       pulse.enable = cfg.sound.enable;
     };
 
+    services.udisks2.enable = true;
+
     networking.wireguard.enable = cfg.vpn.enable;
     services.mullvad-vpn = {
       enable = cfg.vpn.enable;
