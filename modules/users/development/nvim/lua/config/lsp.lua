@@ -280,6 +280,15 @@ for server, config in pairs(servers) do
   }, config))
 end
 
+require('lspconfig').elixirls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  cmd = { 'elixir-ls' }
+}
+
 require('lspconfig').lua_ls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
