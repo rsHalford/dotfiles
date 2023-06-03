@@ -156,6 +156,7 @@ require('luasnip.loaders.from_vscode').lazy_load()
 do
   local lint = require 'lint'
   lint.linters_by_ft = {
+    elixir = { 'credo' },
     go = { 'golangcilint' },
     lua = { 'selene' },
     markdown = { 'vale' }, -- 'markdownlint',
@@ -182,6 +183,7 @@ format.setup {
     css = { require('formatter.filetypes.css').prettier },
     html = { require('formatter.filetypes.html').prettier },
     javascript = { require('formatter.filetypes.javascript').prettier },
+    elixir = { require('formatter.filetypes.elixir').mixformat },
     go = { require('formatter.filetypes.go').gofmt, require('formatter.filetypes.go').gofumpt },
     lua = { require('formatter.filetypes.lua').stylua },
     markdown = { require('formatter.filetypes.markdown').prettier },
