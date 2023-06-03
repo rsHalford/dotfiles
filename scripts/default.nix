@@ -5,7 +5,7 @@
   screenshotTools = with pkgs;
     writeScriptBin "screenshot" ''
       #!${runtimeShell}
-      saveLocation=$HOME/media/pictures/screenshots/"$(date +%F_%H:%M:%S).png"
+      saveLocation=$HOME/media/pictures/screenshots/"$(date +%FT%H-%M-%S).png"
       grim -g "$(slurp)" -t png -l 0 "$saveLocation" &&
       wl-copy "$saveLocation" &&
       notify-send "Grim" "Screenshot Taken\n$(wl-paste)"
