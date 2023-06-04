@@ -39,6 +39,10 @@
           ;;
 
           "clean")
+              printf "%s\n" "Deleting old system generations"
+              sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +5
+              printf "%s\n" "Deleting old user generations"
+              nix-env --delete-generations +5
               printf "%s\n" "Performing garbage collection on store"
               nix store gc
               printf "%s\n" "Replacing identical files in the store by hard links"
@@ -47,6 +51,16 @@
 
           "depends")
               nix-store -qR "$(which "$2")"
+          ;;
+
+          "gens")
+              if [ -z "$2" ]; then
+                  sudo nix-env -p /nix/var/nix/profiles/system --list-generations
+              elif [ "$2" = "--user" ] || [ "$2" = "-u" ] ; then
+                  nix-env --list-generations
+              else
+                  echo "Unknown option: $2"
+              fi
           ;;
 
           "pkgs")
@@ -78,6 +92,7 @@
               COMMANDS="apply
       clean
       depends
+      gens
       pkgs
       search
       update
@@ -86,7 +101,7 @@
               OPTIONS="<argument>
 
 
-
+      <argument>
       <package> -e <pattern>
 
       <package>"
@@ -94,6 +109,7 @@
               DESCRIPTIONS="Applies current system configuration defined in dotfiles.
       Runs garbage collection and creates hard-links within nix store.
       Lists dependencies for package.
+      Lists configuration generations for both the system and user.
       Lists all installed packages in nix store.
       Searches in nixpkgs for a package using the provided arguments.
       Updates the dotfiles flake.lock.
