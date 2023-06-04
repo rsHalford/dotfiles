@@ -288,7 +288,13 @@ require('lspconfig').elixirls.setup {
   flags = {
     debounce_text_changes = 150,
   },
-  cmd = { 'elixir-ls' }
+  cmd = { 'elixir-ls' },
+  settings = {
+    elixirLS = {
+      dialyzerEnabled = false,
+      fetchDeps = false,
+    },
+  },
 }
 
 require('lspconfig').lua_ls.setup {
