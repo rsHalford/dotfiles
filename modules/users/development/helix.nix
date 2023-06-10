@@ -19,18 +19,18 @@ in {
     programs = {
       helix = {
         enable = true;
-        languages = [
-          {
+        languages = {
+          markdown = [{
             name = "markdown";
             file-types = ["md" "mdx" "markdown"];
-          }
-          {
+          }];
+          scheme = [{
             name = "scheme";
             file-types = ["ss" "scm"];
-          }
-        ];
+          }];
+        };
         settings = {
-          theme = "rose_pine_moon";
+          theme = "tokyonight";
           editor = {
             auto-completion = true;
             auto-format = true;
@@ -77,15 +77,6 @@ in {
               insert = "bar";
               normal = "block";
               select = "block";
-            };
-            file-picker = {
-              git-exclude = true;
-              git-global = true;
-              git-ignore = true;
-              hidden = false;
-              ignore = true;
-              # max-depth = None;
-              parents = true;
             };
             search = {
               smart-case = true;
