@@ -62,6 +62,7 @@ in {
           cmd_duration = {
             disabled = true;
           };
+          command_timeout = 1000;
           crystal = {
             symbol = " ";
           };
