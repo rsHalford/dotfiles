@@ -77,6 +77,7 @@ in {
   config = {
     home.packages = with pkgs; [
       gammastep
+      inotify-tools
       kanshi
       mako
       mpd
