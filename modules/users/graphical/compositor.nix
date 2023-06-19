@@ -290,7 +290,7 @@ in {
             enable = true;
             # settings = { }; # swaynag(5)
           };
-          systemdIntegration = true;
+          systemd.enable = true;
           wrapperFeatures = {
             gtk = true;
           };
