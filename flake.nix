@@ -222,7 +222,7 @@
         systemConfig = desktopConfig;
         users = defaultUser;
         cpuCores = 4;
-        stateVersion = "21.11";
+        stateVersion = "23.05";
       };
       external = host.mkHost {
         name = "external";
