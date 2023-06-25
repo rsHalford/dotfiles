@@ -95,6 +95,10 @@ in {
             normal = {
               n = ["search_next" "align_view_center"];
               N = ["search_prev" "align_view_center"];
+              Z = {
+                Q = ":quit!";
+                Z = ":write-quit!";
+              };
             };
             # picker = {
             #   "C-j" = "next_entry";
