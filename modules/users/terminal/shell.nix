@@ -173,7 +173,7 @@ in {
       zsh = {
         enable = true;
         enableAutosuggestions = true;
-        enableSyntaxHighlighting = true;
+        syntaxHighlighting.enable = true;
         enableVteIntegration = true;
         autocd = true;
         dotDir = ".config/zsh";
