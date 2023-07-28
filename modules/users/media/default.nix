@@ -73,16 +73,17 @@ in {
           osd-font = "${monospace} Nerd Font";
           osd-font-size = 20;
           osc = "no";
+          osc-bar = "no";
+          border = "no";
         };
         defaultProfiles = [];
         profiles = {};
         # TODO: figure out why mpv doesn't the youtube-quality and thumbnail scripts
         scripts = with pkgs; [
           mpvScripts.mpris
-          mpvScripts.mpv-playlistmanager
+          mpvScripts.uosc
+          mpvScripts.thumbfast
           mpvScripts.sponsorblock
-          mpvScripts.thumbnail
-          mpvScripts.youtube-quality
         ];
       };
       ncmpcpp = {
