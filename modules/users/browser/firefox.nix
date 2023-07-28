@@ -39,7 +39,7 @@ in {
             extensions = with pkgs.nur.repos.rycee.firefox-addons; [
               betterttv
               browserpass
-              bypass-paywalls-clean
+              # bypass-paywalls-clean
               clearurls
               cookie-autodelete
               darkreader
