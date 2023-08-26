@@ -70,6 +70,9 @@ in {
         config = {
           keep-open = "yes";
           ytdl-format = "bestvideo[height<=?720]+bestaudio/best";
+          ytdl-raw-options = "ignore-config=,sub-lang=en,write-sub=,write-auto-sub=";
+          slang = "en";
+          sub-auto = "fuzzy";
           osd-font = "${monospace} Nerd Font";
           osd-font-size = 20;
           osc = "no";
