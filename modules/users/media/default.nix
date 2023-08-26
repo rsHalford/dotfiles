@@ -73,7 +73,7 @@ in {
           osd-font = "${monospace} Nerd Font";
           osd-font-size = 20;
           osc = "no";
-          osc-bar = "no";
+          osd-bar = "no";
           border = "no";
         };
         defaultProfiles = [];
