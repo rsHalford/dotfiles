@@ -261,11 +261,11 @@ in {
           gwr = "git worktree remove";
           gwp = "git worktree prune";
           h = "${terminal-editor}";
-          la = "exa -T -L=3 --group-directories-first";
+          la = "eza -T -L=3 --group-directories-first";
           lc = "$HOME/.local/";
           lcb = "$HOME/.local/bin/";
           lcs = "$XDG_DATA_HOME";
-          ls = "exa -lagh -s=Name --time-style=iso --git --group-directories-first --colour-scale";
+          ls = "eza -lagh -s=Name --time-style=iso --git --group-directories-first --colour-scale";
           mkdir = "mkdir -pv";
           mv = "mv -i";
           pro = "$PROJECTS_DIR";

@@ -36,7 +36,7 @@ in {
       bat
       bottom
       curl
-      exa
+      eza
       exfat
       fd
       fzf
@@ -83,7 +83,7 @@ in {
         };
       };
       bottom.enable = true;
-      exa.enable = true;
+      eza.enable = true;
       fzf = {
         enable = true;
         enableZshIntegration = true;
