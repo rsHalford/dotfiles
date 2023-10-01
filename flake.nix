@@ -125,8 +125,9 @@
         userConfig = {
           browser = {
             http = {
+              brave.enable = true;
               firefox.enable = true;
-              qutebrowser.enable = true;
+              qutebrowser.enable = false;
               preferred = "firefox";
             };
             gemini = {
