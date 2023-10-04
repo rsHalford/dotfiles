@@ -126,9 +126,9 @@
           browser = {
             http = {
               brave.enable = true;
-              firefox.enable = true;
+              firefox.enable = false;
               qutebrowser.enable = false;
-              preferred = "firefox";
+              preferred = "brave";
             };
             gemini = {
               amfora.enable = true;
