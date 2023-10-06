@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "07/02/2023, 17:10:30",
-	"time": 1675789830258,
+	"@time": "06/10/2023, 16:48:24",
+	"time": 1696607304719,
 	"environment": {
-		"extension": "1.99.97",
+		"extension": "1.99.994",
 		"platform": "linux",
-		"firefox": 109
+		"chromium": 116
 	},
 	"searchEngines": [
 		"g|go|gg|google|Google: https://www.google.com/search?q=%s \\",
@@ -37,7 +37,7 @@
 		"js\\:|Js: javascript:\\ $S; JavaScript",
 		""
 	],
-	"searchUrl": "https://www.duckduckgo.com/?q=$s DuckDuckGo",
+	"searchUrl": "https://search.brave.com/search?q=$s Brave",
 	"userDefinedCss": [
 		"/* find-host, not working write to the find-host section, so I put it outside */",
 		".R.HM.D>.LH {",
@@ -142,5 +142,6 @@
 		"    color: #a9b1d6;",
 		"}",
 		""
-	]
+	],
+	"vimSync": true
 }
