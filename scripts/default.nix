@@ -183,21 +183,25 @@
       FOCUS=$(${sway}/bin/swaymsg -t get_tree | jq -r '..|try select(.focused == true)' | jq ."app_id")
       PID=$(${procps}/bin/pidof mpv)
       TIME="0.8"
-      if [ "$FOCUS" = '"firefox"' ]
-      then
-        ${wtype}/bin/wtype yy
-        ${coreutils}/bin/sleep "$TIME"
-        URL="$(${wl-clipboard}/bin/wl-paste)"
-        ${libnotify}/bin/notify-send "Added to MPV Playlist" -t 2000
-        if [ -z "$PID" ]
-        then
-          umpv "$URL" &
-        else
-          umpv "$URL"
-        fi
-      else
-        ${libnotify}/bin/notify-send "Firefox not focussed" "Current focus $FOCUS" -t 2000
-      fi
+      case "$FOCUS" in
+        *"$BROWSER"*)
+          ${wtype}/bin/wtype yy
+          ${coreutils}/bin/sleep "$TIME"
+          URL="$(${wl-clipboard}/bin/wl-paste)"
+          ${libnotify}/bin/notify-send "Added to MPV Playlist" -t 2000
+          if [ -z "$PID" ]
+          then
+            umpv "$URL" &
+          else
+            umpv "$URL"
+          fi
+        ;;
+
+        *)
+          ${libnotify}/bin/notify-send "$BROWSER not focussed" "Current focus $FOCUS" -t 2000
+        ;;
+
+      esac
     '';
 in {
   overlay = final: prev: {
