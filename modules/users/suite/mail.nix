@@ -13,30 +13,8 @@ with lib; let
     expunge = "both";
   };
 
-  "richard@xhalford.com" = {
-    primary = true;
-    address = "richard@xhalford.com";
-    userName = "richard";
-    realName = "Richard Halford";
-    imap = {
-      host = "mail.xhalford.com";
-      port = 993;
-    };
-    smtp = {
-      host = "mail.xhalford.com";
-      port = 587;
-      tls = {
-        useStartTls = true;
-      };
-    };
-    mbsync = mbsyncConfig;
-    msmtp.enable = true;
-    mu.enable = true;
-    passwordCommand = "${pkgs.pass}/bin/pass Email/richard@xhalford.com";
-  };
-
   "richardh.1995@googlemail.com" = {
-    primary = false;
+    primary = true;
     address = "richardh.1995@googlemail.com";
     userName = "richardh.1995@googlemail.com";
     realName = "Richard Halford";
@@ -82,7 +60,6 @@ in {
     ];
     accounts.email = {
       accounts = {
-        inherit "richard@xhalford.com";
         inherit "richardh.1995@googlemail.com";
       };
       maildirBasePath = "${config.xdg.dataHome}/mail";

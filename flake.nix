@@ -192,7 +192,7 @@
           };
           suite = {
             mail = {
-              enable = true;
+              enable = false;
               client = "thunderbird";
             };
             office.enable = true;
