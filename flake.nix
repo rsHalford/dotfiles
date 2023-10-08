@@ -131,7 +131,7 @@
               preferred = "brave";
             };
             gemini = {
-              amfora.enable = true;
+              amfora.enable = false;
             };
           };
           core.enable = true;
