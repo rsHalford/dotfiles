@@ -1,7 +1,7 @@
 {
   pkgs,
   nur,
-  emacs-unstable,
+  # emacs-unstable,
   godo-flake,
   tag-flake,
   scripts,
@@ -10,7 +10,7 @@
 }: {
   overlays = [
     nur.overlay
-    emacs-unstable.overlay
+    # emacs-unstable.overlay
     scripts.overlay
     (final: prev: {
       godo = godo-flake.packages.${system}.godo;

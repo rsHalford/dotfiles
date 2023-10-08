@@ -11,10 +11,10 @@
 
     nur.url = "github:nix-community/NUR";
 
-    emacs-unstable = {
-      url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # emacs-unstable = {
+    #   url = "github:nix-community/emacs-overlay";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     godo-flake = {
       url = "github:rsHalford/godo";
@@ -31,11 +31,11 @@
     nixpkgs,
     home-manager,
     nur,
-    emacs-unstable,
+    # emacs-unstable,
     godo-flake,
     tag-flake,
     ...
-  } @ inputs: let
+  }: let
     inherit (nixpkgs) lib;
 
     util = import ./lib {
@@ -53,7 +53,7 @@
           pkgs
           lib
           nur
-          emacs-unstable
+          # emacs-unstable
           godo-flake
           tag-flake
           scripts
