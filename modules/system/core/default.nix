@@ -6,6 +6,22 @@
 }:
 with lib; let
   cfg = config.richard.core;
+  regular0 = "15161e"; # black
+  regular1 = "f7768e"; # red
+  regular2 = "9ece6a"; # green
+  regular3 = "e0af68"; # yellow
+  regular4 = "7aa2f7"; # blue
+  regular5 = "bb9af7"; # magenta
+  regular6 = "7dcfff"; # cyan
+  regular7 = "a9b1d6"; # white
+  bright0 = "414868"; # black
+  bright1 = "f7768e"; # red
+  bright2 = "9ece6a"; # green
+  bright3 = "e0af68"; # yellow
+  bright4 = "7aa2f7"; # blue
+  bright5 = "bb9af7"; # magenta
+  bright6 = "7dcfff"; # cyan
+  bright7 = "c0caf5"; # white
 in {
   options.richard.core = {
     enable = mkOption {
@@ -18,24 +34,22 @@ in {
   config = mkIf (cfg.enable) {
     console = {
       colors = [
-        "15161e"
-        "f7768e"
-        "9ece6a"
-        "e0af68"
-        "7aa2f7"
-        "bb9af7"
-        "7dcfff"
-        "a9b1d6"
-        "414868"
-        "f7768e"
-        "9ece6a"
-        "e0af68"
-        "7aa2f7"
-        "bb9af7"
-        "7dcfff"
-        "c0caf5"
-        "ff9e64"
-        "db4b4b"
+        regular0
+        regular1
+        regular2
+        regular3
+        regular4
+        regular5
+        regular6
+        regular7
+        bright0
+        bright1
+        bright2
+        bright3
+        bright4
+        bright5
+        bright6
+        bright7
       ];
       # font = "";
       keyMap = "uk";
