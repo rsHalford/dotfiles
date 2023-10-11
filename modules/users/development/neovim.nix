@@ -55,7 +55,7 @@ in {
 
           # UI/UX
           trouble-nvim
-          lspsaga-nvim-original
+          lspsaga-nvim
           tokyonight-nvim
           alpha-nvim
           nvim-colorizer-lua

@@ -137,11 +137,11 @@
           core.enable = true;
           development = {
             emacs.enable = false;
-            helix.enable = true;
+            helix.enable = false;
             languages = {
               go.enable = true;
             };
-            neovim.enable = false;
+            neovim.enable = true;
           };
           fonts = {
             monospace = {
@@ -203,7 +203,7 @@
             shell.enable = true;
             utilities = {
               enable = true;
-              editor = "hx";
+              editor = "nvim";
             };
           };
         };
