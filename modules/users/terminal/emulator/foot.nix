@@ -196,7 +196,8 @@ in {
           select-extend-character-wise = "Control+BTN_RIGHT";
           select-word = "BTN_LEFT-2";
           select-word-whitespace = "Control+BTN_LEFT-2";
-          select-row = "BTN_LEFT-3";
+          select-quote = "BTN_LEFT-3";
+          select-row = "BTN_LEFT-4";
         };
         tweak = {
           # sixel = "yes";
