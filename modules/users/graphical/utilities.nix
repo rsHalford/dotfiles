@@ -126,7 +126,7 @@ in {
               tooltip-format = "<big>{:%B <span color='#${regular1}'>%Y}</span></big>\n<tt><small>{calendar}</small></tt>";
             };
             "cpu" = {
-              format = "<span font='14' color='#${regular4}'>󰘚</span> {usage}%";
+              format = "<span font='14' color='#${regular4}'>󰍛</span> {usage}%";
               on-click = "btm";
             };
             "disk" = {
@@ -136,7 +136,7 @@ in {
               on-click = "btm";
             };
             "memory" = {
-              format = "<span font='14' color='#${regular5}'>󰍛</span> {percentage}%";
+              format = "<span font='14' color='#${regular5}'>󰘚</span> {percentage}%";
               tooltip-format = "{used:0.1f}GiB / {total:0.1f}GiB";
               on-click = "btm";
             };
