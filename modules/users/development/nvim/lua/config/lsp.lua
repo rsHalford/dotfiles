@@ -264,6 +264,7 @@ require('neodev').setup()
 -- Install and configure servers
 local servers = {
   astro = {},
+  bashls = {},
   cssls = {},
   gopls = {},
   marksman = {},
