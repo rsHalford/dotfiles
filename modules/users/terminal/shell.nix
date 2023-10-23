@@ -213,6 +213,21 @@ in {
           export GPG_TTY="$(tty)"
           export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
           gpgconf --launch gpg-agent
+
+          gwj() {
+            local out query
+            query="$1"
+            out=$(
+              git worktree list |
+              fzf --preview='git log --oneline -n10 {2}' --query "$query" -1 |
+              awk '{print $1}'
+            )
+            cd "$out" || exit
+          }
+
+          gwa() {
+            git worktree add "$1" && cd "$1"
+          }
         '';
         initExtraBeforeCompInit = ''
           source $HOME/.nix-profile/share/zsh-history-substring-search/zsh-history-substring-search.zsh
@@ -256,11 +271,12 @@ in {
           grs = "git restore --staged .";
           gsh = "git secret hide";
           gsr = "git secret reveal -f";
-          gst = "git status -u";
+          gst = "git status --short --branch";
           gw = "git worktree";
-          gwa = "git worktree add";
-          gwr = "git worktree remove";
+          gwc = "worktree-clone";
+          gwl = "git worktree list";
           gwp = "git worktree prune";
+          gwr = "git worktree remove";
           h = "${terminal-editor}";
           la = "eza -T -L=3 --group-directories-first";
           lc = "$HOME/.local/";
