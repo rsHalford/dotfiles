@@ -214,6 +214,15 @@ in {
           export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
           gpgconf --launch gpg-agent
 
+          flakify() {
+            if [ ! -e flake.nix ]; then
+              nix flake new -t github:nix-community/nix-direnv .
+            elif [ ! -e .envrc ]; then
+              echo "use flake" > .envrc
+              direnv allow
+            fi
+          }
+
           gwj() {
             local out query
             query="$1"
