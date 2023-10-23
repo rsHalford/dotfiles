@@ -220,6 +220,7 @@ in {
         initExtraFirst = "";
         plugins = [];
         shellAliases = {
+          bj = "$BULLET_JOURNAL_DIR";
           ca = "$XDG_CACHE_HOME";
           cat = "bat";
           cf = "$XDG_CONFIG_HOME";

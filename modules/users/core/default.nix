@@ -178,6 +178,7 @@ in {
         documents = "$HOME/documents";
         download = "$HOME/downloads";
         extraConfig = {
+          BULLET_JOURNAL_DIR = "$HOME/documents/journal";
           DOTFILES_DIR = "$HOME/.dotfiles";
           PROJECTS_DIR = "$HOME/projects";
           ZETTELKASTEN_DIR = "$HOME/documents/zettelkasten";
