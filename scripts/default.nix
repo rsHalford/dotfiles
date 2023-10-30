@@ -161,7 +161,6 @@
       echo "gitdir: ./.bare" > .git
       git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
       git fetch origin
-      cd - || exit
     '';
 
   ytTools = with pkgs;
