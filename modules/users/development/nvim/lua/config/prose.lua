@@ -9,7 +9,7 @@ local zen = require 'zen-mode'
 zen.setup {
   window = {
     backdrop = 1,
-    width = 70,
+    width = 80,
     height = 0.8,
     options = {
       number = false,
@@ -22,11 +22,11 @@ zen.setup {
     options = {
       enabled = true,
       ruler = true,
-      showcmd = false,
+      showcmd = true,
       wrap = true,
       linebreak = true,
     },
-    twilight = { enabled = true },
+    twilight = { enabled = false },
     gitsigns = { enabled = false },
   },
   on_open = function(_)
