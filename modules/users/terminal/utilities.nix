@@ -101,6 +101,7 @@ in {
       tmux = {
         enable = true;
         baseIndex = 1;
+        clock24 = true;
         escapeTime = 0;
         extraConfig = ''
           # Vim Keybinds
@@ -138,6 +139,28 @@ in {
         historyLimit = 50000;
         keyMode = "vi";
         mouse = true;
+        plugins = with pkgs; [
+          {
+            plugin = tmuxPlugins.yank;
+            extraConfig = ''
+              set -g @shell-mode 'vi'
+            '';
+          }
+          {
+            plugin = tmuxPlugins.resurrect;
+            extraConfig = ''
+              set -g @resurrenct-processes 'helix newsboat'
+            '';
+          }
+          {
+            plugin = tmuxPlugins.continuum;
+            extraConfig = ''
+              set -g @continuum-boot 'on'
+              set -g @continuum-restore 'on'
+              set -g @continuum-save-interval '10'
+            '';
+          }
+        ];
         prefix = "C-a";
         shortcut = "a";
         terminal = "tmux-256color";
