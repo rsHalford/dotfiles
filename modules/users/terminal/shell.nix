@@ -234,6 +234,17 @@ in {
             cd "$out" || exit
           }
 
+          tmk() {
+            local out query
+            query="$1"
+            out=$(
+              tmux list-sessions -F "#S (#{session_windows} windows)" |
+              fzf --query "$query" -1 |
+              awk '{print $1}'
+            )
+            tmux kill-session -t "$out" || exit
+          }
+
           gwa() {
             git worktree add "$1" && cd "$1"
           }
