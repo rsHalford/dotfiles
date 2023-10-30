@@ -234,6 +234,10 @@ in {
             cd "$out" || exit
           }
 
+          gwa() {
+            git worktree add "$1" && cd "$1"
+          }
+
           tmk() {
             local out query
             query="$1"
@@ -245,8 +249,17 @@ in {
             tmux kill-session -t "$out" || exit
           }
 
-          gwa() {
-            git worktree add "$1" && cd "$1"
+          zt() {
+            local query zettel
+            query="$1"
+            cd "$ZETTELKASTEN_DIR"
+            zettel=$(fd . | fzf --query "$query" -1)
+            if [[ -n "$zettel" ]] && [[ "$zettel" == *"journal/20"* ]]; then
+              "$EDITOR" "$zettel" -u ./journal/.nvimrc
+            elif [[ -n "$zettel" ]]; then
+              "$EDITOR" "$zettel"
+            fi
+            cd - &> /dev/null
           }
         '';
         initExtraBeforeCompInit = ''
@@ -264,7 +277,7 @@ in {
           dl = "$XDG_DOWNLOAD_DIR";
           dot = "$DOTFILES_DIR";
           e = "${terminal-editor}";
-          fd = "fd -HI";
+          fd = "fd -H";
           # find = "fd";
           g = "git";
           ga = "git add";
@@ -309,7 +322,6 @@ in {
           # rm = "rm -i";
           tms = "tmux-sessioniser";
           v = "${terminal-editor}";
-          zt = "$ZETTELKASTEN_DIR";
         };
         shellGlobalAliases = {}; # aliases substituted anywhere on a line
       };
