@@ -202,6 +202,34 @@
 
       esac
     '';
+
+  tmuxTools = with pkgs;
+    writeScriptBin "tmux-sessioniser" ''
+      #!${runtimeShell}
+      if [[ $# -eq 1 ]]; then
+          SELECTED=$1
+      else
+          SELECTED=$(find ~/projects ~/ -mindepth 1 -maxdepth 1 -type d | fzf)
+      fi
+
+      if [[ -z $SELECTED ]]; then
+          exit 0
+      fi
+
+      SELECTED_NAME=$(basename "$SELECTED" | tr . _)
+      TMUX_RUNNING=$(pgrep tmux)
+
+      if [[ -z $TMUX ]] && [[ -z $TMUX_RUNNING ]]; then
+          tmux new-session -s $SELECTED_NAME -c $SELECTED
+          exit 0
+      fi
+
+      if ! tmux has-session -t=$SELECTED_NAME 2> /dev/null; then
+          tmux new-session -ds $SELECTED_NAME -c $SELECTED
+      fi
+
+      tmux switch-client -t $SELECTED_NAME
+    '';
 in {
   overlay = final: prev: {
     scripts.screenshotTools = screenshotTools;
@@ -211,5 +239,6 @@ in {
     scripts.worktreeTools = worktreeTools;
     scripts.ytTools = ytTools;
     scripts.mpvTools = mpvTools;
+    scripts.tmuxTools = tmuxTools;
   };
 }

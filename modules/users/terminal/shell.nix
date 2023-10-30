@@ -307,6 +307,7 @@ in {
           mv = "mv -i";
           pro = "$PROJECTS_DIR";
           # rm = "rm -i";
+          tms = "tmux-sessioniser";
           v = "${terminal-editor}";
           zt = "$ZETTELKASTEN_DIR";
         };

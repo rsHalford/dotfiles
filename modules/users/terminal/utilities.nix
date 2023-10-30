@@ -50,6 +50,7 @@ in {
       pciutils
       pulsemixer
       ripgrep
+      scripts.tmuxTools
       shell_gpt
       translate-shell
       unzip
