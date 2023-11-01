@@ -45,8 +45,10 @@ in {
           };
         };
       };
+      gamescope.enable = true;
       steam = {
         enable = true;
+        gamescopeSession.enable = true;
         dedicatedServer.openFirewall = true;
         remotePlay.openFirewall = true;
       };

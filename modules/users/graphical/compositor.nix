@@ -90,6 +90,7 @@ in {
               criteria = [
                 {app_id = "pulsemixer";}
                 {app_id = "nmtui";}
+                {class = "steam";}
               ];
             };
             focus = {
