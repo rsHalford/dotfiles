@@ -261,6 +261,13 @@ refactor.setup {}
 -- neodev
 require('neodev').setup()
 
+-- templ support
+vim.filetype.add {
+  extension = {
+    templ = 'templ',
+  },
+}
+
 -- Install and configure servers
 local servers = {
   astro = {},
@@ -269,7 +276,7 @@ local servers = {
   gopls = {},
   marksman = {},
   nil_ls = {},
-  tailwindcss = {},
+  templ = {},
   tsserver = {},
   zls = {},
 }

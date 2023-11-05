@@ -4,6 +4,7 @@
   # emacs-unstable,
   godo-flake,
   tag-flake,
+  templ-flake,
   scripts,
   system,
   lib,
@@ -15,6 +16,7 @@
     (final: prev: {
       godo = godo-flake.packages.${system}.godo;
       tag = tag-flake.packages.${system}.tag;
+      templ = templ-flake.packages.${system}.templ;
     })
   ];
 }

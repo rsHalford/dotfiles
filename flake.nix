@@ -25,6 +25,8 @@
       url = "github:rsHalford/tag";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    templ-flake.url = "github:a-h/templ";
   };
 
   outputs = {
@@ -34,6 +36,7 @@
     # emacs-unstable,
     godo-flake,
     tag-flake,
+    templ-flake,
     ...
   }: let
     inherit (nixpkgs) lib;
@@ -54,8 +57,10 @@
           lib
           nur
           # emacs-unstable
+          
           godo-flake
           tag-flake
+          templ-flake
           scripts
           ;
       })
