@@ -306,6 +306,20 @@ require('lspconfig').elixirls.setup {
   },
 }
 
+require('lspconfig').htmx.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  settings = {
+    filetypes = {
+      'html',
+      'templ',
+    },
+  },
+}
+
 require('lspconfig').lua_ls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
@@ -327,6 +341,72 @@ require('lspconfig').lua_ls.setup {
       telemetry = {
         enable = false,
       },
+    },
+  },
+}
+
+require('lspconfig').tailwindcss.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  filetypes = {
+    'aspnetcorerazor',
+    'astro',
+    'astro-markdown',
+    'blade',
+    'clojure',
+    'django-html',
+    'htmldjango',
+    'edge',
+    'eelixir',
+    'elixir',
+    'ejs',
+    'erb',
+    'eruby',
+    'gohtml',
+    'gohtmltmpl',
+    'haml',
+    'handlebars',
+    'hbs',
+    'html',
+    'html-eex',
+    'heex',
+    'jade',
+    'leaf',
+    'liquid',
+    'markdown',
+    'mdx',
+    'mustache',
+    'njk',
+    'nunjucks',
+    'php',
+    'razor',
+    'slim',
+    'twig',
+    'css',
+    'less',
+    'postcss',
+    'sass',
+    'scss',
+    'stylus',
+    'sugarss',
+    'javascript',
+    'javascriptreact',
+    'reason',
+    'rescript',
+    'templ',
+    'typescript',
+    'typescriptreact',
+    'vue',
+    'svelte',
+  },
+  init_options = {
+    userLanguages = {
+      templ = 'html',
+      eelixir = 'html-eex',
+      eruby = 'erb',
     },
   },
 }
