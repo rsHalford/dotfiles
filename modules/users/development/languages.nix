@@ -31,6 +31,8 @@ in {
 
         # Front-end
         nodePackages.vscode-langservers-extracted
+        nodePackages."@astrojs/language-server"
+        nodePackages."@tailwindcss/language-server"
 
         # Markup
         marksman

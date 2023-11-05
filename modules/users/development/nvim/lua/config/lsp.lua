@@ -269,6 +269,7 @@ local servers = {
   gopls = {},
   marksman = {},
   nil_ls = {},
+  tailwindcss = {},
   tsserver = {},
   zls = {},
 }
