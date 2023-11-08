@@ -121,9 +121,18 @@ in {
             };
             "clock" = {
               format = "<span font='14' color='#${regular3}'>󰃰</span> {:%H:%M}";
+              tooltip-format = "<tt><small>{calendar}</small></tt>";
               # on-click = "${terminal} -e khal";
-              today-format = "<span color='#${regular5}'><b>{}</b></span>";
-              tooltip-format = "<big>{:%B <span color='#${regular1}'>%Y}</span></big>\n<tt><small>{calendar}</small></tt>";
+              calendar = {
+                mode = "month";
+                weeks-pos = "right";
+                on-scroll = 1;
+                format = {
+                  weeks = "<span color='#${regular6}'><b>W{}</b></span>";
+                  weekdays = "<span color='#${regular4}'><b>{}</b></span>";
+                  today = "<span color='#${color16}'><b>{}</b></span>";
+                };
+              };
             };
             "cpu" = {
               format = "<span font='14' color='#${regular4}'>󰍛</span> {usage}%";
