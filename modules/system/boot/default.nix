@@ -8,42 +8,16 @@ with lib; let
   cfg = config.richard.boot;
 in {
   options.richard.boot = mkOption {
-    description = "Type of boot. Default encrypted-efi";
-    type = types.enum ["encrypted-efi"];
+    description = "Type of boot. Default systemd-boot";
+    type = types.enum ["systemd-boot"];
     default = null;
   };
 
-  config = mkIf (cfg == "encrypted-efi") {
+  config = mkIf (cfg == "systemd-boot") {
     boot = {
       loader = {
-        efi = {
-          canTouchEfiVariables = true;
-          efiSysMountPoint = "/boot/efi";
-        };
-        grub = {
-          enable = true;
-          # backgroundColor = "";
-          devices = ["nodev"];
-          efiSupport = true;
-          extraEntries = ''
-            menuentry "Reboot" {
-              reboot
-            }
-            menuentry "Shutdown" {
-              halt
-            }
-          '';
-          # font = "${pkgs.grub2}/share/grub/unicode.pf2";
-          # fontSize = null;
-          # splashImage = null;
-          # splashMode = "stretch";
-          # theme = null;
-          useOSProber = true;
-        };
-        timeout = 3;
-      };
-      plymouth = {
-        enable = true;
+        efi.canTouchEfiVariables = true;
+        systemd-boot.enable = true;
       };
     };
 
@@ -52,7 +26,7 @@ in {
       fsType = "ext4";
     };
 
-    fileSystems."/boot/efi" = {
+    fileSystems."/boot" = {
       device = "/dev/disk/by-label/BOOT";
       fsType = "vfat";
     };

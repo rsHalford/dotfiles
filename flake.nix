@@ -78,7 +78,7 @@
     system = "x86_64-linux";
 
     defaultConfig = {
-      boot = "encrypted-efi";
+      boot = "systemd-boot";
       connectivity = {
         bluetooth.enable = true;
         kde-connect.enable = true;
