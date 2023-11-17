@@ -315,7 +315,7 @@ in {
           lc = "$HOME/.local/";
           lcb = "$HOME/.local/bin/";
           lcs = "$XDG_DATA_HOME";
-          ls = "eza -lagh -s=Name --time-style=iso --git --group-directories-first --colour-scale";
+          ls = "eza -1ar -s=Name --group-directories-first --git --colour-scale --icons";
           mkdir = "mkdir -pv";
           mv = "mv -i";
           pro = "$PROJECTS_DIR";
