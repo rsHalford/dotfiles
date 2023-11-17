@@ -74,23 +74,25 @@ in {
       package = pkgs.mullvad-vpn;
     };
 
-    environment.systemPackages = with pkgs; mkIf (cfg.virtualisation.enable) [
-      virt-manager
-      virt-viewer
-      spice
-      spice-gtk
-      win-virtio
-      win-spice
-      gnome.adwaita-icon-theme
-    ];
+    environment.systemPackages = with pkgs;
+      mkIf (cfg.virtualisation.enable) [
+        virt-manager
+        virt-viewer
+        spice
+        spice-gtk
+        win-virtio
+        win-spice
+        gnome.adwaita-icon-theme
+      ];
 
     virtualisation = {
-      libvirtd =  mkIf (cfg.virtualisation.enable) {
+      libvirtd = mkIf (cfg.virtualisation.enable) {
         enable = true;
         qemu = {
+          package = pkgs.qemu_kvm;
           swtpm.enable = true;
           ovmf.enable = true;
-          ovmf.packages = [ pkgs.OVMFFull.fd ];
+          ovmf.packages = [pkgs.OVMFFull.fd];
         };
       };
       spiceUSBRedirection.enable = true;

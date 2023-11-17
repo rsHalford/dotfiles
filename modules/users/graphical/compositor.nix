@@ -121,6 +121,13 @@ in {
                 xkb_model = "pc105";
                 xkb_options = "caps:escape_shifted_capslock";
               };
+              "2362:628:PIXA3854:00_093A:0274_Touchpad" = {
+                accel_profile = "flat";
+                dwt = "enabled";
+                natural_scroll = "enabled";
+                pointer_accel = "0.5";
+                tap = "enabled";
+              };
               "1267:29:Elan_Touchpad" = {
                 accel_profile = "flat";
                 dwt = "enabled";

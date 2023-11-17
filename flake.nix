@@ -256,6 +256,19 @@
         cpuCores = 4;
         stateVersion = "21.11";
       };
+      framework = host.mkHost {
+        name = "framework";
+        NICs = ["wlp1s0"];
+        initrdMods = ["xhci_pci" "nvme" "thunderbolt" "usb_storage" "sd_mod"];
+        kernelMods = ["kvm-amd"];
+        kernelPackage = pkgs.linuxPackages_latest;
+        kernelParams = [];
+        kernelPatches = [];
+        systemConfig = laptopConfig;
+        users = defaultUser;
+        cpuCores = 8;
+        stateVersion = "23.05";
+      };
     };
   };
 }
