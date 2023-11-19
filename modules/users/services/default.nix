@@ -143,18 +143,18 @@ in {
           laptop_docked = {
             outputs = [
               {
-                criteria = "BNQ BenQ EX2510 9BL02077019";
-                mode = "1920x1080@144Hz";
-                position = "0,275";
-                scale = 1.0;
-                status = "enable";
-              }
-              {
                 criteria = "Dell Inc. DELL U2515H 9X2VY5CA0QTL";
                 mode = "2560x1440@60Hz";
                 position = "1920,0";
                 transform = "270";
                 scale = 1.5;
+                status = "enable";
+              }
+              {
+                criteria = "BNQ BenQ EX2510 9BL02077019";
+                mode = "1920x1080@144Hz";
+                position = "0,275";
+                scale = 1.0;
                 status = "enable";
               }
               {
