@@ -9,6 +9,7 @@
     ./connectivity
     ./core
     ./desktop
+    ./framework
     ./laptop
   ];
 }

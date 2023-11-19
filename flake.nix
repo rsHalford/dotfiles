@@ -107,6 +107,17 @@
         };
       };
 
+    frameworkConfig =
+      defaultConfig
+      // {
+        framework = {
+          enable = true;
+          fprint = {
+            enable = true;
+          };
+        };
+      };
+
     defaultUser = [
       {
         name = "richard";
@@ -264,7 +275,7 @@
         kernelPackage = pkgs.linuxPackages_latest;
         kernelParams = [];
         kernelPatches = [];
-        systemConfig = laptopConfig;
+        systemConfig = frameworkConfig;
         users = defaultUser;
         cpuCores = 8;
         stateVersion = "23.05";
