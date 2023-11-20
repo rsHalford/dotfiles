@@ -235,7 +235,15 @@ in {
           }
 
           gwa() {
-            git worktree add "$1" && cd "$1"
+            local dir out query
+            query="$1"
+            out=$(
+              git branch --all |
+              fzf --preview='git log --oneline -n10 {2}' --query "$query" -1 |
+              awk '{print $NF}'
+            )
+            dir=$(basename "$out")
+            git worktree add "$dir" && cd "$dir" || exit
           }
 
           tmk() {
