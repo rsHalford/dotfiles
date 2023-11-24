@@ -30,6 +30,7 @@ in {
         powertop
         brightnessctl
       ];
+      hardware.cpu.intel.updateMicrocode = true;
 
       powerManagement = {
         cpuFreqGovernor = "powersave";

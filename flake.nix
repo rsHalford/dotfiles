@@ -112,9 +112,6 @@
       // {
         framework = {
           enable = true;
-          fprint = {
-            enable = true;
-          };
         };
       };
 
