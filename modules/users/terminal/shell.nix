@@ -323,7 +323,7 @@ in {
           lc = "$HOME/.local/";
           lcb = "$HOME/.local/bin/";
           lcs = "$XDG_DATA_HOME";
-          ls = "eza -1ar -s=Name --group-directories-first --git --colour-scale --icons";
+          ls = "eza -1ar -s=Name --group-directories-first --git --icons=auto";
           mkdir = "mkdir -pv";
           mv = "mv -i";
           pro = "$PROJECTS_DIR";
