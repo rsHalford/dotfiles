@@ -79,6 +79,7 @@ in {
             };
             modules-right = [
               "mpris"
+              "temperature"
               "cpu"
               "memory"
               "disk"
@@ -218,6 +219,19 @@ in {
               scroll-step = 1.0;
               tooltip-format = "{desc}: {volume}%";
             };
+            "temperature" = {
+              hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
+              input-filename = "temp1_input";
+              critical-threshold = 100;
+              format = "{icon} {temperatureC}°C";
+              format-icons = [
+                "<span font='12' color='#${regular2}'></span>"
+                "<span font='12' color='#${regular3}'></span>"
+                "<span font='12' color='#${color16}'></span>"
+                "<span font='12' color='#${color17}'></span>"
+                "<span font='12' color='#${regular1}'></span>"
+              ];
+            };
             "tray" = {
               icon-size = 16;
               show-passive-items = false;
@@ -293,6 +307,7 @@ in {
           #memory,
           #network,
           #pulseaudio,
+          #temperature,
           #tray {
             padding: 0 8pt;
             background: #${background};
