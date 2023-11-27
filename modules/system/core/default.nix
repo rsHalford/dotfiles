@@ -22,6 +22,15 @@ with lib; let
   bright5 = "bb9af7"; # magenta
   bright6 = "7dcfff"; # cyan
   bright7 = "c0caf5"; # white
+  greetdConfig = pkgs.writeText "greetd-sway-config" ''
+    # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
+    exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l; swaymsg exit"
+    bindsym Mod4+shift+e exec swaynag \
+      -t warning \
+      -m 'What do you want to do?' \
+      -b 'Poweroff' 'systemctl poweroff' \
+      -b 'Reboot' 'systemctl reboot'
+  '';
 in {
   options.richard.core = {
     enable = mkOption {
@@ -51,9 +60,7 @@ in {
         bright6
         bright7
       ];
-      # font = "";
       keyMap = "uk";
-      # packages = with pkgs; [ ];
     };
 
     documentation = {
@@ -66,11 +73,6 @@ in {
     };
 
     environment = {
-      loginShellInit = ''
-        if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-          exec sway
-        fi
-      '';
       pathsToLink = ["/share/zsh"];
       shells = [pkgs.zsh];
       systemPackages = with pkgs; [
@@ -119,7 +121,26 @@ in {
 
     # security.sudo.extraConfig = "Defaults env_reset,timestamp_timeout=5";
     # security.sudo.execWheelOnly = true;
-    services.flatpak.enable = true;
+
+    services = {
+      flatpak.enable = true;
+      greetd = {
+        enable = true;
+        package = pkgs.greetd.gtkgreet;
+        settings = {
+          default_session = {
+            command = "${pkgs.sway}/bin/sway --config ${greetdConfig}";
+            user = "greeter";
+          };
+        };
+      };
+    };
+
+    environment.etc."greetd/environments".text = ''
+      sway
+      steam-gamescope
+      zsh
+    '';
 
     time.timeZone = "Europe/London";
 

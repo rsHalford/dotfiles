@@ -158,7 +158,7 @@ in {
               "Mod4+e" = "exec ${terminal} -e ${terminal-editor}";
               "Mod4+Shift+e" = "exec ${graphical-editor}";
               "Mod4+f" = "exec ${terminal} -e newsboat";
-              # "Mod4+g" = "steam";
+              "Mod4+g" = "steam";
               "Mod4+h" = "focus left";
               "Mod4+Shift+h" = "move left";
               "Mod4+i" = "floating toggle";

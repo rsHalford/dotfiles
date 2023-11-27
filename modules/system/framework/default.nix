@@ -19,14 +19,8 @@ in {
     environment.systemPackages = with pkgs; [
       acpid
       brightnessctl
+      mangohud
     ];
-
-    /*
-       fileSystems."/games" = {
-      device = "/dev/disk/by-label/games";
-      fsType = "ext4";
-    };
-    */
 
     hardware = {
       cpu.amd.updateMicrocode = true;
@@ -47,14 +41,28 @@ in {
           };
         };
       };
-      gamescope.enable = true;
+      gamescope = {
+        enable = true;
+        capSysNice = true;
+      };
       steam = {
         enable = true;
-        gamescopeSession.enable = true;
+        gamescopeSession = {
+          enable = true;
+          args = [
+            "-W 2256 -H 1504"
+            "-w 1440 -h 960"
+            "-r 30"
+            "-F fsr"
+            "--adaptive-sync"
+          ];
+          env = {};
+        };
         dedicatedServer.openFirewall = true;
         remotePlay.openFirewall = true;
       };
     };
+
     services = {
       fprintd.enable = true;
       fwupd.enable = true;
