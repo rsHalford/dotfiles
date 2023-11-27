@@ -9,6 +9,7 @@ with lib; let
   monospace = config.richard.fonts.monospace.name;
   screenshot = "${pkgs.scripts.screenshotTools}/bin/screenshot";
   ff2mpv = "${pkgs.scripts.mpvTools}/bin/ff2mpv";
+  browser = config.richard.browser.http.preferred;
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
@@ -183,7 +184,7 @@ in {
               "Mod4+u" = "mode resize";
               "Mod4+v" = "exec ${terminal} -e pulsemixer";
               "Mod4+Shift+v" = "exec mullvad-vpn";
-              "Mod4+w" = "exec $BROWSER";
+              "Mod4+w" = "exec ${browser}";
               "Mod4+Shift+w" = "exec ${terminal} -e nmtui";
               "Mod4+x" = "exec swaylock";
               # "Mod4+Shift+x" = "exec ledger-live-desktop";
