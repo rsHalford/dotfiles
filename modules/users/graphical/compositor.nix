@@ -89,7 +89,7 @@ in {
             floating = {
               border = 3;
               criteria = [
-                {app_id = "pulsemixer";}
+                {app_id = "ncpamixer";}
                 {app_id = "nmtui";}
                 {class = "steam";}
               ];
@@ -182,7 +182,7 @@ in {
               "Mod4+t" = "exec thunderbird";
               # "Mod4+Shift+t" = "qBittorent";
               "Mod4+u" = "mode resize";
-              "Mod4+v" = "exec ${terminal} -e pulsemixer";
+              "Mod4+v" = "exec ${terminal} -e ncpamixer";
               "Mod4+Shift+v" = "exec mullvad-vpn";
               "Mod4+w" = "exec ${browser}";
               "Mod4+Shift+w" = "exec ${terminal} -e nmtui";
@@ -236,9 +236,9 @@ in {
               "Print" = "exec ${screenshot}";
               "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
               "XF86MonBrightnessUp" = "exec brightnessctl set +5%";
-              "XF86AudioMute" = "exec pulsemixer --toggle-mute";
-              "XF86AudioRaiseVolume" = "exec pulsemixer --change-volume +5";
-              "XF86AudioLowerVolume" = "exec pulsemixer --change-volume -5";
+              "XF86AudioMute" = "exec pamixer --toggle-mute";
+              "XF86AudioRaiseVolume" = "exec pamixer --increase 5";
+              "XF86AudioLowerVolume" = "exec pamixer --decrease 5";
               "XF86AudioMicMute" = "exec amixer set Capture toggle";
               "XF86AudioPlay" = "exec playerctl play-pause";
               "XF86AudioStop" = "exec playerctl stop";

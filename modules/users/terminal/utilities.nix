@@ -46,9 +46,10 @@ in {
       libwebp
       libsixel
       mmv-go
+      ncpamixer
       neofetch
+      pamixer
       pciutils
-      pulsemixer
       ripgrep
       scripts.tmuxTools
       shell_gpt

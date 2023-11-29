@@ -215,7 +215,7 @@ in {
                 # hmdi = "󰡁";
                 # speaker = "󰓃";
               };
-              on-click = "pulsemixer";
+              on-click = "ncpamixer";
               scroll-step = 1.0;
               tooltip-format = "{desc}: {volume}%";
             };
