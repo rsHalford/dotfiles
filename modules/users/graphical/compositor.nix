@@ -9,7 +9,6 @@ with lib; let
   monospace = config.richard.fonts.monospace.name;
   screenshot = "${pkgs.scripts.screenshotTools}/bin/screenshot";
   ff2mpv = "${pkgs.scripts.mpvTools}/bin/ff2mpv";
-  browser = config.richard.browser.http.preferred;
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
@@ -159,7 +158,7 @@ in {
               "Mod4+e" = "exec ${terminal} -e ${terminal-editor}";
               "Mod4+Shift+e" = "exec ${graphical-editor}";
               "Mod4+f" = "exec ${terminal} -e newsboat";
-              "Mod4+g" = "steam";
+              "Mod4+g" = "exec steam";
               "Mod4+h" = "focus left";
               "Mod4+Shift+h" = "move left";
               "Mod4+i" = "floating toggle";
@@ -184,7 +183,7 @@ in {
               "Mod4+u" = "mode resize";
               "Mod4+v" = "exec ${terminal} -e ncpamixer";
               "Mod4+Shift+v" = "exec mullvad-vpn";
-              "Mod4+w" = "exec ${browser}";
+              "Mod4+w" = "exec $BROWSER";
               "Mod4+Shift+w" = "exec ${terminal} -e nmtui";
               "Mod4+x" = "exec swaylock";
               # "Mod4+Shift+x" = "exec ledger-live-desktop";
@@ -290,7 +289,7 @@ in {
           '';
           # extraOptions = ""; # CLI arguments pass when sway launches
           extraSessionCommands = ''
-            export SDL_VIDEODRIVER=wayland
+            export SDL_VIDEODRIVER=wayland,x11
             export QT_QPA_PLATFORM=wayland
             export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
             export _JAVA_AWT_WM_NONREPARENTING=1

@@ -16,11 +16,24 @@ in {
   };
 
   config = mkIf (cfg.enable) {
-    environment.systemPackages = with pkgs; [
-      acpid
-      brightnessctl
-      mangohud
-    ];
+    environment = {
+      systemPackages = with pkgs; [
+        acpid
+        brightnessctl
+        mangohud
+        pamixer
+      ];
+
+      etc."sway/config.d/framework.conf".text = ''
+        bindsym Mod4+w exec $BROWSER
+        bindsym XF86AudioLowerVolume exec pamixer --decrease 5
+        bindsym XF86AudioMicMute exec amixer set Capture toggle
+        bindsym XF86AudioMute exec pamixer --toggle-mute
+        bindsym XF86AudioRaiseVolume exec pamixer --increase 5
+        bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+        bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+      '';
+    };
 
     hardware = {
       cpu.amd.updateMicrocode = true;
@@ -67,6 +80,31 @@ in {
       fprintd.enable = true;
       fwupd.enable = true;
       power-profiles-daemon.enable = true;
+      xserver = {
+        libinput = {
+          touchpad = {
+            accelProfile = "flat";
+            accelSpeed = "0.5";
+            disableWhileTyping = true;
+            naturalScrolling = true;
+            tapping = true;
+            tappingButtonMap = "lrm";
+          };
+        };
+        xkb = {
+          layout = "gb";
+          model = "pc105";
+          options = "caps:escape_shifted_capslock";
+        };
+      };
     };
+
+    users.motd = ''
+
+      Enter the session evironment you want to start...
+      ''\tsway
+      ''\tsteam-gamescope
+
+    '';
   };
 }
