@@ -177,9 +177,19 @@
     '';
 
   mpvTools = with pkgs;
-    writeScriptBin "ff2mpv" ''
+    writeScriptBin "browser2mpv" ''
       #!${runtimeShell}
-      FOCUS=$(${sway}/bin/swaymsg -t get_tree | jq -r '..|try select(.focused == true)' | jq ."app_id")
+      case "$XDG_CURRENT_DESKTOP" in
+        "sway")
+          FOCUS=$(${sway}/bin/swaymsg -t get_tree | jq -r '..|try select(.focused == true)' | jq ."app_id")
+        ;;
+        "Hyprland")
+          FOCUS=$(${hyprland}/bin/hyprctl activewindow -j | jq .class)
+        ;;
+        *)
+          ${libnotify}/bin/notify-send "Unsupported desktop" "Currently in $XDG_CURRENT_DESKTOP" -t 2000
+        ;;
+      esac
       PID=$(${procps}/bin/pidof mpv)
       TIME="0.8"
       case "$FOCUS" in
@@ -195,11 +205,9 @@
             umpv "$URL"
           fi
         ;;
-
         *)
           ${libnotify}/bin/notify-send "$BROWSER not focussed" "Current focus $FOCUS" -t 2000
         ;;
-
       esac
     '';
 

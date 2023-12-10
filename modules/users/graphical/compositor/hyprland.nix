@@ -6,7 +6,7 @@
 }:
 with lib; let
   screenshot = "${pkgs.scripts.screenshotTools}/bin/screenshot";
-  ff2mpv = "${pkgs.scripts.mpvTools}/bin/ff2mpv";
+  browser2mpv = "${pkgs.scripts.mpvTools}/bin/browser2mpv";
   browser = config.richard.browser.http.preferred;
   browser-class =
     if browser == "brave"
@@ -244,7 +244,7 @@ in {
               "SUPER, W, exec, $BROWSER"
               "SUPER_SHIFT, W, exec, ${terminal} -a nmtui -T nmtui -e nmtui"
               "SUPER, X, exec, swaylock"
-              "SUPER, Y, exec, ${ff2mpv}"
+              "SUPER, Y, exec, ${browser2mpv}"
               ", Print, exec, ${screenshot}"
               ", XF86AudioMute, exec, pamixer --toggle-mute"
               ", XF86AudioMicMute, exec, amixer set Capture toggle"

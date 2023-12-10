@@ -8,7 +8,7 @@ with lib; let
   cfg = config.richard.graphical.compositor;
   monospace = config.richard.fonts.monospace.name;
   screenshot = "${pkgs.scripts.screenshotTools}/bin/screenshot";
-  ff2mpv = "${pkgs.scripts.mpvTools}/bin/ff2mpv";
+  browser2mpv = "${pkgs.scripts.mpvTools}/bin/browser2mpv";
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
@@ -187,7 +187,7 @@ in {
               "Mod4+Shift+w" = "exec ${terminal} -e nmtui";
               "Mod4+x" = "exec swaylock";
               # "Mod4+Shift+x" = "exec ledger-live-desktop";
-              "Mod4+y" = "exec ${ff2mpv}";
+              "Mod4+y" = "exec ${browser2mpv}";
 
               "Mod4+Up" = "focus up";
               "Mod4+Right" = "focus right";
