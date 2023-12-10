@@ -73,3 +73,12 @@ ts_config.setup {
 }
 
 require('treesitter-context').setup {}
+
+local keymap = vim.api.nvim_set_keymap
+
+keymap(
+  'n',
+  '<leader>tc',
+  [[<cmd>TSContextToggle<CR>]],
+  { noremap = true, silent = true, desc = 'Toggle treesitter context' }
+)
