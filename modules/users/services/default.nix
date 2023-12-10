@@ -72,6 +72,12 @@ in {
       type = types.bool;
       default = false;
     };
+
+    udiskie.enable = mkOption {
+      description = "Enable udiskie for automounting";
+      type = types.bool;
+      default = false;
+    };
   };
 
   config = {
@@ -239,6 +245,9 @@ in {
           enable = true;
           command = "syncthingtray --wait";
         };
+      };
+      udiskie = {
+        enable = cfg.udiskie.enable;
       };
     };
     systemd.user = {

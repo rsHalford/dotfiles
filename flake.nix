@@ -205,6 +205,7 @@
             newsboat.enable = false;
             protonmail-bridge.enable = false;
             syncthing.enable = true;
+            udiskie.enable = true;
           };
           suite = {
             mail = {
