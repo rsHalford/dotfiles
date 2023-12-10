@@ -1,11 +1,6 @@
 {
-  pkgs,
-  config,
-  lib,
-  ...
-}: {
   imports = [
-    ./compositor.nix
+    ./compositor
     ./menu.nix
     ./utilities.nix
     ./virtualisation.nix

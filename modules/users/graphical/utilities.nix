@@ -38,17 +38,27 @@ in {
   };
 
   config = mkIf (cfg.enable) {
-    home.packages = with pkgs; [
-      autotiling
-      grim
-      qt6.qtwayland
-      scripts.wallpaperTools
-      slurp
-      swww
-      tag
-      waybar
-      wl-clipboard
-    ];
+    home = {
+      packages = with pkgs; [
+        autotiling
+        grim
+        hyprpicker
+        qt6.qtwayland
+        scripts.wallpaperTools
+        slurp
+        swww
+        tag
+        waybar
+        wl-clipboard
+      ];
+      pointerCursor = {
+        gtk.enable = true;
+        x11.enable = true;
+        package = pkgs.quintom-cursor-theme;
+        name = "Quintom_Ink";
+        size = 16;
+      };
+    };
     programs = {
       swaylock.settings = {
         show-failed-attempts = true;
@@ -61,22 +71,28 @@ in {
         enable = true;
         settings = [
           {
+            layer = "top";
             position = "bottom";
             height = 20;
             spacing = 0;
             fixed-center = false;
             ipc = true;
-            modules-left = ["sway/workspaces" "sway/mode"];
+            modules-left = [
+              "hyprland/workspaces"
+              "sway/workspaces"
+              "hyprland/submap"
+              "sway/mode"
+            ];
             "sway/workspaces" = {
               disable-scroll = true;
+            };
+            "hyprland/submap" = {
+              format = "<span style=\"italic\">{}</span>";
             };
             "sway/mode" = {
               format = "<span style=\"italic\">{}</span>";
             };
-            modules-center = ["sway/window"];
-            "sway/window" = {
-              format = {};
-            };
+            modules-center = ["hyprland/window" "sway/window"];
             modules-right = [
               "mpris"
               "temperature"
@@ -275,11 +291,13 @@ in {
             color: #${background};
           }
 
+          #workspaces button.active,
           #workspaces button.focused {
             background-color: #${regular4};
             color: #${background};
           }
 
+          #workspaces button.active:hover,
           #workspaces button.focused:hover {
             background-color: #${regular4};
             color: #${bright7};

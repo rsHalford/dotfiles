@@ -29,14 +29,14 @@ with lib; let
   color17 = "db4b4b"; # orange
 in {
   options.richard.graphical.compositor = {
-    enable = mkOption {
-      description = "Enable compositor";
+    sway.enable = mkOption {
+      description = "Enable sway compositor";
       type = types.bool;
       default = false;
     };
   };
 
-  config = mkIf (cfg.enable) {
+  config = {
     wayland = {
       windowManager = {
         sway = {

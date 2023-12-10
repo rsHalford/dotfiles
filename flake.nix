@@ -173,7 +173,10 @@
             signByDefault = true;
           };
           graphical = {
-            compositor.enable = true;
+            compositor = {
+              sway.enable = true;
+              hyprland.enable = true;
+            };
             menu.enable = true;
             utilities = {
               enable = true;
