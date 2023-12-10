@@ -54,20 +54,20 @@ in {
                     builtins.toString (x + 1 - (c * 10));
                 in ''
                   bind = SUPER, ${ws}, workspace, ${toString (x + 1)}
-                  bind = SUPER_SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}
+                  bind = SUPER_SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}
                 ''
               )
               10)}
             # resizing
             submap=resize
-            binde=,right,resizeactive,10 0
-            binde=,L,resizeactive,10 0
-            binde=,left,resizeactive,-10 0
-            binde=,H,resizeactive,-10 0
-            binde=,up,resizeactive,0 -10
-            binde=,K,resizeactive,0 -10
-            binde=,down,resizeactive,0 10
-            binde=,J,resizeactive,0 10
+            binde=,right,resizeactive,20 0
+            binde=,L,resizeactive,20 0
+            binde=,left,resizeactive,-20 0
+            binde=,H,resizeactive,-20 0
+            binde=,up,resizeactive,0 -20
+            binde=,K,resizeactive,0 -20
+            binde=,down,resizeactive,0 20
+            binde=,J,resizeactive,0 20
             binde=,escape,submap,reset
             submap=reset
 
@@ -87,57 +87,42 @@ in {
           plugins = [];
           settings = {
             general = {
-              border_size = 2;
               no_border_on_floating = true;
               gaps_in = 5;
-              gaps_out = 5;
-              # gaps_workspaces = 0;
+              gaps_out = 10;
+              "col.active_border" = "rgb(${regular4}) rgb(${regular5}) 180deg";
               "col.inactive_border" = "rgb(${background})";
-              "col.active_border" = "rgb(${regular4})";
-              "col.nogroup_border" = "rgb(${regular3})";
               cursor_inactive_timeout = 5;
               layout = "dwindle";
-              no_cursor_warps = false;
               no_focus_fallback = true;
               resize_on_border = true;
-              extend_border_grab_area = true;
+              extend_border_grab_area = 30;
               hover_icon_on_border = true;
             };
             decoration = {
-              rounding = 0;
+              rounding = 10;
               active_opacity = "0.9";
               inactive_opacity = "0.6";
               fullscreen_opacity = "1.0";
               drop_shadow = true;
               shadow_range = 8;
-              shadow_render_power = 3;
-              shadow_ignore_window = true;
-              "col.shadow" = "0xee1a1a1a";
-              # "col.shadow_inactive" = null;
-              shadow_offset = "[0, 0]";
-              shadow_scale = "1.0";
-              dim_inactive = false;
-              dim_strength = "0.5";
-              dim_special = "0.2";
-              dim_around = "0.4";
+              shadow_render_power = 2;
+              "col.shadow" = "rgba(00000044)";
               blur = {
                 enabled = true;
                 size = 8;
                 passes = 1;
-                ignore_opacity = false;
-                new_optimizations = true;
-                xray = false;
-                noise = "0.0117";
-                contrast = "0.8916";
-                brightness = "0.8172";
-                vibrancy = "0.1696";
-                vibrancy_darkness = "0.0";
-                special = false;
               };
             };
             animations = {
-              enabled = true;
-              # first_launch_animation = true;
+              bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+              animation = [
+                "windows, 1, 5, myBezier"
+                "windowsOut, 1, 7, default, popin 80%"
+                "border, 1, 10, default"
+                "fade, 1, 7, default"
+                "workspaces, 1, 6, default"
+              ];
             };
             input = {
               kb_model = "pc105";
@@ -145,18 +130,10 @@ in {
               kb_options = "caps:escape_shifted_capslock";
               accel_profile = "flat";
               scroll_method = "2fg";
-              natural_scroll = false;
-              follow_mouse = 1;
-              mouse_refocus = true;
               float_switch_override_focus = 2;
               touchpad = {
-                disable_while_typing = true;
                 natural_scroll = true;
-                scroll_factor = "1.0";
-                middle_button_emulation = false;
                 tap_button_map = "lrm";
-                clickfinger_behavior = false;
-                tap-to-click = true;
                 drag_lock = true;
                 tap-and-drag = true;
               };
@@ -166,30 +143,15 @@ in {
             };
             gestures = {
               workspace_swipe = true;
-              workspace_swipe_fingers = 3;
-              workspace_swipe_distance = 300;
-              workspace_swipe_invert = true;
-              workspace_swipe_min_speed_to_force = 30;
-              workspace_swipe_cancel_ratio = "0.5";
-              workspace_swipe_create_new = true;
-              workspace_swipe_direction_lock = true;
-              workspace_swipe_direction_lock_threshold = 10;
-              workspace_swipe_forever = false;
-              workspace_swipe_numbered = false;
-              workspace_swipe_use_r = false;
+              workspace_swipe_direction_lock = false;
+              workspace_swipe_forever = true;
+              workspace_swipe_numbered = true;
             };
             misc = {
               disable_hyprland_logo = true;
-              disable_splash_rendering = false;
-              force_default_wallpaper = "-1";
+              disable_splash_rendering = true;
+              force_default_wallpaper = 0;
               vrr = 1;
-              animate_manual_resizes = true;
-              animate_mouse_windowdragging = true;
-              focus_on_activate = false;
-              no_direct_scanout = true;
-              hide_cursor_on_touch = true;
-              mouse_move_focuses_monitor = true;
-              new_window_takes_over_fullscreen = 2;
             };
             xwayland = {
               force_zero_scaling = true;
@@ -210,8 +172,6 @@ in {
             binds = {
               workspace_back_and_forth = true;
               allow_workspace_cycles = true;
-              workspace_center_on = 1;
-              focus_preferred_method = 0;
             };
             bind = [
               "SUPER, O, fullscreen"
@@ -246,25 +206,28 @@ in {
               "SUPER, X, exec, swaylock"
               "SUPER, Y, exec, ${browser2mpv}"
               ", Print, exec, ${screenshot}"
-              ", XF86AudioMute, exec, pamixer --toggle-mute"
-              ", XF86AudioMicMute, exec, amixer set Capture toggle"
               ", XF86AudioPlay, exec, playerctl play-pause"
               ", XF86AudioStop, exec, playerctl stop"
               ", XF86AudioNext, exec, playerctl next"
               ", XF86AudioPrev, exec, playerctl previous"
               "SUPER, U, submap, resize"
-              "SUPER, F1, movetoworkspace, 1"
-              "SUPER, F2, movetoworkspace, 2"
-              "SUPER, F3, movetoworkspace, 3"
-              "SUPER, F4, movetoworkspace, 4"
-              "SUPER, F5, movetoworkspace, 5"
-              "SUPER, F6, movetoworkspace, 6"
-              "SUPER, F7, movetoworkspace, 7"
-              "SUPER, F8, movetoworkspace, 8"
-              "SUPER, F9, movetoworkspace, 9"
-              "SUPER, F10, movetoworkspace, 0"
+              "SUPER, F1, movetoworkspacesilent, 1"
+              "SUPER, F2, movetoworkspacesilent, 2"
+              "SUPER, F3, movetoworkspacesilent, 3"
+              "SUPER, F4, movetoworkspacesilent, 4"
+              "SUPER, F5, movetoworkspacesilent, 5"
+              "SUPER, F6, movetoworkspacesilent, 6"
+              "SUPER, F7, movetoworkspacesilent, 7"
+              "SUPER, F8, movetoworkspacesilent, 8"
+              "SUPER, F9, movetoworkspacesilent, 9"
+              "SUPER, F10, movetoworkspacesilent, 0"
+              "ALT, Tab, focuscurrentorlast"
             ];
-            binde = [
+            bindl = [
+              ", XF86AudioMute, exec, pamixer --toggle-mute"
+              ", XF86AudioMicMute, exec, amixer set Capture toggle"
+            ];
+            bindle = [
               ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
               ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
               ", XF86AudioRaiseVolume, exec, pamixer --increase 5"

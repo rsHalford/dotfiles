@@ -98,7 +98,6 @@ in {
           alternate-scroll-mode = "yes";
         };
         colors = {
-          alpha = "0.95";
           foreground = foreground;
           background = background;
           # Normal/regular colors (color palette 0-7)
