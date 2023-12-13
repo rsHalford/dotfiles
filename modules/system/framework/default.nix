@@ -17,9 +17,17 @@ in {
 
   config = mkIf (cfg.enable) {
     environment = {
+      loginShellInit = ''
+        if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+          echo "Select session to start:"
+          CHOOSE=$(gum choose "Hyprland" "sway" "steam-gamescope" "zsh")
+          exec "$CHOOSE"
+        fi
+      '';
       systemPackages = with pkgs; [
         acpid
         brightnessctl
+        gum
         mangohud
         pamixer
       ];
@@ -98,13 +106,5 @@ in {
         };
       };
     };
-
-    users.motd = ''
-
-      Enter the session evironment you want to start...
-      ''\tsway
-      ''\tsteam-gamescope
-
-    '';
   };
 }
