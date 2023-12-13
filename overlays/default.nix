@@ -1,5 +1,6 @@
 {
   pkgs,
+  nixvim,
   nur,
   # emacs-unstable,
   godo-flake,
@@ -13,6 +14,9 @@
     nur.overlay
     # emacs-unstable.overlay
     scripts.overlay
+    (self: super: {
+      inherit nixvim;
+    })
     (final: prev: {
       godo = godo-flake.packages.${system}.godo;
       tag = tag-flake.packages.${system}.tag;

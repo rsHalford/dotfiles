@@ -45,6 +45,7 @@ with builtins; {
         }
         ../modules/users
         machineModule
+        pkgs.nixvim.homeManagerModules.nixvim
       ];
     };
 

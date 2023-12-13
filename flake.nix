@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nur.url = "github:nix-community/NUR";
 
     # emacs-unstable = {
@@ -32,6 +37,7 @@
   outputs = {
     nixpkgs,
     home-manager,
+    nixvim,
     nur,
     # emacs-unstable,
     godo-flake,
@@ -55,6 +61,7 @@
           system
           pkgs
           lib
+          nixvim
           nur
           # emacs-unstable
           
