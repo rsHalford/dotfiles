@@ -99,6 +99,9 @@ in {
               extend_border_grab_area = 30;
               hover_icon_on_border = true;
             };
+            dwindle = {
+              no_gaps_when_only = 1;
+            };
             decoration = {
               rounding = 10;
               active_opacity = "0.9";
@@ -157,9 +160,9 @@ in {
               force_zero_scaling = true;
             };
             exec-once = [
+              "kanshi"
               "${random-wallpaper}"
               "[workspace 1 silent] ${terminal} -e tmux"
-              "[workspace 2 silent] ${browser}"
             ];
             env = [
               "SDL_VIDEODRIVER,wayland,x11"
@@ -174,10 +177,11 @@ in {
               allow_workspace_cycles = true;
             };
             bind = [
-              "SUPER, O, fullscreen"
+              "SUPER, O, fullscreen, 0"
               "SUPER_SHIFT, O, fakefullscreen"
               "SUPER, I, togglefloating"
-              "SUPER_SHIFT, I, toggleopaque"
+              "SUPER_SHIFT, I, fullscreen, 1"
+              "SUPER_SHIFT, U, toggleopaque"
               "SUPER, Q, killactive"
               "SUPER, H, movefocus, l"
               "SUPER, L, movefocus, r"
@@ -198,6 +202,7 @@ in {
               "SUPER, G, exec, steam"
               "SUPER_SHIFT, Q, exec, rofi -show power-menu"
               "SUPER, R, exec, retroarch"
+              "SUPER_SHIFT, R, exec, hyprctl reload"
               "SUPER_SHIFT, S, exec, gopass ls --flat | rofi -dmenu | xargs --no-run-if-empty gopass show -c"
               "SUPER, V, exec, ${terminal} -a ncpamixer -T ncpamixer -e ncpamixer"
               "SUPER_SHIFT, V, exec, mullvad-vpn"
@@ -220,7 +225,7 @@ in {
               "SUPER, F7, movetoworkspacesilent, 7"
               "SUPER, F8, movetoworkspacesilent, 8"
               "SUPER, F9, movetoworkspacesilent, 9"
-              "SUPER, F10, movetoworkspacesilent, 0"
+              "SUPER, F10, movetoworkspacesilent, 10"
               "ALT, Tab, focuscurrentorlast"
             ];
             bindl = [
