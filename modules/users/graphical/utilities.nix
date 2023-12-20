@@ -48,7 +48,6 @@ in {
         slurp
         swww
         tag
-        waybar
         wl-clipboard
       ];
       pointerCursor = {
