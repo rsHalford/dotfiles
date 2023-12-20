@@ -22,6 +22,7 @@ in {
       inkscape
       libreoffice-fresh
       qbittorrent
+      typst
     ];
   };
 }

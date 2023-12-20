@@ -220,7 +220,7 @@
               client = "thunderbird";
             };
             office.enable = true;
-            tex.enable = true;
+            tex.enable = false;
           };
           terminal = {
             emulator.program = "foot";

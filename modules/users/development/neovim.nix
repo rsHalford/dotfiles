@@ -161,7 +161,7 @@ in {
               taplo.enable = true;
               texlab.enable = false;
               tsserver.enable = true;
-              typst-lsp.enable = false;
+              typst-lsp.enable = true;
               yamlls.enable = false;
               zls.enable = true;
             };
