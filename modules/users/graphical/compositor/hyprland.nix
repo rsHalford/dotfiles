@@ -196,6 +196,7 @@ in {
               "SUPER_SHIFT, A, exec, ${terminal} -a ncmpcpp -T ncmpcpp -e ncmpcpp"
               "SUPER, B, exec, ${terminal} -e pkill -USR1 gammastep"
               "SUPER_SHIFT, B, exec, blueman-manager"
+              "SUPER, C, exec, hyprpicker -a -f hex"
               "SUPER, E, exec, ${terminal} -a ${terminal-editor} -T ${terminal-editor} -e ${terminal-editor}"
               "SUPER_SHIFT, E, exec, ${graphical-editor}"
               "SUPER, F, exec, ${terminal} -a newsboat -T newsboat -e newsboat"
