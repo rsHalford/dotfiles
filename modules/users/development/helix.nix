@@ -20,14 +20,18 @@ in {
       helix = {
         enable = true;
         languages = {
-          markdown = [{
-            name = "markdown";
-            file-types = ["md" "mdx" "markdown"];
-          }];
-          scheme = [{
-            name = "scheme";
-            file-types = ["ss" "scm"];
-          }];
+          markdown = [
+            {
+              name = "markdown";
+              file-types = ["md" "mdx" "markdown"];
+            }
+          ];
+          scheme = [
+            {
+              name = "scheme";
+              file-types = ["ss" "scm"];
+            }
+          ];
         };
         settings = {
           theme = "tokyonight";
