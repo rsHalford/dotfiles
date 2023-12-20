@@ -217,7 +217,7 @@
       if [[ $# -eq 1 ]]; then
           SELECTED=$1
       else
-          SELECTED=$(find ~/projects -mindepth 1 -maxdepth 1 -type d | fzf)
+          SELECTED=$(find ~/projects ~/work -mindepth 1 -maxdepth 1 -type d | fzf)
       fi
 
       if [[ -z $SELECTED ]]; then

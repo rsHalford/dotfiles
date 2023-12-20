@@ -330,6 +330,7 @@ in {
           # rm = "rm -i";
           tms = "tmux-sessioniser";
           v = "${terminal-editor}";
+          work = "$WORK_DIR";
         };
         shellGlobalAliases = {}; # aliases substituted anywhere on a line
       };

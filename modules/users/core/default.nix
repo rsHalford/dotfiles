@@ -181,6 +181,7 @@ in {
           BULLET_JOURNAL_DIR = "$HOME/documents/journal";
           DOTFILES_DIR = "$HOME/.dotfiles";
           PROJECTS_DIR = "$HOME/projects";
+          WORK_DIR = "$HOME/work";
           ZETTELKASTEN_DIR = "$HOME/documents/zettelkasten";
         };
         music = "$HOME/media/music";
