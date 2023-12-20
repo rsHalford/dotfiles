@@ -195,7 +195,7 @@
             enable = true;
             newsboat.enable = true;
           };
-          messaging.enable = true;
+          messaging.enable = false;
           security = {
             gpg.enable = true;
             pass.enable = true;
