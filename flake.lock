@@ -137,11 +137,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1702937117,
-        "narHash": "sha256-4GjkL2D01bDg00UZN/SeGrnBZrDVOFeZTbQx6U702Vc=",
+        "lastModified": 1703368619,
+        "narHash": "sha256-ZGPMYL7FMA6enhuwby961bBANmoFX14EA86m2/Jw5Jo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e8aaced73ebaf6bfa8e3c6ab0a19cb184bc4d798",
+        "rev": "a2523ea0343b056ba240abbac90ab5f116a7aa7b",
         "type": "github"
       },
       "original": {
@@ -152,11 +152,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1702830618,
-        "narHash": "sha256-lvhwIvRwhOLgzbRuYkqHy4M5cQHYs4ktL6/hyuBS6II=",
+        "lastModified": 1703255338,
+        "narHash": "sha256-Z6wfYJQKmDN9xciTwU3cOiOk+NElxdZwy/FiHctCzjU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "91a00709aebb3602f172a0bf47ba1ef013e34835",
+        "rev": "6df37dc6a77654682fe9f071c62b4242b5342e04",
         "type": "github"
       },
       "original": {
@@ -206,11 +206,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1702895385,
-        "narHash": "sha256-xCfbHlBEPbjpecbhd9zJ79xyI9pURW9/BsY75DNIfs4=",
+        "lastModified": 1703435563,
+        "narHash": "sha256-BDnoVc9Kvc9wo9lt8GC0kkqwLedP7lnBBdh1UHl4cPw=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "309e5644fc72ce82b31da5290638019f60a0a84b",
+        "rev": "c11158c73e9a488d803356127a54af8101fc0051",
         "type": "github"
       },
       "original": {
@@ -221,11 +221,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1703011543,
-        "narHash": "sha256-zCAKHZ8cTT/J+sr16vLhM5Qlc+O7MbML9xgQa8QTjRc=",
+        "lastModified": 1703436188,
+        "narHash": "sha256-HW5GZnOKnuyCK71NpArBObNrTVPgn7KAfXBRrMY/6X0=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "3df75c4890e142d2e4a25ea714eb364e3f770be7",
+        "rev": "2011abbdb8be03feb7283ac30b36c96305c2c5f8",
         "type": "github"
       },
       "original": {
@@ -327,11 +327,11 @@
         "xc": "xc"
       },
       "locked": {
-        "lastModified": 1702883868,
-        "narHash": "sha256-Enk48ng4b+tbyAwrZaxacszHJdSrVhoDb7otIX/cHvQ=",
+        "lastModified": 1703330096,
+        "narHash": "sha256-F1HqBszsRTZA060n8wphYFy9RIwqx8ns/hCeo4TaKAk=",
         "owner": "a-h",
         "repo": "templ",
-        "rev": "d61470219c74a0bfc3a2a7f18f937fd943b68c30",
+        "rev": "00fd30eef1e6890ec25cd1392f37b2973020df48",
         "type": "github"
       },
       "original": {
