@@ -148,16 +148,13 @@ in {
               "Mod4+question" = "reload";
 
               "Mod4+a" = "exec rofi -show drun";
-              "Mod4+Shift+a" = "exec ${terminal} -e ncmpcpp";
+              "Mod4+Shift+a" = "exec ${terminal} -a ncmpcpp -T ncmpcpp -e ncmpcpp";
               "Mod4+b" = "exec ${terminal} -e pkill -USR1 gammastep";
               "Mod4+Shift+b" = "exec blueman-manager";
-              "Mod4+c" = "exec element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
-              # "Mod4+c" = "wyrd";
-              # "Mod4+Shift+c" = "clipmenu";
-              # "Mod4+d" = "discord";
-              "Mod4+e" = "exec ${terminal} -e ${terminal-editor}";
+              "Mod4+c" = "hyprpicker -a -f hex";
+              "Mod4+e" = "exec ${terminal} -a ${terminal-editor} -T ${terminal-editor} -e ${terminal-editor}";
               "Mod4+Shift+e" = "exec ${graphical-editor}";
-              "Mod4+f" = "exec ${terminal} -e newsboat";
+              "Mod4+f" = "exec ${terminal} -a newsboat -T newsboat -e newsboat";
               "Mod4+g" = "exec steam";
               "Mod4+h" = "focus left";
               "Mod4+Shift+h" = "move left";
@@ -174,19 +171,15 @@ in {
               "Mod4+p" = "exec swaymsg bar hidden_state toggle";
               "Mod4+q" = "kill";
               "Mod4+Shift+q" = "exec rofi -show power-menu";
-              "Mod4+r" = "exec retroarch";
-              # "Mod4+Shift+r" = "newsboat";
-              # "Mod4+s" = "exec signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
-              "Mod4+Shift+s" = "exec gopass ls --flat | rofi -dmenu | xargs --no-run-if-empty gopass show -c";
-              "Mod4+t" = "exec thunderbird";
-              # "Mod4+Shift+t" = "qBittorent";
+              "Mod4+Shift+r" = "reload";
+              "Mod4+s" = "exec gopass ls --flat | rofi -dmenu | xargs --no-run-if-empty gopass show -c";
+              "Mod4+t" = "exec ${terminal} -e tmux-sessioniser";
               "Mod4+u" = "mode resize";
-              "Mod4+v" = "exec ${terminal} -e ncpamixer";
+              "Mod4+v" = "exec ${terminal} -a ncpamixer -T ncpamixer -e ncpamixer";
               "Mod4+Shift+v" = "exec mullvad-vpn";
               "Mod4+w" = "exec $BROWSER";
-              "Mod4+Shift+w" = "exec ${terminal} -e nmtui";
+              "Mod4+Shift+w" = "exec ${terminal} -a nmtui -T nmtui -e nmtui";
               "Mod4+x" = "exec swaylock";
-              # "Mod4+Shift+x" = "exec ledger-live-desktop";
               "Mod4+y" = "exec ${browser2mpv}";
 
               "Mod4+Up" = "focus up";

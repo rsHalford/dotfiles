@@ -178,9 +178,9 @@ in {
             };
             bind = [
               "SUPER, O, fullscreen, 0"
-              "SUPER_SHIFT, O, fakefullscreen"
+              "SUPER_SHIFT, O, fullscreen, 1"
               "SUPER, I, togglefloating"
-              "SUPER_SHIFT, I, fullscreen, 1"
+              "SUPER_SHIFT, I, fakefullscreen"
               "SUPER_SHIFT, U, toggleopaque"
               "SUPER, Q, killactive"
               "SUPER, H, movefocus, l"
@@ -202,9 +202,9 @@ in {
               "SUPER, F, exec, ${terminal} -a newsboat -T newsboat -e newsboat"
               "SUPER, G, exec, steam"
               "SUPER_SHIFT, Q, exec, rofi -show power-menu"
-              "SUPER, R, exec, retroarch"
               "SUPER_SHIFT, R, exec, hyprctl reload"
-              "SUPER_SHIFT, S, exec, gopass ls --flat | rofi -dmenu | xargs --no-run-if-empty gopass show -c"
+              "SUPER, S, exec, gopass ls --flat | rofi -dmenu | xargs --no-run-if-empty gopass show -c"
+              "SUPER, T, exec, ${terminal} -e tmux-sessioniser"
               "SUPER, V, exec, ${terminal} -a ncpamixer -T ncpamixer -e ncpamixer"
               "SUPER_SHIFT, V, exec, mullvad-vpn"
               "SUPER, W, exec, $BROWSER"
