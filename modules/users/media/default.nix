@@ -46,7 +46,7 @@ in {
         disc_template = %%A/%%d/%%A - %%d
       '';
       packages = with pkgs; [
-        calibre
+        # calibre # replaced by flatpak until added to home-manager
         ffmpeg
         imv
         mpc-cli
