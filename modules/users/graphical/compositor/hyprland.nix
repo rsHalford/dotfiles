@@ -76,13 +76,18 @@ in {
             windowrulev2=opaque,class:(mpv)
             windowrulev2=opaque,class:(steam)
             windowrulev2=opaque,class:(virt-manager)
+            windowrulev2=opaque,class:(krita)
+            windowrulev2=opaque,class:(org.pwmt.zathura)
+            windowrulev2=noinitialfocus,class:(org.pwmt.zathura)
             windowrulev2=float,class:(ncmpcpp)
             windowrulev2=float,class:(ncpamixer)
             windowrulev2=float,class:(nmtui)
             windowrulev2=tile,class:(steam)
+            windowrulev2=nofullscreenrequest,class:(krita)
             windowrulev2=stayfocused,class:(steam)
             windowrulev2=stayfocused,class:(virt-manager)
             windowrulev2=workspace 1,class:(mpv)
+            windowrulev2=nomaximizerequest,class:(mpv)
           '';
           plugins = [];
           settings = {
@@ -162,12 +167,15 @@ in {
             exec-once = [
               "kanshi"
               "${random-wallpaper}"
-              "[workspace 1 silent] ${terminal} -e tmux"
+              "[workspace 1] ${terminal} -e tmux new -s newsboat -c newsboat"
+              "[workspace 1 fullscreen] ${terminal} -e tmux-sessioniser"
             ];
             env = [
-              "SDL_VIDEODRIVER,wayland,x11"
+              "SDL_VIDEODRIVER,wayland,xcb"
               "QT_QPA_PLATFORM,wayland"
               "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+              "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+              "GTK_THEME,Adwaita"
               "_JAVA_AWT_WM_NONREPARENTING,1"
               "WLR_NO_HARDWARE_CURSORS,1"
               "XCURSOR_THEME,Quintom_Ink"

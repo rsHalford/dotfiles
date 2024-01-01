@@ -55,7 +55,7 @@ in {
         x11.enable = true;
         package = pkgs.quintom-cursor-theme;
         name = "Quintom_Ink";
-        size = 16;
+        size = 24;
       };
     };
     programs = {
@@ -358,7 +358,7 @@ in {
       cursorTheme = {
         package = pkgs.quintom-cursor-theme;
         name = "Quintom_Ink";
-        size = 16;
+        size = 24;
       };
       font = {
         package = with pkgs; (nerdfonts.override {fonts = ["${monospace.pkg}"];});
@@ -388,6 +388,14 @@ in {
       theme = {
         package = pkgs.tokyo-night-gtk;
         name = "Tokyonight-Dark-BL";
+      };
+    };
+    qt = {
+      enable = true;
+      platformTheme = "gnome";
+      style = {
+        package = pkgs.adwaita-qt;
+        name = "adwaita-dark";
       };
     };
   };
