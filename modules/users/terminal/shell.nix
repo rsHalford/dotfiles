@@ -190,24 +190,36 @@ in {
           gwj() {
             local out query
             query="$1"
-            out=$(
-              git worktree list |
-              fzf --preview='git log --oneline -n10 {2}' --query "$query" -1 |
-              awk '{print $1}'
-            )
-            cd "$out" || exit
+            match=$(git worktree list | grep "$query")
+            if [[ -n "$match" ]]; then
+              out=$(
+                git worktree list |
+                fzf --preview='git log --oneline -n10 {2}' --query "$query" -1 |
+                awk '{print $1}'
+              )
+              cd "$out" || exit
+            else
+              printf "%s%s\n" "Worktree does not exist: " "$query"
+            fi
           }
 
           gwa() {
             local dir out query
             query="$1"
-            out=$(
-              git branch --all |
-              fzf --preview='git log --oneline -n10 {2}' --query "$query" -1 |
-              awk '{print $NF}'
-            )
-            dir=$(basename "$out")
-            git worktree add "$dir" && cd "$dir" || exit
+            match=$(git branch --all | grep "$query")
+            if [[ -z "$match" ]]; then
+              printf "%s%s\n" "Branch does not exist: " "$query"
+              dir=$(basename "$query")
+            else
+              out=$(
+                git branch --all |
+                fzf --preview='git log --oneline -n10 {2}' --query "$query" -1 |
+                awk '{print $NF}'
+              )
+              dir=$(basename "$out")
+            fi
+            git worktree add "$dir"
+            cd "$dir"
           }
 
           tmk() {
