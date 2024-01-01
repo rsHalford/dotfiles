@@ -34,9 +34,6 @@ in {
         nodePackages."@astrojs/language-server"
         nodePackages."@tailwindcss/language-server"
 
-        # Go
-        templ
-
         # Markup
         marksman
         nodePackages.yaml-language-server
