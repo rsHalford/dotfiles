@@ -233,6 +233,14 @@ in {
             fi
             cd - &> /dev/null
           }
+
+          td() {
+            cd "$JOURNAL_DIR"
+            month="$(date '+%Y/%m/')"
+            today="$(date '+%Y/%m/%d')"
+            mkdir -p "$month"
+            "$EDITOR" "$today"
+          }
         '';
         initExtraBeforeCompInit = ''
           source $HOME/.nix-profile/share/zsh-history-substring-search/zsh-history-substring-search.zsh

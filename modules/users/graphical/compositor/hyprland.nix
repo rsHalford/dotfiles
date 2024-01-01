@@ -165,7 +165,6 @@ in {
               force_zero_scaling = true;
             };
             exec-once = [
-              "kanshi"
               "${random-wallpaper}"
               "[workspace 1] ${terminal} -e tmux new -s newsboat -c newsboat"
               "[workspace 1 fullscreen] ${terminal} -e tmux-sessioniser"
