@@ -10,7 +10,7 @@ with lib; let
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
-  preferred-browser = config.richard.browser.http.preferred;
+  browser = config.richard.browser.http.preferred;
   browser-application =
     if browser == "brave"
     then "brave-browser"
@@ -69,7 +69,7 @@ in {
       sessionVariables = {
         EDITOR = "${terminal-editor}";
         VISUAL = "${graphical-editor}";
-        BROWSER = "${preferred-browser}";
+        BROWSER = "${browser}";
         TERM =
           if "${terminal}" == "footclient"
           then "foot"
