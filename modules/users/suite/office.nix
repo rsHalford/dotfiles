@@ -20,6 +20,7 @@ in {
       godo
       imagemagick
       inkscape
+      krita
       libreoffice-fresh
       qbittorrent
       typst
