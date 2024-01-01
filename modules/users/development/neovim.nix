@@ -26,11 +26,21 @@ in {
             pattern = "*";
             command = "silent! lua vim.highlight.on_yank()";
           }
+          {
+            event = "FileType";
+            pattern = [ "markdown" "tex" "typst" ];
+            command = "setlocal wrap linebreak colorcolumn= nocursorline nocursorcolumn";
+          }
         ];
         colorscheme = "tokyonight";
         extraConfigLua = ''
           vim.opt.path:append "**";
         '';
+        filetype = {
+          extension = {
+            typ = "typst";
+          };
+        };
         globals = {
           mapleader = " ";
           maplocalleader = " ";
