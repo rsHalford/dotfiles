@@ -38,9 +38,6 @@ in {
         enableZshIntegration = true;
         settings = {
           add_newline = false;
-          aws = {
-            symbol = " ";
-          };
           battery = {
             discharging_symbol = "󰂃";
             display = [
@@ -55,20 +52,14 @@ in {
             ];
           };
           character = {
-            success_symbol = "[ ](bold green)";
-            error_symbol = "[ ](bold red)";
-            vicmd_symbol = "[ ](bold yellow)";
+            success_symbol = "[](bold green)";
+            error_symbol = "[](bold red)";
+            vicmd_symbol = "[](bold yellow)";
           };
           cmd_duration = {
-            disabled = true;
+            disabled = false;
           };
           command_timeout = 1000;
-          crystal = {
-            symbol = " ";
-          };
-          dart = {
-            symbol = " ";
-          };
           directory = {
             style = "blue";
             read_only = " ";
@@ -78,20 +69,11 @@ in {
           docker_context = {
             symbol = " ";
           };
-          dotnet = {
-            symbol = " ";
-          };
           elixir = {
             symbol = " ";
           };
-          elm = {
-            symbol = " ";
-          };
           erlang = {
             symbol = " ";
-          };
-          gcloud = {
-            symbol = " ";
           };
           git_branch = {
             always_show_remote = true;
@@ -116,26 +98,11 @@ in {
           golang = {
             symbol = "󰟓 ";
           };
-          helm = {
-            symbol = "󰠳 ";
-          };
-          java = {
-            symbol = " ";
-          };
-          julia = {
-            symbol = " ";
-          };
-          kotlin = {
-            symbol = " ";
-          };
           line_break = {
-            disabled = true;
+            disabled = false;
           };
           lua = {
             symbol = " ";
-          };
-          nim = {
-            symbol = " ";
           };
           nix_shell = {
             symbol = " ";
@@ -143,9 +110,6 @@ in {
           nodejs = {
             symbol = "󰎙 ";
             format = "via [$symbol]($style)";
-          };
-          openstack = {
-            symbol = " ";
           };
           package = {
             disabled = true;
@@ -276,7 +240,6 @@ in {
         initExtraFirst = "";
         plugins = [];
         shellAliases = {
-          bj = "$BULLET_JOURNAL_DIR";
           ca = "$XDG_CACHE_HOME";
           cat = "bat";
           cf = "$XDG_CONFIG_HOME";
@@ -319,6 +282,7 @@ in {
           gwp = "git worktree prune";
           gwr = "git worktree remove";
           h = "${terminal-editor}";
+          journal = "$JOURNAL_DIR";
           la = "eza -T -L=3 --group-directories-first";
           lc = "$HOME/.local/";
           lcb = "$HOME/.local/bin/";
@@ -331,6 +295,7 @@ in {
           tms = "tmux-sessioniser";
           v = "${terminal-editor}";
           work = "$WORK_DIR";
+          zettels = "$ZETTELKASTEN_DIR";
         };
         shellGlobalAliases = {}; # aliases substituted anywhere on a line
       };

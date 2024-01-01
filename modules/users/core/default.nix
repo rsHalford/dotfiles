@@ -11,6 +11,10 @@ with lib; let
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
   preferred-browser = config.richard.browser.http.preferred;
+  browser-application =
+    if browser == "brave"
+    then "brave-browser"
+    else browser;
 in {
   options.richard = {
     core = {
@@ -82,26 +86,6 @@ in {
       zathura = {
         enable = true;
         extraConfig = ''
-          set default-bg "#232136"
-          set default-fg "#e0def4"
-          set statusbar-fg "#e0def4"
-          set statusbar-bg "#59546d"
-          set inputbar-bg "#817c9c"
-          set inputbar-fg "#232136"
-          set notification-bg "#817c9c"
-          set notification-fg "#232136"
-          set notification-error-bg "#817c9c"
-          set notification-error-fg "#ea9a97"
-          set notification-warning-bg "#817c9c"
-          set notification-warning-fg "#f6c177"
-          set highlight-color "#3e8fb0"
-          set highlight-active-color "#9ccfd8"
-          set completion-bg "#817c9c"
-          set completion-fg "#9ccfd8"
-          set completion-highlight-fg "#e0def4"
-          set completion-highlight-bg "#9ccfd8"
-          set recolor-lightcolor "#232136"
-          set recolor-darkcolor "#e0def4"
           set recolor true
           set recolor-keephue true
           set highlight-transparency 0.4
@@ -132,15 +116,6 @@ in {
           terminal = true;
           icon = "multimedia-photo-viewer";
         };
-        element-desktop = {
-          name = "Element";
-          genericName = "Matrix Client";
-          type = "Application";
-          exec = "element-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland %u";
-          icon = "element";
-          categories = ["Network" "InstantMessaging" "Chat"];
-          mimeType = ["x-scheme-handler/element"];
-        };
         mullvad-vpn = {
           name = "Mullvad GUI";
           genericName = "Mullvad VPN Client";
@@ -156,12 +131,9 @@ in {
           "image/png" = "img.desktop";
           "image/jpeg" = "img.desktop";
           "image/gif" = "img.desktop";
-          "x-scheme-handler/mailto" = "thunderbird.desktop";
-          # "text/plain" = "emacsclient.desktop";
-          # "text/x-shellscript" = "emacsclient.desktop";
-          "text/html" = "firefox.desktop";
-          "x-scheme-handler/http" = "firefox.desktop";
-          "x-scheme-handler/https" = "firefox.desktop";
+          "text/html" = "${browser-application}.desktop";
+          "x-scheme-handler/http" = "${browser-application}.desktop";
+          "x-scheme-handler/https" = "${browser-application}.desktop";
           "application/pdf" = "org.pwmt.zathura.desktop";
           "application/postscript" = "org.pwmt.zathura.desktop";
           "x-scheme-handler/magnet" = "org.qbittorrent.qBittorrent.desktop";
@@ -178,8 +150,8 @@ in {
         documents = "$HOME/documents";
         download = "$HOME/downloads";
         extraConfig = {
-          BULLET_JOURNAL_DIR = "$HOME/documents/journal";
           DOTFILES_DIR = "$HOME/.dotfiles";
+          JOURNAL_DIR = "$HOME/documents/journal";
           PROJECTS_DIR = "$HOME/projects";
           WORK_DIR = "$HOME/work";
           ZETTELKASTEN_DIR = "$HOME/documents/zettelkasten";
