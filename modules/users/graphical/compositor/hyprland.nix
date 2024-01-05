@@ -72,7 +72,6 @@ in {
             windowrulev2=tile,class:(steam)
             windowrulev2=nofullscreenrequest,class:(krita)
             windowrulev2=stayfocused,class:(steam)
-            windowrulev2=stayfocused,class:(virt-manager)
             windowrulev2=workspace 1,class:(mpv)
             windowrulev2=nomaximizerequest,class:(mpv)
           '';
