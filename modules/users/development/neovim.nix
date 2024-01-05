@@ -602,7 +602,7 @@ in {
               };
             };
           };
-          hmts.enable = true;
+          hmts.enable = false; # breaks with river/large strings
           illuminate = {
             enable = true;
             underCursor = false;
