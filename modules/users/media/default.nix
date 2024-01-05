@@ -79,6 +79,11 @@ in {
           osd-bar = "no";
           border = "no";
         };
+        scriptOpts = {
+          uosc = {
+            top_bar = "always";
+          };
+        };
         defaultProfiles = [];
         profiles = {};
         # TODO: figure out why mpv doesn't the youtube-quality and thumbnail scripts
