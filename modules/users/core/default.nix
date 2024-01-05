@@ -151,7 +151,7 @@ in {
         download = "$HOME/downloads";
         extraConfig = {
           DOTFILES_DIR = "$HOME/.dotfiles";
-          JOURNAL_DIR = "$HOME/documents/journal";
+          JOURNAL_DIR = "$HOME/documents/zettelkasten/journal";
           PROJECTS_DIR = "$HOME/projects";
           WORK_DIR = "$HOME/work";
           ZETTELKASTEN_DIR = "$HOME/documents/zettelkasten";
