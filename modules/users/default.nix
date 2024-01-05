@@ -1,4 +1,5 @@
-{
+{lib, ...}:
+with lib; {
   imports = [
     ./browser
     ./core
@@ -14,4 +15,8 @@
     ./suite
     ./terminal
   ];
+
+  options.richard.theme = mkOption {
+    type = types.attrs;
+  };
 }

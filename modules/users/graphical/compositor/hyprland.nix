@@ -16,20 +16,7 @@ with lib; let
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
   random-wallpaper = "${pkgs.scripts.wallpaperTools}/bin/random-wallpaper";
-  foreground = "c0caf5"; # white
-  background = "1a1b26"; # black
-  regular0 = "15161e"; # black
-  regular1 = "f7768e"; # red
-  regular2 = "9ece6a"; # green
-  regular3 = "e0af68"; # yellow
-  regular4 = "7aa2f7"; # blue
-  regular5 = "bb9af7"; # magenta
-  regular6 = "7dcfff"; # cyan
-  regular7 = "a9b1d6"; # white
-  bright0 = "414868"; # black
-  bright7 = "c0caf5"; # white
-  color16 = "ff9e64"; # orange
-  color17 = "db4b4b"; # orange
+  theme = config.richard.theme;
 in {
   options.richard.graphical.compositor = {
     hyprland.enable = mkOption {
@@ -95,8 +82,8 @@ in {
               no_border_on_floating = true;
               gaps_in = 5;
               gaps_out = 10;
-              "col.active_border" = "rgb(${regular4}) rgb(${regular5}) 180deg";
-              "col.inactive_border" = "rgb(${background})";
+              "col.active_border" = "rgb(${theme.regular4}) rgb(${theme.regular5}) 180deg";
+              "col.inactive_border" = "rgb(${theme.background})";
               cursor_inactive_timeout = 5;
               layout = "dwindle";
               no_focus_fallback = true;

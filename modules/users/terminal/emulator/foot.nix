@@ -7,26 +7,7 @@
 with lib; let
   cfg = config.richard.terminal.emulator;
   monospace = config.richard.fonts.monospace.name;
-  foreground = "c0caf5";
-  background = "1a1b26";
-  regular0 = "15161e"; # black
-  regular1 = "f7768e"; # red
-  regular2 = "9ece6a"; # green
-  regular3 = "e0af68"; # yellow
-  regular4 = "7aa2f7"; # blue
-  regular5 = "bb9af7"; # magenta
-  regular6 = "7dcfff"; # cyan
-  regular7 = "a9b1d6"; # white
-  bright0 = "414868"; # black
-  bright1 = "f7768e"; # red
-  bright2 = "9ece6a"; # green
-  bright3 = "e0af68"; # yellow
-  bright4 = "7aa2f7"; # blue
-  bright5 = "bb9af7"; # magenta
-  bright6 = "7dcfff"; # cyan
-  bright7 = "c0caf5"; # white
-  color16 = "ff9e64";
-  color17 = "db4b4b";
+  theme = config.richard.theme;
   selection-foreground = "c0caf5";
   selection-background = "33467c";
   urls-color = "73daca";
@@ -98,28 +79,29 @@ in {
           alternate-scroll-mode = "yes";
         };
         colors = {
-          foreground = foreground;
-          background = background;
+          alpha = "0.95";
+          foreground = theme.foreground;
+          background = theme.background;
           # Normal/regular colors (color palette 0-7)
-          regular0 = regular0; # black
-          regular1 = regular1; # red
-          regular2 = regular2; # green
-          regular3 = regular3; # yellow
-          regular4 = regular4; # blue
-          regular5 = regular5; # magenta
-          regular6 = regular6; # cyan
-          regular7 = regular7; # white
+          regular0 = theme.regular0; # black
+          regular1 = theme.regular1; # red
+          regular2 = theme.regular2; # green
+          regular3 = theme.regular3; # yellow
+          regular4 = theme.regular4; # blue
+          regular5 = theme.regular5; # magenta
+          regular6 = theme.regular6; # cyan
+          regular7 = theme.regular7; # white
           # Bright colors (color palette 8-15)
-          bright0 = bright0; # black
-          bright1 = bright1; # red
-          bright2 = bright2; # green
-          bright3 = bright3; # yellow
-          bright4 = bright4; # blue
-          bright5 = bright5; # magenta
-          bright6 = bright6; # cyan
-          bright7 = bright7; # white
-          "16" = color16;
-          "17" = color17;
+          bright0 = theme.bright0; # black
+          bright1 = theme.bright1; # red
+          bright2 = theme.bright2; # green
+          bright3 = theme.bright3; # yellow
+          bright4 = theme.bright4; # blue
+          bright5 = theme.bright5; # magenta
+          bright6 = theme.bright6; # cyan
+          bright7 = theme.bright7; # white
+          "16" = theme.color16;
+          "17" = theme.color17;
           # Misc colors
           selection-foreground = selection-foreground;
           selection-background = selection-background;

@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.richard.development.neovim;
+  theme = config.richard.theme;
 in {
   options.richard.development.neovim = {
     enable = mkOption {
@@ -32,7 +33,7 @@ in {
             command = "setlocal wrap linebreak colorcolumn= nocursorline nocursorcolumn";
           }
         ];
-        colorscheme = "tokyonight";
+        colorscheme = theme.name;
         extraConfigLua = ''
           vim.opt.path:append "**";
         '';

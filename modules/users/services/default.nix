@@ -7,10 +7,7 @@
 with lib; let
   cfg = config.richard.services;
   monospace = config.richard.fonts.monospace.name;
-  foreground = "c0caf5"; # white
-  background = "1a1b26"; # black
-  regular3 = "e0af68"; # yellow
-  regular4 = "7aa2f7"; # blue
+  theme = config.richard.theme;
 in {
   options.richard.services = {
     blueman.enable = mkOption {
@@ -180,8 +177,8 @@ in {
         enable = true;
         actions = true;
         anchor = "bottom-right";
-        backgroundColor = "#${background}";
-        borderColor = "#${regular4}";
+        backgroundColor = "#${theme.background}";
+        borderColor = "#${theme.regular4}";
         borderRadius = 2;
         borderSize = 2;
         defaultTimeout = 10000;
@@ -200,9 +197,9 @@ in {
         maxVisible = 5;
         output = null;
         padding = "0,10,20";
-        progressColor = "over #${regular3}";
+        progressColor = "over #${theme.regular3}";
         sort = "-time";
-        textColor = "#${foreground}";
+        textColor = "#${theme.foreground}";
         width = 300;
       };
       mpd = {

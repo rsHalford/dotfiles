@@ -8,20 +8,7 @@ with lib; let
   cfg = config.richard.graphical.utilities;
   monospace = config.richard.fonts.monospace;
   terminal = config.richard.terminal.emulator.program;
-  foreground = "c0caf5"; # white
-  background = "1a1b26"; # black
-  regular0 = "15161e"; # black
-  regular1 = "f7768e"; # red
-  regular2 = "9ece6a"; # green
-  regular3 = "e0af68"; # yellow
-  regular4 = "7aa2f7"; # blue
-  regular5 = "bb9af7"; # magenta
-  regular6 = "7dcfff"; # cyan
-  regular7 = "a9b1d6"; # white
-  bright0 = "414868"; # black
-  bright7 = "c0caf5"; # white
-  color16 = "ff9e64"; # orange
-  color17 = "db4b4b"; # orange
+  theme = config.richard.theme;
 in {
   options.richard.graphical.utilities = {
     enable = mkOption {
@@ -61,7 +48,7 @@ in {
     programs = {
       swaylock.settings = {
         show-failed-attempts = true;
-        color = regular0;
+        color = theme.regular0;
         font = "${monospace.name} Nerd Font";
         font-size = 24;
         indicator-idle-visible = false;
@@ -110,33 +97,33 @@ in {
               format-time = "{H}:{M}";
               format-icons = {
                 default = [
-                  "<span font='14' color='#${regular1}'>󰂎</span>"
-                  "<span font='14' color='#${color17}'>󰁺</span>"
-                  "<span font='14' color='#${color17}'>󰁻</span>"
-                  "<span font='14' color='#${color16}'>󰁼</span>"
-                  "<span font='14' color='#${color16}'>󰁽</span>"
-                  "<span font='14' color='#${regular3}'>󰁾</span>"
-                  "<span font='14' color='#${regular6}'>󰁿</span>"
-                  "<span font='14' color='#${regular4}'>󰂀</span>"
-                  "<span font='14' color='#${regular5}'>󰂁</span>"
-                  "<span font='14' color='#${regular5}'>󰂂</span>"
-                  "<span font='14' color='#${regular5}'>󰁹</span>"
+                  "<span font='14' color='#${theme.regular1}'>󰂎</span>"
+                  "<span font='14' color='#${theme.color17}'>󰁺</span>"
+                  "<span font='14' color='#${theme.color17}'>󰁻</span>"
+                  "<span font='14' color='#${theme.color16}'>󰁼</span>"
+                  "<span font='14' color='#${theme.color16}'>󰁽</span>"
+                  "<span font='14' color='#${theme.regular3}'>󰁾</span>"
+                  "<span font='14' color='#${theme.regular6}'>󰁿</span>"
+                  "<span font='14' color='#${theme.regular4}'>󰂀</span>"
+                  "<span font='14' color='#${theme.regular5}'>󰂁</span>"
+                  "<span font='14' color='#${theme.regular5}'>󰂂</span>"
+                  "<span font='14' color='#${theme.regular5}'>󰁹</span>"
                 ];
                 charging = [
-                  "<span font='14' color='#${regular2}'>󰂆 </span>"
-                  "<span font='14' color='#${regular2}'>󰂇 </span>"
-                  "<span font='14' color='#${regular2}'>󰂈 </span>"
-                  "<span font='14' color='#${regular2}'>󰂉 </span>"
-                  "<span font='14' color='#${regular2}'>󰂊 </span>"
-                  "<span font='14' color='#${regular2}'>󰂋 </span>"
-                  "<span font='14' color='#${regular2}'>󰂅 </span>"
+                  "<span font='14' color='#${theme.regular2}'>󰂆 </span>"
+                  "<span font='14' color='#${theme.regular2}'>󰂇 </span>"
+                  "<span font='14' color='#${theme.regular2}'>󰂈 </span>"
+                  "<span font='14' color='#${theme.regular2}'>󰂉 </span>"
+                  "<span font='14' color='#${theme.regular2}'>󰂊 </span>"
+                  "<span font='14' color='#${theme.regular2}'>󰂋 </span>"
+                  "<span font='14' color='#${theme.regular2}'>󰂅 </span>"
                 ];
               };
               # on-click = ""; # tlp powersave
               tooltip-format = "{capacity}%";
             };
             "clock" = {
-              format = "<span font='14' color='#${regular3}'>󰃰</span> {:%H:%M}";
+              format = "<span font='14' color='#${theme.regular3}'>󰃰</span> {:%H:%M}";
               tooltip-format = "<tt><small>{calendar}</small></tt>";
               # on-click = "${terminal} -e khal";
               calendar = {
@@ -144,37 +131,37 @@ in {
                 weeks-pos = "right";
                 on-scroll = 1;
                 format = {
-                  weeks = "<span color='#${regular6}'><b>W{}</b></span>";
-                  weekdays = "<span color='#${regular4}'><b>{}</b></span>";
-                  today = "<span color='#${color16}'><b>{}</b></span>";
+                  weeks = "<span color='#${theme.regular6}'><b>W{}</b></span>";
+                  weekdays = "<span color='#${theme.regular4}'><b>{}</b></span>";
+                  today = "<span color='#${theme.color16}'><b>{}</b></span>";
                 };
               };
             };
             "cpu" = {
-              format = "<span font='14' color='#${regular4}'>󰍛</span> {usage}%";
+              format = "<span font='14' color='#${theme.regular4}'>󰍛</span> {usage}%";
               on-click = "btm";
             };
             "disk" = {
               path = "/";
-              format = "<span font='14' color='#${regular3}'>󰉉</span> {percentage_used}%";
+              format = "<span font='14' color='#${theme.regular3}'>󰉉</span> {percentage_used}%";
               tooltip-format = "{used} / {total}";
               on-click = "btm";
             };
             "memory" = {
-              format = "<span font='14' color='#${regular5}'>󰘚</span> {percentage}%";
+              format = "<span font='14' color='#${theme.regular5}'>󰘚</span> {percentage}%";
               tooltip-format = "{used:0.1f}GiB / {total:0.1f}GiB";
               on-click = "btm";
             };
             "mpris" = {
-              format = "{player_icon} <span color='#${regular3}'>\"{title}\"</span> by <span color='#${regular5}'>{artist}</span>";
-              format-paused = "{status_icon} \"{title}\" by {artist}";
+              format = "{player_icon} <span color='#${theme.regular3}'>\"{title}\"</span> - <span color='#${theme.regular5}'>{artist}</span>";
+              format-paused = "{status_icon} \"{title}\" - {artist}";
               player-icons = {
-                "default" = "<span color='#${regular2}'>⏵</span>";
-                "mpv" = "<span color='#${regular2}'>⏵</span>";
-                "mpd" = "<span color='#${regular6}'>⏵</span>";
+                "default" = "<span color='#${theme.regular2}'>⏵</span>";
+                "mpv" = "<span color='#${theme.regular2}'>⏵</span>";
+                "mpd" = "<span color='#${theme.regular6}'>⏵</span>";
               };
               status-icons = {
-                "paused" = "<span color='#${color16}'>⏸</span>";
+                "paused" = "<span color='#${theme.color16}'>⏸</span>";
               };
               title-len = 25;
             };
@@ -187,43 +174,43 @@ in {
               format-linked = "{icon}";
               format-disabled = "{icon}";
               format-icons = {
-                wifi = "<span font='14' color='#${regular2}'>󰖩</span>";
-                ethernet = "<span font='14' color='#${regular5}'>󰈀</span>";
-                linked = "<span font='14' color='#${regular6}'>󰌹</span>";
-                disconnected = "<span font='14' color='#${color16}'>󱚵</span>";
-                disabled = "<span font='14' color='#${regular1}'>󰖪</span>";
+                wifi = "<span font='14' color='#${theme.regular2}'>󰖩</span>";
+                ethernet = "<span font='14' color='#${theme.regular5}'>󰈀</span>";
+                linked = "<span font='14' color='#${theme.regular6}'>󰌹</span>";
+                disconnected = "<span font='14' color='#${theme.color16}'>󱚵</span>";
+                disabled = "<span font='14' color='#${theme.regular1}'>󰖪</span>";
               };
               on-click = "nmtui";
             };
             "pulseaudio" = {
               format = "{icon}";
-              format-muted = "<span font='14' color='#${regular1}'>󰝟</span>";
-              format-bluetooth = "<span font='14' color='#${regular4}'>󰂰</span>";
-              format-bluetooth-muted = "<span font='14' color='#${regular1}'>󰂲</span>";
-              format-source = "<span font='14' color='#${regular7}'></span>";
-              format-source-muted = "<span font='14' color='#${regular1}'></span>";
+              format-muted = "<span font='14' color='#${theme.regular1}'>󰝟</span>";
+              format-bluetooth = "<span font='14' color='#${theme.regular4}'>󰂰</span>";
+              format-bluetooth-muted = "<span font='14' color='#${theme.regular1}'>󰂲</span>";
+              format-source = "<span font='14' color='#${theme.regular7}'></span>";
+              format-source-muted = "<span font='14' color='#${theme.regular1}'></span>";
               format-icons = {
                 default = [
-                  "<span font='14' color='#${regular1}'>󰖁</span>"
-                  "<span font='14' color='#${regular7}'>󰕿</span>"
-                  "<span font='14' color='#${regular7}'>󰕿</span>"
-                  "<span font='14' color='#${regular7}'>󰕿</span>"
-                  "<span font='14' color='#${regular7}'>󰕿</span>"
-                  "<span font='14' color='#${regular7}'>󰖀</span>"
-                  "<span font='14' color='#${regular7}'>󰖀</span>"
-                  "<span font='14' color='#${regular7}'>󰖀</span>"
-                  "<span font='14' color='#${regular7}'>󰖀</span>"
-                  "<span font='14' color='#${regular7}'>󰖀</span>"
-                  "<span font='14' color='#${regular7}'>󰖀</span>"
-                  "<span font='14' color='#${regular7}'>󰖀</span>"
-                  "<span font='14' color='#${regular7}'>󰕾</span>"
-                  "<span font='14' color='#${regular7}'>󰕾</span>"
-                  "<span font='14' color='#${regular7}'>󰕾</span>"
-                  "<span font='14' color='#${regular7}'>󰕾</span>"
-                  "<span font='14' color='#${regular7}'>󰕾</span>"
-                  "<span font='14' color='#${regular7}'>󰕾</span>"
-                  "<span font='14' color='#${regular7}'>󰕾</span>"
-                  "<span font='14' color='#${regular7}'>󰕾</span>"
+                  "<span font='14' color='#${theme.regular1}'>󰖁</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰕿</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰕿</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰕿</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰕿</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰖀</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰖀</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰖀</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰖀</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰖀</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰖀</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰖀</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
+                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
                 ];
                 headset = "󰋎";
                 # hifi = "󰓃";
@@ -240,11 +227,11 @@ in {
               critical-threshold = 100;
               format = "{icon} {temperatureC}°C";
               format-icons = [
-                "<span font='12' color='#${regular2}'></span>"
-                "<span font='12' color='#${regular3}'></span>"
-                "<span font='12' color='#${color16}'></span>"
-                "<span font='12' color='#${color17}'></span>"
-                "<span font='12' color='#${regular1}'></span>"
+                "<span font='12' color='#${theme.regular2}'></span>"
+                "<span font='12' color='#${theme.regular3}'></span>"
+                "<span font='12' color='#${theme.color16}'></span>"
+                "<span font='12' color='#${theme.color17}'></span>"
+                "<span font='12' color='#${theme.regular1}'></span>"
               ];
             };
             "tray" = {
@@ -257,64 +244,79 @@ in {
         style = ''
           * {
             font-family: ${monospace.name} Nerd Font;
-            font-size: 14pt;
           }
 
           window#waybar {
-            background-color: #${background};
-            color: #${bright7};
+            background-color: #${theme.background};
+            color: #${theme.bright7};
           }
 
           #window,
           #workspaces {
             margin: 0 4px;
+            font-size: 14pt;
           }
 
           .modules-left > widget:first-child > #workspaces {
             margin-left: 0;
           }
 
+          #tags button,
           #workspaces button {
             all: initial;
             padding: 0 8px;
-            background-color: #${background};
-            color: #${foreground};
+            background-color: #${theme.background};
+            color: #${theme.foreground};
             border: none;
             border-radius: 0;
             box-shadow: none;
             text-shadow: none;
           }
 
+          #tags button:hover,
           #workspaces button:hover {
-            background-color: #${foreground};
-            color: #${background};
+            background-color: #${theme.foreground};
+            color: #${theme.background};
           }
 
+          #tags button.focused,
           #workspaces button.active,
           #workspaces button.focused {
-            background-color: #${regular4};
-            color: #${background};
+            background-color: #${theme.regular4};
+            color: #${theme.background};
           }
 
+          #tags button.focused:hover,
           #workspaces button.active:hover,
           #workspaces button.focused:hover {
-            background-color: #${regular4};
-            color: #${bright7};
+            background-color: #${theme.regular4};
+            color: #${theme.bright7};
           }
 
+          #tags button:not(.occupied):not(.focused) {
+	          font-size: 0;
+	          min-width: 0;
+	          min-height: 0;
+	          padding: 0 0;
+	          border: 0;
+          }
+
+          #tags button.urgent,
           #workspaces button.urgent {
-            background-color: #${color16};
-            color: #${background};
+            background-color: #${theme.color16};
+            color: #${theme.background};
           }
 
+          #tags button.urgent:hover,
           #workspaces button.urgent:hover {
-            background-color: #${color17};
-            color: #${background};
+            background-color: #${theme.color17};
+            color: #${theme.background};
           }
 
           #mode {
-            background: #${background};
-            border-top: 3px solid #${bright7};
+            font-size: 14pt;
+            background: #${theme.background};
+            border-top: 3px solid #${theme.bright7};
           }
 
           #battery,
@@ -326,22 +328,25 @@ in {
           #pulseaudio,
           #temperature,
           #tray {
+            font-size: 14pt;
             padding: 0 8pt;
-            background: #${background};
-            color: #${foreground};
+            background: #${theme.background};
+            color: #${theme.foreground};
           }
 
           #mpris {
+            font-size: 14pt;
             padding: 0 8pt;
             border-radius: 0;
-            color: #${regular7};
-            background: #${regular0};
+            color: #${theme.regular7};
+            background: #${theme.regular0};
           }
 
           tooltip {
-            background-color: #${background};
-            color: #${regular7};
-            border: 2px solid #${regular4};
+            font-size: 14pt;
+            background-color: #${theme.background};
+            color: #${theme.regular7};
+            border: 2px solid #${theme.regular4};
             border-radius: 3px;
           }
         '';
@@ -374,7 +379,7 @@ in {
         extraCss = ''
           menu {
             border-radius: 10px;
-            border: 2px solid #${regular5};
+            border: 2px solid #${theme.regular5};
           }
         '';
       };
@@ -386,7 +391,7 @@ in {
         name = "Papirus Dark";
       };
       theme = {
-        package = pkgs.tokyo-night-gtk;
+        package = theme.gtk;
         name = "Tokyonight-Dark-BL";
       };
     };

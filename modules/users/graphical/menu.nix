@@ -8,20 +8,7 @@ with lib; let
   cfg = config.richard.graphical.menu;
   monospace = config.richard.fonts.monospace.name;
   terminal = config.richard.terminal.emulator.program;
-  foreground = "c0caf5"; # white
-  background = "1a1b26"; # black
-  regular0 = "15161e"; # black
-  regular1 = "f7768e"; # red
-  regular2 = "9ece6a"; # green
-  regular3 = "e0af68"; # yellow
-  regular4 = "7aa2f7"; # blue
-  regular5 = "bb9af7"; # magenta
-  regular6 = "7dcfff"; # cyan
-  regular7 = "a9b1d6"; # white
-  bright0 = "414868"; # black
-  bright7 = "c0caf5"; # white
-  color16 = "ff9e64"; # orange
-  color17 = "db4b4b"; # orange
+  theme = config.richard.theme;
   inherit (config.lib.formats.rasi) mkLiteral;
   inherit (lib) getExe;
 in {
@@ -69,16 +56,16 @@ in {
         ];
         theme = {
           "*" = {
-            cur = mkLiteral "#${bright0}";
-            bg = mkLiteral "#${background}";
-            fg = mkLiteral "#${foreground}";
-            red = mkLiteral "#${regular1}";
-            grn = mkLiteral "#${regular2}";
-            yel = mkLiteral "#${regular3}";
-            blu = mkLiteral "#${regular4}";
-            pur = mkLiteral "#${regular5}";
-            cya = mkLiteral "#${regular6}";
-            ora = mkLiteral "#${color16}";
+            cur = mkLiteral "#${theme.bright0}";
+            bg = mkLiteral "#${theme.background}";
+            fg = mkLiteral "#${theme.foreground}";
+            red = mkLiteral "#${theme.regular1}";
+            grn = mkLiteral "#${theme.regular2}";
+            yel = mkLiteral "#${theme.regular3}";
+            blu = mkLiteral "#${theme.regular4}";
+            pur = mkLiteral "#${theme.regular5}";
+            cya = mkLiteral "#${theme.regular6}";
+            ora = mkLiteral "#${theme.color16}";
             foreground = mkLiteral "@fg";
             background = mkLiteral "@bg";
             active-background = mkLiteral "@blu";

@@ -13,20 +13,7 @@ with lib; let
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
   random-wallpaper = "${pkgs.scripts.wallpaperTools}/bin/random-wallpaper";
-  foreground = "c0caf5"; # white
-  background = "1a1b26"; # black
-  regular0 = "15161e"; # black
-  regular1 = "f7768e"; # red
-  regular2 = "9ece6a"; # green
-  regular3 = "e0af68"; # yellow
-  regular4 = "7aa2f7"; # blue
-  regular5 = "bb9af7"; # magenta
-  regular6 = "7dcfff"; # cyan
-  regular7 = "a9b1d6"; # white
-  bright0 = "414868"; # black
-  bright7 = "c0caf5"; # white
-  color16 = "ff9e64"; # orange
-  color17 = "db4b4b"; # orange
+  theme = config.richard.theme;
 in {
   options.richard.graphical.compositor = {
     sway.enable = mkOption {
@@ -54,34 +41,34 @@ in {
               }
             ];
             colors = {
-              background = background;
+              background = theme.background;
               focused = {
-                background = regular4;
-                border = regular4;
-                childBorder = regular4;
-                indicator = regular5;
-                text = bright7;
+                background = theme.regular4;
+                border = theme.regular4;
+                childBorder = theme.regular4;
+                indicator = theme.regular5;
+                text = theme.bright7;
               };
               focusedInactive = {
-                background = bright0;
-                border = bright0;
-                childBorder = bright0;
-                indicator = bright0;
-                text = bright7;
+                background = theme.bright0;
+                border = theme.bright0;
+                childBorder = theme.bright0;
+                indicator = theme.bright0;
+                text = theme.bright7;
               };
               unfocused = {
-                background = background;
-                border = background;
-                childBorder = background;
-                indicator = background;
-                text = bright7;
+                background = theme.background;
+                border = theme.background;
+                childBorder = theme.background;
+                indicator = theme.background;
+                text = theme.bright7;
               };
               urgent = {
-                background = regular3;
-                border = regular3;
-                childBorder = regular3;
-                indicator = regular3;
-                text = bright7;
+                background = theme.regular3;
+                border = theme.regular3;
+                childBorder = theme.regular3;
+                indicator = theme.regular3;
+                text = theme.bright7;
               };
             };
             defaultWorkspace = "workspace number 1";

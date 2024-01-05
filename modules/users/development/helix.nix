@@ -6,6 +6,7 @@
 }:
 with lib; let
   cfg = config.richard.development.helix;
+  theme = config.richard.theme;
 in {
   options.richard.development.helix = {
     enable = mkOption {
@@ -34,7 +35,7 @@ in {
           ];
         };
         settings = {
-          theme = "tokyonight";
+          theme = theme.name;
           editor = {
             auto-completion = true;
             auto-format = true;
