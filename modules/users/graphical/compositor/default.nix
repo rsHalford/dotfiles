@@ -1,6 +1,7 @@
 {
   imports = [
-    ./sway.nix
     ./hyprland.nix
+    ./river.nix
+    ./sway.nix
   ];
 }

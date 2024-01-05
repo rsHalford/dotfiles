@@ -36,6 +36,7 @@ in {
         swww
         tag
         wl-clipboard
+        zbar
       ];
       pointerCursor = {
         gtk.enable = true;
@@ -64,6 +65,7 @@ in {
             fixed-center = false;
             ipc = true;
             modules-left = [
+              "river/tags"
               "hyprland/workspaces"
               "sway/workspaces"
               "hyprland/submap"
@@ -78,7 +80,10 @@ in {
             "sway/mode" = {
               format = "<span style=\"italic\">{}</span>";
             };
-            modules-center = ["hyprland/window" "sway/window"];
+            modules-center = ["river/window" "hyprland/window" "sway/window"];
+            "river/window" = {
+              max-length = 30;
+            };
             modules-right = [
               "mpris"
               "temperature"

@@ -177,8 +177,9 @@
           };
           graphical = {
             compositor = {
-              sway.enable = true;
               hyprland.enable = true;
+              river.enable = true;
+              sway.enable = true;
             };
             menu.enable = true;
             utilities = {
