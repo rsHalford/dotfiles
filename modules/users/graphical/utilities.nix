@@ -168,7 +168,7 @@ in {
               status-icons = {
                 "paused" = "<span color='#${theme.color16}'>⏸</span>";
               };
-              title-len = 25;
+              title-len = 20;
             };
             "network" = {
               format-wifi = "{icon}";
