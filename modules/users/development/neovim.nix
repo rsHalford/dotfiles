@@ -39,6 +39,7 @@ in {
         '';
         filetype = {
           extension = {
+            templ = "templ";
             typ = "typst";
           };
         };
@@ -693,6 +694,7 @@ in {
               nixd.enable = false;
               tailwindcss.enable = true;
               taplo.enable = true;
+              templ.enable = true;
               texlab.enable = false;
               tsserver.enable = true;
               typst-lsp.enable = true;
