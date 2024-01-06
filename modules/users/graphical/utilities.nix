@@ -7,7 +7,6 @@
 with lib; let
   cfg = config.richard.graphical.utilities;
   monospace = config.richard.fonts.monospace;
-  terminal = config.richard.terminal.emulator.program;
   theme = config.richard.theme;
 in {
   options.richard.graphical.utilities = {
@@ -87,8 +86,8 @@ in {
             modules-right = [
               "mpris"
               "temperature"
-              "cpu"
-              "memory"
+              # "cpu"
+              # "memory"
               "disk"
               "pulseaudio"
               "network"
