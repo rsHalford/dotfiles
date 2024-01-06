@@ -59,6 +59,7 @@ in {
             submap=reset
 
             # windorules
+            windowrulev2=opacity 1.0 override 0.65 override,class:(foot)
             windowrulev2=opaque,class:(${browser-class})
             windowrulev2=opaque,class:(mpv)
             windowrulev2=opaque,class:(steam)

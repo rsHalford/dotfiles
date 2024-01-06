@@ -1001,6 +1001,7 @@ in {
           tokyonight = {
             enable = true;
             style = "night";
+            transparent = true;
           };
         };
       };
