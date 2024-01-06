@@ -171,15 +171,15 @@ in {
           ## Locked
           for mode in normal locked
           do
-              riverctl map $mode None XF86AudioRaiseVolume spawn "pamixer -i 5"
-              riverctl map $mode None XF86AudioLowerVolume spawn "pamixer -d 5"
+              riverctl map -repeat $mode None XF86AudioRaiseVolume spawn "pamixer -i 5"
+              riverctl map -repeat $mode None XF86AudioLowerVolume spawn "pamixer -d 5"
               riverctl map $mode None XF86AudioMute spawn "pamixer --toggle-mute"
               riverctl map $mode None XF86AudioMedia spawn "playerctl play-pause"
               riverctl map $mode None XF86AudioPlay spawn "playerctl play-pause"
               riverctl map $mode None XF86AudioPrev spawn "playerctl previous"
               riverctl map $mode None XF86AudioNext spawn "playerctl next"
-              riverctl map $mode None XF86MonBrightnessUp spawn "brightnessctl set +5%"
-              riverctl map $mode None XF86MonBrightnessDown spawn "brightnessctl set 5%-"
+              riverctl map -repeat $mode None XF86MonBrightnessUp spawn "brightnessctl set +5%"
+              riverctl map -repeat $mode None XF86MonBrightnessDown spawn "brightnessctl set 5%-"
           done
           
           ## Passthrough
