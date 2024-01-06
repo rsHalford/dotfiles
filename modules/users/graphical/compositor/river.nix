@@ -7,6 +7,7 @@
 with lib; let
   screenshot = "${pkgs.scripts.screenshotTools}/bin/screenshot";
   browser2mpv = "${pkgs.scripts.mpvTools}/bin/browser2mpv";
+  toggle-gammastep = "${pkgs.scripts.gammaTools}/bin/toggle-gammastep";
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
@@ -148,7 +149,7 @@ in {
           riverctl map normal Super Return spawn ${terminal}
           riverctl map normal Super A spawn "rofi -show drun"
           riverctl map normal Super+Shift A spawn "${terminal} -a ncmpcpp -T ncmpcpp -e ncmpcpp"
-          riverctl map normal Super B spawn "${terminal} -e pkill -USR1 gammastep"
+          riverctl map normal Super B spawn "${toggle-gammastep}"
           riverctl map normal Super+Shift B spawn blueman-manager
           riverctl map normal Super C spawn "hyprpicker -a -f hex"
           riverctl map normal Super E spawn "${terminal} -a ${terminal-editor} -T ${terminal-editor} -e ${terminal-editor}"

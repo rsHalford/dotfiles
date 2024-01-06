@@ -7,6 +7,7 @@
 with lib; let
   screenshot = "${pkgs.scripts.screenshotTools}/bin/screenshot";
   browser2mpv = "${pkgs.scripts.mpvTools}/bin/browser2mpv";
+  toggle-gammastep = "${pkgs.scripts.gammaTools}/bin/toggle-gammastep";
   browser = config.richard.browser.http.preferred;
   browser-class =
     if browser == "brave"
@@ -188,7 +189,7 @@ in {
               "SUPER, Return, exec, ${terminal}"
               "SUPER, A, exec, rofi -show drun"
               "SUPER_SHIFT, A, exec, ${terminal} -a ncmpcpp -T ncmpcpp -e ncmpcpp"
-              "SUPER, B, exec, ${terminal} -e pkill -USR1 gammastep"
+              "SUPER, B, exec, ${toggle-gammastep}"
               "SUPER_SHIFT, B, exec, blueman-manager"
               "SUPER, C, exec, hyprpicker -a -f hex"
               "SUPER, E, exec, ${terminal} -a ${terminal-editor} -T ${terminal-editor} -e ${terminal-editor}"

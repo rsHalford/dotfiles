@@ -30,6 +30,7 @@ in {
         grim
         hyprpicker
         qt6.qtwayland
+        scripts.gammaTools
         scripts.wallpaperTools
         slurp
         swww

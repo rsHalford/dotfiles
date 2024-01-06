@@ -9,6 +9,7 @@ with lib; let
   monospace = config.richard.fonts.monospace.name;
   screenshot = "${pkgs.scripts.screenshotTools}/bin/screenshot";
   browser2mpv = "${pkgs.scripts.mpvTools}/bin/browser2mpv";
+  toggle-gammastep = "${pkgs.scripts.gammaTools}/bin/toggle-gammastep";
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
@@ -138,7 +139,7 @@ in {
 
               "${mod}+a" = "exec rofi -show drun";
               "${mod}+Shift+a" = "exec ${terminal} -a ncmpcpp -T ncmpcpp -e ncmpcpp";
-              "${mod}+b" = "exec ${terminal} -e pkill -USR1 gammastep";
+              "${mod}+b" = "exec ${toggle-gammastep}";
               "${mod}+Shift+b" = "exec blueman-manager";
               "${mod}+c" = "hyprpicker -a -f hex";
               "${mod}+e" = "exec ${terminal} -a ${terminal-editor} -T ${terminal-editor} -e ${terminal-editor}";
