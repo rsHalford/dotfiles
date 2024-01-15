@@ -6,9 +6,41 @@
 }:
 with lib; let
   cfg = config.richard.graphical.utilities;
+  compositor = config.richard.graphical.compositor;
   monospace = config.richard.fonts.monospace;
+  terminal = config.richard.terminal.emulator.program;
   theme = config.richard.theme;
+  github-notify = with pkgs;
+    writeScriptBin "github-notify" ''
+      #!${runtimeShell}
+        token="$(cat ${config.xdg.dataHome}/github/notifications.token)"
+        count="$(curl -su rsHalford:"$token" https://api.github.com/notifications | jq '. | length')"
+        tooltip="$count notifications"
+        if [ "$count" != "0" ]; then alt="new"; else alt="none"; fi
+        printf '{"alt":"%s","tooltip":"%s"}\n' "$alt" "$tooltip"
+    '';
+  mail-notify = with pkgs;
+    writeScriptBin "mail-notify" ''
+      #!${runtimeShell}
+      new="$(fd . "${config.xdg.dataHome}/mail/richard@rshalford.com/Inbox/new" --type f | wc -l 2>/dev/null)"
+      cur="$(fd . "${config.xdg.dataHome}/mail/richard@rshalford.com/Inbox/cur" --type f | wc -l 2>/dev/null)"
+      tooltip="$new/$cur new emails"
+      if [ "$new" != 0 ] && [ "$cur" == 0 ]; then
+        alt="new-single"
+      elif [ "$new" != 0 ] && [ "$cur" != 0 ]; then
+        alt="new-multi"
+      elif [ "$new" == 0 ] && [ "$cur" -gt 1  ]; then
+        alt="read-multi"
+      elif [ "$new" == 0 ] && [ "$cur" == 1 ]; then
+        alt="read-single"
+      else
+        alt="empty"
+      fi
+      printf '{"alt":"%s","tooltip":"%s"}\n' "$alt" "$tooltip"
+    '';
 in {
+  imports = [~/.dotfiles/secrets/security];
+
   options.richard.graphical.utilities = {
     enable = mkOption {
       description = "Enable graphical utilities";
@@ -27,8 +59,10 @@ in {
     home = {
       packages = with pkgs; [
         autotiling
+        github-notify
         grim
         hyprpicker
+        mail-notify
         qt6.qtwayland
         scripts.gammaTools
         scripts.wallpaperTools
@@ -93,14 +127,16 @@ in {
             };
             modules-right = [
               "mpris"
-              "temperature"
+              "custom/maildir"
+              "custom/github"
+              "tray"
+              "network"
+              "pulseaudio"
               # "cpu"
               # "memory"
               "disk"
-              "pulseaudio"
-              "network"
+              "temperature"
               "battery"
-              "tray"
               "clock"
             ];
             "battery" = {
@@ -153,9 +189,34 @@ in {
               format = "<span font='14' color='#${theme.regular4}'>󰍛</span> {usage}%";
               on-click = "btm";
             };
+            "custom/github" = {
+              format = "{icon}";
+              format-icons = {
+                "none" = "<span font='14' color='#${theme.regular7}'>󰊤</span>";
+                "new" = "<span font='14' color='#${theme.regular5}'>󰊤</span>";
+              };
+              return-type = "json";
+              interval = 360;
+              exec = "${github-notify}/bin/github-notify";
+              on-click = "xdg-open https://github.com/notifications";
+            };
+            "custom/maildir" = {
+              format = "{icon}";
+              format-icons = {
+                "empty" = "<span font='14' color='#${theme.regular7}'>󰗯</span>";
+                "read-single" = "<span font='14' color='#${theme.regular4}'>󰇯</span>";
+                "read-multi" = "<span font='14' color='#${theme.regular4}'>󰻩</span>";
+                "new-single" = "<span font='14' color='#${theme.regular1}'>󰇮</span>";
+                "new-multi" = "<span font='14' color='#${theme.regular1}'>󰮒</span>";
+              };
+              return-type = "json";
+              interval = 180;
+              exec = "${mail-notify}/bin/mail-notify";
+              on-click = "${terminal} -e ${config.richard.suite.mail.client}";
+            };
             "disk" = {
               path = "/";
-              format = "<span font='14' color='#${theme.regular3}'>󰉉</span> {percentage_used}%";
+              format = "<span font='14' color='#${theme.regular3}'>󰉉</span>";
               tooltip-format = "{used} / {total}";
               on-click = "btm";
             };
@@ -334,6 +395,8 @@ in {
           #battery,
           #clock,
           #cpu,
+          #custom-github,
+          #custom-maildir,
           #disk,
           #memory,
           #network,

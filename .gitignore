@@ -10,3 +10,4 @@ secrets/security/default.nix
 secrets/security/ssh.nix
 secrets/newsboat/config.nix
 secrets/mail/default.nix
+secrets/security/github.nix
