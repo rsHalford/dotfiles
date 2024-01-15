@@ -26,6 +26,7 @@ in {
     home = {
       packages = with pkgs; [
         river
+        lswt
       ];
       file."${config.xdg.configHome}/river/init" = {
         executable = true;
@@ -53,7 +54,7 @@ in {
           riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad tap enabled
           riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad tap-button-map left-right-middle
           riverctl input pointer-2362-628-PIXA3854:00_093A:0274_Touchpad scroll-method two-finger
-          
+
           ## Keyboard
           riverctl set-repeat 50 300
 
@@ -71,9 +72,9 @@ in {
           riverctl border-color-unfocused 0x${theme.bright0}
           riverctl border-color-urgent 0x${theme.color16}
           riverctl border-width 2
-          
+
           riverctl attach-mode top
-          
+
           # Rules
           # Make all views with an app-id that starts with "float" and title "foo" start floating.
           # riverctl rule-add -app-id 'ncmpcpp' float
@@ -131,7 +132,7 @@ in {
           # riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
           # riverctl map normal Super Down send-layout-cmd rivertile "main-location bottom"
           # riverctl map normal Super Left send-layout-cmd rivertile "main-location left"
-          
+
           ### Count
           riverctl map normal Super H send-layout-cmd rivertile "main-count +1"
           riverctl map normal Super L send-layout-cmd rivertile "main-count -1"
@@ -139,7 +140,7 @@ in {
           ### Ratio
           riverctl map normal Super+Shift H send-layout-cmd rivertile "main-ratio -0.05"
           riverctl map normal Super+Shift L send-layout-cmd rivertile "main-ratio +0.05"
-          
+
           ## Floating
           riverctl map-pointer normal Super BTN_LEFT move-view
           riverctl map-pointer normal Super BTN_RIGHT resize-view

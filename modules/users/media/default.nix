@@ -50,7 +50,8 @@ in {
         ffmpeg
         imv
         mpc-cli
-        newsboat
+        scripts.mpvTools
+        (mkIf (cfg.newsboat.enable) newsboat)
         scripts.ytTools
         streamlink
         toot
@@ -282,8 +283,8 @@ in {
           titles_visibility = "yes";
         };
       };
-      newsboat = {
-        enable = cfg.newsboat.enable;
+      newsboat = mkIf (cfg.newsboat.enable) {
+        enable = true;
         autoReload = true;
         maxItems = 0; # infinite
         reloadThreads = 5;
@@ -292,6 +293,7 @@ in {
           # General
           show-read-articles no
           show-read-feeds no
+          run-on-startup select-tag
           delete-read-articles-on-quit no
           player "mpv --no-video %u"
           datetime-format "%Y-%m-%d %a"

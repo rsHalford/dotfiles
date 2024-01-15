@@ -181,10 +181,13 @@
       #!${runtimeShell}
       case "$XDG_CURRENT_DESKTOP" in
         "sway")
-          FOCUS=$(${sway}/bin/swaymsg -t get_tree | jq -r '..|try select(.focused == true)' | jq ."app_id")
+          FOCUS=$(${sway}/bin/swaymsg -t get_tree | ${jq}/bin/jq -r '..|try select(.focused == true)' | ${jq}/bin/jq ."app_id")
         ;;
         "Hyprland")
           FOCUS=$(${hyprland}/bin/hyprctl activewindow -j | jq .class)
+        ;;
+        "river")
+          FOCUS=$(${lswt}/bin/lswt --json | ${jq}/bin/jq '.[] | select(.activated == true) | .app_id')
         ;;
         *)
           ${libnotify}/bin/notify-send "Unsupported desktop" "Currently in $XDG_CURRENT_DESKTOP" -t 2000
