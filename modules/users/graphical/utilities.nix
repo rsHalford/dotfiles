@@ -47,12 +47,15 @@ in {
       };
     };
     programs = {
-      swaylock.settings = {
-        show-failed-attempts = true;
-        color = theme.regular0;
-        font = "${monospace.name} Nerd Font";
-        font-size = 24;
-        indicator-idle-visible = false;
+      swaylock = {
+        enable = true;
+        settings = {
+          show-failed-attempts = true;
+          color = theme.regular0;
+          font = "${monospace.name} Nerd Font";
+          font-size = 24;
+          indicator-idle-visible = false;
+        };
       };
       waybar = {
         enable = true;
