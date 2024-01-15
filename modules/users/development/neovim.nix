@@ -735,7 +735,7 @@ in {
           };
           notify.enable = true;
           nvim-autopairs = {
-            enable = true;
+            enable = false;
             checkTs = true;
             disableInMacro = true;
           };
