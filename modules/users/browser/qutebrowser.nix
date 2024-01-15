@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   lib,
   ...
@@ -9,35 +8,7 @@ with lib; let
   monospace = config.richard.fonts.monospace.name;
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
-  bg0_hard = "#1d2021";
-  bg0_soft = "#32302f";
-  bg0_normal = "#282828";
-  bg0 = "#282828";
-  bg1 = "#3c3836";
-  bg2 = "#504945";
-  bg3 = "#665c54";
-  bg4 = "#7c6f64";
-  fg0 = "#fbf1c7";
-  fg1 = "#ebdbb2";
-  fg2 = "#d5c4a1";
-  fg3 = "#bdae93";
-  fg4 = "#a89984";
-  bright_red = "#fb4934";
-  bright_green = "#b8bb26";
-  bright_yellow = "#fabd2f";
-  bright_blue = "#83a598";
-  bright_purple = "#d3869b";
-  bright_aqua = "#8ec07c";
-  bright_gray = "#928374";
-  bright_orange = "#fe8019";
-  dark_red = "#cc241d";
-  dark_green = "#98971a";
-  dark_yellow = "#d79921";
-  dark_blue = "#458588";
-  dark_purple = "#b16286";
-  dark_aqua = "#689d6a";
-  dark_gray = "#a89984";
-  dark_orange = "#d65d0e";
+  theme = config.richard.theme;
 in {
   imports = [~/.dotfiles/secrets/qutebrowser];
 
@@ -174,58 +145,58 @@ in {
         colors = {
           completion = {
             category = {
-              bg = bg0;
+              bg = theme.background;
               border = {
-                bottom = bg0;
-                top = bg0;
+                bottom = theme.background;
+                top = theme.background;
               };
-              fg = bright_yellow;
+              fg = theme.bright3;
             };
-            even.bg = bg0_hard;
-            fg = [fg1 bright_blue bright_yellow];
+            even.bg = theme.regular0;
+            fg = [theme.foreground theme.bright4 theme.bright3];
             item.selected = {
-              bg = bg1;
+              bg = theme.bright0;
               border = {
-                bottom = bg1;
-                top = bg1;
+                bottom = theme.bright0;
+                top = theme.bright0;
               };
-              fg = fg1;
-              match.fg = dark_red;
+              fg = theme.foreground;
+              match.fg = theme.regular1;
             };
-            match.fg = dark_red;
-            odd.bg = bg0_hard;
+            match.fg = theme.regular1;
+            odd.bg = theme.regular0;
             scrollbar = {
-              bg = bg0;
-              fg = fg4;
+              bg = theme.background;
+              fg = theme.regular7;
             };
           };
           contextmenu = {
             disabled = {
-              bg = bg0_soft;
-              fg = bg4;
+              bg = theme.bright0;
+              fg = theme.bright0;
             };
             menu = {
-              bg = bg0_soft;
-              fg = fg1;
+              bg = theme.bright0;
+              fg = theme.foreground;
             };
             selected = {
-              bg = bg2;
-              fg = fg0;
+              bg = theme.bright0;
+              fg = theme.bright7;
             };
           };
           downloads = {
-            bar.bg = bg0_hard;
+            bar.bg = theme.regular0;
             error = {
-              bg = dark_red;
-              fg = bg0_hard;
+              bg = theme.regular1;
+              fg = theme.regular0;
             };
             start = {
-              bg = dark_yellow;
-              fg = bg0_hard;
+              bg = theme.regular3;
+              fg = theme.regular0;
             };
             stop = {
-              bg = dark_green;
-              fg = bg0_hard;
+              bg = theme.regular2;
+              fg = theme.regular0;
             };
             system = {
               bg = "hsv";
@@ -233,129 +204,129 @@ in {
             };
           };
           hints = {
-            bg = bright_yellow;
-            fg = bg0;
-            match.fg = dark_red;
+            bg = theme.bright3;
+            fg = theme.background;
+            match.fg = theme.regular1;
           };
           keyhint = {
-            bg = bg0_hard;
-            fg = fg1;
-            suffix.fg = bright_yellow;
+            bg = theme.regular0;
+            fg = theme.foreground;
+            suffix.fg = theme.bright3;
           };
           messages = {
             error = {
-              bg = dark_red;
-              border = dark_red;
-              fg = fg0;
+              bg = theme.regular1;
+              border = theme.regular1;
+              fg = theme.bright7;
             };
             info = {
-              bg = bg0_hard;
-              border = bg0_hard;
-              fg = fg1;
+              bg = theme.regular0;
+              border = theme.regular0;
+              fg = theme.foreground;
             };
             warning = {
-              bg = dark_orange;
-              border = dark_yellow;
-              fg = fg1;
+              bg = theme.color17;
+              border = theme.regular3;
+              fg = theme.foreground;
             };
           };
           prompts = {
-            bg = bg0_soft;
-            border = "2px solid #282828";
-            fg = fg1;
+            bg = theme.bright0;
+            border = "2px solid #${theme.background}";
+            fg = theme.foreground;
             selected = {
-              bg = bg0_hard;
-              fg = fg0;
+              bg = theme.regular0;
+              fg = theme.bright7;
             };
           };
           statusbar = {
             caret = {
-              bg = dark_orange;
-              fg = bg0_hard;
+              bg = theme.color17;
+              fg = theme.regular0;
               selection = {
-                bg = dark_orange;
-                fg = bg0_hard;
+                bg = theme.color17;
+                fg = theme.regular0;
               };
             };
             command = {
-              bg = bg0_hard;
-              fg = bright_green;
+              bg = theme.regular0;
+              fg = theme.bright2;
               private = {
-                bg = bg0_hard;
-                fg = bright_green;
+                bg = theme.regular0;
+                fg = theme.bright2;
               };
             };
             insert = {
-              bg = bright_blue;
-              fg = bg0_hard;
+              bg = theme.bright4;
+              fg = theme.regular0;
             };
             normal = {
-              bg = bg0_hard;
-              fg = fg1;
+              bg = theme.regular0;
+              fg = theme.foreground;
             };
             passthrough = {
-              bg = bright_purple;
-              fg = bg0_hard;
+              bg = theme.bright5;
+              fg = theme.regular0;
             };
             private = {
-              bg = fg1;
-              fg = bg0_hard;
+              bg = theme.foreground;
+              fg = theme.regular0;
             };
-            progress.bg = fg1;
+            progress.bg = theme.foreground;
             url = {
-              error.fg = dark_red;
-              fg = fg1;
-              hover.fg = bright_blue;
+              error.fg = theme.regular1;
+              fg = theme.foreground;
+              hover.fg = theme.bright4;
               success = {
-                http.fg = fg2;
-                https.fg = fg0;
+                http.fg = theme.regular7;
+                https.fg = theme.bright7;
               };
-              warn.fg = dark_yellow;
+              warn.fg = theme.regular3;
             };
           };
           tabs = {
-            bar.bg = bg0_hard;
+            bar.bg = theme.regular0;
             even = {
-              bg = bg0_hard;
-              fg = fg1;
+              bg = theme.regular0;
+              fg = theme.foreground;
             };
             odd = {
-              bg = bg0_hard;
-              fg = fg1;
+              bg = theme.regular0;
+              fg = theme.foreground;
             };
             pinned = {
               even = {
-                bg = dark_green;
-                fg = bg0;
+                bg = theme.regular2;
+                fg = theme.background;
               };
               odd = {
-                bg = dark_green;
-                fg = bg0;
+                bg = theme.regular2;
+                fg = theme.background;
               };
               selected = {
                 even = {
-                  bg = bright_green;
-                  fg = bg0;
+                  bg = theme.bright2;
+                  fg = theme.background;
                 };
                 odd = {
-                  bg = bright_green;
-                  fg = bg0;
+                  bg = theme.bright2;
+                  fg = theme.background;
                 };
               };
             };
             selected = {
               even = {
-                bg = bg1;
-                fg = fg1;
+                bg = theme.bright0;
+                fg = theme.foreground;
               };
               odd = {
-                bg = bg1;
-                fg = fg1;
+                bg = theme.bright0;
+                fg = theme.foreground;
               };
             };
           };
           webpage = {
-            bg = fg1;
+            bg = theme.foreground;
             darkmode = {
               enabled = false;
               policy.images = "never";
@@ -364,7 +335,7 @@ in {
           };
         };
         hints = {
-          border = "2px solid #d79921";
+          border = "2px solid #${theme.color17}";
           # padding = {
           #   top = 0;
           #   bottom = 1;

@@ -52,18 +52,7 @@ in {
         delta = {
           line-numbers = true;
           navigate = true;
-          side-by-side = true;
-          minus-style = ''syntax "#37222c"'';
-          minus-non-emph-style = ''syntax "#37222c"'';
-          minus-emph-style = ''syntax "#713137"'';
-          minus-empty-line-marker-style = ''syntax "#37222c"'';
-          line-numbers-minus-style = ''"#c25d64"'';
-          plus-style = ''syntax "#20303b"'';
-          plus-non-emph-style = ''syntax "#20303b"'';
-          plus-emph-style = ''syntax "#2c5a66"'';
-          plus-empty-line-marker-style = ''syntax "#20303b"'';
-          line-numbers-plus-style = ''"#399a96"'';
-          line-numbers-zero-style = ''"#3b4261"'';
+          side-by-side = false;
         };
         diff.colorMoved = "zebra";
         fetch.prune = true;

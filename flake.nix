@@ -228,8 +228,10 @@
             };
           };
           theme = {
-            # TODO: `cursor` package and name, size
+            # TODO: `cursor` attribute set for package, name and size
             # cursor = {};
+            # TODO: `colors` attribute set for packages, name, and values
+            # colors = {};
             name = "tokyonight";
             gtk = pkgs.tokyo-night-gtk;
             foreground = "c0caf5";

@@ -8,10 +8,6 @@ with lib; let
   cfg = config.richard.terminal.emulator;
   monospace = config.richard.fonts.monospace.name;
   theme = config.richard.theme;
-  selection-foreground = "c0caf5";
-  selection-background = "33467c";
-  urls-color = "73daca";
-  cursor-color = "c0caf5 33467c";
 in {
   config = mkIf (cfg.program == "foot") {
     programs.foot = {
@@ -70,7 +66,7 @@ in {
         cursor = {
           style = "block";
           blink = "no";
-          color = cursor-color;
+          color = "${theme.bright7} ${theme.bright0}";
           beam-thickness = "1.5";
           # underline-thickness = "<font underline thickness>";
         };
@@ -103,11 +99,11 @@ in {
           "16" = theme.color16;
           "17" = theme.color17;
           # Misc colors
-          selection-foreground = selection-foreground;
-          selection-background = selection-background;
+          selection-foreground = theme.foreground;
+          selection-background = theme.bright0;
           # jump-labels = "<regular0> <regular3>";
           # scrollback-indicator = "<regular0> <bright4>";
-          urls = urls-color;
+          urls = theme.regular6;
         };
         csd = {
           preferred = "server";
