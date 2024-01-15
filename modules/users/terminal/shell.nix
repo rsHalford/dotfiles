@@ -296,6 +296,7 @@ in {
           gsh = "git secret hide";
           gsr = "git secret reveal -f";
           gst = "git status --short --branch";
+          gsw = "git show";
           gw = "git worktree";
           gwc = "worktree-clone";
           gwl = "git worktree list";

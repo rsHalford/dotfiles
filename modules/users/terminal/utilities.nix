@@ -50,13 +50,13 @@ in {
       usbutils
       ventoy
       wev
+      wget
       wtype
 
       # acpi
       # manix
       # nix-index
       # pstree
-      # wget
     ];
     programs = {
       bat = {

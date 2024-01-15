@@ -75,19 +75,9 @@ in {
     services = {
       gpg-agent = {
         enable = cfg.gpg.enable;
-        # enableExtraSocket = false;
         enableScDaemon = true;
         enableSshSupport = true;
-        # defaultCacheTtl = null;
-        # defaultCacheTtlSsh = null;
-        # extraConfig = ''
-        #   allow-emacs-pinentry
-        # '';
-        # maxCacheTtl = null;
-        # maxCacheTtlSsh = null;
         pinentryFlavor = "qt";
-        # sshKeys = null;
-        # verbose = false;
       };
     };
   };

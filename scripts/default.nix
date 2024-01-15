@@ -247,10 +247,10 @@
       #!${runtimeShell}
       STATUS="$(${systemd}/bin/systemctl --user status gammastep.service | ${gnugrep}/bin/grep 'Active' | ${gawk}/bin/awk -F ' ' '{print $2}')"
       if [[ $STATUS = "active" ]]; then
-	      ${systemd}/bin/systemctl --user stop gammastep.service
+       ${systemd}/bin/systemctl --user stop gammastep.service
         ${libnotify}/bin/notify-send "Gammastep" "gammastep is now disabled."
       elif [[ $STATUS = "inactive" ]]; then
-	      ${systemd}/bin/systemctl --user start gammastep.service
+       ${systemd}/bin/systemctl --user start gammastep.service
         ${libnotify}/bin/notify-send "Gammastep" "gammastep is now enabled."
       fi
       exit 0
