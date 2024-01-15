@@ -122,13 +122,13 @@ in {
                   "<span font='14' color='#${theme.regular5}'>󰁹</span>"
                 ];
                 charging = [
-                  "<span font='14' color='#${theme.regular2}'>󰂆 </span>"
-                  "<span font='14' color='#${theme.regular2}'>󰂇 </span>"
-                  "<span font='14' color='#${theme.regular2}'>󰂈 </span>"
-                  "<span font='14' color='#${theme.regular2}'>󰂉 </span>"
-                  "<span font='14' color='#${theme.regular2}'>󰂊 </span>"
-                  "<span font='14' color='#${theme.regular2}'>󰂋 </span>"
-                  "<span font='14' color='#${theme.regular2}'>󰂅 </span>"
+                  "<span font='14' color='#${theme.regular2}'>󰂆</span>"
+                  "<span font='14' color='#${theme.regular2}'>󰂇</span>"
+                  "<span font='14' color='#${theme.regular2}'>󰂈</span>"
+                  "<span font='14' color='#${theme.regular2}'>󰂉</span>"
+                  "<span font='14' color='#${theme.regular2}'>󰂊</span>"
+                  "<span font='14' color='#${theme.regular2}'>󰂋</span>"
+                  "<span font='14' color='#${theme.regular2}'>󰂅</span>"
                 ];
               };
               # on-click = ""; # tlp powersave
@@ -237,7 +237,7 @@ in {
               hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
               input-filename = "temp1_input";
               critical-threshold = 100;
-              format = "{icon} {temperatureC}°C";
+              format = "{icon}";
               format-icons = [
                 "<span font='12' color='#${theme.regular2}'></span>"
                 "<span font='12' color='#${theme.regular3}'></span>"
@@ -306,11 +306,11 @@ in {
           }
 
           #tags button:not(.occupied):not(.focused) {
-	          font-size: 0;
-	          min-width: 0;
-	          min-height: 0;
-	          padding: 0 0;
-	          border: 0;
+           font-size: 0;
+           min-width: 0;
+           min-height: 0;
+           padding: 0 0;
+           border: 0;
           }
 
           #tags button.urgent,
