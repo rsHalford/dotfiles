@@ -106,9 +106,9 @@ in {
               riverctl map normal Super F$i set-view-tags $tags
               riverctl map normal Super+Control $i toggle-focused-tags $tags
               riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
-              riverctl map normal Super+Control F$i set-view-tags $tags
+              riverctl map normal Super+Control F$i toggle-view-tags $tags
           done
-          
+
           all_tags=$(((1 << 32) - 1))
           riverctl map normal Super 0 set-focused-tags $all_tags
           riverctl map normal Super+Shift 0 set-view-tags $all_tags
@@ -183,25 +183,25 @@ in {
               riverctl map -repeat $mode None XF86MonBrightnessUp spawn "brightnessctl set +5%"
               riverctl map -repeat $mode None XF86MonBrightnessDown spawn "brightnessctl set 5%-"
           done
-          
+
           ## Passthrough
           riverctl declare-mode passthrough
           riverctl map normal Super F12 enter-mode passthrough
           riverctl map passthrough Super F12 enter-mode normal
-          
+
           # Layouts
           ## Rivertile
           riverctl default-layout rivertile
           rivertile -view-padding 3 -outer-padding 3 &
 
-          # Systemd            
+          # Systemd
           riverctl spawn "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river"
           riverctl spawn "${pkgs.systemd}/bin/systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river"
 
           # Autostart
-          # kanshi &
-          # waybar &
-          # gammastep &
+          ${pkgs.kanshi}/bin/kanshi &
+          ${pkgs.waybar}/bin/waybar &
+          ${pkgs.gammastep}/bin/gammastep &
           ${random-wallpaper} &
           ${terminal} -e tmux new -s newsboat -c newsboat &
           ${terminal} -e tmux-sessioniser &
