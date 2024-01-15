@@ -58,8 +58,8 @@ in {
       default = false;
     };
 
-    protonmail-bridge.enable = mkOption {
-      description = "Enable protonmail-bridge";
+    imapnotify.enable = mkOption {
+      description = "Enable imapnotify";
       type = types.bool;
       default = false;
     };
@@ -86,7 +86,6 @@ in {
       mpd
       mpdris2
       playerctl
-      protonmail-bridge
       scripts.bingTools
       syncthing
     ];
@@ -111,6 +110,7 @@ in {
         };
         tray = true;
       };
+      imapnotify.enable = cfg.imapnotify.enable;
       kanshi = {
         enable = cfg.kanshi.enable;
         profiles = {
@@ -273,19 +273,6 @@ in {
             Description = "Newsboat automatic reload service";
             After = ["network-online.target"];
             Wants = ["network-online.target"];
-          };
-        };
-        protonmail-bridge = mkIf (cfg.protonmail-bridge.enable) {
-          Install = {
-            WantedBy = ["default.target"];
-          };
-          Service = {
-            Restart = "always";
-            ExecStart = "${pkgs.protonmail-bridge}/bin/protonmail-bridge --no-window --log-level info --noninteractive";
-          };
-          Unit = {
-            Description = "Proton Mail Bridge";
-            After = ["network-target"];
           };
         };
       };

@@ -157,6 +157,7 @@ in {
           riverctl map normal Super+Shift E spawn ${graphical-editor}
           riverctl map normal Super F spawn "${terminal} -a newsboat -T newsboat -e newsboat"
           riverctl map normal Super G spawn steam
+          riverctl map normal Super M spawn "${terminal} -a aerc -T aerc -e aerc"
           riverctl map normal Super+Shift Q spawn "rofi -show power-menu"
           riverctl map normal Super S spawn "gopass ls --flat | rofi -dmenu | xargs --no-run-if-empty gopass show -c"
           riverctl map normal Super T spawn "${terminal} -e tmux-sessioniser"

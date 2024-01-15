@@ -201,20 +201,20 @@
           services = {
             blueman.enable = true;
             gammastep.enable = true;
+            imapnotify.enable = true;
             kanshi.enable = true;
             kde-connect.enable = true;
             mako.enable = true;
             mpd.enable = true;
             mpris.enable = true;
             newsboat.enable = false;
-            protonmail-bridge.enable = false;
             syncthing.enable = true;
             udiskie.enable = true;
           };
           suite = {
             mail = {
-              enable = false;
-              client = "thunderbird";
+              enable = true;
+              client = "aerc";
             };
             office.enable = true;
             tex.enable = false;
