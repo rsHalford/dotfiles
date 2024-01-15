@@ -68,11 +68,11 @@ in {
             fixed-center = false;
             ipc = true;
             modules-left = [
-              "river/tags"
-              "hyprland/workspaces"
-              "sway/workspaces"
-              "hyprland/submap"
-              "sway/mode"
+              (mkIf (compositor.river.enable) "river/tags")
+              (mkIf (compositor.hyprland.enable) "hyprland/workspaces")
+              (mkIf (compositor.sway.enable) "sway/workspaces")
+              (mkIf (compositor.hyprland.enable) "hyprland/submap")
+              (mkIf (compositor.sway.enable) "sway/mode")
             ];
             "sway/workspaces" = {
               disable-scroll = true;
@@ -83,7 +83,11 @@ in {
             "sway/mode" = {
               format = "<span style=\"italic\">{}</span>";
             };
-            modules-center = ["river/window" "hyprland/window" "sway/window"];
+            modules-center = [
+              (mkIf (compositor.river.enable) "river/window")
+              (mkIf (compositor.hyprland.enable) "hyprland/window")
+              (mkIf (compositor.sway.enable) "sway/window")
+            ];
             "river/window" = {
               max-length = 30;
             };
