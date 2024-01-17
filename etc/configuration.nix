@@ -63,7 +63,7 @@
     systemPackages = with pkgs; [
       brightnessctl
       cachix
-      git
+      gitFull
       jq
       libnotify
       neovim

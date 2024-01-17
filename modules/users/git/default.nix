@@ -36,15 +36,13 @@ in {
 
   config = mkIf (cfg.enable) {
     home.packages = with pkgs; [
-      git
       scripts.worktreeTools
     ];
     programs.git = {
       enable = true;
+      package = pkgs.gitFull;
       userName = cfg.userName;
       userEmail = cfg.userEmail;
-      # aliases = { };
-      # attributes = [ ];
       delta.enable = true;
       extraConfig = {
         branch.autoSetupRebase = "always";
@@ -66,7 +64,6 @@ in {
         ".env"
         ".envrc"
       ];
-      # includes = [ ];
       signing = {
         key = "908E7F42";
         signByDefault = cfg.signByDefault;

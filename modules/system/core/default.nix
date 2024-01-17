@@ -33,7 +33,7 @@ in {
       systemPackages = with pkgs; [
         cachix
         cryptsetup
-        git
+        gitFull
         jq
         libnotify
         neovim
