@@ -201,7 +201,7 @@
           services = {
             blueman.enable = true;
             gammastep.enable = true;
-            imapnotify.enable = true;
+            mail.enable = true;
             kanshi.enable = true;
             kde-connect.enable = true;
             mako.enable = true;

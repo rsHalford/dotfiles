@@ -58,8 +58,8 @@ in {
       default = false;
     };
 
-    imapnotify.enable = mkOption {
-      description = "Enable imapnotify";
+    mail.enable = mkOption {
+      description = "Enable mail";
       type = types.bool;
       default = false;
     };
@@ -110,7 +110,11 @@ in {
         };
         tray = true;
       };
-      imapnotify.enable = cfg.imapnotify.enable;
+      imapnotify.enable = cfg.mail.enable;
+      mbsync = {
+        enable = cfg.mail.enable;
+        postExec = "${pkgs.notmuch}/bin/notmuch new";
+      };
       kanshi = {
         enable = cfg.kanshi.enable;
         profiles = {
