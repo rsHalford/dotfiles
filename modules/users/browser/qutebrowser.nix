@@ -5,7 +5,7 @@
 }:
 with lib; let
   cfg = config.richard.browser.http;
-  monospace = config.richard.fonts.monospace.name;
+  fonts = config.richard.fonts;
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   theme = config.richard.theme;
@@ -28,7 +28,7 @@ in {
         "q" = "close";
         "qa" = "quit";
         "w" = "session-save";
-        "wp" = "set-cmd-text :session-save -o -p private";
+        "wp" = "cmd-set-text :session-save -o -p private";
         "wq" = "quit --save";
         "wqa" = "quit --save";
       };
@@ -37,20 +37,21 @@ in {
         command = {
           "<Ctrl-J>" = "completion-item-focus next";
           "<Ctrl-K>" = "completion-item-focus prev";
+          "<Alt-J>" = "completion-item-focus next";
+          "<Alt-K>" = "completion-item-focus prev";
         };
         normal = {
-          ",c" = "config-edit";
-          "gp" = "set-cmd-text -s :open -p";
+          "gp" = "cmd-set-text -s :open -p";
           ",r" = "spawn --userscript readability";
-          ",sd" = "set-cmd-text -s :session-delete";
-          ",sl" = "set-cmd-text -s :session-load";
-          ",ss" = "set-cmd-text -s :session-save";
-          ",sp" = "set-cmd-text -s :session-save -o -p";
+          ",sd" = "cmd-set-text -s :session-delete";
+          ",sl" = "cmd-set-text -s :session-load";
+          ",ss" = "cmd-set-text -s :session-save";
+          ",sp" = "cmd-set-text -s :session-save -o -p";
           ",S" = "config-cycle statusbar.show in-mode always";
           ",T" = "config-cycle tabs.show switching always;; config-cycle tabs.title.format {index:>2} '{index:>2}{audio} {current_title}';; config-cycle tabs.width 40 '20%'";
-          ",tg" = "set-cmd-text -s :tab-give";
-          ",tp" = "set-cmd-text -s :tab-pin";
-          ",ts" = "set-cmd-text -s :tab-select";
+          ",tg" = "cmd-set-text -s :tab-give";
+          ",tp" = "cmd-set-text -s :tab-pin";
+          ",ts" = "cmd-set-text -s :tab-select";
           ",v" = "spawn --userscript view_in_mpv";
           ",V" = "hint links userscript view_in_mpv";
           # ";v" = "hint --rapid links userscript view_in_mpv";
@@ -81,6 +82,8 @@ in {
             "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt"
             "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt"
             "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt"
+            "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2023.txt"
+            "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2024.txt"
           ];
           blocking.method = "both";
           fullscreen.window = true;
@@ -88,7 +91,7 @@ in {
           notifications.enabled = false;
         };
         downloads = {
-          location.directory = "~/Downloads";
+          location.directory = "${config.home.homeDirectory}/downloads";
           location.suggestion = "both";
           position = "bottom";
           remove_finished = 180000;
@@ -97,7 +100,7 @@ in {
         keyhint.delay = 0;
         scrolling = {
           bar = "never";
-          smooth = true;
+          smooth = false;
         };
         session.default_name = "default";
         spellcheck.languages = ["en-GB"];
@@ -145,58 +148,58 @@ in {
         colors = {
           completion = {
             category = {
-              bg = theme.background;
+              bg = "#${theme.background}";
               border = {
-                bottom = theme.background;
-                top = theme.background;
+                bottom = "#${theme.background}";
+                top = "#${theme.background}";
               };
-              fg = theme.bright3;
+              fg = "#${theme.bright3}";
             };
-            even.bg = theme.regular0;
-            fg = [theme.foreground theme.bright4 theme.bright3];
+            even.bg = "#${theme.regular0}";
+            fg = ["#${theme.foreground}" "#${theme.bright4}" "#${theme.bright3}"];
             item.selected = {
-              bg = theme.bright0;
+              bg = "#${theme.bright0}";
               border = {
-                bottom = theme.bright0;
-                top = theme.bright0;
+                bottom = "#${theme.bright0}";
+                top = "#${theme.bright0}";
               };
-              fg = theme.foreground;
-              match.fg = theme.regular1;
+              fg = "#${theme.foreground}";
+              match.fg = "#${theme.regular1}";
             };
-            match.fg = theme.regular1;
-            odd.bg = theme.regular0;
+            match.fg = "#${theme.regular1}";
+            odd.bg = "#${theme.regular0}";
             scrollbar = {
-              bg = theme.background;
-              fg = theme.regular7;
+              bg = "#${theme.background}";
+              fg = "#${theme.regular7}";
             };
           };
           contextmenu = {
             disabled = {
-              bg = theme.bright0;
-              fg = theme.bright0;
+              bg = "#${theme.bright0}";
+              fg = "#${theme.bright0}";
             };
             menu = {
-              bg = theme.bright0;
-              fg = theme.foreground;
+              bg = "#${theme.bright0}";
+              fg = "#${theme.foreground}";
             };
             selected = {
-              bg = theme.bright0;
-              fg = theme.bright7;
+              bg = "#${theme.bright0}";
+              fg = "#${theme.bright7}";
             };
           };
           downloads = {
-            bar.bg = theme.regular0;
+            bar.bg = "#${theme.regular0}";
             error = {
-              bg = theme.regular1;
-              fg = theme.regular0;
+              bg = "#${theme.regular1}";
+              fg = "#${theme.regular0}";
             };
             start = {
-              bg = theme.regular3;
-              fg = theme.regular0;
+              bg = "#${theme.regular3}";
+              fg = "#${theme.regular0}";
             };
             stop = {
-              bg = theme.regular2;
-              fg = theme.regular0;
+              bg = "#${theme.regular2}";
+              fg = "#${theme.regular0}";
             };
             system = {
               bg = "hsv";
@@ -204,138 +207,138 @@ in {
             };
           };
           hints = {
-            bg = theme.bright3;
-            fg = theme.background;
-            match.fg = theme.regular1;
+            bg = "#${theme.bright3}";
+            fg = "#${theme.background}";
+            match.fg = "#${theme.regular1}";
           };
           keyhint = {
-            bg = theme.regular0;
-            fg = theme.foreground;
-            suffix.fg = theme.bright3;
+            bg = "#${theme.regular0}";
+            fg = "#${theme.foreground}";
+            suffix.fg = "#${theme.bright3}";
           };
           messages = {
             error = {
-              bg = theme.regular1;
-              border = theme.regular1;
-              fg = theme.bright7;
+              bg = "#${theme.regular1}";
+              border = "#${theme.regular1}";
+              fg = "#${theme.bright7}";
             };
             info = {
-              bg = theme.regular0;
-              border = theme.regular0;
-              fg = theme.foreground;
+              bg = "#${theme.regular0}";
+              border = "#${theme.regular0}";
+              fg = "#${theme.foreground}";
             };
             warning = {
-              bg = theme.color17;
-              border = theme.regular3;
-              fg = theme.foreground;
+              bg = "#${theme.color17}";
+              border = "#${theme.regular3}";
+              fg = "#${theme.foreground}";
             };
           };
           prompts = {
-            bg = theme.bright0;
-            border = "2px solid #${theme.background}";
-            fg = theme.foreground;
+            bg = "#${theme.bright0}";
+            border = "2px solid #${"#${theme.background}"}";
+            fg = "#${theme.foreground}";
             selected = {
-              bg = theme.regular0;
-              fg = theme.bright7;
+              bg = "#${theme.regular0}";
+              fg = "#${theme.bright7}";
             };
           };
           statusbar = {
             caret = {
-              bg = theme.color17;
-              fg = theme.regular0;
+              bg = "#${theme.color17}";
+              fg = "#${theme.regular0}";
               selection = {
-                bg = theme.color17;
-                fg = theme.regular0;
+                bg = "#${theme.color17}";
+                fg = "#${theme.regular0}";
               };
             };
             command = {
-              bg = theme.regular0;
-              fg = theme.bright2;
+              bg = "#${theme.regular0}";
+              fg = "#${theme.bright2}";
               private = {
-                bg = theme.regular0;
-                fg = theme.bright2;
+                bg = "#${theme.regular0}";
+                fg = "#${theme.bright2}";
               };
             };
             insert = {
-              bg = theme.bright4;
-              fg = theme.regular0;
+              bg = "#${theme.bright4}";
+              fg = "#${theme.regular0}";
             };
             normal = {
-              bg = theme.regular0;
-              fg = theme.foreground;
+              bg = "#${theme.regular0}";
+              fg = "#${theme.foreground}";
             };
             passthrough = {
-              bg = theme.bright5;
-              fg = theme.regular0;
+              bg = "#${theme.bright5}";
+              fg = "#${theme.regular0}";
             };
             private = {
-              bg = theme.foreground;
-              fg = theme.regular0;
+              bg = "#${theme.foreground}";
+              fg = "#${theme.regular0}";
             };
-            progress.bg = theme.foreground;
+            progress.bg = "#${theme.foreground}";
             url = {
-              error.fg = theme.regular1;
-              fg = theme.foreground;
-              hover.fg = theme.bright4;
+              error.fg = "#${theme.regular1}";
+              fg = "#${theme.foreground}";
+              hover.fg = "#${theme.bright4}";
               success = {
-                http.fg = theme.regular7;
-                https.fg = theme.bright7;
+                http.fg = "#${theme.regular7}";
+                https.fg = "#${theme.bright7}";
               };
-              warn.fg = theme.regular3;
+              warn.fg = "#${theme.regular3}";
             };
           };
           tabs = {
-            bar.bg = theme.regular0;
+            bar.bg = "#${theme.regular0}";
             even = {
-              bg = theme.regular0;
-              fg = theme.foreground;
+              bg = "#${theme.regular0}";
+              fg = "#${theme.foreground}";
             };
             odd = {
-              bg = theme.regular0;
-              fg = theme.foreground;
+              bg = "#${theme.regular0}";
+              fg = "#${theme.foreground}";
             };
             pinned = {
               even = {
-                bg = theme.regular2;
-                fg = theme.background;
+                bg = "#${theme.regular2}";
+                fg = "#${theme.background}";
               };
               odd = {
-                bg = theme.regular2;
-                fg = theme.background;
+                bg = "#${theme.regular2}";
+                fg = "#${theme.background}";
               };
               selected = {
                 even = {
-                  bg = theme.bright2;
-                  fg = theme.background;
+                  bg = "#${theme.bright2}";
+                  fg = "#${theme.background}";
                 };
                 odd = {
-                  bg = theme.bright2;
-                  fg = theme.background;
+                  bg = "#${theme.bright2}";
+                  fg = "#${theme.background}";
                 };
               };
             };
             selected = {
               even = {
-                bg = theme.bright0;
-                fg = theme.foreground;
+                bg = "#${theme.bright0}";
+                fg = "#${theme.foreground}";
               };
               odd = {
-                bg = theme.bright0;
-                fg = theme.foreground;
+                bg = "#${theme.bright0}";
+                fg = "#${theme.foreground}";
               };
             };
           };
           webpage = {
-            bg = theme.foreground;
+            bg = "#${theme.foreground}";
             darkmode = {
-              enabled = false;
+              enabled = true;
               policy.images = "never";
             };
             preferred_color_scheme = "dark";
           };
         };
         hints = {
-          border = "2px solid #${theme.color17}";
+          border = "2px solid #${theme.color16}";
           # padding = {
           #   top = 0;
           #   bottom = 1;
@@ -359,12 +362,12 @@ in {
         #   right = 0;
         # };
         fonts = {
-          contextmenu = "Noto Sans";
-          default_family = ["${monospace} Nerd Font"];
+          contextmenu = fonts.sans;
+          default_family = ["${fonts.monospace.name} Nerd Font"];
           default_size = "14px";
           web.family = {
-            sans_serif = "Noto Sans";
-            serif = "Noto Serif";
+            sans_serif = fonts.sans;
+            serif = fonts.serif;
           };
         };
       };

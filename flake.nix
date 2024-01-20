@@ -143,8 +143,8 @@
             http = {
               brave.enable = true;
               firefox.enable = false;
-              qutebrowser.enable = false;
-              preferred = "brave";
+              qutebrowser.enable = true;
+              preferred = "qutebrowser";
             };
             gemini = {
               amfora.enable = false;
