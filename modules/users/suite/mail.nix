@@ -34,7 +34,10 @@ in {
     programs = mkIf (cfg.enable) {
       mbsync.enable = true;
       msmtp.enable = true;
-      notmuch.enable = true;
+      notmuch = {
+        enable = true;
+        hooks.postNew = ''notmuch tag --input=${config.xdg.configHome}/notmuch/tagmail.notmuch'';
+      };
 
       aerc = mkIf (cfg.client == "aerc") {
         enable = true;
