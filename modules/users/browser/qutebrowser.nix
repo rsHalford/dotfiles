@@ -67,7 +67,7 @@ in {
         changelog_after_upgrade = "patch";
         completion = {
           height = "33%";
-          open_categories = ["searchengines" "quickmarks" "filesystem" "history"];
+          open_categories = ["history" "quickmarks" "searchengines" "filesystem"];
           scrollbar.padding = 1;
           scrollbar.width = 7;
           shrink = true;
