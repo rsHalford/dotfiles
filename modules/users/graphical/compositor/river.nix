@@ -26,6 +26,7 @@ in {
     home = {
       packages = with pkgs; [
         river
+        rivercarro
         lswt
       ];
       file."${config.xdg.configHome}/river/init" = {
@@ -128,18 +129,19 @@ in {
 
           ### Location
           # Super+{Up,Right,Down,Left} to change layout orientation
-          # riverctl map normal Super Up send-layout-cmd rivertile "main-location top"
-          # riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
-          # riverctl map normal Super Down send-layout-cmd rivertile "main-location bottom"
-          # riverctl map normal Super Left send-layout-cmd rivertile "main-location left"
+          riverctl map normal Super Up send-layout-cmd rivercarro "main-location top"
+          riverctl map normal Super Right send-layout-cmd rivercarro "main-location right"
+          riverctl map normal Super Down send-layout-cmd rivercarro "main-location bottom"
+          riverctl map normal Super Left send-layout-cmd rivercarro "main-location left"
+          riverctl map normal Super+Shift M send-layout-cmd rivercarro "main-location monocle"
 
           ### Count
-          riverctl map normal Super H send-layout-cmd rivertile "main-count +1"
-          riverctl map normal Super L send-layout-cmd rivertile "main-count -1"
+          riverctl map normal Super H send-layout-cmd rivercarro "main-count +1"
+          riverctl map normal Super L send-layout-cmd rivercarro "main-count -1"
 
           ### Ratio
-          riverctl map normal Super+Shift H send-layout-cmd rivertile "main-ratio -0.05"
-          riverctl map normal Super+Shift L send-layout-cmd rivertile "main-ratio +0.05"
+          riverctl map normal Super+Shift H send-layout-cmd rivercarro "main-ratio -0.05"
+          riverctl map normal Super+Shift L send-layout-cmd rivercarro "main-ratio +0.05"
 
           ## Floating
           riverctl map-pointer normal Super BTN_LEFT move-view
@@ -185,15 +187,10 @@ in {
               riverctl map -repeat $mode None XF86MonBrightnessDown spawn "brightnessctl set 5%-"
           done
 
-          ## Passthrough
-          riverctl declare-mode passthrough
-          riverctl map normal Super F12 enter-mode passthrough
-          riverctl map passthrough Super F12 enter-mode normal
-
           # Layouts
-          ## Rivertile
-          riverctl default-layout rivertile
-          rivertile -view-padding 3 -outer-padding 3 &
+          ## Rivercarro
+          riverctl default-layout rivercarro
+          rivercarro -inner-gaps 0 -outer-gaps 0 &
 
           # Systemd
           riverctl spawn "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river"
