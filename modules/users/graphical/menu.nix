@@ -56,16 +56,16 @@ in {
         ];
         theme = {
           "*" = {
-            cur = mkLiteral "#${theme.bright0}";
-            bg = mkLiteral "#${theme.background}";
-            fg = mkLiteral "#${theme.foreground}";
-            red = mkLiteral "#${theme.regular1}";
-            grn = mkLiteral "#${theme.regular2}";
-            yel = mkLiteral "#${theme.regular3}";
-            blu = mkLiteral "#${theme.regular4}";
-            pur = mkLiteral "#${theme.regular5}";
-            cya = mkLiteral "#${theme.regular6}";
-            ora = mkLiteral "#${theme.color16}";
+            cur = mkLiteral "#${theme.colors.base03}";
+            bg = mkLiteral "#${theme.colors.base00}";
+            fg = mkLiteral "#${theme.colors.base05}";
+            red = mkLiteral "#${theme.colors.base08}";
+            grn = mkLiteral "#${theme.colors.base0B}";
+            yel = mkLiteral "#${theme.colors.base0A}";
+            blu = mkLiteral "#${theme.colors.base0D}";
+            pur = mkLiteral "#${theme.colors.base0E}";
+            cya = mkLiteral "#${theme.colors.base0C}";
+            ora = mkLiteral "#${theme.colors.base09}";
             foreground = mkLiteral "@fg";
             background = mkLiteral "@bg";
             active-background = mkLiteral "@blu";

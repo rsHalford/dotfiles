@@ -33,7 +33,6 @@ in {
             command = "setlocal wrap linebreak colorcolumn= nocursorline nocursorcolumn";
           }
         ];
-        colorscheme = theme.name;
         extraConfigLua = ''
           vim.opt.path:append "**";
         '';
@@ -1000,10 +999,9 @@ in {
           friendly-snippets
         ];
         colorschemes = {
-          tokyonight = {
+          base16 = {
             enable = true;
-            style = "night";
-            transparent = true;
+            colorscheme = theme.name;
           };
         };
       };

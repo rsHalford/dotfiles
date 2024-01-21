@@ -12,7 +12,7 @@ with lib; let
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
   random-wallpaper = "${pkgs.scripts.wallpaperTools}/bin/random-wallpaper";
-  theme = config.richard.theme;
+  theme = config.richard.theme.colors;
 in {
   options.richard.graphical.compositor = {
     river.enable = mkOption {
@@ -67,10 +67,10 @@ in {
           fi
 
           # Decorations
-          riverctl background-color 0x${theme.background}
-          riverctl border-color-focused 0x${theme.regular5}
-          riverctl border-color-unfocused 0x${theme.bright0}
-          riverctl border-color-urgent 0x${theme.color16}
+          riverctl background-color 0x${theme.base00}
+          riverctl border-color-focused 0x${theme.base0D}
+          riverctl border-color-unfocused 0x${theme.base03}
+          riverctl border-color-urgent 0x${theme.base09}
           riverctl border-width 2
 
           riverctl attach-mode top

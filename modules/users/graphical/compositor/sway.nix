@@ -42,34 +42,34 @@ in {
               }
             ];
             colors = {
-              background = theme.background;
+              background = theme.colors.base00;
               focused = {
-                background = theme.regular4;
-                border = theme.regular4;
-                childBorder = theme.regular4;
-                indicator = theme.regular5;
-                text = theme.bright7;
+                background = theme.colors.base0D;
+                border = theme.colors.base0D;
+                childBorder = theme.colors.base0D;
+                indicator = theme.colors.base0E;
+                text = theme.colors.base05;
               };
               focusedInactive = {
-                background = theme.bright0;
-                border = theme.bright0;
-                childBorder = theme.bright0;
-                indicator = theme.bright0;
-                text = theme.bright7;
+                background = theme.colors.base03;
+                border = theme.colors.base03;
+                childBorder = theme.colors.base03;
+                indicator = theme.colors.base03;
+                text = theme.colors.base05;
               };
               unfocused = {
-                background = theme.background;
-                border = theme.background;
-                childBorder = theme.background;
-                indicator = theme.background;
-                text = theme.bright7;
+                background = theme.colors.base00;
+                border = theme.colors.base00;
+                childBorder = theme.colors.base00;
+                indicator = theme.colors.base00;
+                text = theme.colors.base05;
               };
               urgent = {
-                background = theme.regular3;
-                border = theme.regular3;
-                childBorder = theme.regular3;
-                indicator = theme.regular3;
-                text = theme.bright7;
+                background = theme.colors.base0A;
+                border = theme.colors.base0A;
+                childBorder = theme.colors.base0A;
+                indicator = theme.colors.base0A;
+                text = theme.colors.base05;
               };
             };
             defaultWorkspace = "workspace number 1";

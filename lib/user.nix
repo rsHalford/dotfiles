@@ -1,8 +1,6 @@
 {
   pkgs,
   home-manager,
-  lib,
-  system,
   overlays,
   ...
 }:
@@ -46,6 +44,7 @@ with builtins; {
         ../modules/users
         machineModule
         pkgs.nixvim.homeManagerModules.nixvim
+        pkgs.nix-colors.homeManagerModules.default
       ];
     };
 

@@ -66,7 +66,7 @@ in {
         cursor = {
           style = "block";
           blink = "no";
-          color = "${theme.bright7} ${theme.bright0}";
+          color = "${theme.colors.base07} ${theme.colors.base02}";
           beam-thickness = "1.5";
           # underline-thickness = "<font underline thickness>";
         };
@@ -76,34 +76,32 @@ in {
         };
         colors = {
           alpha = "0.95";
-          foreground = theme.foreground;
-          background = theme.background;
+          foreground = theme.colors.base06;
+          background = theme.colors.base00;
           # Normal/regular colors (color palette 0-7)
-          regular0 = theme.regular0; # black
-          regular1 = theme.regular1; # red
-          regular2 = theme.regular2; # green
-          regular3 = theme.regular3; # yellow
-          regular4 = theme.regular4; # blue
-          regular5 = theme.regular5; # magenta
-          regular6 = theme.regular6; # cyan
-          regular7 = theme.regular7; # white
+          regular0 = theme.colors.base01; # black
+          regular1 = theme.colors.base08; # red
+          regular2 = theme.colors.base0B; # green
+          regular3 = theme.colors.base0A; # yellow
+          regular4 = theme.colors.base0D; # blue
+          regular5 = theme.colors.base0E; # magenta
+          regular6 = theme.colors.base0C; # cyan
+          regular7 = theme.colors.base05; # white
           # Bright colors (color palette 8-15)
-          bright0 = theme.bright0; # black
-          bright1 = theme.bright1; # red
-          bright2 = theme.bright2; # green
-          bright3 = theme.bright3; # yellow
-          bright4 = theme.bright4; # blue
-          bright5 = theme.bright5; # magenta
-          bright6 = theme.bright6; # cyan
-          bright7 = theme.bright7; # white
-          "16" = theme.color16;
-          "17" = theme.color17;
+          bright0 = theme.colors.base03; # black
+          bright1 = theme.colors.base08; # red
+          bright2 = theme.colors.base0B; # green
+          bright3 = theme.colors.base0A; # yellow
+          bright4 = theme.colors.base0D; # blue
+          bright5 = theme.colors.base0E; # magenta
+          bright6 = theme.colors.base0C; # cyan
+          bright7 = theme.colors.base07; # white
+          "16" = theme.colors.base09;
+          "17" = theme.colors.base09;
           # Misc colors
-          selection-foreground = theme.foreground;
-          selection-background = theme.bright0;
-          # jump-labels = "<regular0> <regular3>";
-          # scrollback-indicator = "<regular0> <bright4>";
-          urls = theme.regular6;
+          selection-foreground = theme.colors.base07;
+          selection-background = theme.colors.base03;
+          urls = theme.colors.base0A;
         };
         csd = {
           preferred = "server";

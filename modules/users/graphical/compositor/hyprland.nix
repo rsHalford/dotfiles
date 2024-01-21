@@ -83,8 +83,8 @@ in {
               no_border_on_floating = true;
               gaps_in = 5;
               gaps_out = 10;
-              "col.active_border" = "rgb(${theme.regular4}) rgb(${theme.regular5}) 180deg";
-              "col.inactive_border" = "rgb(${theme.background})";
+              "col.active_border" = "rgb(${theme.colors.base0D}) rgb(${theme.colors.base0E}) 180deg";
+              "col.inactive_border" = "rgb(${theme.colors.base03})";
               cursor_inactive_timeout = 5;
               layout = "dwindle";
               no_focus_fallback = true;

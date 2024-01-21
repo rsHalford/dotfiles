@@ -85,7 +85,7 @@ in {
         enable = true;
         settings = {
           show-failed-attempts = true;
-          color = theme.regular0;
+          color = theme.colors.base01;
           font = "${monospace.name} Nerd Font";
           font-size = 24;
           indicator-idle-visible = false;
@@ -145,33 +145,33 @@ in {
               format-time = "{H}:{M}";
               format-icons = {
                 default = [
-                  "<span font='14' color='#${theme.regular1}'>󰂎</span>"
-                  "<span font='14' color='#${theme.color17}'>󰁺</span>"
-                  "<span font='14' color='#${theme.color17}'>󰁻</span>"
-                  "<span font='14' color='#${theme.color16}'>󰁼</span>"
-                  "<span font='14' color='#${theme.color16}'>󰁽</span>"
-                  "<span font='14' color='#${theme.regular3}'>󰁾</span>"
-                  "<span font='14' color='#${theme.regular6}'>󰁿</span>"
-                  "<span font='14' color='#${theme.regular4}'>󰂀</span>"
-                  "<span font='14' color='#${theme.regular5}'>󰂁</span>"
-                  "<span font='14' color='#${theme.regular5}'>󰂂</span>"
-                  "<span font='14' color='#${theme.regular5}'>󰁹</span>"
+                  "<span font='14' color='#${theme.colors.base08}'>󰂎</span>"
+                  "<span font='14' color='#${theme.colors.base08}'>󰁺</span>"
+                  "<span font='14' color='#${theme.colors.base09}'>󰁻</span>"
+                  "<span font='14' color='#${theme.colors.base09}'>󰁼</span>"
+                  "<span font='14' color='#${theme.colors.base0A}'>󰁽</span>"
+                  "<span font='14' color='#${theme.colors.base0A}'>󰁾</span>"
+                  "<span font='14' color='#${theme.colors.base0C}'>󰁿</span>"
+                  "<span font='14' color='#${theme.colors.base0C}'>󰂀</span>"
+                  "<span font='14' color='#${theme.colors.base0D}'>󰂁</span>"
+                  "<span font='14' color='#${theme.colors.base0D}'>󰂂</span>"
+                  "<span font='14' color='#${theme.colors.base0E}'>󰁹</span>"
                 ];
                 charging = [
-                  "<span font='14' color='#${theme.regular2}'>󰂆</span>"
-                  "<span font='14' color='#${theme.regular2}'>󰂇</span>"
-                  "<span font='14' color='#${theme.regular2}'>󰂈</span>"
-                  "<span font='14' color='#${theme.regular2}'>󰂉</span>"
-                  "<span font='14' color='#${theme.regular2}'>󰂊</span>"
-                  "<span font='14' color='#${theme.regular2}'>󰂋</span>"
-                  "<span font='14' color='#${theme.regular2}'>󰂅</span>"
+                  "<span font='14' color='#${theme.colors.base0B}'>󰂆</span>"
+                  "<span font='14' color='#${theme.colors.base0B}'>󰂇</span>"
+                  "<span font='14' color='#${theme.colors.base0B}'>󰂈</span>"
+                  "<span font='14' color='#${theme.colors.base0B}'>󰂉</span>"
+                  "<span font='14' color='#${theme.colors.base0B}'>󰂊</span>"
+                  "<span font='14' color='#${theme.colors.base0B}'>󰂋</span>"
+                  "<span font='14' color='#${theme.colors.base0B}'>󰂅</span>"
                 ];
               };
               # on-click = ""; # tlp powersave
               tooltip-format = "{capacity}%";
             };
             "clock" = {
-              format = "<span font='14' color='#${theme.regular3}'>󰃰</span> {:%H:%M}";
+              format = "{:%H:%M}";
               tooltip-format = "<tt><small>{calendar}</small></tt>";
               # on-click = "${terminal} -e khal";
               calendar = {
@@ -179,21 +179,21 @@ in {
                 weeks-pos = "right";
                 on-scroll = 1;
                 format = {
-                  weeks = "<span color='#${theme.regular6}'><b>W{}</b></span>";
-                  weekdays = "<span color='#${theme.regular4}'><b>{}</b></span>";
-                  today = "<span color='#${theme.color16}'><b>{}</b></span>";
+                  weeks = "<span color='#${theme.colors.base0C}'><b>W{}</b></span>";
+                  weekdays = "<span color='#${theme.colors.base0D}'><b>{}</b></span>";
+                  today = "<span color='#${theme.colors.base09}'><b>{}</b></span>";
                 };
               };
             };
             "cpu" = {
-              format = "<span font='14' color='#${theme.regular4}'>󰍛</span> {usage}%";
+              format = "<span font='14' color='#${theme.colors.base0D}'>󰍛</span> {usage}%";
               on-click = "btm";
             };
             "custom/github" = {
               format = "{icon}";
               format-icons = {
-                "none" = "<span font='14' color='#${theme.regular7}'>󰊤</span>";
-                "new" = "<span font='14' color='#${theme.regular5}'>󰊤</span>";
+                "none" = "<span font='14' color='#${theme.colors.base05}'>󰊤</span>";
+                "new" = "<span font='14' color='#${theme.colors.base0E}'>󰊤</span>";
               };
               return-type = "json";
               interval = 360;
@@ -203,11 +203,11 @@ in {
             "custom/maildir" = {
               format = "{icon}";
               format-icons = {
-                "empty" = "<span font='14' color='#${theme.regular7}'>󰗯</span>";
-                "read-single" = "<span font='14' color='#${theme.regular4}'>󰇯</span>";
-                "read-multi" = "<span font='14' color='#${theme.regular4}'>󰻩</span>";
-                "new-single" = "<span font='14' color='#${theme.regular1}'>󰇮</span>";
-                "new-multi" = "<span font='14' color='#${theme.regular1}'>󰮒</span>";
+                "empty" = "<span font='14' color='#${theme.colors.base05}'>󰗯</span>";
+                "read-single" = "<span font='14' color='#${theme.colors.base0D}'>󰇯</span>";
+                "read-multi" = "<span font='14' color='#${theme.colors.base0D}'>󰻩</span>";
+                "new-single" = "<span font='14' color='#${theme.colors.base08}'>󰇮</span>";
+                "new-multi" = "<span font='14' color='#${theme.colors.base08}'>󰮒</span>";
               };
               return-type = "json";
               interval = 180;
@@ -216,25 +216,25 @@ in {
             };
             "disk" = {
               path = "/";
-              format = "<span font='14' color='#${theme.regular3}'>󰉉</span>";
+              format = "<span font='14' color='#${theme.colors.base0A}'>󰉉</span>";
               tooltip-format = "{used} / {total}";
               on-click = "btm";
             };
             "memory" = {
-              format = "<span font='14' color='#${theme.regular5}'>󰘚</span> {percentage}%";
+              format = "<span font='14' color='#${theme.colors.base0E}'>󰘚</span> {percentage}%";
               tooltip-format = "{used:0.1f}GiB / {total:0.1f}GiB";
               on-click = "btm";
             };
             "mpris" = {
-              format = "{player_icon} <span color='#${theme.regular3}'>\"{title}\"</span> - <span color='#${theme.regular5}'>{artist}</span>";
+              format = "{player_icon} <span color='#${theme.colors.base0A}'>\"{title}\"</span> <span color='#${theme.colors.base0E}'>{artist}</span>";
               format-paused = "{status_icon} \"{title}\" - {artist}";
               player-icons = {
-                "default" = "<span color='#${theme.regular2}'>⏵</span>";
-                "mpv" = "<span color='#${theme.regular2}'>⏵</span>";
-                "mpd" = "<span color='#${theme.regular6}'>⏵</span>";
+                "default" = "<span color='#${theme.colors.base0B}'>⏵</span>";
+                "mpv" = "<span color='#${theme.colors.base0B}'>⏵</span>";
+                "mpd" = "<span color='#${theme.colors.base0C}'>⏵</span>";
               };
               status-icons = {
-                "paused" = "<span color='#${theme.color16}'>⏸</span>";
+                "paused" = "<span color='#${theme.colors.base09}'>⏸</span>";
               };
               title-len = 20;
             };
@@ -247,43 +247,43 @@ in {
               format-linked = "{icon}";
               format-disabled = "{icon}";
               format-icons = {
-                wifi = "<span font='14' color='#${theme.regular2}'>󰖩</span>";
-                ethernet = "<span font='14' color='#${theme.regular5}'>󰈀</span>";
-                linked = "<span font='14' color='#${theme.regular6}'>󰌹</span>";
-                disconnected = "<span font='14' color='#${theme.color16}'>󱚵</span>";
-                disabled = "<span font='14' color='#${theme.regular1}'>󰖪</span>";
+                wifi = "<span font='14' color='#${theme.colors.base0B}'>󰖩</span>";
+                ethernet = "<span font='14' color='#${theme.colors.base0E}'>󰈀</span>";
+                linked = "<span font='14' color='#${theme.colors.base0C}'>󰌹</span>";
+                disconnected = "<span font='14' color='#${theme.colors.base09}'>󱚵</span>";
+                disabled = "<span font='14' color='#${theme.colors.base08}'>󰖪</span>";
               };
               on-click = "nmtui";
             };
             "pulseaudio" = {
               format = "{icon}";
-              format-muted = "<span font='14' color='#${theme.regular1}'>󰝟</span>";
-              format-bluetooth = "<span font='14' color='#${theme.regular4}'>󰂰</span>";
-              format-bluetooth-muted = "<span font='14' color='#${theme.regular1}'>󰂲</span>";
-              format-source = "<span font='14' color='#${theme.regular7}'></span>";
-              format-source-muted = "<span font='14' color='#${theme.regular1}'></span>";
+              format-muted = "<span font='14' color='#${theme.colors.base08}'>󰝟</span>";
+              format-bluetooth = "<span font='14' color='#${theme.colors.base0D}'>󰂰</span>";
+              format-bluetooth-muted = "<span font='14' color='#${theme.colors.base08}'>󰂲</span>";
+              format-source = "<span font='14' color='#${theme.colors.base05}'></span>";
+              format-source-muted = "<span font='14' color='#${theme.colors.base08}'></span>";
               format-icons = {
                 default = [
-                  "<span font='14' color='#${theme.regular1}'>󰖁</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰕿</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰕿</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰕿</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰕿</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰖀</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰖀</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰖀</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰖀</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰖀</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰖀</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰖀</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
-                  "<span font='14' color='#${theme.regular7}'>󰕾</span>"
+                  "<span font='14' color='#${theme.colors.base08}'>󰖁</span>"
+                  "<span font='14' color='#${theme.colors.base05}'>󰕿</span>"
+                  "<span font='14' color='#${theme.colors.base05}'>󰕿</span>"
+                  "<span font='14' color='#${theme.colors.base05}'>󰕿</span>"
+                  "<span font='14' color='#${theme.colors.base05}'>󰕿</span>"
+                  "<span font='14' color='#${theme.colors.base06}'>󰖀</span>"
+                  "<span font='14' color='#${theme.colors.base06}'>󰖀</span>"
+                  "<span font='14' color='#${theme.colors.base06}'>󰖀</span>"
+                  "<span font='14' color='#${theme.colors.base06}'>󰖀</span>"
+                  "<span font='14' color='#${theme.colors.base06}'>󰖀</span>"
+                  "<span font='14' color='#${theme.colors.base06}'>󰖀</span>"
+                  "<span font='14' color='#${theme.colors.base06}'>󰖀</span>"
+                  "<span font='14' color='#${theme.colors.base07}'>󰕾</span>"
+                  "<span font='14' color='#${theme.colors.base07}'>󰕾</span>"
+                  "<span font='14' color='#${theme.colors.base07}'>󰕾</span>"
+                  "<span font='14' color='#${theme.colors.base07}'>󰕾</span>"
+                  "<span font='14' color='#${theme.colors.base07}'>󰕾</span>"
+                  "<span font='14' color='#${theme.colors.base07}'>󰕾</span>"
+                  "<span font='14' color='#${theme.colors.base07}'>󰕾</span>"
+                  "<span font='14' color='#${theme.colors.base07}'>󰕾</span>"
                 ];
                 headset = "󰋎";
                 # hifi = "󰓃";
@@ -300,11 +300,11 @@ in {
               critical-threshold = 100;
               format = "{icon}";
               format-icons = [
-                "<span font='12' color='#${theme.regular2}'></span>"
-                "<span font='12' color='#${theme.regular3}'></span>"
-                "<span font='12' color='#${theme.color16}'></span>"
-                "<span font='12' color='#${theme.color17}'></span>"
-                "<span font='12' color='#${theme.regular1}'></span>"
+                "<span font='12' color='#${theme.colors.base0C}'></span>"
+                "<span font='12' color='#${theme.colors.base0B}'></span>"
+                "<span font='12' color='#${theme.colors.base0A}'></span>"
+                "<span font='12' color='#${theme.colors.base09}'></span>"
+                "<span font='12' color='#${theme.colors.base08}'></span>"
               ];
             };
             "tray" = {
@@ -320,8 +320,8 @@ in {
           }
 
           window#waybar {
-            background-color: #${theme.background};
-            color: #${theme.bright7};
+            background-color: #${theme.colors.base00};
+            color: #${theme.colors.base06};
           }
 
           #window,
@@ -338,8 +338,8 @@ in {
           #workspaces button {
             all: initial;
             padding: 0 8px;
-            background-color: #${theme.background};
-            color: #${theme.foreground};
+            background-color: #${theme.colors.base00};
+            color: #${theme.colors.base06};
             border: none;
             border-radius: 0;
             box-shadow: none;
@@ -348,22 +348,22 @@ in {
 
           #tags button:hover,
           #workspaces button:hover {
-            background-color: #${theme.foreground};
-            color: #${theme.background};
+            background-color: #${theme.colors.base0D};
+            color: #${theme.colors.base00};
           }
 
           #tags button.focused,
           #workspaces button.active,
           #workspaces button.focused {
-            background-color: #${theme.regular4};
-            color: #${theme.background};
+            background-color: #${theme.colors.base0C};
+            color: #${theme.colors.base00};
           }
 
           #tags button.focused:hover,
           #workspaces button.active:hover,
           #workspaces button.focused:hover {
-            background-color: #${theme.regular4};
-            color: #${theme.bright7};
+            background-color: #${theme.colors.base0D};
+            color: #${theme.colors.base00};
           }
 
           #tags button:not(.occupied):not(.focused) {
@@ -376,20 +376,20 @@ in {
 
           #tags button.urgent,
           #workspaces button.urgent {
-            background-color: #${theme.color16};
-            color: #${theme.background};
+            background-color: #${theme.colors.base09};
+            color: #${theme.colors.base00};
           }
 
           #tags button.urgent:hover,
           #workspaces button.urgent:hover {
-            background-color: #${theme.color17};
-            color: #${theme.background};
+            background-color: #${theme.colors.base0A};
+            color: #${theme.colors.base00};
           }
 
           #mode {
             font-size: 14pt;
-            background: #${theme.background};
-            border-top: 3px solid #${theme.bright7};
+            background: #${theme.colors.base00};
+            border-top: 3px solid #${theme.colors.base07};
           }
 
           #battery,
@@ -405,23 +405,23 @@ in {
           #tray {
             font-size: 14pt;
             padding: 0 8pt;
-            background: #${theme.background};
-            color: #${theme.foreground};
+            background: #${theme.colors.base00};
+            color: #${theme.colors.base06};
           }
 
           #mpris {
             font-size: 14pt;
             padding: 0 8pt;
             border-radius: 0;
-            color: #${theme.regular7};
-            background: #${theme.regular0};
+            color: #${theme.colors.base06};
+            background: #${theme.colors.base01};
           }
 
           tooltip {
             font-size: 14pt;
-            background-color: #${theme.background};
-            color: #${theme.regular7};
-            border: 2px solid #${theme.regular4};
+            background-color: #${theme.colors.base00};
+            color: #${theme.colors.base05};
+            border: 2px solid #${theme.colors.base0D};
             border-radius: 3px;
           }
         '';
@@ -454,7 +454,7 @@ in {
         extraCss = ''
           menu {
             border-radius: 10px;
-            border: 2px solid #${theme.regular5};
+            border: 2px solid #${theme.colors.base0E};
           }
         '';
       };
@@ -466,8 +466,8 @@ in {
         name = "Papirus Dark";
       };
       theme = {
-        package = theme.gtk;
-        name = "Tokyonight-Dark-BL";
+        package = pkgs.gnome.gnome-themes-extra;
+        name = "Adwaita";
       };
     };
     qt = {

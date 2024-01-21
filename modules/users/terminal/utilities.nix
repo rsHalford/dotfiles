@@ -62,18 +62,9 @@ in {
       bat = {
         enable = true;
         config = {
-          theme = theme.name;
+          theme = "base16-256";
           italic-text = "always";
           style = "numbers,changes,grid";
-        };
-        themes = {
-          tokyonight = builtins.readFile (pkgs.fetchFromGitHub {
-              owner = "folke";
-              repo = "tokyonight.nvim"; # Bat uses sublime syntax for its themes
-              rev = "56945bd0d312dc3ed84466d7a6cbfc5e44fbbb4e";
-              sha256 = "sha256-/a4DMUvLos4TI0SpnnV0Lw2adJXOUNdm2KT125WM1yg=";
-            }
-            + "/extras/sublime/tokyonight_night.tmTheme");
         };
       };
       bottom.enable = true;
@@ -109,25 +100,25 @@ in {
 
           # Styling
           set -g set-titles on
-          set -g mode-style "fg=#${theme.regular0},bg=#${theme.color16}"
-          set -g message-style "fg=#${theme.regular4},bg=#${theme.background}"
-          set -g message-command-style "fg=#${theme.regular4},bg=#${theme.background}"
-          set -g pane-border-style "fg=#${theme.background}"
-          set -g pane-active-border-style "fg=#${theme.regular5}"
+          set -g mode-style "fg=#${theme.colors.base01},bg=#${theme.colors.base09}"
+          set -g message-style "fg=#${theme.colors.base0D},bg=#${theme.colors.base00}"
+          set -g message-command-style "fg=#${theme.colors.base0D},bg=#${theme.colors.base00}"
+          set -g pane-border-style "fg=#${theme.colors.base00}"
+          set -g pane-active-border-style "fg=#${theme.colors.base0E}"
           set -g status "on"
           set -g status-justify "left"
-          set -g status-style "fg=#${theme.foreground},bg=#${theme.background}"
+          set -g status-style "fg=#${theme.colors.base07},bg=#${theme.colors.base00}"
           set -g status-left-length "100"
-          set -g status-right-length "100"
           set -g status-left-style NONE
+          set -g status-left "#[fg=#${theme.colors.base03},bg=#${theme.colors.base00}] #S #[fg=#${theme.colors.base07},bg=#${theme.colors.base00},nobold,nounderscore,noitalics]"
+          set -g status-right-length "100"
           set -g status-right-style NONE
-          set -g status-left "#[fg=#${theme.bright0},bg=#${theme.background}] #S #[fg=#${theme.foreground},bg=#${theme.background},nobold,nounderscore,noitalics]"
-          set -g status-right "#[fg=#${theme.regular4},bg=#${theme.background}] #h "
-          setw -g window-status-activity-style "underscore,fg=#${theme.regular7},bg=#${theme.background}"
+          set -g status-right "#[fg=#${theme.colors.base0E},bg=#${theme.colors.base00}] #h "
+          setw -g window-status-activity-style "underscore,fg=#${theme.colors.base05},bg=#${theme.colors.base00}"
           setw -g window-status-separator ""
-          setw -g window-status-style "NONE,fg=#${theme.regular7},bg=#${theme.background}"
-          setw -g window-status-format "#[fg=#${theme.regular7},bg=#${theme.background},nobold,nounderscore,noitalics] #I #W #F #[fg=#${theme.foreground},bg=#${theme.background},nobold,nounderscore,noitalics]"
-          setw -g window-status-current-format "#[fg=#${theme.regular2},bg=#${theme.regular0},bold,nounderscore,noitalics] #I #W #F #[fg=#${theme.foreground},bg=#${theme.background},nobold,nounderscore,noitalics]"
+          setw -g window-status-style "NONE,fg=#${theme.colors.base05},bg=#${theme.colors.base00}"
+          setw -g window-status-format "#[fg=#${theme.colors.base05},bg=#${theme.colors.base00},nobold,nounderscore,noitalics] #I #W #F #[fg=#${theme.colors.base07},bg=#${theme.colors.base00},nobold,nounderscore,noitalics]"
+          setw -g window-status-current-format "#[fg=#${theme.colors.base0B},bg=#${theme.colors.base01},bold,nounderscore,noitalics] #I #W #F #[fg=#${theme.colors.base07},bg=#${theme.colors.base00},nobold,nounderscore,noitalics]"
         '';
         historyLimit = 50000;
         keyMode = "vi";

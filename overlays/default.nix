@@ -1,6 +1,7 @@
 {
   pkgs,
   nixvim,
+  nix-colors,
   nur,
   # emacs-unstable,
   godo-flake,
@@ -14,7 +15,7 @@
     # emacs-unstable.overlay
     scripts.overlay
     (self: super: {
-      inherit nixvim;
+      inherit nixvim nix-colors;
       tmux = super.tmux.overrideAttrs (old: {
         configureFlags = old.configureFlags ++ ["--enable-sixel"];
         src = super.fetchFromGitHub {

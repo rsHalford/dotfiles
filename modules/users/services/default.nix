@@ -180,8 +180,8 @@ in {
         enable = true;
         actions = true;
         anchor = "bottom-right";
-        backgroundColor = "#${theme.background}";
-        borderColor = "#${theme.regular4}";
+        backgroundColor = "#${theme.colors.base00}";
+        borderColor = "#${theme.colors.base07}";
         borderRadius = 2;
         borderSize = 2;
         defaultTimeout = 10000;
@@ -200,9 +200,9 @@ in {
         maxVisible = 5;
         output = null;
         padding = "0,10,20";
-        progressColor = "over #${theme.regular3}";
+        progressColor = "over #${theme.colors.base0D}";
         sort = "-time";
-        textColor = "#${theme.foreground}";
+        textColor = "#${theme.colors.base05}";
         width = 300;
       };
       mpd = {

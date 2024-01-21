@@ -148,58 +148,58 @@ in {
         colors = {
           completion = {
             category = {
-              bg = "#${theme.background}";
+              bg = "#${theme.colors.base00}";
               border = {
-                bottom = "#${theme.background}";
-                top = "#${theme.background}";
+                bottom = "#${theme.colors.base00}";
+                top = "#${theme.colors.base00}";
               };
-              fg = "#${theme.bright3}";
+              fg = "#${theme.colors.base0A}";
             };
-            even.bg = "#${theme.regular0}";
-            fg = ["#${theme.foreground}" "#${theme.bright4}" "#${theme.bright3}"];
+            even.bg = "#${theme.colors.base01}";
+            fg = ["#${theme.colors.base05}" "#${theme.colors.base0D}" "#${theme.colors.base0A}"];
             item.selected = {
-              bg = "#${theme.bright0}";
+              bg = "#${theme.colors.base03}";
               border = {
-                bottom = "#${theme.bright0}";
-                top = "#${theme.bright0}";
+                bottom = "#${theme.colors.base03}";
+                top = "#${theme.colors.base03}";
               };
-              fg = "#${theme.foreground}";
-              match.fg = "#${theme.regular1}";
+              fg = "#${theme.colors.base05}";
+              match.fg = "#${theme.colors.base0A}";
             };
-            match.fg = "#${theme.regular1}";
-            odd.bg = "#${theme.regular0}";
+            match.fg = "#${theme.colors.base0A}";
+            odd.bg = "#${theme.colors.base01}";
             scrollbar = {
-              bg = "#${theme.background}";
-              fg = "#${theme.regular7}";
+              bg = "#${theme.colors.base00}";
+              fg = "#${theme.colors.base05}";
             };
           };
           contextmenu = {
             disabled = {
-              bg = "#${theme.bright0}";
-              fg = "#${theme.bright0}";
+              bg = "#${theme.colors.base03}";
+              fg = "#${theme.colors.base03}";
             };
             menu = {
-              bg = "#${theme.bright0}";
-              fg = "#${theme.foreground}";
+              bg = "#${theme.colors.base03}";
+              fg = "#${theme.colors.base05}";
             };
             selected = {
-              bg = "#${theme.bright0}";
-              fg = "#${theme.bright7}";
+              bg = "#${theme.colors.base03}";
+              fg = "#${theme.colors.base05}";
             };
           };
           downloads = {
-            bar.bg = "#${theme.regular0}";
+            bar.bg = "#${theme.colors.base01}";
             error = {
-              bg = "#${theme.regular1}";
-              fg = "#${theme.regular0}";
+              bg = "#${theme.colors.base08}";
+              fg = "#${theme.colors.base01}";
             };
             start = {
-              bg = "#${theme.regular3}";
-              fg = "#${theme.regular0}";
+              bg = "#${theme.colors.base0A}";
+              fg = "#${theme.colors.base01}";
             };
             stop = {
-              bg = "#${theme.regular2}";
-              fg = "#${theme.regular0}";
+              bg = "#${theme.colors.base0B}";
+              fg = "#${theme.colors.base01}";
             };
             system = {
               bg = "hsv";
@@ -207,129 +207,129 @@ in {
             };
           };
           hints = {
-            bg = "#${theme.bright3}";
-            fg = "#${theme.background}";
-            match.fg = "#${theme.regular1}";
+            bg = "#${theme.colors.base0A}";
+            fg = "#${theme.colors.base00}";
+            match.fg = "#${theme.colors.base08}";
           };
           keyhint = {
-            bg = "#${theme.regular0}";
-            fg = "#${theme.foreground}";
-            suffix.fg = "#${theme.bright3}";
+            bg = "#${theme.colors.base01}";
+            fg = "#${theme.colors.base05}";
+            suffix.fg = "#${theme.colors.base0A}";
           };
           messages = {
             error = {
-              bg = "#${theme.regular1}";
-              border = "#${theme.regular1}";
-              fg = "#${theme.bright7}";
+              bg = "#${theme.colors.base08}";
+              border = "#${theme.colors.base08}";
+              fg = "#${theme.colors.base05}";
             };
             info = {
-              bg = "#${theme.regular0}";
-              border = "#${theme.regular0}";
-              fg = "#${theme.foreground}";
+              bg = "#${theme.colors.base01}";
+              border = "#${theme.colors.base01}";
+              fg = "#${theme.colors.base05}";
             };
             warning = {
-              bg = "#${theme.color17}";
-              border = "#${theme.regular3}";
-              fg = "#${theme.foreground}";
+              bg = "#${theme.colors.base09}";
+              border = "#${theme.colors.base0A}";
+              fg = "#${theme.colors.base05}";
             };
           };
           prompts = {
-            bg = "#${theme.bright0}";
-            border = "2px solid #${"#${theme.background}"}";
-            fg = "#${theme.foreground}";
+            bg = "#${theme.colors.base03}";
+            border = "2px solid #${"#${theme.colors.base00}"}";
+            fg = "#${theme.colors.base05}";
             selected = {
-              bg = "#${theme.regular0}";
-              fg = "#${theme.bright7}";
+              bg = "#${theme.colors.base01}";
+              fg = "#${theme.colors.base05}";
             };
           };
           statusbar = {
             caret = {
-              bg = "#${theme.color17}";
-              fg = "#${theme.regular0}";
+              bg = "#${theme.colors.base09}";
+              fg = "#${theme.colors.base01}";
               selection = {
-                bg = "#${theme.color17}";
-                fg = "#${theme.regular0}";
+                bg = "#${theme.colors.base09}";
+                fg = "#${theme.colors.base01}";
               };
             };
             command = {
-              bg = "#${theme.regular0}";
-              fg = "#${theme.bright2}";
+              bg = "#${theme.colors.base01}";
+              fg = "#${theme.colors.base0B}";
               private = {
-                bg = "#${theme.regular0}";
-                fg = "#${theme.bright2}";
+                bg = "#${theme.colors.base01}";
+                fg = "#${theme.colors.base0B}";
               };
             };
             insert = {
-              bg = "#${theme.bright4}";
-              fg = "#${theme.regular0}";
+              bg = "#${theme.colors.base0D}";
+              fg = "#${theme.colors.base01}";
             };
             normal = {
-              bg = "#${theme.regular0}";
-              fg = "#${theme.foreground}";
+              bg = "#${theme.colors.base01}";
+              fg = "#${theme.colors.base05}";
             };
             passthrough = {
-              bg = "#${theme.bright5}";
-              fg = "#${theme.regular0}";
+              bg = "#${theme.colors.base0E}";
+              fg = "#${theme.colors.base01}";
             };
             private = {
-              bg = "#${theme.foreground}";
-              fg = "#${theme.regular0}";
+              bg = "#${theme.colors.base05}";
+              fg = "#${theme.colors.base01}";
             };
-            progress.bg = "#${theme.foreground}";
+            progress.bg = "#${theme.colors.base05}";
             url = {
-              error.fg = "#${theme.regular1}";
-              fg = "#${theme.foreground}";
-              hover.fg = "#${theme.bright4}";
+              error.fg = "#${theme.colors.base08}";
+              fg = "#${theme.colors.base05}";
+              hover.fg = "#${theme.colors.base0D}";
               success = {
-                http.fg = "#${theme.regular7}";
-                https.fg = "#${theme.bright7}";
+                http.fg = "#${theme.colors.base05}";
+                https.fg = "#${theme.colors.base05}";
               };
-              warn.fg = "#${theme.regular3}";
+              warn.fg = "#${theme.colors.base0A}";
             };
           };
           tabs = {
-            bar.bg = "#${theme.regular0}";
+            bar.bg = "#${theme.colors.base01}";
             even = {
-              bg = "#${theme.regular0}";
-              fg = "#${theme.foreground}";
+              bg = "#${theme.colors.base01}";
+              fg = "#${theme.colors.base05}";
             };
             odd = {
-              bg = "#${theme.regular0}";
-              fg = "#${theme.foreground}";
+              bg = "#${theme.colors.base01}";
+              fg = "#${theme.colors.base05}";
             };
             pinned = {
               even = {
-                bg = "#${theme.regular2}";
-                fg = "#${theme.background}";
+                bg = "#${theme.colors.base0B}";
+                fg = "#${theme.colors.base00}";
               };
               odd = {
-                bg = "#${theme.regular2}";
-                fg = "#${theme.background}";
+                bg = "#${theme.colors.base0B}";
+                fg = "#${theme.colors.base00}";
               };
               selected = {
                 even = {
-                  bg = "#${theme.bright2}";
-                  fg = "#${theme.background}";
+                  bg = "#${theme.colors.base0B}";
+                  fg = "#${theme.colors.base00}";
                 };
                 odd = {
-                  bg = "#${theme.bright2}";
-                  fg = "#${theme.background}";
+                  bg = "#${theme.colors.base0B}";
+                  fg = "#${theme.colors.base00}";
                 };
               };
             };
             selected = {
               even = {
-                bg = "#${theme.bright0}";
-                fg = "#${theme.foreground}";
+                bg = "#${theme.colors.base03}";
+                fg = "#${theme.colors.base05}";
               };
               odd = {
-                bg = "#${theme.bright0}";
-                fg = "#${theme.foreground}";
+                bg = "#${theme.colors.base03}";
+                fg = "#${theme.colors.base05}";
               };
             };
           };
           webpage = {
-            bg = "#${theme.foreground}";
+            bg = "#${theme.colors.base05}";
             darkmode = {
               enabled = true;
               policy.images = "never";
@@ -338,7 +338,7 @@ in {
           };
         };
         hints = {
-          border = "2px solid #${theme.color16}";
+          border = "2px solid #${theme.colors.base09}";
           # padding = {
           #   top = 0;
           #   bottom = 1;
