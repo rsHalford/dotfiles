@@ -20,7 +20,7 @@ in {
       loginShellInit = ''
         if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
           echo "Select session to start:"
-          CHOOSE=$(gum choose "Hyprland" "river" "sway" "steam-gamescope" "zsh")
+          CHOOSE=$(gum choose "river" "Hyprland" "sway" "steam-gamescope" "zsh")
           exec "$CHOOSE"
         fi
       '';
