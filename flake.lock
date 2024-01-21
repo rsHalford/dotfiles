@@ -298,8 +298,7 @@
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
-        "nur": "nur",
-        "tag-flake": "tag-flake"
+        "nur": "nur"
       }
     },
     "systems": {
@@ -314,26 +313,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "tag-flake": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1681042149,
-        "narHash": "sha256-HB9CKYmREqgcIBeML3ZFpiNfVLxGA5UpvSxuxTCJpiQ=",
-        "owner": "rsHalford",
-        "repo": "tag",
-        "rev": "926a22585f00d72cc1dff0161dc32e633bf1fb1a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rsHalford",
-        "repo": "tag",
         "type": "github"
       }
     }

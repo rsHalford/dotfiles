@@ -68,7 +68,6 @@ in {
         scripts.wallpaperTools
         slurp
         swww
-        tag
         wl-clipboard
         zbar
       ];

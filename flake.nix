@@ -18,18 +18,8 @@
 
     nur.url = "github:nix-community/NUR";
 
-    # emacs-unstable = {
-    #   url = "github:nix-community/emacs-overlay";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     godo-flake = {
       url = "github:rsHalford/godo";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    tag-flake = {
-      url = "github:rsHalford/tag";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -40,9 +30,7 @@
     nixvim,
     nix-colors,
     nur,
-    # emacs-unstable,
     godo-flake,
-    tag-flake,
     ...
   }: let
     inherit (nixpkgs) lib;
@@ -64,10 +52,7 @@
           nixvim
           nix-colors
           nur
-          # emacs-unstable
-          
           godo-flake
-          tag-flake
           scripts
           ;
       })
