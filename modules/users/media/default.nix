@@ -327,8 +327,8 @@ in {
 
           # Colours
           color listnormal white default
-          color listnormal_unread white default
-          color listfocus default default bold
+          color listfocus white default bold
+          color listnormal_unread default default
           color listfocus_unread yellow default bold
           color info white default bold
           color article white default

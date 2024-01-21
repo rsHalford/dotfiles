@@ -72,15 +72,7 @@ in {
       fzf = {
         enable = true;
         enableZshIntegration = true;
-        changeDirWidgetCommand = null; # source command with ALT-C
-        changeDirWidgetOptions = []; # ALT-C options
-        defaultCommand = null;
-        defaultOptions = [
-          "-i --preview 'bat --color=always --style=numbers --line-range=:68 {}'"
-        ];
-        fileWidgetCommand = null; # source command with CTRL-T
-        fileWidgetOptions = []; # CTRL-T options
-        historyWidgetOptions = []; # CTRL-R options
+        defaultOptions = ["-i"];
       };
       tmux = {
         enable = true;

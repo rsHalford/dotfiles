@@ -75,7 +75,7 @@ in {
           alternate-scroll-mode = "yes";
         };
         colors = {
-          alpha = "0.95";
+          alpha = "1.0";
           foreground = theme.colors.base06;
           background = theme.colors.base00;
           # Normal/regular colors (color palette 0-7)

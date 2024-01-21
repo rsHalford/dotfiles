@@ -70,7 +70,7 @@ in {
           # Decorations
           riverctl background-color 0x${theme.base00}
           riverctl border-color-focused 0x${theme.base0D}
-          riverctl border-color-unfocused 0x${theme.base03}
+          riverctl border-color-unfocused 0x${theme.base00}
           riverctl border-color-urgent 0x${theme.base09}
           riverctl border-width 2
 
@@ -190,7 +190,7 @@ in {
           # Layouts
           ## Rivercarro
           riverctl default-layout rivercarro
-          rivercarro -inner-gaps 0 -outer-gaps 0 &
+          rivercarro -inner-gaps 1 -outer-gaps 1 &
 
           # Systemd
           riverctl spawn "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river"

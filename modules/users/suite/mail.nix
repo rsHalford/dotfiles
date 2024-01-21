@@ -444,9 +444,9 @@ in {
 
             msglist_unread.bold=true
 
-            msglist_marked.fg=#${theme.colors.base0A}
+            msglist_marked.fg=#${theme.colors.base09}
             msglist_marked.selected.fg=#${theme.colors.base00}
-            msglist_marked.selected.bg=#${theme.colors.base0A}
+            msglist_marked.selected.bg=#${theme.colors.base09}
 
             msglist_flagged.fg=#${theme.colors.base0E}
             msglist_flagged.selected.fg=#${theme.colors.base07}
@@ -532,19 +532,19 @@ in {
             [user]
             cyan.fg=cyan
             thread.fg=#${theme.colors.base08}
-            patch.fg=#${theme.colors.base09}
+            patch.fg=#${theme.colors.base0A}
             dim.fg = #${theme.colors.base05}
           '';
           patch = ''
             *.default=true
             *.normal=true
             
-            msglist_read.fg=#${theme.colors.base09}
-            msglist_unread.fg=#${theme.colors.base09}
+            msglist_read.fg=#${theme.colors.base0A}
+            msglist_unread.fg=#${theme.colors.base0A}
             msglist_unread.bold=true
 
-            msglist_*.selected.bg=#${theme.colors.base09}
-            msglist_marked.fg=#${theme.colors.base09}
+            msglist_*.selected.bg=#${theme.colors.base0A}
+            msglist_marked.fg=#${theme.colors.base0A}
             
             [user]
             cyan.fg=#${theme.colors.base0C}
