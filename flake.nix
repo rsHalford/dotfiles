@@ -158,7 +158,7 @@
             serif = "Gelasio"; # Georgia
           };
           direnv.enable = true;
-          gaming.enable = true;
+          gaming.enable = false;
           git = {
             enable = true;
             userName = "Richard Halford";
