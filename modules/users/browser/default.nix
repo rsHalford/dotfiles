@@ -5,6 +5,7 @@ with lib; {
     ./brave.nix
     ./firefox.nix
     ./qutebrowser.nix
+    ./w3m.nix
   ];
 
   options.richard.browser = {

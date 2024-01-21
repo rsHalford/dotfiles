@@ -148,6 +148,7 @@
               brave.enable = true;
               firefox.enable = false;
               qutebrowser.enable = true;
+              w3m.enable = true;
               preferred = "qutebrowser";
             };
             gemini = {
