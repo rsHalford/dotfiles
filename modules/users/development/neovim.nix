@@ -399,7 +399,7 @@ in {
           }
           {
             key = "<leader>lr";
-            action = ":IncRename ";
+            action = "<cmd>lua vim.lsp.buf.rename()<CR>";
             mode = "n";
             options = {desc = "Rename";};
           }
@@ -707,7 +707,7 @@ in {
           lspkind.enable = true;
           neogit.enable = true;
           noice = {
-            enable = true;
+            enable = false;
             lsp = {
               override = {
                 "vim.lsp.util.convert_input_to_markdown_lines" = true;
@@ -717,7 +717,11 @@ in {
               hover = {enabled = true;};
               signature = {enabled = true;};
             };
-            messages.view = "mini";
+            messages = {
+              view = "mini";
+              viewError = "mini";
+              viewWarn = "mini";
+            };
             presets = {
               bottom_search = true;
               command_palette = true;
@@ -732,7 +736,7 @@ in {
               }
             ];
           };
-          notify.enable = true;
+          notify.enable = false;
           nvim-autopairs = {
             enable = false;
             checkTs = true;
