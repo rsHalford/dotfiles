@@ -11,7 +11,6 @@ with lib; let
   terminal = config.richard.terminal.emulator.program;
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
-  random-wallpaper = "${pkgs.scripts.wallpaperTools}/bin/random-wallpaper";
   theme = config.richard.theme.colors;
 in {
   options.richard.graphical.compositor = {
@@ -197,11 +196,13 @@ in {
           riverctl spawn "${pkgs.systemd}/bin/systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river"
 
           # Autostart
-          ${pkgs.kanshi}/bin/kanshi &
-          ${pkgs.waybar}/bin/waybar &
-          ${pkgs.gammastep}/bin/gammastep &
-          ${random-wallpaper} &
-          ${terminal} -e tmux new -s newsboat -c newsboat &
+          if [ -z $(pidof kanshi) ]; then
+            ${pkgs.kanshi}/bin/kanshi &
+          fi
+          if [ -z $(pidof waybar) ]; then
+            ${pkgs.waybar}/bin/waybar &
+          fi
+          ${terminal} -e tmux new -s default -c default &
           ${terminal} -e tmux-sessioniser &
         '';
       };
