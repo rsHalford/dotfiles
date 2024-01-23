@@ -58,6 +58,7 @@ in {
           };
 
           messages = {
+            h = ":quit<Enter>";
             q = ":quit<Enter>";
 
             j = ":next<Enter>";
@@ -324,7 +325,7 @@ in {
             icon-new = "";
             icon-old = "";
             icon-replied = ''"󰑚 "'';
-            icon-flagged = ''"󰓎 "'';
+            icon-flagged = ''"󰈻 "'';
             icon-deleted = ''"󰩺 "'';
 
             fuzzy-complete = true;
@@ -337,7 +338,7 @@ in {
             threading-enabled = false;
             index-columns = "star:1,name<15%,reply:1,subject,labels>=,size>=,date>=";
             column-separator = ''" "'';
-            column-star = ''{{if .IsFlagged}}★{{end}}'';
+            column-star = ''{{if .IsFlagged}}󰈻{{end}}'';
             column-reply = ''{{if .IsReplied}}󰑚{{end}}'';
             column-subject = ''{{.Style .ThreadPrefix "thread"}}{{ if .ThreadFolded}}{{ \
 	            .Style (printf "%d*" .ThreadCount) "thread"}}{{end}}{{ \
