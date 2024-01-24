@@ -466,7 +466,7 @@ in {
       };
       theme = {
         package = pkgs.gnome.gnome-themes-extra;
-        name = "Adwaita";
+        name = "Adwaita-dark";
       };
     };
     qt = {
