@@ -580,7 +580,7 @@ in {
           cmp-path.enable = true;
           cmp-treesitter.enable = true;
           endwise.enable = true;
-          flash.enable = true;
+          flash.enable = false; # not for me or i need to get better
           gitsigns = {
             enable = true;
             currentLineBlame = true;
