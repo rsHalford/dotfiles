@@ -105,7 +105,7 @@ in {
         session.default_name = "default";
         spellcheck.languages = ["en-GB"];
         statusbar = {
-          show = "in-mode";
+          show = "always";
           widgets = ["keypress" "history" "url" "progress" "scroll" "tabs"];
         };
         tabs = {
@@ -331,7 +331,7 @@ in {
           webpage = {
             bg = "#${theme.colors.base05}";
             darkmode = {
-              enabled = true;
+              enabled = false;
               policy.images = "never";
             };
             preferred_color_scheme = "dark";
