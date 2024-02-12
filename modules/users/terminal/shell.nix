@@ -270,6 +270,7 @@ in {
           gmv = "git mv";
           gob = "go build -v";
           gof = "gofmt -d -s -w .";
+          gog = "go generate ./...";
           gpl = "git pull";
           gps = "git push";
           grb = "git rebase";
@@ -298,6 +299,7 @@ in {
           # rm = "rm -i";
           tms = "tmux-sessioniser";
           v = "${terminal-editor}";
+          "v." = "${terminal-editor} .";
           work = "$WORK_DIR";
           zettels = "$ZETTELKASTEN_DIR";
         };
