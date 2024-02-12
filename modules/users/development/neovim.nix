@@ -687,11 +687,44 @@ in {
               elixirls.enable = true;
               gopls.enable = true;
               html.enable = false;
+              htmx = {
+                enable = true;
+                filetypes = [
+                  "html"
+                  "templ"
+                ];
+              };
               jsonls.enable = false;
               lua-ls.enable = false;
               nil_ls.enable = true;
               nixd.enable = false;
-              tailwindcss.enable = true;
+              tailwindcss = {
+                enable = true;
+                filetypes = [
+                  "astro"
+                  "css"
+                  "elixir"
+                  "gohtml"
+                  "heex"
+                  "html"
+                  "html-eex"
+                  "javascript"
+                  "less"
+                  "markdown"
+                  "mdx"
+                  "postcss"
+                  "sass"
+                  "scss"
+                  "svelte"
+                  "templ"
+                  "typescript"
+                ];
+                extraOptions = {
+                  init_options = {
+                    userLanguages.templ = "html";
+                  };
+                };
+              };
               taplo.enable = true;
               templ.enable = true;
               texlab.enable = false;
