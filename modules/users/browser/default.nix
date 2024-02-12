@@ -2,7 +2,7 @@
 with lib; {
   imports = [
     ./amfora.nix
-    ./brave.nix
+    ./chromium.nix
     ./firefox.nix
     ./qutebrowser.nix
     ./w3m.nix

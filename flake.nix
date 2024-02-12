@@ -124,6 +124,7 @@
           browser = {
             http = {
               brave.enable = true;
+              chrome.enable = true;
               firefox.enable = false;
               qutebrowser.enable = true;
               w3m.enable = true;

@@ -14,6 +14,8 @@ with lib; let
   browser-application =
     if browser == "brave"
     then "brave-browser"
+    else if browser == "chrome"
+    then "google-chrome"
     else browser;
 in {
   options.richard = {
