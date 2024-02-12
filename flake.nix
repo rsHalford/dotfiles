@@ -66,7 +66,7 @@
       boot = "systemd-boot";
       connectivity = {
         bluetooth.enable = true;
-        kde-connect.enable = true;
+        kde-connect.enable = false;
         printing.enable = true;
         sound.enable = true;
         virtualisation.enable = true;
