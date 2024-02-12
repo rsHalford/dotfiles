@@ -791,6 +791,7 @@ in {
               "<Down>" = {
                 action = ''
                   function(fallback)
+                    local luasnip = require 'luasnip'
                     if cmp.visible() then
                       cmp.select_next_item()
                     elseif luasnip.expandable() then
@@ -809,6 +810,7 @@ in {
               "<M-j>" = {
                 action = ''
                   function(fallback)
+                    local luasnip = require 'luasnip'
                     if cmp.visible() then
                       cmp.select_next_item()
                     elseif luasnip.expandable() then
@@ -827,6 +829,7 @@ in {
               "<Up>" = {
                 action = ''
                   function(fallback)
+                    local luasnip = require 'luasnip'
                     if cmp.visible() then
                       cmp.select_prev_item()
                     elseif luasnip.jumpable(-1) then
@@ -841,6 +844,7 @@ in {
               "<M-k>" = {
                 action = ''
                   function(fallback)
+                    local luasnip = require 'luasnip'
                     if cmp.visible() then
                       cmp.select_prev_item()
                     elseif luasnip.jumpable(-1) then
