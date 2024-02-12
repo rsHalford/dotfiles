@@ -3,7 +3,6 @@
   nixvim,
   nix-colors,
   nur,
-  godo-flake,
   scripts,
   system,
   lib,
@@ -23,9 +22,6 @@
         };
         patches = [];
       });
-    })
-    (final: prev: {
-      godo = godo-flake.packages.${system}.godo;
     })
   ];
 }

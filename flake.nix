@@ -17,11 +17,6 @@
     nix-colors.url = "github:misterio77/nix-colors";
 
     nur.url = "github:nix-community/NUR";
-
-    godo-flake = {
-      url = "github:rsHalford/godo";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -30,7 +25,6 @@
     nixvim,
     nix-colors,
     nur,
-    godo-flake,
     ...
   }: let
     inherit (nixpkgs) lib;
@@ -52,7 +46,6 @@
           nixvim
           nix-colors
           nur
-          godo-flake
           scripts
           ;
       })
