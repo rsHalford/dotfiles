@@ -11,6 +11,10 @@ with lib; let
   terminal-editor = config.richard.terminal.utilities.editor;
   graphical-editor = config.richard.graphical.utilities.editor;
   browser = config.richard.browser.http.preferred;
+  browser-exec =
+    if browser == "chrome"
+    then "google-chrome-stable"
+    else browser;
   browser-application =
     if browser == "brave"
     then "brave-browser"
@@ -71,7 +75,7 @@ in {
       sessionVariables = {
         EDITOR = "${terminal-editor}";
         VISUAL = "${graphical-editor}";
-        BROWSER = "${browser}";
+        BROWSER = "${browser-exec}";
         TERM =
           if "${terminal}" == "footclient"
           then "foot"

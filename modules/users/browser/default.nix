@@ -11,7 +11,7 @@ with lib; {
   options.richard.browser = {
     http.preferred = mkOption {
       description = "Choose preferred http GUI browser. Default is firefox.";
-      type = types.enum ["brave" "firefox" "qutebrowser"];
+      type = types.enum ["brave" "chrome" "firefox" "qutebrowser"];
       default = "firefox";
     };
   };

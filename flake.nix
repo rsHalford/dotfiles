@@ -126,9 +126,9 @@
               brave.enable = true;
               chrome.enable = true;
               firefox.enable = false;
-              qutebrowser.enable = true;
+              qutebrowser.enable = false;
               w3m.enable = true;
-              preferred = "qutebrowser";
+              preferred = "chrome";
             };
             gemini = {
               amfora.enable = false;
