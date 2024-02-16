@@ -212,12 +212,12 @@
             };
           };
           theme = let 
-            name = "atlas"; # atlas, solarflare, gruvbox-dark-hard, phd, seti-ui, brewer, bright
+            name = "bright"; # atlas, solarflare, gruvbox-dark-hard, phd, seti-ui, brewer, bright
             scheme = nix-colors.colorSchemes.${name};
           in {
             name = name;
-            colors = scheme.colors;
-            variant = scheme.kind;
+            colors = scheme.palette;
+            variant = scheme.variant;
 
             # TODO: `cursor` attribute set for package, name and size
             # cursor = {};
