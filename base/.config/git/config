@@ -1,0 +1,51 @@
+[branch]
+	autoSetupRebase = "always"
+
+[commit]
+	gpgSign = true
+
+[core]
+	editor = "nvim"
+	pager = "delta"
+
+[delta]
+	line-numbers = true
+	navigate = true
+	side-by-side = false
+
+[diff]
+	colorMoved = "zebra"
+
+[fetch]
+	prune = true
+
+[gpg]
+	program = "gpg"
+
+[init]
+	defaultBranch = "main"
+
+[interactive]
+	diffFilter = "delta --color-only"
+
+[merge]
+	conflictStyle = "diff3"
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+
+[sendemail "richard@rshalford.com"]
+	envelopeSender = "auto"
+	from = "richard@rshalford.com"
+	smtpServer = "msmtp"
+
+[tag]
+	gpgSign = true
+
+[user]
+	email = "dev@rshalford.com"
+	name = "Richard Halford"
+	signingKey = "908E7F42"

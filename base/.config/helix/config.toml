@@ -1,0 +1,67 @@
+theme = "kanagawa"
+
+[editor]
+scrolloff = 8
+middle-click-paste = true
+scroll-lines = 2
+line-number = "relative"
+cursorline = true
+cursorcolumn = true
+idle-timeout = 0
+rulers = [80, 120]
+bufferline = "multiple"
+color-modes = true
+insert-final-newline = false
+popup-border = "all"
+completion-trigger-len = 0
+end-of-line-diagnostics = "hint"
+# true-color = true
+# undercurl = true
+
+[editor.statusline]
+left = ["mode", "spinner", "file-name", "version-control", "read-only-indicator", "file-modification-indicator"]
+center = []
+right = ["diagnostics", "register", "file-encoding", "file-type", "position"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.lsp]
+# display-messages = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.whitespace.render]
+tab = "all"
+tabpad = "none"
+space = "none"
+nbsp = "none"
+nnbsp = "none"
+newline = "none"
+
+[editor.whitespace.characters]
+tab = "→"
+
+[editor.gutters]
+layout = ["diff", "diagnostics", "line-numbers", "spacer"]
+
+[editor.gutters.line-numbers]
+min-width = 1
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+[keys.normal]
+n = ["search_next", "align_view_center"]
+N = ["search_prev", "align_view_center"]
+
+[keys.normal.Z]
+Q = ":quit!"
+Z = ":write-quit!"
+
+[keys.normal.space]
+t = { h = ":toggle-option lsp.display-inlay-hints" }

@@ -1,0 +1,214 @@
+[
+  {
+    "battery": {
+      "format": "{icon}",
+      "format-charging": "{icon}",
+      "format-icons": {
+        "charging": [
+          "<span font='14' color='#a1c659'>󰂆</span>",
+          "<span font='14' color='#a1c659'>󰂇</span>",
+          "<span font='14' color='#a1c659'>󰂈</span>",
+          "<span font='14' color='#a1c659'>󰂉</span>",
+          "<span font='14' color='#a1c659'>󰂊</span>",
+          "<span font='14' color='#a1c659'>󰂋</span>",
+          "<span font='14' color='#a1c659'>󰂅</span>"
+        ],
+        "default": [
+          "<span font='14' color='#fb0120'>󰂎</span>",
+          "<span font='14' color='#fb0120'>󰁺</span>",
+          "<span font='14' color='#fc6d24'>󰁻</span>",
+          "<span font='14' color='#fc6d24'>󰁼</span>",
+          "<span font='14' color='#fda331'>󰁽</span>",
+          "<span font='14' color='#fda331'>󰁾</span>",
+          "<span font='14' color='#76c7b7'>󰁿</span>",
+          "<span font='14' color='#76c7b7'>󰂀</span>",
+          "<span font='14' color='#6fb3d2'>󰂁</span>",
+          "<span font='14' color='#6fb3d2'>󰂂</span>",
+          "<span font='14' color='#d381c3'>󰁹</span>"
+        ]
+      },
+      "format-time": "{H}:{M}",
+      "tooltip-format": "{capacity}%"
+    },
+    "clock": {
+      "calendar": {
+        "format": {
+          "today": "<span color='#fc6d24'><b>{}</b></span>",
+          "weekdays": "<span color='#6fb3d2'><b>{}</b></span>",
+          "weeks": "<span color='#76c7b7'><b>W{}</b></span>"
+        },
+        "mode": "month",
+        "on-scroll": 1,
+        "weeks-pos": "right"
+      },
+      "format": "{:%H:%M}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+    "cpu": {
+      "format": "<span font='14' color='#6fb3d2'>󰍛</span> {usage}%",
+      "on-click": "btm"
+    },
+    "custom/github": {
+      "exec": "github-notify",
+      "format": "{icon}",
+      "format-icons": {
+        "new": "<span font='14' color='#d381c3'>󰊤</span>",
+        "none": "<span font='14' color='#e0e0e0'>󰊤</span>"
+      },
+      "interval": 360,
+      "on-click": "xdg-open https://github.com/notifications",
+      "return-type": "json"
+    },
+    "custom/maildir": {
+      "exec": "mail-notify",
+      "format": "{icon}",
+      "format-icons": {
+        "empty": "<span font='14' color='#e0e0e0'>󰗯</span>",
+        "new-multi": "<span font='14' color='#fb0120'>󰮒</span>",
+        "new-single": "<span font='14' color='#fb0120'>󰇮</span>",
+        "read-multi": "<span font='14' color='#6fb3d2'>󰻩</span>",
+        "read-single": "<span font='14' color='#6fb3d2'>󰇯</span>"
+      },
+      "interval": 180,
+      "on-click": "foot -e aerc",
+      "return-type": "json"
+    },
+    "disk": {
+      "format": "<span font='14' color='#fda331'>󰉉</span>",
+      "on-click": "btm",
+      "path": "/",
+      "tooltip-format": "{used} / {total}"
+    },
+    "fixed-center": false,
+    "height": 20,
+    "hyprland/submap": {
+      "format": "<span style=\"italic\">{}</span>"
+    },
+    "ipc": true,
+    "layer": "top",
+    "memory": {
+      "format": "<span font='14' color='#d381c3'>󰘚</span> {percentage}%",
+      "on-click": "btm",
+      "tooltip-format": "{used:0.1f}GiB / {total:0.1f}GiB"
+    },
+    "modules-center": [
+      "river/window",
+      "hyprland/window",
+      "sway/window"
+    ],
+    "modules-left": [
+      "river/tags",
+      "hyprland/workspaces",
+      "sway/workspaces",
+      "hyprland/submap",
+      "sway/mode"
+    ],
+    "modules-right": [
+      "mpris",
+      "custom/maildir",
+      "custom/github",
+      "tray",
+      "network",
+      "pulseaudio",
+      "disk",
+      "temperature",
+      "battery",
+      "clock"
+    ],
+    "mpris": {
+      "format": "{player_icon} <span color='#fda331'>\"{title}\"</span> <span color='#d381c3'>{artist}</span>",
+      "format-paused": "{status_icon} \"{title}\" - {artist}",
+      "player-icons": {
+        "default": "<span color='#a1c659'>⏵</span>",
+        "mpd": "<span color='#76c7b7'>⏵</span>",
+        "mpv": "<span color='#a1c659'>⏵</span>"
+      },
+      "status-icons": {
+        "paused": "<span color='#fc6d24'>⏸</span>"
+      },
+      "title-len": 20
+    },
+    "network": {
+      "format-disabled": "{icon}",
+      "format-disconnected": "{icon}",
+      "format-ethernet": "{icon}",
+      "format-icons": {
+        "disabled": "<span font='14' color='#fb0120'>󰖪</span>",
+        "disconnected": "<span font='14' color='#fc6d24'>󱚵</span>",
+        "ethernet": "<span font='14' color='#d381c3'>󰈀</span>",
+        "linked": "<span font='14' color='#76c7b7'>󰌹</span>",
+        "wifi": "<span font='14' color='#a1c659'>󰖩</span>"
+      },
+      "format-linked": "{icon}",
+      "format-wifi": "{icon}",
+      "on-click": "nmtui",
+      "tooltip-format-ethernet": "{essid}\n{ipaddr}/{cidr}",
+      "tooltip-format-wifi": "{essid} {signalStrength}%\n{ipaddr}/{cidr}"
+    },
+    "position": "bottom",
+    "pulseaudio": {
+      "format": "{icon}",
+      "format-bluetooth": "<span font='14' color='#6fb3d2'>󰂰</span>",
+      "format-bluetooth-muted": "<span font='14' color='#fb0120'>󰂲</span>",
+      "format-icons": {
+        "default": [
+          "<span font='14' color='#fb0120'>󰖁</span>",
+          "<span font='14' color='#e0e0e0'>󰕿</span>",
+          "<span font='14' color='#e0e0e0'>󰕿</span>",
+          "<span font='14' color='#e0e0e0'>󰕿</span>",
+          "<span font='14' color='#e0e0e0'>󰕿</span>",
+          "<span font='14' color='#f5f5f5'>󰖀</span>",
+          "<span font='14' color='#f5f5f5'>󰖀</span>",
+          "<span font='14' color='#f5f5f5'>󰖀</span>",
+          "<span font='14' color='#f5f5f5'>󰖀</span>",
+          "<span font='14' color='#f5f5f5'>󰖀</span>",
+          "<span font='14' color='#f5f5f5'>󰖀</span>",
+          "<span font='14' color='#f5f5f5'>󰖀</span>",
+          "<span font='14' color='#ffffff'>󰕾</span>",
+          "<span font='14' color='#ffffff'>󰕾</span>",
+          "<span font='14' color='#ffffff'>󰕾</span>",
+          "<span font='14' color='#ffffff'>󰕾</span>",
+          "<span font='14' color='#ffffff'>󰕾</span>",
+          "<span font='14' color='#ffffff'>󰕾</span>",
+          "<span font='14' color='#ffffff'>󰕾</span>",
+          "<span font='14' color='#ffffff'>󰕾</span>"
+        ],
+        "headset": "󰋎"
+      },
+      "format-muted": "<span font='14' color='#fb0120'>󰝟</span>",
+      "format-source": "<span font='14' color='#e0e0e0'></span>",
+      "format-source-muted": "<span font='14' color='#fb0120'></span>",
+      "on-click": "ncpamixer",
+      "scroll-step": 1.0,
+      "tooltip-format": "{desc}: {volume}%"
+    },
+    "river/window": {
+      "max-length": 30
+    },
+    "spacing": 0,
+    "sway/mode": {
+      "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/workspaces": {
+      "disable-scroll": true
+    },
+    "temperature": {
+      "critical-threshold": 100,
+      "format": "{icon}",
+      "format-icons": [
+        "<span font='12' color='#76c7b7'></span>",
+        "<span font='12' color='#a1c659'></span>",
+        "<span font='12' color='#fda331'></span>",
+        "<span font='12' color='#fc6d24'></span>",
+        "<span font='12' color='#fb0120'></span>"
+      ],
+      "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+      "input-filename": "temp1_input"
+    },
+    "tray": {
+      "icon-size": 16,
+      "show-passive-items": false,
+      "spacing": 18
+    }
+  }
+]

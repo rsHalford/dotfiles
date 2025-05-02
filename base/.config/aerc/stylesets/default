@@ -1,0 +1,128 @@
+*.default=true
+*.normal=true
+
+border.bg=#000000
+
+title.fg=#ffffff
+title.bg=#000000
+title.bold=true
+
+header.fg=#ffffff
+header.fg=#000000
+header.bold=true
+
+tab.selected.fg=#6fb3d2
+tab.selected.bg=#000000
+tab.selected.bold=true
+
+dirlist*.fg=#6fb3d2
+dirlist*.selected.fg=#ffffff
+dirlist*.selected.bg=#6fb3d2
+dirlist*.selected.bold=true
+
+*error.bold=true
+*error.fg=#fb0120
+*warning.fg=#fda331
+*success.fg=#a1c659
+
+statusline*.bg=#000000
+statusline_default.fg=#f5f5f5
+statusline_error.fg=#fb0120
+statusline_warning.fg=#fda331
+statusline_success.fg=#a1c659
+
+msglist_*.selected.fg=#ffffff
+msglist_*.selected.bg=#6fb3d2
+
+msglist_unread.bold=true
+
+msglist_marked.fg=#fc6d24
+msglist_marked.selected.fg=#000000
+msglist_marked.selected.bg=#fc6d24
+
+msglist_flagged.fg=#d381c3
+msglist_flagged.selected.fg=#ffffff
+msglist_flagged.selected.bg=#d381c3
+
+msglist_answered.fg=#76c7b7
+msglist_answered.selected.fg=#ffffff
+msglist_answered.selected.bg=#76c7b7
+
+msglist_deleted.fg=#b0b0b0
+msglist_deleted.selected.fg=#ffffff
+msglist_deleted.selected.bg=#b0b0b0
+
+msglist_pill.bg=#6fb3d2
+# msglist_pill.reverse=true
+
+msglist*.X-Sourcehut-Patchset-Update,APPLIED.fg = #a1c659
+msglist*.X-Sourcehut-Patchset-Update,APPLIED.selected.fg = #ffffff
+msglist*.X-Sourcehut-Patchset-Update,APPLIED.selected.bg = #a1c659
+
+msglist*.X-Sourcehut-Patchset-Update,APPROVED.fg = #a1c659
+msglist*.X-Sourcehut-Patchset-Update,APPROVED.selected.fg = #ffffff
+msglist*.X-Sourcehut-Patchset-Update,APPROVED.selected.bg = #a1c659
+
+msglist*.X-Sourcehut-Patchset-Update,NEEDS_REVISION.fg = #fda331
+msglist*.X-Sourcehut-Patchset-Update,NEEDS_REVISION.selected.fg = #f5f5f5
+msglist*.X-Sourcehut-Patchset-Update,NEEDS_REVISION.selected.bg = #fda331
+
+msglist*.X-Sourcehut-Patchset-Update,SUPERSEDED.fg = #fda331
+msglist*.X-Sourcehut-Patchset-Update,SUPERSEDED.selected.fg = #f5f5f5
+msglist*.X-Sourcehut-Patchset-Update,SUPERSEDED.selected.bg = #fda331
+
+msglist*.X-Sourcehut-Patchset-Update,REJECTED.fg = #fb0120
+msglist*.X-Sourcehut-Patchset-Update,REJECTED.selected.fg = #ffffff
+msglist*.X-Sourcehut-Patchset-Update,REJECTED.selected.bg = #fb0120
+
+part_*.fg=#6fb3d2
+part_*.selected.fg=#ffffff
+part_*.selected.bg=#6fb3d2
+part_mimetype.dim=true
+part_mimetype.selected.dim=false
+part_filename.selected.bold=true
+
+selector_focused.fg=#ffffff
+selector_focused.bg=#6fb3d2
+selector_focused.bold=true
+
+selector_chooser.fg=#ffffff
+selector_chooser.bg=#6fb3d2
+selector_chooser.bold=true
+
+default.selected.fg=#ffffff
+default.selected.bg=#6fb3d2
+default.selected.bold=true
+
+completion_default.fg=#fc6d24
+completion_default.selected.bg=#ffffff
+completion_default.selected.bg=#fc6d24
+completion_pill.reverse=true
+
+[viewer]
+*.default=true
+*.normal=true
+url.fg=#fda331
+url.underline=true
+header.fg=#6fb3d2
+header.bold=true
+signature.dim=true
+
+diff_meta.fg=#ffffff
+diff_meta.bold=true
+diff_chunk.fg=#76c7b7
+diff_chunk_func.fg=#6fb3d2
+diff_add.fg=#a1c659
+diff_del.fg=#fb0120
+
+quote_1.fg=#d381c3
+quote_2.fg=#6fb3d2
+quote_3.fg=#76c7b7
+quote_4.fg=#a1c659
+quote_x.fg=#fda331
+
+[user]
+cyan.fg=cyan
+thread.fg=#fb0120
+patch.fg=#fda331
+dim.fg = #e0e0e0

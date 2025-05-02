@@ -1,0 +1,9 @@
+brscan5
+easyaudiosync
+gearlever
+libation
+mmv
+mullvad-vpn-bin
+ncpamixer
+readest
+zen-browser-bin

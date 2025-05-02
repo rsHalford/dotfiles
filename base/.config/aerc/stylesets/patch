@@ -1,0 +1,13 @@
+*.default=true
+*.normal=true
+
+msglist_read.fg=#fda331
+msglist_unread.fg=#fda331
+msglist_unread.bold=true
+
+msglist_*.selected.bg=#fda331
+msglist_marked.fg=#fda331
+
+[user]
+cyan.fg=#76c7b7
+thread.fg=#fb0120

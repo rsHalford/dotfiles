@@ -1,0 +1,42 @@
+[
+    {
+        "context": "Workspace",
+        "bindings": {
+            "space p": [
+                "projects::OpenRecent",
+                {
+                    "create_new_window": false
+                }
+            ]
+        }
+    },
+    {
+        "context": "Editor",
+        "bindings": {
+            // "j k": ["workspace::SendKeystrokes", "escape"]
+        }
+    },
+    {
+        "context": "VimControl && !menu",
+        "bindings": {
+            "w": "vim::NextSubwordStart",
+            "e": "vim::NextSubwordEnd",
+            "b": "vim::PreviousSubwordStart",
+            "g e": "vim::PreviousSubwordEnd"
+        }
+    },
+    {
+        "context": "Editor && VimControl && !VimWaiting && !menu",
+        "bindings": {
+            "space s f": "file_finder::Toggle",
+            "space t": "workspace::NewCenterTerminal"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+        "bindings": {
+            "shift-j": "editor::MoveLineDown",
+            "shift-k": "editor::MoveLineUp"
+        }
+    }
+]

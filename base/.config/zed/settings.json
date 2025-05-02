@@ -1,0 +1,56 @@
+{
+    "base_keymap": "VSCode",
+    "buffer_font_size": 18,
+    "command_aliases": {
+        "W": "w",
+        "Wq": "wq",
+        "Q": "q"
+    },
+    "cursor_blink": false,
+    "features": {
+        "copilot": false
+    },
+    "preferred_line_length": 80,
+    "relative_line_numbers": true,
+    "scrollbar": {
+        "show": "never"
+    },
+    "scroll_beyond_last_line": "off",
+    "soft_wrap": "none",
+    "tab_bar": {
+        "show": true
+    },
+    "tab_size": 4,
+    "telemetry": {
+        "metrics": false,
+        "diagnostics": false
+    },
+    "terminal": {
+        "alternate_scroll": "off",
+        "blinking": "terminal_controlled",
+        "button": false,
+        "copy_on_select": true,
+        "font_family": "Zed Plex Mono",
+        "line_height": "standard",
+        "toolbar": {
+            "title": true
+        },
+        "working_directory": "current_project_directory"
+    },
+    "theme": {
+        "mode": "system",
+        "light": "Rosé Pine",
+        "dark": "Kanagawa Dragon"
+    },
+    "toolbar": {
+        "quick_actions": false
+    },
+    "ui_font_size": 18,
+    "use_auto_surround": true,
+    "use_autoclose": true,
+    "vertical_scroll_margin": 8,
+    "vim": {
+        "toggle_relative_line_numbers": true
+    },
+    "vim_mode": true
+}

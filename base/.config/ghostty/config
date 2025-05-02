@@ -1,0 +1,4 @@
+shell-integration-features = no-cursor,sudo,title
+theme = dark:Kanagawa Wave,light:Kanagawa Wave
+font-family = BlexMono Nerd Font
+font-size = 14
