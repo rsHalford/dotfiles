@@ -9,14 +9,13 @@ bluez-cups
 bluez-utils
 brightnessctl
 btop
-btrfs-assistant
 ccid
 cups
 curl
 dash
 dconf
 dnsmasq
-exfat
+exfat-utils
 eza
 fd
 ffmpeg
@@ -93,6 +92,7 @@ simple-scan
 slurp
 snapper
 sqlite
+starship
 stow
 syncthing
 tar
@@ -119,7 +119,7 @@ xdg-desktop-portal-hyprland
 xdg-utils
 ydotool
 yt-dlp
-yubikey-personalisation
+yubikey-personalization
 zathura
 zbar
 zip

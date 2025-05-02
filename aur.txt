@@ -1,4 +1,5 @@
 brscan5
+btrfs-assistant
 easyaudiosync
 gearlever
 libation
