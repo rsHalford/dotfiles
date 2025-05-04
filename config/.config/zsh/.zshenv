@@ -52,17 +52,14 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
 export TMUX_TMPDIR="${XDG_RUNTIME_DIR:-"/run/user/$(id -u)"}"
 export YDOTOOL_SOCKET=/tmp/.ydotool_socket
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS="-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 
 export BROWSER="app.zen_browser.zen"
 export EDITOR="nvim"
-# export IMAGE="imv"
-# export READER="zathura"
+export IMAGE="imv"
+export READER="zathura"
 export TERM="foot"
 export VIDEO="mpv"
 export VISUAL="zed"
-
-#bat changes
 export MANPAGER="nvim +Man!"

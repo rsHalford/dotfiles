@@ -4,9 +4,9 @@ function set_win_title(){
 precmd_functions+=(set_win_title)
 
 typeset -gaU fpath=($fpath $XDG_DATA_HOME/zsh/site-functions)
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $SOURCES_DIR/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 HISTFILE=$HISTFILE
 HISTSIZE=1000000
