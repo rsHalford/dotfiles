@@ -92,6 +92,7 @@ shfmt
 simple-scan
 slurp
 snapper
+spice-vdagent
 sqlite
 starship
 stow
