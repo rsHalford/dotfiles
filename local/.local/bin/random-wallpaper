@@ -1,0 +1,8 @@
+#!/bin/sh
+if [ -S /run/user/1000/swww.socket ]; then
+  swww kill >/dev/null 2>&1
+fi
+if [ -d ~/.cache/swww ]; then
+  rm -r ~/.cache/swww >/dev/null 2>&1
+fi
+swww init && watch -n 600 "swww img ""$(find "$XDG_PICTURES_DIR"/Wallpapers -type f | shuf -n 1)"" &> /dev/null"

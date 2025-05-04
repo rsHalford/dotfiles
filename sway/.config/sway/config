@@ -7,14 +7,17 @@ focus_wrapping yes
 focus_follows_mouse always
 focus_on_window_activation smart
 mouse_warping output
+
 workspace_layout default
 workspace_auto_back_and_forth yes
+
 client.focused 6fb3d2 6fb3d2 e0e0e0 d381c3 6fb3d2
 client.focused_inactive b0b0b0 b0b0b0 e0e0e0 b0b0b0 b0b0b0
 client.unfocused 000000 000000 e0e0e0 000000 000000
 client.urgent fda331 fda331 e0e0e0 fda331 fda331
 client.placeholder #000000 #0c0c0c #ffffff #000000 #0c0c0c
 client.background 000000
+
 bindsym Mod4+1 workspace number 1
 bindsym Mod4+0 workspace number 10
 bindsym Mod4+2 workspace number 2
@@ -64,7 +67,7 @@ bindsym Mod4+Shift+k move up
 bindsym Mod4+Shift+l move right
 bindsym Mod4+Shift+minus move scratchpad
 bindsym Mod4+Shift+q exec rofi -show power-menu
-bindsym Mod4+Shift+r reload
+bindsym Mod4+Shift+r reload; kanshictl reload
 bindsym Mod4+Shift+v exec mullvad-vpn
 bindsym Mod4+Shift+w exec foot -a nmtui -T nmtui -e nmtui
 bindsym Mod4+Up focus up
@@ -91,7 +94,7 @@ bindsym Mod4+space focus mode_toggle
 bindsym Mod4+t exec foot -e tmux-sessioniser
 bindsym Mod4+u mode resize
 bindsym Mod4+v exec foot -a ncpamixer -T ncpamixer -e ncpamixer
-bindsym Mod4+w exec $BROWSER
+bindsym Mod4+w $BROWSER
 bindsym Mod4+x exec swaylock
 bindsym Mod4+y exec browser2mpv
 bindsym Print exec screenshot
@@ -107,29 +110,29 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
 input "1267:29:Elan_Touchpad" {
-accel_profile flat
-dwt enabled
-natural_scroll enabled
-pointer_accel 0.5
-tap enabled
+  accel_profile flat
+  dwt enabled
+  natural_scroll enabled
+  pointer_accel 0.5
+  tap enabled
 }
 
 input "1:1:AT_Translated_Set_2_keyboard" {
-xkb_layout gb
-xkb_model pc105
-xkb_options caps:escape_shifted_capslock
+  xkb_layout gb
+  xkb_model pc105
+  xkb_options caps:escape_shifted_capslock
 }
 
 input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
-accel_profile flat
-dwt enabled
-natural_scroll enabled
-pointer_accel 0.5
-tap enabled
+  accel_profile flat
+  dwt enabled
+  natural_scroll enabled
+  pointer_accel 0.5
+  tap enabled
 }
 
-input "9494:32:CM_Storm_Quickfire_Rapid_i" {
-xkb_options caps:escape_shifted_capslock
+input "foostan-corne" {
+  xkb_layout us
 }
 
 output "*" {
@@ -137,8 +140,8 @@ output "*" {
 }
 
 seat "*" {
-hide_cursor 5000
-xcursor_theme Quintom_Ink
+  hide_cursor 5000
+  xcursor_theme Quintom_Ink
 }
 
 mode "resize" {
@@ -155,28 +158,31 @@ mode "resize" {
 }
 
 assign [app_id="mpv"] 1
+
 bar {
   font pango:monospace 8.000000
   mode dock
   hidden_state show
-  position bottom
-  swaybar_command ${pkgs.waybar}/bin/waybar
+  position top
+  swaybar_command waybar
 }
 
 gaps inner 5
-gaps outer 5
+gaps outer 0
 gaps horizontal 5
 gaps vertical 5
-gaps top 5
-gaps bottom 5
-gaps left 5
-gaps right 5
+gaps top 0
+gaps bottom 0
+gaps left 0
+gaps right 0
 smart_gaps on
 smart_borders on
 for_window [app_id="ncpamixer"] floating enable
 for_window [app_id="nmtui"] floating enable
 for_window [class="steam"] floating enable
-exec_always random-wallpaper
 
-exec "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE NIXOS_OZONE_WL XCURSOR_THEME XCURSOR_SIZE; systemctl --user start sway-session.target"
+exec kanshi
+exec_always kill -1 $(pidof kanshi)
+exec_always random-wallpaper
 exec_always autotiling
+exec foot --server

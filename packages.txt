@@ -94,6 +94,7 @@ snapper
 sqlite
 starship
 stow
+swww
 syncthing
 tar
 tldr

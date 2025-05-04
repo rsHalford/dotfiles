@@ -1,4 +1,4 @@
-export PATH="$PATH":"$HOME/.local/bin":"$HOME/.local/state/nix/profile/bin":"$HOME/.local/share/mix/escripts":"$HOME/.local/share/go/bin"
+export PATH="$PATH":"$HOME/.local/bin":"/var/lib/flatpak/exports/bin":"$HOME/.local/state/nix/profile/bin":"$HOME/.local/share/mix/escripts":"$HOME/.local/share/go/bin"
 # :"$HOME/.local/bin/scripts":"$XDG_DATA_HOME/go/bin":"$XDG_DATA_HOME/cargo/bin":"$XDG_DATA_HOME/gem/bin"
 
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -56,11 +56,11 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS="-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 
-export BROWSER="flatpak run app.zen_browser.zen"
+export BROWSER="app.zen_browser.zen"
 export EDITOR="nvim"
 # export IMAGE="imv"
 # export READER="zathura"
-export TERM="xterm-ghostty"
+export TERM="foot"
 export VIDEO="mpv"
 export VISUAL="zed"
 
