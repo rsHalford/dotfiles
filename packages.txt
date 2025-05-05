@@ -111,6 +111,7 @@ udiskie
 udisks2
 unzip
 usbutils
+uwsm
 vim
 virt-manager
 waybar
