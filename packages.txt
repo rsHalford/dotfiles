@@ -25,7 +25,6 @@ fprintd
 fwupd
 fzf
 gamemode
-gammastep
 gcr
 git
 git-delta

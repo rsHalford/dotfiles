@@ -2,6 +2,7 @@ brscan5
 btrfs-assistant
 easyaudiosync
 gearlever
+hyprshade
 libation
 mmv
 mullvad-vpn-bin
