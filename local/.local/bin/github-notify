@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Regenerate the notifications.token at https://github.com/settings/tokens
+# Add the token to `"$XDG_DATA_HOME/github/notifications.token`
+
+USERNAME=rshalford
+TOKEN=$(cat "$XDG_DATA_HOME"/github/notifications.token)
+COUNT=$(curl -u "$USERNAME":"${TOKEN}" https://api.github.com/notifications | jq '. | length')
+
+if [ "$COUNT" != "0" ]; then
+  echo '{"text":'"$COUNT"',"tooltip":"$tooltip","class":"$class"}'
+fi

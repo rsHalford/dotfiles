@@ -3,8 +3,8 @@
 }
 
 window#waybar {
-  background-color: #000000;
-  color: #f5f5f5;
+  background-color: #090618;
+  color: #dcd7ba;
 }
 
 #window,
@@ -21,8 +21,8 @@ window#waybar {
 #workspaces button {
   all: initial;
   padding: 0 8px;
-  background-color: #000000;
-  color: #f5f5f5;
+  background-color: #090618;
+  color: #dcd7ba;
   border: none;
   border-radius: 0;
   box-shadow: none;
@@ -31,22 +31,22 @@ window#waybar {
 
 #tags button:hover,
 #workspaces button:hover {
-  background-color: #6fb3d2;
-  color: #000000;
+  background-color: #7e9cd8;
+  color: #090618;
 }
 
 #tags button.focused,
 #workspaces button.active,
 #workspaces button.focused {
-  background-color: #76c7b7;
-  color: #000000;
+  background-color: #7fb4ca;
+  color: #090618;
 }
 
 #tags button.focused:hover,
 #workspaces button.active:hover,
 #workspaces button.focused:hover {
-  background-color: #6fb3d2;
-  color: #000000;
+  background-color: #7e9cd8;
+  color: #090618;
 }
 
 #tags button:not(.occupied):not(.focused) {
@@ -60,19 +60,19 @@ window#waybar {
 #tags button.urgent,
 #workspaces button.urgent {
   background-color: #fc6d24;
-  color: #000000;
+  color: #090618;
 }
 
 #tags button.urgent:hover,
 #workspaces button.urgent:hover {
   background-color: #fda331;
-  color: #000000;
+  color: #090618;
 }
 
 #mode {
   font-size: 14pt;
-  background: #000000;
-  border-top: 3px solid #ffffff;
+  background: #090618;
+  border-top: 3px solid #dcd7ba;
 }
 
 #battery,
@@ -88,22 +88,22 @@ window#waybar {
 #tray {
   font-size: 14pt;
   padding: 0 8pt;
-  background: #000000;
-  color: #f5f5f5;
+  background: #090618;
+  color: #dcd7ba;
 }
 
 #mpris {
   font-size: 14pt;
   padding: 0 8pt;
   border-radius: 0;
-  color: #f5f5f5;
+  color: #dcd7ba;
   background: #303030;
 }
 
 tooltip {
   font-size: 14pt;
-  background-color: #000000;
-  color: #e0e0e0;
-  border: 2px solid #6fb3d2;
+  background-color: #090618;
+  color: #dcd7ba;
+  border: 2px solid #7e9cd8;
   border-radius: 3px;
 }
