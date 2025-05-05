@@ -460,5 +460,4 @@ now_if_args(function()
   lsp_add('zls', { on_attach = custom_on_attach })
 end)
 
-later(function() add 'chrisgrieser/nvim-spider' end)
 later(function() add 'rafamadriz/friendly-snippets' end)
