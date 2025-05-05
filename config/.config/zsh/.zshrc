@@ -65,6 +65,7 @@ ffl() {
     | awk -F':' '{print $1 " +" $2 }'
 }
 
+# Jump to another worktree
 gwj() {
   local out query
   query="$1"
@@ -81,6 +82,7 @@ gwj() {
   fi
 }
 
+# Add a new worktree
 gwa() {
   local dir out query
   query="$1"
@@ -100,6 +102,7 @@ gwa() {
   cd "$dir"
 }
 
+# Select tmux session to kill
 tmk() {
   local out query
   query="$1"
@@ -111,6 +114,7 @@ tmk() {
   tmux kill-session -t "$out" || exit
 }
 
+# Create a new zettel
 zt() {
   local query zettel
   query="$1"
@@ -124,12 +128,26 @@ zt() {
   cd - &> /dev/null
 }
 
+# Create a journal entry for today
 td() {
   cd "$journal_dir"
   month="$(date '+%y/%m/')"
   today="$(date '+%y/%m/%d')"
   mkdir -p "$month"
   "$editor" "$today"
+}
+
+# Encrypt (secret) and decrypt (reveal) files using gpg
+secret () {
+  output="${1}".$(date +%s).enc
+  gpg --encrypt --armor --output ${output} \
+    -r $KEYID "${1}" && echo "${1} -> ${output}"
+}
+
+reveal () {
+  output=$(echo "${1}" | rev | cut -c16- | rev)
+  gpg --decrypt --output ${output} "${1}" && \
+    echo "${1} -> ${output}"
 }
 
 # Aliases
