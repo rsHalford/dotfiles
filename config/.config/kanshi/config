@@ -1,35 +1,33 @@
+output "BNQ BenQ EX2510 9BL02077019" {
+  mode 1920x1080@144.00
+  position 0,0
+  transform 90
+  scale 1.0
+  alias $BENQ
+}
+
+output "Dell Inc. DELL U2515H 9X2VY5CA0QTL" {
+  mode 2560x1440@59.95
+  position 1080,240
+  transform normal
+  scale 1.333
+  alias $DELL
+}
+
+output "BOE 0x0BCA Unknown" {
+  mode 2256x1504@60.00
+  position 0,0
+  transform normal
+  scale 1.6
+  alias $INTERNAL
+}
+
 profile desktop {
-  output "BNQ BenQ EX2510 9BL02077019" {
-    mode 1920x1080@144Hz
-    position 0,0
-    transform 90
-    scale 1.0
-  }
-  output "Dell Inc. DELL U2515H 9X2VY5CA0QTL" {
-    mode 2560x1440@60Hz
-    position 1080,240
-    scale 1.0
-  }
+  output $INTERNAL disable
+  output $BENQ enable
+  output $DELL enable
 }
 
 profile laptop {
-  output eDP-1 {
-    position 0,0
-    scale 1.75
-  }
-}
-
-profile laptop_docked {
-  output "BNQ BenQ EX2510 9BL02077019" {
-    mode 1920x1080@144Hz
-    position 0,0
-    transform 90
-    scale 1.0
-  }
-  output "Dell Inc. DELL U2515H 9X2VY5CA0QTL" {
-    mode 2560x1440@60Hz
-    position 1080,280
-    scale 1.0
-  }
-  output eDP-1 disable
+  output $INTERNAL enable
 }
