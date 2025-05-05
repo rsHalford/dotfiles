@@ -84,10 +84,6 @@ qemu-full
 qt5-wayland
 qt6-wayland
 ripgrep
-rofi-calc
-rofi-emoji
-rofi-pass
-rofi-wayland
 rsync
 rtkit
 shellcheck
