@@ -26,6 +26,7 @@ fwupd
 fzf
 gamemode
 gammastep
+gcr
 git
 git-delta
 gnupg
@@ -33,6 +34,7 @@ go
 gopass
 grim
 grub-btrfs
+gtk3
 hyprland
 hyprpicker
 imv
@@ -57,6 +59,7 @@ mpd-mpris
 mpv
 mpv-mpris
 ncmpcpp
+ncurses
 neofetch
 neovim
 networkmanager
