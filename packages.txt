@@ -122,6 +122,7 @@ wtype
 xdg-desktop-portal
 xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
+xdg-user-dirs
 xdg-utils
 ydotool
 yt-dlp

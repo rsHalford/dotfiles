@@ -9,3 +9,4 @@ mullvad-vpn-bin
 ncpamixer
 readest
 zen-browser-bin
+pam-fprint-grosshack
