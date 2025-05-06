@@ -65,6 +65,30 @@ makepkg -si
 
 # GnuPG
 
+Setup configuration files for using yubikey, making sure all file permissions are correct:
+
+```sh
+cat << EOF >> ~/.local/share/gnupg/scdaemon.conf
+disable-ccid
+EOF
+cat << EOF >> ~/.local/share/gnupg/gpg-agent.conf
+# pinentry-program /usr/bin/pinentry-tty
+# pinentry-program /usr/bin/pinentry-qt5
+# pinentry-program /usr/bin/pinentry-gtk
+pinentry-program /usr/bin/pinentry-qt
+# pinentry-program /usr/bin/pinentry-gnome3
+# pinentry-program /usr/bin/pinentry-emacs
+# pinentry-program /usr/bin/pinentry-curses
+enable-ssh-support
+ttyname $GPG_TTY
+default-cache-ttl 60
+max-cache-ttl 120
+EOF
+find ~/.local/share/gnupg -type d -exec chmod 700 {} \;
+find ~/.local/share/gnupg -type f -exec chmod 600 {} \;
+```
+
+
 Retrieve public key from keyoxide servers.
 
 ```sh
@@ -160,18 +184,16 @@ Enable and start all required services:
 sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now fprintd.service
 sudo systemctl enable --now pcscd.service
+sudo systemctl enable --now sshd.service
 
-systemctl --user enable --now bluetooth-manager.service
+systemctl --user enable --now blueman-manager.service
+systemctl --user enable --now bluetooth-applet.service
 systemctl --user enable --now fnott.service
 systemctl --user enable --now foot-server.service
 systemctl --user enable --now syncthing.service
 systemctl --user enable --now waybar.service
-
-
-# Need to double check
+hyprshade install
 systemctl --user enable --now hyprshade.service
-systemctl --user enable --now bluetooth-applet.service
-sudo systemctl enable --now sshd.service
 ```
 
 
