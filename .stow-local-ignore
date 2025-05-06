@@ -18,3 +18,7 @@ _darcs
 ^/README.*
 ^/LICENSE.*
 ^/COPYING
+
+aur.txt
+flatpaks.txt
+packages.txt

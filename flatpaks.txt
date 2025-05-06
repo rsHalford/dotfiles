@@ -1,9 +1,8 @@
-Zen	app.zen_browser.zen	1.11.5b	stable	flathub	system
-Discord	com.discordapp.Discord	0.0.93	stable	flathub	system
-Flatseal	com.github.tchx84.Flatseal	2.3.1	stable	flathub	system
-Transmission	com.transmissionbt.Transmission	4.0.5	stable	fedora	system
-DBeaver Community	io.dbeaver.DBeaverCommunity	25.0.3	stable	flathub	system
-Gear Lever	it.mijorus.gearlever	3.2.2	stable	flathub	system
-Puddletag	net.puddletag.puddletag	2.4.0	stable	flathub	system
-Extensions	org.gnome.Extensions	48.alpha	stable	fedora	system
-Krita	org.kde.krita	5.2.9	stable	fedora	system
+DBeaver Community io.dbeaver.DBeaverCommunity
+Discord           com.discordapp.Discord
+Flatseal          com.github.tchx84.Flatseal
+Gear Lever        it.mijorus.gearlever
+Krita             org.kde.krita
+Puddletag         net.puddletag.puddletag
+Transmission      com.transmissionbt.Transmission
+Zen               app.zen_browser.zen
