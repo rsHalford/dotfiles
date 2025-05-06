@@ -20,8 +20,10 @@ eza
 fd
 ffmpeg
 flatpak
+fnott
 foot
 fprintd
+fuzzel
 fwupd
 fzf
 gamemode
@@ -48,7 +50,6 @@ libnotify
 libsixel
 libvirt
 libwebp
-mako
 man-db
 man-pages
 mise
@@ -62,12 +63,12 @@ ncurses
 neofetch
 neovim
 networkmanager
+network-manager-applet
 newsboat
 noto-fonts
 noto-fonts-emoji
 noto-fonts-extra
 openssh
-pamixer
 papirus-icon-theme
 pciutils
 pcsc-tools

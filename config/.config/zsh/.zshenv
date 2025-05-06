@@ -56,7 +56,7 @@ export YDOTOOL_SOCKET=/tmp/.ydotool_socket
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS="-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 
-export BROWSER="app.zen_browser.zen"
+export BROWSER="zen-browser"
 export EDITOR="nvim"
 export IMAGE="imv"
 export READER="zathura"

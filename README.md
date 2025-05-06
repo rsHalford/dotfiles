@@ -145,8 +145,21 @@ auth    sufficient  pam_unix.so try_first_pass likeauth nullok
 Enable and start all required services:
 
 ```sh
-systemctl --user enable --now waybar.service
+sudo systemctl enable --now bluetooth.service
+sudo systemctl enable --now fprintd.service
+sudo systemctl enable --now pcscd.service
+
+systemctl --user enable --now bluetooth-manager.service
+systemctl --user enable --now fnott.service
+systemctl --user enable --now foot-server.service
 systemctl --user enable --now syncthing.service
+systemctl --user enable --now waybar.service
+
+
+# Need to double check
+systemctl --user enable --now hyprshade.service
+systemctl --user enable --now bluetooth-applet.service
+sudo systemctl enable --now sshd.service
 ```
 
 

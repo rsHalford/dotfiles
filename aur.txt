@@ -6,7 +6,6 @@ hyprshade
 libation
 mmv
 mullvad-vpn-bin
-ncpamixer
+pam-fprint-grosshack
 readest
 zen-browser-bin
-pam-fprint-grosshack
