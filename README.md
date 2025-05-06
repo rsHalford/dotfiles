@@ -1,3 +1,15 @@
+# TODO:
+- [ ] sign up for arch news feed: [Arch Linux](https://archlinux.org/)
+- [ ] and/or mailing list: [Info | arch-announce@lists.archlinux.org - lists.archlinux.org](https://lists.archlinux.org/mailman3/lists/arch-announce.lists.archlinux.org/)
+- [ ] sort out GTK styling: [GTK - ArchWiki](https://wiki.archlinux.org/title/GTK)
+- [ ] and QT styling: [Qt - ArchWiki](https://wiki.archlinux.org/title/Qt)
+- [ ] idle and lock programs (use finger print to unlock)
+- [ ] improve hyprland animations
+- [ ] basically RTFM again as it has changed a bit since
+- [ ] subscribe to RSS feeds for all major software installed
+
+
+
 # Install all required packages with the below command
 
 ```sh
