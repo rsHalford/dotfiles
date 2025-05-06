@@ -212,6 +212,7 @@ alias src='$SOURCES_DIR'
 alias v='nvim'
 alias v.='nvim .'
 alias wezterm='flatpak run org.wezfurlong.wezterm'
+alias wget='wget --hsts-file="$XDG_CACHE_HOME"/wget-hsts'
 alias work='$WORK_DIR'
 
 export GPG_TTY="$(tty)"

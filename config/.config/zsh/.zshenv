@@ -51,6 +51,7 @@ export PYTHON_HISTORY="$XDG_STATE_HOME/python/history"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
 export TMUX_TMPDIR="${XDG_RUNTIME_DIR:-"/run/user/$(id -u)"}"
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export YDOTOOL_SOCKET=/tmp/.ydotool_socket
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS="-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
