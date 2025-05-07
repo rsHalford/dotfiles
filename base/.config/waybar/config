@@ -105,19 +105,20 @@
     "pulseaudio",
     "disk",
     "temperature",
+    "power-profiles-daemon",
     "battery",
     "clock"
   ],
   "mpris": {
-    "format": "{player_icon} <span color='#e6c384'>\"{title}\"</span> <span color='#957fb8'>{artist}</span>",
-    "format-paused": "{status_icon} \"{title}\" - {artist}",
+    "format": "{player_icon}  <span color='#e6c384'>\"{title}\"</span>  <span color='#957fb8'>{artist}</span>",
+    "format-paused": "{status_icon}  \"{title}\"  {artist}",
     "player-icons": {
-      "default": "<span color='#98bb6c'>⏵</span>",
-      "mpd": "<span color='#7fb4ca'>⏵</span>",
-      "mpv": "<span color='#98bb6c'>⏵</span>"
+      "default": "<span color='#98bb6c'>󰐊</span>",
+      "mpd": "<span color='#7fb4ca'>󰐊</span>",
+      "mpv": "<span color='#98bb6c'>󰐊</span>"
     },
     "status-icons": {
-      "paused": "<span color='#ffa066'>⏸</span>"
+      "paused": "<span color='#ffa066'>󰏤</span>"
     },
     "title-len": 20
   },
@@ -137,6 +138,17 @@
     "on-click": "nmtui",
     "tooltip-format-ethernet": "{essid}\n{ipaddr}/{cidr}",
     "tooltip-format-wifi": "{essid} {signalStrength}%\n{ipaddr}/{cidr}"
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "{profile}",
+    "tooltip": true,
+    "format-icons": {
+      "power-saver": "<span font='14' color='#98bb6c'>󰾆</span>",
+      "balanced": "<span font='14' color='#7fb4ca'>󰾅</span>",
+      "performance": "<span font='14' color='#957fb8'>󰓅</span>",
+      "default": "<span font='14' color='#7fb4ca'>󰾅</span>",
+    }
   },
   "position": "bottom",
   "pulseaudio": {
@@ -180,11 +192,11 @@
     "critical-threshold": 100,
     "format": "{icon}",
     "format-icons": [
-      "<span font='12' color='#7fb4ca'></span>",
-      "<span font='12' color='#98bb6c'></span>",
-      "<span font='12' color='#e6c384'></span>",
-      "<span font='12' color='#ffa066'></span>",
-      "<span font='12' color='#ff5d62'></span>"
+      "<span font='14' color='#7fb4ca'></span>",
+      "<span font='14' color='#98bb6c'></span>",
+      "<span font='14' color='#e6c384'></span>",
+      "<span font='14' color='#ffa066'></span>",
+      "<span font='14' color='#ff5d62'></span>"
     ],
     "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
     "input-filename": "temp1_input",

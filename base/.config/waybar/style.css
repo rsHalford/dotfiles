@@ -1,78 +1,78 @@
 * {
-  font-family: BlexMono Nerd Font;
+	font-family: Inter Nerd Font Propo;
 }
 
 window#waybar {
-  background-color: #090618;
-  color: #dcd7ba;
+	background-color: #090618;
+	color: #dcd7ba;
 }
 
 #window,
 #workspaces {
-  margin: 0 4px;
-  font-size: 14pt;
+	margin: 0 4px;
+	font-size: 12pt;
 }
 
 .modules-left > widget:first-child > #workspaces {
-  margin-left: 0;
+	margin-left: 0;
 }
 
 #tags button,
 #workspaces button {
-  all: initial;
-  padding: 0 8px;
-  background-color: #090618;
-  color: #dcd7ba;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  text-shadow: none;
+	all: initial;
+	padding: 0 8px;
+	background-color: #090618;
+	color: #dcd7ba;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	text-shadow: none;
 }
 
 #tags button:hover,
 #workspaces button:hover {
-  background-color: #7e9cd8;
-  color: #090618;
+	background-color: #7e9cd8;
+	color: #090618;
 }
 
 #tags button.focused,
 #workspaces button.active,
 #workspaces button.focused {
-  background-color: #7fb4ca;
-  color: #090618;
+	background-color: #7fb4ca;
+	color: #090618;
 }
 
 #tags button.focused:hover,
 #workspaces button.active:hover,
 #workspaces button.focused:hover {
-  background-color: #7e9cd8;
-  color: #090618;
+	background-color: #7e9cd8;
+	color: #090618;
 }
 
 #tags button:not(.occupied):not(.focused) {
- font-size: 0;
- min-width: 0;
- min-height: 0;
- padding: 0 0;
- border: 0;
+	font-size: 0;
+	min-width: 0;
+	min-height: 0;
+	padding: 0 0;
+	border: 0;
 }
 
 #tags button.urgent,
 #workspaces button.urgent {
-  background-color: #fc6d24;
-  color: #090618;
+	background-color: #fc6d24;
+	color: #090618;
 }
 
 #tags button.urgent:hover,
 #workspaces button.urgent:hover {
-  background-color: #fda331;
-  color: #090618;
+	background-color: #fda331;
+	color: #090618;
 }
 
 #mode {
-  font-size: 14pt;
-  background: #090618;
-  border-top: 3px solid #dcd7ba;
+	font-size: 12pt;
+	background: #090618;
+	border-top: 3px solid #dcd7ba;
 }
 
 #battery,
@@ -83,27 +83,35 @@ window#waybar {
 #disk,
 #memory,
 #network,
+#power-profiles-daemon,
 #pulseaudio,
 #temperature,
 #tray {
-  font-size: 14pt;
-  padding: 0 8pt;
-  background: #090618;
-  color: #dcd7ba;
+	font-size: 12pt;
+	padding: 0 8pt;
+	background: #090618;
+	color: #dcd7ba;
+}
+
+#temperature {
+	font-size: 12pt;
+	padding: 0 8pt 0 9pt;
+	background: #090618;
+	color: #dcd7ba;
 }
 
 #mpris {
-  font-size: 14pt;
-  padding: 0 8pt;
-  border-radius: 0;
-  color: #dcd7ba;
-  background: #303030;
+	font-size: 12pt;
+	padding: 0 8pt;
+	border-radius: 0;
+	color: #dcd7ba;
+	background: #15161e;
 }
 
 tooltip {
-  font-size: 14pt;
-  background-color: #090618;
-  color: #dcd7ba;
-  border: 2px solid #7e9cd8;
-  border-radius: 3px;
+	font-size: 12pt;
+	background-color: #090618;
+	color: #dcd7ba;
+	border: 2px solid #7e9cd8;
+	border-radius: 3px;
 }
