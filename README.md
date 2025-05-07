@@ -225,3 +225,31 @@ If the user is required to access virtual machines from `qemu:///system`, add th
 ```sh
 sudo usermod --append --groups libvirt "$USER"
 ```
+
+
+# Kanagawa Theme
+
+```
+background           #1F1F28
+foreground           #DCD7BA
+selection_background #2D4F67
+selection_foreground #C8C093
+regular0             #16161D
+regular1             #C34043
+regular2             #76946A
+regular3             #C0A36E
+regular4             #7E9CD8
+regular5             #957FB8
+regular6             #6A9589
+regular7             #C8C093
+bright0              #727169
+bright1              #E82424
+bright2              #98BB6C
+bright3              #E6C384
+bright4              #7FB4CA
+bright5              #938AA9
+bright6              #7AA89F
+bright7              #DCD7BA
+color16              #FFA066
+color17              #FF5D62
+```
