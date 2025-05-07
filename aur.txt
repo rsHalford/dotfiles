@@ -7,5 +7,6 @@ libation
 mmv
 mullvad-vpn-bin
 pam-fprint-grosshack
+pwvucontrol
 readest
 zen-browser-bin
