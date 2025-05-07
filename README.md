@@ -188,7 +188,6 @@ sudo systemctl enable --now sshd.service
 
 systemctl --user enable --now blueman-manager.service
 systemctl --user enable --now bluetooth-applet.service
-systemctl --user enable --now fnott.service
 systemctl --user enable --now foot-server.service
 systemctl --user enable --now syncthing.service
 systemctl --user enable --now waybar.service
