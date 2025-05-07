@@ -2,7 +2,9 @@ acpid
 alsa-utils
 amd-ucode
 bash
+bash-language-server
 bat
+biome
 blueman
 bluez
 bluez-cups
@@ -40,7 +42,6 @@ hyprland
 hyprpicker
 imv
 inotify-tools
-inter-font
 iptables-nft
 iwd
 jq
@@ -50,6 +51,7 @@ libnotify
 libsixel
 libvirt
 libwebp
+lua-language-server
 man-db
 man-pages
 mise
@@ -96,8 +98,10 @@ spice-vdagent
 sqlite
 starship
 stow
+stylua
 swww
 syncthing
+taplo
 tar
 tldr
 tmux
@@ -111,6 +115,8 @@ usbutils
 uwsm
 vim
 virt-manager
+vscode-css-languageserver
+vscode-html-languageserver
 waybar
 wev
 wget
@@ -123,6 +129,7 @@ xdg-desktop-portal-hyprland
 xdg-user-dirs
 xdg-utils
 ydotool
+yq
 yt-dlp
 yubikey-personalization
 zathura

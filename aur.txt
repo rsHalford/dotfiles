@@ -1,12 +1,11 @@
 brscan5
 btrfs-assistant
 easyaudiosync
+emmet-language-server
 gearlever
 hyprshade
-libation
-mmv
 mullvad-vpn-bin
+nerd-font-inter
 pam-fprint-grosshack
 pwvucontrol
-readest
 zen-browser-bin
