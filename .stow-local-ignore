@@ -19,6 +19,4 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-aur.txt
-flatpaks.txt
-packages.txt
+etc

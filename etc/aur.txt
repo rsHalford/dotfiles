@@ -8,4 +8,6 @@ mullvad-vpn-bin
 nerd-font-inter
 pam-fprint-grosshack
 pwvucontrol
+umpv
+xdg-ninja
 zen-browser-bin

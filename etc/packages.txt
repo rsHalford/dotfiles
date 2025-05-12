@@ -4,6 +4,7 @@ amd-ucode
 bash
 bash-language-server
 bat
+bc
 biome
 blueman
 bluez
@@ -19,6 +20,7 @@ dconf
 dnsmasq
 exfat-utils
 eza
+fastfetch
 fd
 ffmpeg
 flatpak
@@ -32,6 +34,7 @@ gamemode
 gcr
 git
 git-delta
+glow
 gnupg
 go
 gopass
@@ -62,7 +65,6 @@ mpv
 mpv-mpris
 ncmpcpp
 ncurses
-neofetch
 neovim
 networkmanager
 network-manager-applet
@@ -94,6 +96,7 @@ shfmt
 simple-scan
 slurp
 snapper
+socat
 spice-vdagent
 sqlite
 starship
@@ -128,7 +131,6 @@ xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 xdg-user-dirs
 xdg-utils
-ydotool
 yq
 yt-dlp
 yubikey-personalization
