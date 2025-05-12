@@ -189,10 +189,24 @@ sudo systemctl enable --now sshd.service
 systemctl --user enable --now blueman-manager.service
 systemctl --user enable --now bluetooth-applet.service
 systemctl --user enable --now foot-server.service
+systemctl --user enable --now mpd.service
+systemctl --user enable --now mpd-mpris.service
 systemctl --user enable --now syncthing.service
 systemctl --user enable --now waybar.service
 hyprshade install
 systemctl --user enable --now hyprshade.service
+```
+
+
+
+# Music
+
+Using mpd as the local music server. First the correct directories need to be created (based on `mpd.conf`):
+
+```sh
+mkdir ~/.local/share/mpd
+mkdir ~/.local/share/mpd/playlists
+mkdir ~/.local/share/mpd/state
 ```
 
 
