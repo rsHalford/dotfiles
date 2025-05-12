@@ -50,6 +50,7 @@ map({ 'n' }, L('s'),  C('lua MiniExtra.pickers.lsp({scope="document_symbol"})'),
 map({ 'n' }, L('S'),  C('lua MiniExtra.pickers.lsp({scope="workspace_symbol"})'), 'Open workspace symbol picker')
 map({ 'n' }, L('ti'), C('lua Config.toggle_inlay_hints()'),                       'Toggle inlay hints')
 map({ 'n' }, L('tq'), C('lua Config.toggle_quickfix()'),                          'Toggle quickfix')
+map({ 'n' }, L('x'),  C(':!chmod +x %<CR>'),                                      'Chmod Execute')
 map({ 'n' }, L("'"),  C('lua MiniPick.builtin.resume()'),                         'Open last picker')
 map({ 'n' }, L('"'),  C('lua MiniExtra.pickers.registers()'),                     'Open registers picker')
 map({ 'n' }, L('/'),  C('lua MiniPick.builtin.grep_live()'),                      'Open ripgrep picker')
