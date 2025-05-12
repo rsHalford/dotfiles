@@ -18,7 +18,7 @@ output "BOE 0x0BCA Unknown" {
   mode 2256x1504@60.00
   position 0,0
   transform normal
-  scale 1.6
+  scale 1.57
   alias $INTERNAL
 }
 
