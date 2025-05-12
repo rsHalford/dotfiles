@@ -1,9 +1,9 @@
 [tools]
 # use `mise install -f "gem:*" to reinstall after ruby version changes
-# "gem:ruby-lsp" = "latest"
-# "gem:rubocop" = "latest"
-# ruby = "3.4"
-# "gem:erb-formatter" = "latest"
+"gem:ruby-lsp" = "latest"
+"gem:rubocop" = "latest"
+ruby = "3.4"
+"gem:erb-formatter" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
