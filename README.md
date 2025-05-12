@@ -226,6 +226,15 @@ mkdir ~/.local/share/mpd/state
 ```
 
 
+# Man
+
+To make sure commands such as `apropos` or `fuzzel_man` can find manual pages:
+
+```sh
+sudo mandb
+```
+
+
 # Virtual Machines
 
 Create the same directory path that the `.qcow2` image originated from:

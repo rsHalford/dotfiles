@@ -1,0 +1,26 @@
+#!/bin/sh
+
+OPTIONS="\
+😂 Emoji:fuzzel_emoji
+🤔 Calculator:fuzzel_calculator
+🤖 Configuration:fuzzel_configs
+📖 Manual:fuzzel_man
+🌍 Network:$TERMINAL -a float -e nmtui
+🔒 Password:gopass ls --flat | fuzzel -d --counter | xargs -r gopass show -c
+🔍 Search:fuzzel_search
+📸 Screenshot:screenshot
+⏫ Updates:$TERMINAL -a float -e yay -Syu
+🚪 Power:fuzzel_power"
+
+COUNT="$(printf '%s\n' "$OPTIONS" | wc -l)"
+CHOICE="$(printf '%s\n' "$OPTIONS" | cut -d':' -f1 | fuzzel --dmenu -l "$COUNT" --width 20)" || exit 2
+
+eval "$(printf '%s\n' "$OPTIONS" | grep "$CHOICE:" | cut -d':' -f2)"
+
+# TODO: Evaluate future use
+# 📺 YouTube:subs
+# 📹 Twitch:dmenutwitch
+# 🌐 Session:dmenusession
+# 😈 Cheat Sheet:dmenucheat
+# 💽 Mount Drives:dmenumount
+# 💽 Unmount Drives:dmenuumount

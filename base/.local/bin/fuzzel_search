@@ -1,0 +1,59 @@
+#!/bin/sh
+
+OPTIONS="\
+AUR;https://aur.archlinux.org/packages/?O=0&K=
+Amazon;https://smile.amazon.co.uk/s?k=
+Arch Wiki;https://wiki.archlinux.org/index.php?search=
+BBC News;https://www.bbc.co.uk/search?q=
+CoinGecko;https://www.coingecko.com/en/coins/
+Dictionary;http://www.dictionary.com/browse/
+DuckDuckGo;https://duckduckgo.com/?q=
+eBay;https://www.ebay.co.uk/sch/i.html?&_nkw=
+Etymology;http://www.etymonline.com/index.php?allowed_in_frame=0&search=
+GitHub;https://github.com/search?q=
+GitLab;https://gitlab.com/search?search=
+gog;https://www.gog.com/games?sort=popularity&search=
+Humble Bundle;https://www.humblebundle.com/store/search?sort=bestselling&search=
+IMDB;https://www.imdb.com/find?q=
+Imgur;https://www.imgur.com/search?q=
+Lutris;https://lutris.net/games/?q=
+Pacman;https://archlinux.org/packages/?sort=&q=
+Proton;https://www.protondb.com/search?q=
+Qwant;https://www.qwant.com/?q=
+Reddit;https://www.reddit.com/search/?q=
+SourceForge;https://sourceforge.net/directory/?q=
+StackOverflow;https://stackoverflow.com/search?q=
+Startpage;https://www.startpage.com/do/dsearch?query=
+Steam;http://store.steampowered.com/search/?term=
+Thesaurus;https://www.thesaurus.com/misspelling?term=
+Translate;https://translate.google.com/?sl=auto&tl=en&text=
+Twitch;https://twitch.com/
+Urban Dictionary;https://www.urbandictionary.com/define.php?term=
+Wikimedia;https://commons.wikipedia.org/wiki/index.php?search=
+Wikipedia;https://en.wikipedia.org/w/index.php?search=
+Wiktionary;https://en.wiktionary.org/wiki/
+Wolfram;https://www.wolframalpha.com/input/?i=
+Yahoo Finance;https://finance.yahoo.com/quote/
+YouTube"
+
+ENGINE="$(printf '%s\n' "$OPTIONS" | cut -d';' -f1 | fuzzel -d)" || exit 1
+QUERY="$(fuzzel -d | tr ' ' '+')" || exit 1
+
+if [ "$ENGINE" = "YouTube" ]; then
+  QUERY=$(curl -s "https://www.youtube.com/results?search_query=""$QUERY") || exit 1
+  RESULTS=$(printf '%s\n' "$QUERY" | grep -oP '(/watch\?v=.{11})|(?<=title":{"runs":\[{"text":").+?(?="}\])' |
+    awk '!a[$0]++' |
+    paste - - |
+    head -n -6) || exit 1
+  TITLE=$(printf '%s\n' "$RESULTS" | cut -f1 | fuzzel -d -l 10) || exit 1
+  VIDEO=$(printf '%s\n' "$RESULTS" | grep "$TITLE" | cut -f2) || exit 1
+  if [ "$(pidof mpv)" ]; then
+    printf '%s\n' '{"command": ["loadfile", "'https://youtube.com''$VIDEO'", "append-play"]}' | socat - /tmp/mpvsocket
+  else
+    exec mpv --input-ipc-server=/tmp/mpvsocket "https://youtube.com""$VIDEO"
+  fi
+else
+  URL="$(printf '%s\n' "$OPTIONS" | grep "$ENGINE;" | cut -d';' -f2)"
+fi
+
+$BROWSER "$URL""$QUERY"

@@ -1,9 +1,10 @@
 #!/bin/sh
-bing="http://www.bing.com"
-xmlURL="http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=en-WW"
-saveDir=$XDG_PICTURES_DIR'/Wallpapers/'
-mkdir -p "$saveDir"
-picName="$(date "+%Y%m%d%H%M%S").jpg"
-picURL=$bing$(printf '%s\n' "$(curl -s "$xmlURL")" | grep -oP "<url>(.*)</url>" | cut -d ">" -f2 | cut -d "<" -f1)
-curl -s -o "$saveDir""$picName" "$picURL"
+
+BING="http://www.bing.com"
+XML_URL="http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=en-WW"
+SAVE_DIR=$XDG_PICTURES_DIR'/Wallpapers/'
+mkdir -p "$SAVE_DIR"
+PICTURE_NAME="$(date "+%Y%m%d%H%M%S").jpg"
+PICTURE_URL=$BING$(printf '%s\n' "$(curl -s "$XML_URL")" | grep -oP "<url>(.*)</url>" | cut -d ">" -f2 | cut -d "<" -f1)
+curl -s -o "$SAVE_DIR""$PICTURE_NAME" "$PICTURE_URL"
 exit

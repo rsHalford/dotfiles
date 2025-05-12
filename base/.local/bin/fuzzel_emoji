@@ -1,0 +1,12 @@
+#!/bin/sh
+
+CHOSEN=$(cut -d';' -f1 "$XDG_DATA_HOME"/emoji | fuzzel -d | sed "s/ .*//")
+
+[ -z "$CHOSEN" ] && exit
+
+if [ -n "$1" ]; then
+  wtype "$CHOSEN"
+else
+  printf '%s' "$CHOSEN" | wl-copy
+  notify-send "$CHOSEN copied to clipboard"
+fi

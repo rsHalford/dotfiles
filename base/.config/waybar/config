@@ -45,7 +45,7 @@
   },
   "cpu": {
     "format": "<span font='14' color='#7e9cd8'>󰍛</span> {usage}%",
-    "on-click": "footclient -a btop -T btop -e btop"
+    "on-click": "footclient -a float -T btop -e btop"
   },
   "custom/github": {
     "exec": "github-notify",
@@ -74,7 +74,7 @@
   },
   "disk": {
     "format": "<span font='14' color='#e6c384'>󰉉</span>",
-    "on-click": "footclient -a btop -T btop -e btop",
+    "on-click": "footclient -a float -T btop -e btop",
     "path": "/",
     "tooltip-format": "{used} / {total}"
   },
@@ -87,7 +87,7 @@
   "layer": "top",
   "memory": {
     "format": "<span font='14' color='#957fb8'>󰘚</span> {percentage}%",
-    "on-click": "footclient -a btop -T btop -e btop",
+    "on-click": "footclient -a float -T btop -e btop",
     "tooltip-format": "{used:0.1f}GiB / {total:0.1f}GiB"
   },
   "modules-center": [
@@ -200,7 +200,7 @@
     ],
     "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
     "input-filename": "temp1_input",
-    "on-click": "footclient -a btop -T btop -e btop"
+    "on-click": "footclient -a float -T btop -e btop"
   },
   "tray": {
     "icon-size": 16,

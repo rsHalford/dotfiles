@@ -1,45 +1,43 @@
 #!/bin/sh
+
 case "$XDG_CURRENT_DESKTOP" in
 "GNOME")
-	FOCUS=$(gdbus call --session \
-		--dest org.gnome.Shell \
-		--object-path /org/gnome/Shell/Extensions/WindowsExt \
-		--method org.gnome.Shell.Extensions.WindowsExt.FocusClass |
-		sed 's/(.\(.*\).,)/\1/g')
-	;;
+  FOCUS=$(gdbus call --session \
+    --dest org.gnome.Shell \
+    --object-path /org/gnome/Shell/Extensions/WindowsExt \
+    --method org.gnome.Shell.Extensions.WindowsExt.FocusClass |
+    sed 's/(.\(.*\).,)/\1/g')
+  ;;
 "Hyprland")
-	FOCUS=$(hyprctl activewindow -j | jq .class)
-	;;
+  FOCUS=$(hyprctl activewindow -j | jq -r .class)
+  ;;
 "river")
-	FOCUS=$(lswt --json | jq '.[] | select(.activated == true) | .app_id')
-	;;
+  FOCUS=$(lswt --json | jq -r '.[] | select(.activated == true) | .app_id')
+  ;;
 "sway")
-	FOCUS=$(swaymsg -t get_tree | jq -r '..|try select(.focused == true)' | jq ."app_id")
-	;;
+  FOCUS=$(swaymsg -t get_tree | jq -r '..|try select(.focused == true)' | jq ."app_id")
+  ;;
 *)
-	notify-send "Unsupported desktop" "Currently in $XDG_CURRENT_DESKTOP" -t 2000
-	;;
+  notify-send "Unsupported desktop" "Currently in $XDG_CURRENT_DESKTOP" -t 2000
+  ;;
 esac
 
 PID=$(pidof mpv)
 TIME="0.8"
 
-case "$FOCUS" in
-*"$BROWSER"*)
-	# sudo required to allow user access to /tmp/.ydotool_socket
-	# Add user exception to /etc/sudoers
-	# richard ALL=(ALL) NOPASSWD: /usr/bin/ydotool
-	sudo ydotool type yy
-	sleep "$TIME"
-	URL="$(wl-paste)"
-	notify-send "Added to MPV Playlist" "$URL" -t 2000
-	if [ -z "$PID" ]; then
-		umpv "$URL" &
-	else
-		umpv "$URL"
-	fi
-	;;
+case "$BROWSER" in
+*"$FOCUS"*)
+  wtype -M ctrl -M shift -P c -p c -m shift -m ctrl
+  sleep "$TIME"
+  URL="$(wl-paste)"
+  notify-send "Added to MPV Playlist" "$URL" -t 2000
+  if [ -z "$PID" ]; then
+    umpv "$URL" &
+  else
+    umpv "$URL"
+  fi
+  ;;
 *)
-	notify-send "$BROWSER not focussed" "Current focus $FOCUS" -t 2000
-	;;
+  notify-send "$BROWSER not focussed" "Current focus $FOCUS" -t 2000
+  ;;
 esac

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Remember to create man page database with `sudo mandb`
+SELECT="$(apropos -l '' | sort | awk '{print $1, $2}' | fuzzel -d | awk '{print $1}')"
+"$TERMINAL" -a float -e man "$SELECT"

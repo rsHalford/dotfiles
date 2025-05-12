@@ -1,0 +1,5 @@
+#!/bin/sh
+LOCATION=$HOME/media/pictures/screenshots/"$(date +%FT%H-%M-%S).png"
+grim -g "$(slurp)" -t png -l 0 "$LOCATION" &&
+  wl-copy "$LOCATION" &&
+  notify-send "Grim" "Screenshot Taken\n$(wl-paste)"

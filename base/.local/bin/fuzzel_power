@@ -1,0 +1,32 @@
+#!/bin/sh
+
+OPTIONS="\
+Lock
+Logout
+Reboot
+Shutdown
+Quit"
+
+CHOICE=$(printf '%s\n' "$OPTIONS" | fuzzel -d -l 5 --width 10)
+
+case "$CHOICE" in
+Lock)
+  hyprlock
+  ;;
+
+Logout)
+  uwsm stop
+  ;;
+
+Reboot)
+  systemctl reboot
+  ;;
+
+Shutdown)
+  systemctl poweroff
+  ;;
+
+*)
+  exit 0
+  ;;
+esac

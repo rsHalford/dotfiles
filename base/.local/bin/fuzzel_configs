@@ -1,0 +1,53 @@
+#!/bin/sh
+
+OPTIONS="\
+abook:$XDG_CONFIG_HOME/abook/abookrc
+aerc:$XDG_CONFIG_HOME/aerc
+bat:$XDG_CONFIG_HOME/bat/config
+direnv:$XDG_CONFIG_HOME/direnv/direnvrc
+fnott:$XDG_CONFIG_HOME/fnott/fnott.ini
+fontconfig:$XDG_CONFIG_HOME/fontconfig/fonts.conf
+foot:$XDG_CONFIG_HOME/foot/foot.ini
+fuzzel:$XDG_CONFIG_HOME/fuzzel/fuzzel.ini
+ghostty:$XDG_CONFIG_HOME/ghostty/config
+git config:$XDG_CONFIG_HOME/git/config
+git ignore:$XDG_CONFIG_HOME/git/ignore
+gtk-3.0:$XDG_CONFIG_HOME/gtk-3.0/settings.ini
+helix config:$XDG_CONFIG_HOME/helix/config.toml
+helix languages:$XDG_CONFIG_HOME/helix/languages.toml
+hyprland:$XDG_CONFIG_HOME/hyprland/hyprland.conf
+hyprlock:$XDG_CONFIG_HOME/hyprland/hyprlock.conf
+hyprshade:$XDG_CONFIG_HOME/hyprshade/config.toml
+kanshi:$XDG_CONFIG_HOME/kanshi/config
+mise:$XDG_CONFIG_HOME/mise/config.toml
+mpd:$XDG_CONFIG_HOME/mpd/mpd.conf
+mpv conf:$XDG_CONFIG_HOME/mpv/mpv.conf
+mpv input:$XDG_CONFIG_HOME/mpv/input.conf
+mailcap:$XDG_CONFIG_HOME/mutt/mailcap
+mutt:$XDG_CONFIG_HOME/mutt/muttrc
+ncmpcpp bindings:$XDG_CONFIG_HOME/ncmpcpp/bindings
+ncmpcpp config:$XDG_CONFIG_HOME/ncmpcpp/config
+newsboat conf:$XDG_CONFIG_HOME/newsboat/config
+nvim:$XDG_CONFIG_HOME/nvim/init.lua
+ripgrep:$XDG_CONFIG_HOME/ripgrep/config
+river:$XDG_CONFIG_HOME/river/init
+sway:$XDG_CONFIG_HOME/sway/config
+tmux:$XDG_CONFIG_HOME/tmux/tmux.conf
+uwsm:$XDG_CONFIG_HOME/uwsm/env
+waybar config:$XDG_CONFIG_HOME/waybar/config
+waybar style:$XDG_CONFIG_HOME/waybar/style.css
+wezterm:$XDG_CONFIG_HOME/wezterm/wezterm.lua
+whipper:$XDG_CONFIG_HOME/whipper/whipper.conf
+zathura:$XDG_CONFIG_HOME/zathura/zathurarc
+zed keymap:$XDG_CONFIG_HOME/zed/keymap.json
+zed settings:$XDG_CONFIG_HOME/zed/settings.json
+zshenv:$XDG_CONFIG_HOME/zsh/.zshenv
+zshrc:$XDG_CONFIG_HOME/zsh/.zshrc
+mimeapps:$XDG_CONFIG_HOME/mimeapps.list
+starship:$XDG_CONFIG_HOME/starship.toml
+user dirs:$XDG_CONFIG_HOME/user-dirs.dirs"
+
+CHOICE=$(printf '%s\n' "$OPTIONS" | cut -d':' -f1 | fuzzel -d -p'Config: ' --counter) || exit 1
+CONFIG=$(printf '%s\n' "$OPTIONS" | grep "$CHOICE:" | cut -d':' -f2)
+
+"$TERMINAL" -a float -e "$EDITOR" "$CONFIG"
