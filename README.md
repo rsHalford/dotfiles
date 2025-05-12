@@ -198,6 +198,22 @@ systemctl --user enable --now hyprshade.service
 ```
 
 
+# Bluetooth
+
+If the device continuously connects and disconnects.
+
+```sh
+bluetoothctl
+> power on
+> agent on
+> pair 00:00:00:00:00:00
+# type the pair code into the keyboard as prompted
+> connect 00:00:00:00:00:00
+> trust 00:00:00:00:00:00
+> agent off
+> quit
+```
+
 
 # Music
 
