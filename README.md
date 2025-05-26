@@ -181,6 +181,7 @@ auth    sufficient  pam_unix.so try_first_pass likeauth nullok
 Enable and start all required services:
 
 ```sh
+sudo systemctl enable --now cups.service
 sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now fprintd.service
 sudo systemctl enable --now pcscd.service
