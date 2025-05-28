@@ -82,29 +82,20 @@ window#waybar {
 #custom-maildir,
 #disk,
 #memory,
+#mpris,
 #network,
 #power-profiles-daemon,
 #pulseaudio,
 #temperature,
 #tray {
 	font-size: 12pt;
-	padding: 0 8pt;
-	background: #090618;
-	color: #dcd7ba;
-}
-
-#temperature {
-	font-size: 12pt;
-	padding: 0 8pt 0 9pt;
 	background: #090618;
 	color: #dcd7ba;
 }
 
 #mpris {
-	font-size: 12pt;
-	padding: 0 8pt;
+	margin-right: 20pt;
 	border-radius: 0;
-	color: #dcd7ba;
 	background: #15161e;
 }
 
@@ -113,5 +104,5 @@ tooltip {
 	background-color: #090618;
 	color: #dcd7ba;
 	border: 2px solid #7e9cd8;
-	border-radius: 3px;
+	border-radius: 0;
 }

@@ -120,7 +120,7 @@
     "status-icons": {
       "paused": "<span color='#ffa066'>󰏤</span>"
     },
-    "title-len": 20
+    "title-len": 30
   },
   "network": {
     "format-disabled": "{icon}",
@@ -187,7 +187,7 @@
     "scroll-step": 1.0,
     "tooltip-format": "{desc}: {volume}%"
   },
-  "spacing": 0,
+  "spacing": 8,
   "temperature": {
     "critical-threshold": 100,
     "format": "{icon}",
@@ -205,6 +205,6 @@
   "tray": {
     "icon-size": 16,
     "show-passive-items": false,
-    "spacing": 18
+    "spacing": 8
   }
 }
