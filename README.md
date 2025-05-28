@@ -47,7 +47,7 @@ Then populate the drop-in file with the following:
 cat << EOF | sudo tee -a /etc/systemd/system/getty@tty1.service.d/autologin.conf
 [Service]
 ExecStart=
-ExecStart=-/sbin/agetty -o '-p -f -- \\u' --noclear --autologin $USER %I \$TERM
+ExecStart=-/sbin/agetty -o '-f -- $USER' --autologin $USER tty1
 EOF
 ```
 
