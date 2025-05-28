@@ -20,7 +20,10 @@
 	prune = true
 
 [gpg]
-	program = "gpg"
+	format = ssh
+
+[gpg "ssh"]
+	program = "/opt/1Password/op-ssh-sign"
 
 [init]
 	defaultBranch = "main"
@@ -48,4 +51,4 @@
 [user]
 	email = "dev@rshalford.com"
 	name = "Richard Halford"
-	signingKey = "908E7F42"
+	signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKiWd5kebYFELXppCzXE9VAB2/zwrMlMSw+mOzfvJBtb

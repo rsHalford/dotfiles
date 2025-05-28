@@ -216,7 +216,7 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME"/wget-hsts'
 alias work='$WORK_DIR'
 
 export GPG_TTY="$(tty)"
-export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+export SSH_AUTH_SOCK=~/.1password/agent.sock
 gpgconf --launch gpg-agent
 gpg-connect-agent updatestartuptty /bye > /dev/null
 

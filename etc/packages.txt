@@ -41,8 +41,11 @@ gopass
 grim
 grub-btrfs
 gtk3
+hypridle
 hyprland
+hyprlock
 hyprpicker
+hyprpolkitagent
 imv
 inotify-tools
 iptables-nft

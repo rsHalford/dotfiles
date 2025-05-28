@@ -72,13 +72,7 @@ cat << EOF >> ~/.local/share/gnupg/scdaemon.conf
 disable-ccid
 EOF
 cat << EOF >> ~/.local/share/gnupg/gpg-agent.conf
-# pinentry-program /usr/bin/pinentry-tty
-# pinentry-program /usr/bin/pinentry-qt5
-# pinentry-program /usr/bin/pinentry-gtk
-pinentry-program /usr/bin/pinentry-qt
-# pinentry-program /usr/bin/pinentry-gnome3
-# pinentry-program /usr/bin/pinentry-emacs
-# pinentry-program /usr/bin/pinentry-curses
+pinentry-program /usr/bin/pinentry-gnome3
 enable-ssh-support
 ttyname $GPG_TTY
 default-cache-ttl 60
@@ -131,6 +125,60 @@ ssh -T git@github.com
 ```
 
 
+# 1Password
+
+This maybe unnecessary rather than just using `yay -Syu 1password`, but it's what the docs say...
+
+```sh
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --import
+cd "$SOURCES_DIR"
+git clone https://aur.archlinux.org/1password.git
+cd 1password
+makepkg -si
+```
+
+Updating is done with just `git pull` and `makepkg -si`.
+
+To install the CLI, download the latest release from [1Password CLI Releases](https://app-updates.agilebits.com/product_history/CLI2)
+
+```sh
+ARCH="amd64" && \
+wget "https://cache.agilebits.com/dist/1P/op2/pkg/v2.31.0/op_linux_${ARCH}_v2.31.0.zip" -O op.zip && \
+unzip -d op op.zip && \
+sudo mv op/op /usr/local/bin/ && \
+rm -r op.zip op && \
+sudo groupadd -f onepassword-cli && \
+sudo chgrp onepassword-cli /usr/local/bin/op && \
+sudo chmod g+s /usr/local/bin/op
+```
+
+Install gnome-keyring, start the systemd service and add the following to `/etc/pam.d/hyprlock`:
+
+```
+#%PAM-1.0
+
+auth       include      login
+auth       optional     pam_gnome_keyring.so
+session    optional     pam_gnome_keyring.so auto_start
+```
+
+Automatically change keyring password with user password:
+
+```
+#%PAM-1.0
+...
+password  optional  pam_gnome_keyring.so
+```
+
+Integrate with Zen Browser until it is officially supported by 1Password:
+
+```sh
+sudo mkdir /etc/1password
+sudo touch /etc/1password/custom_allowed_browsers
+echo "zen-bin" | sudo tee -a /etc/1password/custom_allowed_browsers
+```
+
+
 # Pass
 
 Before being able to clone the the password store, the remote machine needs to be added to `~/.ssh/config`:
@@ -176,6 +224,20 @@ auth    sufficient  pam_unix.so try_first_pass likeauth nullok
 ```
 
 
+# Polkit
+
+Using Hyprland's hyprpolkitagent to get password prompts for GUI applications (e.g. 1Password).
+
+First copy the `/usr/lib/pam.d/polkit-1` to `/etc/pam.d/`, then edit it to make use of fprintd:
+
+```
+#%PAM-1.0
+auth    sufficient  pam_fprintd_grosshack.so
+auth    sufficient  pam_unix.so try_first_pass likeauth nullok
+...
+```
+
+
 # Services
 
 Enable and start all required services:
@@ -190,6 +252,9 @@ sudo systemctl enable --now sshd.service
 systemctl --user enable --now blueman-manager.service
 systemctl --user enable --now bluetooth-applet.service
 systemctl --user enable --now foot-server.service
+systemctl --user enable --now gnome-keyring-daemon.service
+systemctl --user enable --now hypridle.service
+systemctl --user enable --now hyprpolkitagent.service
 systemctl --user enable --now mpd.service
 systemctl --user enable --now mpd-mpris.service
 systemctl --user enable --now syncthing.service
