@@ -33,6 +33,15 @@ chsh -s /usr/bin/zsh
 ```
 
 
+# Hosts
+
+Edit the `/etc/hosts` file to include the hostname at the end of the file:
+
+```sh
+echo "127.0.1.1        $HOSTNAME.localdomain $HOSTNAME" | sudo tee -a /etc/hosts
+```
+
+
 # Autologin
 
 Create the drop-in file directory for a `autologin.conf` to be added:
