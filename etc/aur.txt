@@ -2,6 +2,7 @@ brscan5
 btrfs-assistant
 easyaudiosync
 emmet-language-server
+epson-inkjet-printer-escpr
 gearlever
 hyprshade
 mullvad-vpn-bin
