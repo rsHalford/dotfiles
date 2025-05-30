@@ -61,6 +61,21 @@ EOF
 ```
 
 
+# Pacman
+
+Update the `/etc/pacman.conf` file to have colour output and change the number of parallel downloads to match CPU count:
+
+```
+...
+COLORS
+...
+ParallelDownloads = 8
+...
+```
+
+Make sure both lines are uncommented.
+
+
 # Yay
 
 ```sh
