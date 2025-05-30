@@ -9,8 +9,8 @@ mullvad-vpn-bin
 nerd-font-inter
 pam-fprint-grosshack
 pwvucontrol
-tmux-plugin-mananger
 sunsetr-bin
+tmux-plugin-manager
 umpv
 xdg-ninja
 zen-browser-bin
