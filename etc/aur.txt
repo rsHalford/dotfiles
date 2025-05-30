@@ -10,6 +10,7 @@ nerd-font-inter
 pam-fprint-grosshack
 pwvucontrol
 tmux-plugin-mananger
+sunsetr-bin
 umpv
 xdg-ninja
 zen-browser-bin

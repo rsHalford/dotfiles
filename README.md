@@ -281,10 +281,9 @@ systemctl --user enable --now hypridle.service
 systemctl --user enable --now hyprpolkitagent.service
 systemctl --user enable --now mpd.service
 systemctl --user enable --now mpd-mpris.service
+systemctl --user enable --now sunsetr.service
 systemctl --user enable --now syncthing.service
 systemctl --user enable --now waybar.service
-hyprshade install
-systemctl --user enable --now hyprshade.service
 ```
 
 

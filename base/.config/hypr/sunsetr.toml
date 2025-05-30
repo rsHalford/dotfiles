@@ -1,0 +1,11 @@
+startup_transition = true
+startup_transition_duration = 10 # seconds
+sunset = "19:00:00"
+sunrise = "06:00:00"
+night_temp = 2000
+day_temp = 6500
+night_gamma = 90                 # percentage
+day_gamma = 100                  # percentage
+transition_duration = 45         # minutes
+update_interval = 60             # seconds
+transition_mode = "finish_by"
