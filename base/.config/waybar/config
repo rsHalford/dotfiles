@@ -79,7 +79,7 @@
     "tooltip-format": "{used} / {total}"
   },
   "fixed-center": false,
-  "height": 20,
+  "height": 24,
   "hyprland/submap": {
     "format": "<span style=\"italic\">{}</span>"
   },
@@ -147,7 +147,7 @@
       "power-saver": "<span font='14' color='#98bb6c'>󰾆</span>",
       "balanced": "<span font='14' color='#7fb4ca'>󰾅</span>",
       "performance": "<span font='14' color='#957fb8'>󰓅</span>",
-      "default": "<span font='14' color='#7fb4ca'>󰾅</span>",
+      "default": "<span font='14' color='#7fb4ca'>󰾅</span>"
     }
   },
   "position": "bottom",
