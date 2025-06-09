@@ -12,5 +12,6 @@ pwvucontrol
 sunsetr-bin
 tmux-plugin-manager
 umpv
+waybar-git
 xdg-ninja
 zen-browser-bin

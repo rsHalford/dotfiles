@@ -5,4 +5,3 @@ Gear Lever        it.mijorus.gearlever
 Krita             org.kde.krita
 Puddletag         net.puddletag.puddletag
 Transmission      com.transmissionbt.Transmission
-Zen               app.zen_browser.zen

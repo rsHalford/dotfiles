@@ -46,6 +46,7 @@ hyprland
 hyprlock
 hyprpicker
 hyprpolkitagent
+hyprsunset
 imv
 inotify-tools
 iptables-nft
@@ -121,9 +122,10 @@ usbutils
 uwsm
 vim
 virt-manager
+vivaldi
+vivaldi-ffmpeg-codecs
 vscode-css-languageserver
 vscode-html-languageserver
-waybar
 wev
 wget
 whipper
