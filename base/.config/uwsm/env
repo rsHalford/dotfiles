@@ -1,3 +1,4 @@
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
 export GTK_BACKEND=wayland,x11,*
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_QPA_PLATFORM=wayland;xcb
