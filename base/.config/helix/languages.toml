@@ -2,3 +2,36 @@
 name = "nix"
 formatter = { command = "nixfmt" }
 auto-format = true
+
+[[language]]
+name = "ruby"
+auto-format = true
+
+[language-server]
+biome = { command = "biome", args = ["lsp-proxy"] }
+
+[[language]]
+name = "javascript"
+auto-format = true
+language-servers = ["biome"]
+
+[[language]]
+name = "typescript"
+auto-format = true
+language-servers = ["biome"]
+
+[language-server.elixir-ls]
+command = "elixir-ls"
+config = { elixirLS.dialyzerEnabled = true }
+
+[[language]]
+name = "elixir"
+formatter = { command = "mix format" }
+auto-format = true
+language-servers = ["elixir-ls"]
+
+[[language]]
+name = "heex"
+formatter = { command = "mix format" }
+auto-format = true
+language-servers = ["elixir-ls"]

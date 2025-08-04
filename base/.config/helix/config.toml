@@ -47,7 +47,7 @@ newline = "none"
 tab = "→"
 
 [editor.gutters]
-layout = ["diff", "diagnostics", "line-numbers", "spacer"]
+layout = ["diff", "diagnostics"]
 
 [editor.gutters.line-numbers]
 min-width = 1
