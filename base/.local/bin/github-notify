@@ -1,11 +1,14 @@
 #!/bin/sh
 
 # Regenerate the notifications.token at https://github.com/settings/tokens
-# Add the token to `"$XDG_DATA_HOME/github/notifications.token`
+# Add the token to `"$XDG_DATA_HOME/github/notification.token`
 
-USERNAME=rshalford
-TOKEN=$(cat "$XDG_DATA_HOME"/github/notifications.token)
-COUNT=$(curl -u "$USERNAME":"${TOKEN}" https://api.github.com/notifications | jq '. | length')
+TOKEN=$(cat "$XDG_DATA_HOME"/github/notification.token)
+# COUNT=$(curl -s -H "Authorization: token $TOKEN" \
+#   -H "Accept: application/vnd.github.v3+json" \
+#   https://api.github.com/notifications |
+#   jq '. | length')
+COUNT=$(curl -s -u rshalford:"$TOKEN" https://api.github.com/notifications | jq '. | length')
 
 if [ "$COUNT" != "0" ]; then
   echo '{"text":'"$COUNT"',"tooltip":"$tooltip","class":"$class"}'

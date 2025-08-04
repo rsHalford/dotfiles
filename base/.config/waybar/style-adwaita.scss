@@ -1,0 +1,63 @@
+@import "./adwaita.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  font-family: "Inter Nerd Font Propo";
+}
+
+window#waybar {
+  font-size: $font-size;
+  background: $bar-bg;
+  border: none;
+}
+
+tooltip {
+	background-color: $widget-bg;
+	border: $widget-border;
+	border-radius: $radii;
+}
+
+#workspaces {
+  padding-left: $spacing;
+}
+
+#workspaces button {
+  font-size: 0;
+  min-width: $font-size*0.85;
+  min-height: $font-size*0.85;
+  margin: $spacing*1.5;
+  border-radius: $spacing*10;
+  background-color: $fg_color;
+  transition: 100ms;
+  animation: ws_normal 20s ease-out 10;
+}
+
+#workspaces button.empty {
+  background-color: $dark_1;
+}
+
+#workspaces button.active {
+  min-width: $font-size*2;
+  background-color: $selected_bg_color;
+  transition: 100ms;
+}
+
+#custom-notification {
+  margin-right: $spacing*2;
+  padding-right: $spacing*2;
+}
+
+#custom-notification,
+#tray,
+#pulseaudio,
+#power-profiles-daemon,
+#temperature,
+#battery {
+  font-size: $font-size+2;
+}
+
+#battery {
+  padding-right: $spacing;
+}

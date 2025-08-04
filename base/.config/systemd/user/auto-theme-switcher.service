@@ -1,0 +1,12 @@
+[Unit]
+Description=Auto adjusts GNOME theme between dark and light to match the time
+After=suspend.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/gnome_theme_switcher
+TimeoutSec=30
+StandardOutput=journal
+
+[Install]
+WantedBy=default.target

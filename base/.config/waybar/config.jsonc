@@ -1,0 +1,182 @@
+{
+  "height": 24,
+  "fixed-center": true,
+  "ipc": true,
+  "layer": "top",
+  "position": "top",
+  "reload_style_on_change": true,
+  "spacing": 8,
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/submap"
+  ],
+  "modules-center": [
+    "clock",
+    "custom/notification"
+  ],
+  "modules-right": [
+    "tray",
+    "pulseaudio",
+    "power-profiles-daemon",
+    "temperature",
+    "battery"
+  ],
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": ""
+    },
+    "all-outputs": true,
+    "tooltip": false,
+    "sort-by-number": true
+  },
+  "hyprland/submap": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
+  "clock": {
+    "format": "{:%a %d  %H:%M}",
+    "tooltip": false,
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "gnome-calendar",
+    "on-click-middle": "swaync-client -d -sw"
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󰂚",
+      "none": "󰂜",
+      "dnd-notification": "󰂛",
+      "dnd-none": "󰪑",
+      "inhibited-notification": "<span foreground=\"#e01b24\">󰂚</span>",
+      "inhibited-none": "<span foreground=\"#e01b24\">󰂜</span>",
+      "dnd-inhibited-notification": "<span foreground=\"#e01b24\">󰂛</span>",
+      "dnd-inhibited-none": "<span foreground=\"#e01b24\">󰪑</span>"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "gnome-calendar",
+    "on-click-middle": "swaync-client -d -sw",
+    "escape": true
+  },
+  "battery": {
+    "format": "{icon}",
+    "format-charging": "{icon}",
+    "format-icons": {
+      "charging": [
+        "<span color=\"#33d17a\">󰂆</span>",
+        "<span color=\"#33d17a\">󰂇</span>",
+        "<span color=\"#33d17a\">󰂈</span>",
+        "<span color=\"#33d17a\">󰂉</span>",
+        "<span color=\"#33d17a\">󰂊</span>",
+        "<span color=\"#33d17a\">󰂋</span>",
+        "<span color=\"#33d17a\">󰂅</span>"
+      ],
+      "default": [
+        "<span color=\"#e01b24\">󰂎</span>",
+        "<span color=\"#e01b24\">󰁺</span>",
+        "<span color=\"#ff7800\">󰁻</span>",
+        "<span color=\"#ff7800\">󰁼</span>",
+        "<span>󰁽</span>",
+        "<span>󰁾</span>",
+        "<span>󰁿</span>",
+        "<span>󰂀</span>",
+        "<span>󰂁</span>",
+        "<span>󰂂</span>",
+        "<span>󰁹</span>"
+      ]
+    },
+    "format-time": "{H}:{M}",
+    "tooltip-format": "{capacity}%"
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "{profile}",
+    "tooltip": true,
+    "format-icons": {
+      "power-saver": "<span color=\"#33d17a\">󰾆</span>",
+      "balanced": "<span>󰾅</span>",
+      "performance": "<span color=\"#9141ac\">󰓅</span>",
+      "default": "<span>󰾅</span>"
+    }
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-bluetooth": "<span color=\"#3584e4\">󰂰</span>",
+    "format-bluetooth-muted": "<span color=\"#e01b24\">󰂲</span>",
+    "format-icons": {
+      "default": [
+        "<span color=\"#e01b24\">󰖁</span>",
+        "󰕿",
+        "󰕿",
+        "󰕿",
+        "󰕿",
+        "󰖀",
+        "󰖀",
+        "󰖀",
+        "󰖀",
+        "󰖀",
+        "󰖀",
+        "󰖀",
+        "󰕾",
+        "󰕾",
+        "󰕾",
+        "󰕾",
+        "󰕾",
+        "󰕾",
+        "󰕾",
+        "󰕾"
+      ],
+      "headphone": [
+        "<span color=\"#e01b24\">󱡐</span>",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏",
+        "󱡏"
+      ],
+      "headset": "󰋎"
+    },
+    "format-muted": "<span color=\"#e01b24\">󰝟</span>",
+    "format-source": "<span></span>",
+    "format-source-muted": "<span color=\"#e01b24\"></span>",
+    "on-click": "pwvucontrol",
+    "scroll-step": 1.0,
+    "tooltip-format": "{desc}: {volume}%"
+  },
+  "temperature": {
+    "critical-threshold": 100,
+    "format": "{icon}",
+    "format-icons": [
+      "<span></span>",
+      "<span></span>",
+      "<span></span>",
+      "<span color=\"#ff7800\"></span>",
+      "<span color=\"#e01b24\"></span>"
+    ],
+    "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+    "input-filename": "temp1_input",
+    "on-click": "resources"
+  },
+  "tray": {
+    "show-passive-items": false,
+    "spacing": 8
+  }
+}
