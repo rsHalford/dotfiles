@@ -1,4 +1,5 @@
 adw-gtk-theme-git
+brave-bin
 brscan5
 btrfs-assistant
 easyaudiosync
