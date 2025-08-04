@@ -3,6 +3,7 @@ brave-bin
 brscan5
 btrfs-assistant
 easyaudiosync
+elixir-ls
 emmet-language-server
 epson-inkjet-printer-escpr
 gnome-online-accounts-gtk
