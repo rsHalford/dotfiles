@@ -76,6 +76,7 @@ newsboat
 noto-fonts
 noto-fonts-emoji
 noto-fonts-extra
+obsidian
 openssh
 papirus-icon-theme
 pciutils
