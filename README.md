@@ -284,6 +284,8 @@ systemctl --user enable --now sunsetr.service
 systemctl --user enable --now swaync.service
 systemctl --user enable --now syncthing.service
 systemctl --user enable --now waybar.service
+
+systemctl --user enable --now podman.socket
 ```
 
 

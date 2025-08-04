@@ -102,6 +102,8 @@ pipewire-audio
 pipewire-libcamera
 pipewire-pulse
 playerctl
+podman-docker
+podman-compose
 power-profiles-daemon
 python-dbus
 qemu-full
