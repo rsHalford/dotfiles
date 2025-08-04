@@ -208,7 +208,6 @@ alias mkdir='mkdir -pv'
 alias mv='mv -i'
 alias ninja="nix run github:b3nj5m1n/xdg-ninja"
 alias pro='$PROJECTS_DIR'
-alias rails='bin/rails'
 alias src='$SOURCES_DIR'
 # alias tms='tmux-sessioniser'
 alias v='nvim'
@@ -222,11 +221,10 @@ export SSH_AUTH_SOCK=~/.1password/agent.sock
 gpgconf --launch gpg-agent
 gpg-connect-agent updatestartuptty /bye > /dev/null
 
+[[ ! -r '/home/richard/.opam/opam-init/init.zsh' ]] || source '/home/richard/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+
+eval "$(mise activate zsh)"
+
 if [[ $TERM != "dumb" ]]; then
   eval "$(starship init zsh)"
 fi
-
-[[ ! -r '/home/richard/.opam/opam-init/init.zsh' ]] || source '/home/richard/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
-
-# eval "$(direnv hook zsh)"
-eval "$(mise activate zsh)"
