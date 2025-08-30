@@ -223,6 +223,8 @@ gpg-connect-agent updatestartuptty /bye > /dev/null
 
 [[ ! -r '/home/richard/.opam/opam-init/init.zsh' ]] || source '/home/richard/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 
+eval "$(zellij setup --generate-auto-start zsh)"
+eval "$(zoxide init zsh --cmd cd)"
 eval "$(mise activate zsh)"
 
 if [[ $TERM != "dumb" ]]; then
