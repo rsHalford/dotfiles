@@ -52,6 +52,7 @@ grub-btrfs
 gtk3
 gvfs
 gvfs-google
+gvfs-smb
 hypridle
 hyprland
 hyprlock
