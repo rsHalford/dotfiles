@@ -15,6 +15,7 @@ insert-final-newline = false
 popup-border = "all"
 completion-trigger-len = 0
 end-of-line-diagnostics = "hint"
+continue-comments = false
 # true-color = true
 # undercurl = true
 
@@ -64,4 +65,4 @@ Q = ":quit!"
 Z = ":write-quit!"
 
 [keys.normal.space]
-t = { h = ":toggle-option lsp.display-inlay-hints" }
+t = { c = ":toggle-option continue-comments", h = ":toggle-option lsp.display-inlay-hints" }
