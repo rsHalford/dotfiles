@@ -61,6 +61,7 @@ hyprsunset
 inotify-tools
 iptables-nft
 iwd
+jujutsu
 jq
 kanshi
 kdeconnect
