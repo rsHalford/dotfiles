@@ -57,6 +57,8 @@ min-width = 1
 cursor-line = "warning"
 
 [keys.normal]
+";" = "flip_selections"
+"A-;" = "collapse_selection"
 n = ["search_next", "align_view_center"]
 N = ["search_prev", "align_view_center"]
 
