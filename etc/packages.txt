@@ -72,7 +72,6 @@ libsixel
 libvirt
 libwebp
 loupe
-lua-language-server
 man-db
 man-pages
 mise

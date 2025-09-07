@@ -3,8 +3,6 @@ brave-bin
 brscan5
 btrfs-assistant
 easyaudiosync
-elixir-ls
-emmet-language-server
 elephant
 elephant-archlinuxpkgs
 elephant-calc
