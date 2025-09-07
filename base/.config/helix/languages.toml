@@ -35,3 +35,8 @@ name = "heex"
 formatter = { command = "mix format" }
 auto-format = true
 language-servers = ["elixir-ls"]
+
+[[language]]
+name = "janet"
+formatter = { command = "janet-format" }
+auto-format = true

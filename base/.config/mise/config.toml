@@ -6,6 +6,7 @@ ruby = "3.4"
 "gem:erb-formatter" = "latest"
 erlang = "latest"
 elixir = "latest"
+janet = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []

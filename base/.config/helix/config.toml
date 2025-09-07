@@ -68,3 +68,4 @@ Z = ":write-quit!"
 
 [keys.normal.space]
 t = { c = ":toggle-option continue-comments", h = ":toggle-option lsp.display-inlay-hints" }
+# J = [":echo %sh{judge --no-color -a %{buffer_name}:%{cursor_line}:%{cursor_column}}", ":reload"]
