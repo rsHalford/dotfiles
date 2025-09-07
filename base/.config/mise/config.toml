@@ -1,12 +1,16 @@
 [tools]
-# use `mise install -f "gem:*" to reinstall after ruby version changes
+ruby = "latest"
 "gem:ruby-lsp" = "latest"
 "gem:rubocop" = "latest"
-ruby = "3.4"
 "gem:erb-formatter" = "latest"
 erlang = "latest"
 elixir = "latest"
 janet = "latest"
+go = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
+"go:github.com/go-delve/delve/cmd/dlv" = "latest"
+"go:github.com/nametake/golangci-lint-langserver" = "latest"
+"aqua:golangci/golangci-lint" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
