@@ -5,6 +5,16 @@ btrfs-assistant
 easyaudiosync
 elixir-ls
 emmet-language-server
+elephant
+elephant-archlinuxpkgs
+elephant-calc
+elephant-clipboard
+elephant-desktopapplications
+elephant-providerlist
+elephant-runner
+elephant-symbols
+elephant-unicode
+elephant-websearch
 epson-inkjet-printer-escpr
 gnome-online-accounts-gtk
 morewaita-icon-theme

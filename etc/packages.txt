@@ -145,6 +145,7 @@ vim
 virt-manager
 vscode-css-languageserver
 vscode-html-languageserver
+walker
 waybar
 wev
 wget

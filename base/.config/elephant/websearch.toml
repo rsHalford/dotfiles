@@ -1,0 +1,30 @@
+[[entries]]
+default = true
+name = "Kagi"
+prefix = "kagi"
+url = "https://kagi.com/search?q=%TERM%"
+
+[[entries]]
+name = "Arch Wiki"
+prefix = "arch"
+url = "https://wiki.archlinux.org/index.php?search=%TERM%"
+
+[[entries]]
+name = "GitHub"
+prefix = "gh"
+url = "https://github.com/search?q=%TERM%"
+
+[[entries]]
+name = "Go Docs"
+prefix = "godoc"
+url = "https://pkg.go.dev/%TERM%"
+
+[[entries]]
+name = "Hex Packages"
+prefix = "hex"
+url = "https://hex.pm/packages?search=%TERM%"
+
+[[entries]]
+name = "YouTube"
+prefix = "yt"
+url = "https://www.youtube.com/results?search_query=%TERM%"

@@ -1,0 +1,119 @@
+force_keyboard_focus = true     # forces keyboard forcus to stay in Walker
+close_when_open = true          # close walker when invoking while already opened
+selection_wrap = true           # wrap list if at bottom or top
+global_argument_delimiter = "#" # query: firefox#https://benz.dev => part after delimiter will be ignored when querying. this should be the same as in the elephant config
+keep_open_modifier = "shift"    # won't close on activation, but rather select the next item in the list
+exact_search_prefix = "'"       # disable fuzzy searching
+theme = "style"               # theme to use
+disable_mouse = false           # disable mouse (on input and list only)
+
+[shell]
+anchor_top = true
+anchor_bottom = true
+anchor_left = true
+anchor_right = true
+
+[placeholders]
+"default" = { input = "Search", list = "No Results" } # placeholders for input and empty list, key is the providers name, so f.e. "desktopapplications" or "menus:other"
+
+[keybinds]
+close = "Escape"
+next = "Down"
+previous = "Up"
+toggle_exact = "ctrl e"
+resume_last_query = "ctrl r"
+quick_activate = ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9"]
+
+[providers]
+default = [
+  # "archlinuxpkgs",
+  "calc",
+  # "clipboard",
+  "desktopapplications",
+  # "providerlist",
+  # "runner",
+  "symbols",
+  # "unicode",
+  # "websearch"
+] # providers to be queried by default
+empty = ["desktopapplications"] # providers to be queried when query is empty
+
+[[providers.prefixes]]
+prefix = "/"
+provider = "archlinuxpkgs"
+
+[[providers.prefixes]]
+prefix = "="
+provider = "calc"
+
+[[providers.prefixes]]
+prefix = ":"
+provider = "clipboard"
+
+[[providers.prefixes]]
+prefix = "\\"
+provider = "desktopapplications"
+
+[[providers.prefixes]]
+prefix = ";"
+provider = "providerlist"
+
+[[providers.prefixes]]
+prefix = "!"
+provider = "runner"
+
+[[providers.prefixes]]
+prefix = "."
+provider = "symbols"
+
+[[providers.prefixes]]
+prefix = "@"
+provider = "websearch"
+
+[providers.archlinuxpkgs]
+default = "install"
+install = "Return"
+remove = "ctrl d"
+
+[providers.calc]
+default = "copy"
+copy = "Return"
+save = "ctrl s"
+delete = "ctrl d"
+
+[providers.clipboard]
+time_format = "%d.%m. - %H:%M" # format for the clipboard item date
+default = "copy"
+copy = "Return"
+delete = "ctrl d"
+edit = "ctrl o"
+toggle_images_only = "ctrl i"
+
+[providers.desktopapplications]
+default = "start"
+start = "Return"
+
+[providers.dmenu]
+default = "select"
+select = "Return"
+
+[providers.providerlist]
+default = "activate"
+activate = "Return"
+
+[providers.runner]
+default = "start"
+start = "Return"
+start_terminal = "shift Return"
+
+[providers.symbols]
+default = "copy"
+copy = "Return"
+
+[providers.unicode]
+default = "copy"
+copy = "Return"
+
+[providers.websearch]
+default = "search"
+search = "Return"
