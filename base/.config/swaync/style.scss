@@ -58,11 +58,11 @@ $notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
   &:focus {
     background: var(--noti-bg-focus);
   }
+
   .notification-background {
     padding: 6px 12px;
 
-    .close-button {
-    }
+    .close-button {}
 
     .notification {
       /* The actual notification */
@@ -75,16 +75,18 @@ $notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
       &.low {
         /* Low Priority Notification */
       }
+
       &.normal {
         /* Normal Priority Notification */
       }
+
       &.critical {
         /* Critical Priority Notification */
       }
 
       .notification-default-action {
         /* The large action that also displays the notification summary and body */
-        padding: $margin / 2;
+        padding: calc($margin / 2);
         margin: 0;
         box-shadow: none;
         background: transparent;
@@ -113,9 +115,11 @@ $notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
           .image {
             /* Notification Primary Image */
             -gtk-icon-filter: none;
-            border-radius: 100px; /* Size in px */
+            border-radius: 100px;
+            /* Size in px */
             margin: $margin;
           }
+
           .app-icon {
             /* Notification app icon (only visible when the primary image is set) */
             -gtk-icon-filter: none;
@@ -137,6 +141,7 @@ $notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
               color: var(--text-color);
               text-shadow: none;
             }
+
             .time {
               /* Notification time-ago */
               font-size: $font-size-summary;
@@ -146,6 +151,7 @@ $notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
               text-shadow: none;
               margin-right: 30px;
             }
+
             .body {
               /* Notification body */
               font-size: $font-size-body;
@@ -179,6 +185,7 @@ $notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
               border: $border;
               border-radius: $border-radius;
             }
+
             .inline-reply-button {
               margin-left: 4px;
               background: var(--noti-bg);
@@ -192,6 +199,7 @@ $notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
                 border: $border;
                 border-color: transparent;
               }
+
               &:hover {
                 background: var(--noti-bg-hover);
               }
@@ -204,15 +212,15 @@ $notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
         background: none;
         border-bottom-left-radius: $border-radius;
         border-bottom-right-radius: $border-radius;
-        padding: $margin / 2;
+        padding: calc($margin / 2);
       }
 
       .notification-action {
         /* The alternative actions below the default action */
-        margin: $margin / 2;
+        margin: calc($margin / 2);
         padding: 0;
 
-        & > button {
+        &>button {
           border-radius: $border-radius;
         }
       }
@@ -231,9 +239,11 @@ $notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
   &.low {
     /* Low Priority Group */
   }
+
   &.normal {
     /* Low Priority Group */
   }
+
   &.critical {
     /* Low Priority Group */
   }
@@ -255,16 +265,19 @@ $notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
     .notification-group-icon {
       color: var(--text-color);
     }
+
     .notification-group-header {
       color: var(--text-color);
     }
   }
+
   .notification-group-buttons {
     /* Notification Group Buttons */
     @extend %header;
   }
 
   &.collapsed {
+
     /* When another group is expanded, lower the opacity of the collapsed ones */
     &.not-expanded {
       opacity: 0.4;
@@ -276,6 +289,7 @@ $notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
       }
 
       &:not(:last-child) {
+
         /* Top notification in stack */
         /* Set lower stacked notifications opacity to 0 */
         .notification-action,
@@ -341,12 +355,12 @@ $notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
 /*** Widgets ***/
 /* Title widget */
 .widget-title {
-  & > label {
+  &>label {
     margin: $margin;
     font-size: 1.5rem;
   }
 
-  & > button {
+  &>button {
     margin: $margin;
     border-radius: $border-radius;
   }
@@ -364,8 +378,7 @@ $notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
     border-radius: $border-radius;
     margin: $margin;
 
-    &:checked {
-    }
+    &:checked {}
 
     slider {
       border-radius: $border-radius;
@@ -377,7 +390,7 @@ $notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
 .widget-label {
   margin: $margin;
 
-  & > label {
+  &>label {
     font-size: 1.1rem;
   }
 }
@@ -417,15 +430,18 @@ $mpris-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
         box-shadow: $mpris-shadow;
         -gtk-icon-size: 96px;
       }
+
       .widget-mpris-title {
         font-weight: bold;
         font-size: 1.25rem;
       }
+
       .widget-mpris-subtitle {
         font-size: 1.1rem;
       }
 
-      & > box > button {
+      &>box>button {
+
         /* Change player control buttons */
         &:hover {
           background-color: var(--mpris-button-hover);
@@ -434,10 +450,11 @@ $mpris-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
     }
   }
 
-  & > box > button {
+  &>box>button {
     /* Change player side buttons */
   }
-  & > box > button:disabled {
+
+  &>box>button:disabled {
     /* Change player side buttons insensitive */
   }
 }
@@ -448,41 +465,42 @@ $mpris-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
   margin: $margin;
   border-radius: $border-radius;
 
-  & flowboxchild > button {
+  & flowboxchild>button {
     border-radius: $border-radius;
+
     &.toggle:checked {
       /* style given to the active toggle button */
     }
 
-    &:hover {
-    }
+    &:hover {}
   }
 }
 
 /* Menubar widget */
 .widget-menubar {
-  & > .menu-button-bar {
+  &>.menu-button-bar {
+
     /* The left button container */
-    & > .start {
+    &>.start {
       margin-left: $margin;
     }
 
     /* The right button container */
-    & > .end {
+    &>.end {
       margin-right: $margin;
     }
 
     /* The left and right button container */
-    & > .widget-menubar-container {
+    &>.widget-menubar-container {
       button {
         border-radius: $border-radius;
-        margin: 0 $margin / 2;
+        margin: 0 calc($margin / 2);
       }
     }
   }
 
   /* The revealer buttons */
-  & > revealer {
+  &>revealer {
     margin-top: $margin;
 
     button {
@@ -516,12 +534,11 @@ $mpris-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
   border-radius: $border-radius;
 }
 
-.widget-volume > box > button {
-}
+.widget-volume>box>button {}
 
 .per-app-volume {
   background-color: var(--noti-bg-alt);
-  padding: $margin/2 $margin $margin $margin;
+  padding: calc($margin / 2) $margin $margin $margin;
   margin: 0px $margin $margin $margin;
   border-radius: $border-radius;
 }
@@ -535,12 +552,12 @@ $mpris-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
 
 /* Inhibitors widget */
 .widget-inhibitors {
-  & > label {
+  &>label {
     margin: $margin;
     font-size: 1.5rem;
   }
 
-  & > button {
+  &>button {
     margin: $margin;
     border-radius: $border-radius;
   }

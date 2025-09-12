@@ -1,4 +1,4 @@
-@import "./adwaita.scss";
+@use "adwaita" as *;
 
 * {
   padding: 0;
@@ -14,9 +14,9 @@ window#waybar {
 }
 
 tooltip {
-	background-color: $widget-bg;
-	border: $widget-border;
-	border-radius: $radii;
+  background-color: $widget-bg;
+  border: $widget-border;
+  border-radius: $radii;
 }
 
 #workspaces {
