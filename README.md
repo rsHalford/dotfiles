@@ -86,6 +86,16 @@ makepkg -si
 ```
 
 
+# Multilib
+
+To enable 32-bit software, such as Steam to be installed, multilib packages need to be uncommented inside `/etc/pacman.conf`:
+
+```
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+```
+
+
 # GnuPG
 
 Setup configuration files for using yubikey, making sure all file permissions are correct:
