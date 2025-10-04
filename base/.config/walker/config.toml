@@ -30,16 +30,17 @@ default = [
   "calc",
   # "clipboard",
   "desktopapplications",
+  "files",
   # "providerlist",
   # "runner",
-  "symbols",
+  # "symbols",
   # "unicode",
-  # "websearch"
-] # providers to be queried by default
+  "websearch"
+]
 empty = ["desktopapplications"] # providers to be queried when query is empty
 
 [[providers.prefixes]]
-prefix = "/"
+prefix = "+"
 provider = "archlinuxpkgs"
 
 [[providers.prefixes]]
@@ -53,6 +54,10 @@ provider = "clipboard"
 [[providers.prefixes]]
 prefix = "\\"
 provider = "desktopapplications"
+
+[[providers.prefixes]]
+prefix = "/"
+provider = "files"
 
 [[providers.prefixes]]
 prefix = ";"
@@ -92,6 +97,8 @@ toggle_images_only = "ctrl i"
 [providers.desktopapplications]
 default = "start"
 start = "Return"
+remove_history = "ctrl BackSpace"
+toggle_pin = "ctrl p"
 
 [providers.dmenu]
 default = "select"
@@ -109,11 +116,14 @@ start_terminal = "shift Return"
 [providers.symbols]
 default = "copy"
 copy = "Return"
+remove_history = "ctrl BackSpace"
 
 [providers.unicode]
 default = "copy"
 copy = "Return"
+remove_history = "ctrl BackSpace"
 
 [providers.websearch]
 default = "search"
 search = "Return"
+remove_history = "ctrl BackSpace"
