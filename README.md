@@ -298,12 +298,16 @@ systemctl --user enable --now hyprpolkitagent.service
 systemctl --user enable --now mpd.service
 systemctl --user enable --now mpd-mpris.service
 systemctl --user enable --now mpris-proxy.service
+systemctl --user enable --now random-wallpaper.service
 systemctl --user enable --now sunsetr.service
 systemctl --user enable --now swaync.service
+systemctl --user enable --now swww.service
 systemctl --user enable --now syncthing.service
 systemctl --user enable --now waybar.service
 
 systemctl --user enable --now podman.socket
+
+systemctl --user enable --now random-wallpaper.timer
 ```
 
 

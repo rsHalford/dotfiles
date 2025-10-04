@@ -1,0 +1,8 @@
+[Unit]
+Description=Change wallpaper using SWWW
+
+[Service]
+ExecStart=%h/.local/bin/random-wallpaper
+
+[Install]
+WantedBy=default.target
