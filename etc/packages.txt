@@ -33,6 +33,7 @@ fuzzel
 fwupd
 fzf
 gamemode
+gamescope
 gcr
 geary
 ghostty
@@ -79,6 +80,7 @@ libwebp
 loupe
 man-db
 man-pages
+mangohud
 mesa
 mise
 mousai
