@@ -54,6 +54,7 @@ export PYTHONUSERBASE="$XDG_DATA_HOME/python"
 export PYTHON_HISTORY="$XDG_STATE_HOME/python/history"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
+export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history
 export TMUX_TMPDIR="${XDG_RUNTIME_DIR:-"/run/user/$(id -u)"}"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export YDOTOOL_SOCKET=/tmp/.ydotool_socket
