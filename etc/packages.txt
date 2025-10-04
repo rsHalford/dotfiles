@@ -141,6 +141,7 @@ tar
 tldr
 translate-shell
 tree
+ttf-cascadia-code
 udiskie
 udisks2
 unzip
