@@ -8,6 +8,14 @@
 - [ ] mention archinstall and git as setup requirements, nmtui on first boot
 
 
+# Update firmware
+
+```sh
+fwupdmgr refresh --force
+fwupdmgr get-updates
+fwupdmgr update
+```
+
 
 # Install all required packages with the below command
 
