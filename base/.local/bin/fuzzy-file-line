@@ -1,0 +1,14 @@
+#!/bin/sh
+
+SEARCH=""
+
+if [ $# -gt 0 ]; then
+  SEARCH="$1"
+fi
+
+rg --color=always --line-number --no-heading --smart-case "$@" "$SEARCH" |
+  fzf -d':' --ansi \
+    --preview "command bat -p --color=always {1} --highlight-line {2}" \
+    --preview-window=:hidden \
+    --bind="?:toggle-preview" |
+  awk -F':' '{print $1 " +" $2}'

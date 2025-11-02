@@ -1,10 +1,39 @@
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/appimages:/var/lib/flatpak/exports/bin:$HOME/.local/state/nix/profile/bin:$HOME/.local/share/mix/escripts:$HOME/.local/share/go/bin:$HOME/.local/share/gem/bin:$HOME/.local/share/cargo/bin"
+
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+export XDG_DESKTOP_DIR="$HOME/desktop"
+export XDG_DOCUMENTS_DIR="$HOME/documents"
+export XDG_DOWNLOAD_DIR="$HOME/downloads"
+export XDG_MUSIC_DIR="$HOME/media/music"
+export XDG_PICTURES_DIR="$HOME/media/pictures"
+export XDG_PUBLICSHARE_DIR="$HOME/public"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_TEMPLATES_DIR="$HOME/templates"
+export XDG_VIDEOS_DIR="$HOME/media/videos"
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS="-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
+export CALIBRE_USE_DARK_PALETTE=1
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export GTK_BACKEND=wayland,x11,*
+export JAVA_FONTS="/usr/share/fonts/TTF"
+export MOZ_ENABLE_WAYLAND=1
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_QPA_PLATFORM=wayland;xcb
+export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export SDL_VIDEODRIVER=wayland,x11
-export _JAVA_AWT_WM_NONREPARENTING=1
 export WLR_NO_HARDWARE_CURSORS=1
 export XCURSOR_THEME=Quintom_Ink
-export MOZ_ENABLE_WAYLAND=1
+export YDOTOOL_SOCKET=/tmp/.ydotool_socket
+
+export BROWSER="zen-browser"
+export IMAGE="loupe"
+export READER="papers"
+export VIDEO="showtime"

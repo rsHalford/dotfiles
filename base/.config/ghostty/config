@@ -1,3 +1,4 @@
+command = /usr/bin/fish
 shell-integration-features = no-cursor,sudo,title
 theme = dark:Kanagawa Wave,light:Kanagawa Wave
 font-family = CascadiaCode

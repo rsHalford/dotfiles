@@ -1,4 +1,4 @@
-export PATH="$PATH":"$HOME/.local/bin":"$HOME/.local/share/appimages":"/var/lib/flatpak/exports/bin":"$HOME/.local/state/nix/profile/bin":"$HOME/.local/share/mix/escripts":"$HOME/.local/share/go/bin":"$HOME/.local/share/gem/bin"
+export PATH="$PATH":"$HOME/.local/bin":"$HOME/.local/share/appimages":"/var/lib/flatpak/exports/bin":"$HOME/.local/state/nix/profile/bin":"$HOME/.local/share/mix/escripts":"$HOME/.local/share/go/bin":"$HOME/.local/share/gem/bin":"$HOME/.local/share/cargo/bin"
 # :"$HOME/.local/bin/scripts":"$XDG_DATA_HOME/go/bin":"$XDG_DATA_HOME/cargo/bin":"$XDG_DATA_HOME/gem/bin"
 
 export XDG_CACHE_HOME="$HOME/.cache"

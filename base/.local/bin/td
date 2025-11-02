@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd "$JOURNAL_DIR" || exit
+MONTH=$(date '+%y/%m/')
+TODAY=$(date '+%y/%m/%d')
+mkdir -p "$MONTH"
+"$EDITOR" "$TODAY"

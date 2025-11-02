@@ -8,19 +8,21 @@
 - [ ] mention archinstall and git as setup requirements, nmtui on first boot
 
 
-# Update firmware
+# Hosts
+
+Edit the `/etc/hosts` file to include the hostname at the end of the file:
 
 ```sh
-fwupdmgr refresh --force
-fwupdmgr get-updates
-fwupdmgr update
+echo "127.0.1.1        $HOSTNAME.localdomain $HOSTNAME" | sudo tee -a /etc/hosts
 ```
+
+`$HOSTNAME` is likely to be unset with dash, fish and zsh.
 
 
 # Install all required packages with the below command
 
 ```sh
-sudo pacman -Syu - < packages.txt
+sudo pacman -Syu - < ~/.dotfiles/etc/packages.txt
 ```
 
 
@@ -29,23 +31,42 @@ sudo pacman -Syu - < packages.txt
 On first stow command, use the following to prevent future new files from being created:
 
 ```sh
-stow --no-folding module_name
+stow --no-folding "$MODULE_NAME"
+```
+
+Then continue to use:
+
+```sh
+stow --restow base
 ```
 
 
-# Change current user shell to ZSH
+# Symlink /bin/sh to dash
 
 ```sh
-chsh -s /usr/bin/zsh
+sudo ln -sfT dash /usr/bin/sh
+/usr/bin/cat << EOF | sudo tee /usr/share/libalpm/hooks/bash-to-dash.hook
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = bash
+
+[Action]
+Description = Re-pointing /bin/sh symlink to dash...
+When = PostTransaction
+Exec = /usr/bin/ln -sfT dash /usr/bin/sh
+Depends = dash
+EOF
 ```
 
 
-# Hosts
-
-Edit the `/etc/hosts` file to include the hostname at the end of the file:
+# Update firmware
 
 ```sh
-echo "127.0.1.1        $HOSTNAME.localdomain $HOSTNAME" | sudo tee -a /etc/hosts
+fwupdmgr refresh --force
+fwupdmgr get-updates
+fwupdmgr update
 ```
 
 
@@ -60,7 +81,7 @@ sudo mkdir /etc/systemd/system/getty@tty1.service.d
 Then populate the drop-in file with the following:
 
 ```sh
-cat << EOF | sudo tee -a /etc/systemd/system/getty@tty1.service.d/autologin.conf
+/usr/bin/cat << EOF | sudo tee /etc/systemd/system/getty@tty1.service.d/autologin.conf
 [Service]
 ExecStart=
 ExecStart=-/sbin/agetty -o '-f -- $USER' --autologin $USER tty1
@@ -91,6 +112,7 @@ cd "$SOURCES_DIR"
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+sudo pacman -Syu - < ~/.dotfiles/etc/aur.txt
 ```
 
 
@@ -109,10 +131,10 @@ Include = /etc/pacman.d/mirrorlist
 Setup configuration files for using yubikey, making sure all file permissions are correct:
 
 ```sh
-cat << EOF >> ~/.local/share/gnupg/scdaemon.conf
+/usr/bin/cat << EOF >> ~/.local/share/gnupg/scdaemon.conf
 disable-ccid
 EOF
-cat << EOF >> ~/.local/share/gnupg/gpg-agent.conf
+/usr/bin/cat << EOF >> ~/.local/share/gnupg/gpg-agent.conf
 pinentry-program /usr/bin/pinentry-gnome3
 enable-ssh-support
 ttyname $GPG_TTY
@@ -154,7 +176,7 @@ ssh-add -L | grep "cardno:xxxxxxxxx" > ~/.ssh/id_rsa_yubikey.pub
 Create a host entry for GitHub to test against:
 
 ```sh
-cat << EOF >> ~/.ssh/config
+/usr/bin/cat << EOF >> ~/.ssh/config
 Host github.com
     IdentitiesOnly yes
     IdentityFile ~/.ssh/id_rsa_yubikey.pub
@@ -215,7 +237,6 @@ Integrate with Zen Browser until it is officially supported by 1Password:
 
 ```sh
 sudo mkdir /etc/1password
-sudo touch /etc/1password/custom_allowed_browsers
 echo "zen-bin" | sudo tee -a /etc/1password/custom_allowed_browsers
 ```
 

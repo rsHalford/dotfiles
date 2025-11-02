@@ -24,6 +24,7 @@ eyedropper
 eza
 fastfetch
 fd
+fish
 ffmpeg
 flatpak
 fnott
@@ -176,7 +177,3 @@ zbar
 zellij
 zip
 zoxide
-zsh
-zsh-autosuggestions
-zsh-history-substring-search
-zsh-syntax-highlighting

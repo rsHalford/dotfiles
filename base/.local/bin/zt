@@ -1,0 +1,11 @@
+#!/bin/sh
+
+QUERY="$1"
+cd "$ZETTELKASTEN_DIR" || exit
+ZETTEL=$(fd . | fzf --query "$QUERY" -1)
+if [ -n "$ZETTEL" ] && echo "$ZETTEL" | grep -q 'journal/20'; then
+  "$EDITOR" "$ZETTEL" -u ./journal/.nvimrc
+elif [ -n "$ZETTEL" ]; then
+  "$EDITOR" "$ZETTEL"
+fi
+cd - >/dev/null 2>&1 || exit

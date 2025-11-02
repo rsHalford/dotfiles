@@ -1,0 +1,5 @@
+#!/bin/sh
+
+OUTPUT=$(echo "$1" | rev | cut -c16- | rev)
+gpg --decrypt --output "$OUTPUT" "$1" &&
+  echo "$1 -> $OUTPUT"

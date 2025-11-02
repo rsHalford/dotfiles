@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ ! -e flake.nix ]; then
+  nix flake new -t github:nix-community/nix-direnv .
+elif [ ! -e .envrc ]; then
+  printf "%s\n" "use flake" >.envrc
+  direnv allow
+fi

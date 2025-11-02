@@ -1,0 +1,15 @@
+#!/bin/sh
+
+QUERY="$1"
+MATCH=$(git branch --all | grep "$QUERY")
+if [ -z "$MATCH" ]; then
+  printf "%s%s\n" "branch does not exist: " "$QUERY"
+  DIR=$(basename "$QUERY")
+else
+  OUT=$(git branch --all |
+    fzf --preview='git log --oneline -n10 {2}' --query "$QUERY" -1 |
+    awk '{print $nf}')
+  DIR=$(basename "$OUT")
+fi
+git worktree add "$DIR"
+cd "$DIR" || exit
