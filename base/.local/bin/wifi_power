@@ -1,8 +1,8 @@
 #!/bin/sh
 
-wifi_status=$(nmcli radio wifi)
+WIFI_STATUS=$(nmcli radio wifi)
 
-if [ "$wifi_status" = "enabled" ]; then
+if [ "$WIFI_STATUS" = "enabled" ]; then
     echo "Wi-Fi is enabled. Disabling..."
     nmcli radio wifi off
 else
