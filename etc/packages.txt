@@ -17,6 +17,7 @@ cups
 curl
 dash
 dconf
+dmidecode
 dnsmasq
 endeavour
 exfat-utils
