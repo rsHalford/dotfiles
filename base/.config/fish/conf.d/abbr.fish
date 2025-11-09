@@ -10,7 +10,6 @@ abbr --add e '$EDITOR'
 abbr --add e. '$EDITOR .'
 abbr --add eza 'eza '
 abbr --add fd 'fd -H'
-abbr --add g git
 abbr --add ga 'git add'
 abbr --add gaa 'git add .'
 abbr --add gap 'git add -p'
