@@ -28,7 +28,7 @@ function cat -d "Use appropriate cat replacement for file type"
             continue
         end
 
-        bat -A --style plain $files
+        bat --style plain $file
     end
 
     return 0
