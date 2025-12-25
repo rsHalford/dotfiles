@@ -25,7 +25,6 @@ packet
 pam-fprint-grosshack
 pwvucontrol
 sunsetr-bin
-swaync-git
 swayosd-git
 tmux-plugin-manager
 ttf-cascadia-code-nerd

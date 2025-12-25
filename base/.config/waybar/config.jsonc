@@ -41,25 +41,14 @@
     "on-click-right": "gnome-clocks",
   },
   "custom/notification": {
-    "tooltip": false,
-    "format": "{icon}",
-    "format-icons": {
-      "notification": "󰂚",
-      "none": "󰂜",
-      "dnd-notification": "󰂛",
-      "dnd-none": "󰪑",
-      "inhibited-notification": "<span foreground=\"#e01b24\">󰂚</span>",
-      "inhibited-none": "<span foreground=\"#e01b24\">󰂜</span>",
-      "dnd-inhibited-notification": "<span foreground=\"#e01b24\">󰂛</span>",
-      "dnd-inhibited-none": "<span foreground=\"#e01b24\">󰪑</span>"
-    },
+    // "tooltip": false,
+    // "format": "{text}",
+    "exec": "fnott_handler status",
     "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "gnome-calendar",
-    "on-click-middle": "swaync-client -d -sw",
-    "escape": true
+    // "interval": 5,
+    "on-click": "fnott_handler toggle",
+    "exec-on-event": true
+    // "escape": true
   },
   "battery": {
     "format": "{icon}",

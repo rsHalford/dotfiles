@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+STATE_FILE="/tmp/fnott_state"
+MODE="$1"
+
+if [ "$MODE" = "toggle" ]; then
+    if [ -f "$STATE_FILE" ] && [ "$(cat "$STATE_FILE")" = "paused" ]; then
+        fnottctl unpause && echo "unpaused" > "$STATE_FILE"
+    else
+        fnottctl pause && echo "paused" > "$STATE_FILE"
+    fi
+else
+    if [ -f "$STATE_FILE" ] && [ "$(cat "$STATE_FILE")" = "paused" ]; then
+        TEXT="󰂛"
+    else
+        TEXT="󰂚"
+    fi
+    printf '{"text": "%s"}\n' "$TEXT"
+fi
