@@ -152,6 +152,7 @@ udiskie
 udisks2
 unzip
 usbutils
+uv
 uwsm
 vim
 virt-manager
