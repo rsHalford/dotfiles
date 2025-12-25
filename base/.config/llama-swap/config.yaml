@@ -1,0 +1,11 @@
+models:
+  "Mistral-7B-Instruct-v0.3.Q4_K_M":
+    cmd: |
+      llama-server
+      --model /home/richard/.cache/llama.cpp/MaziyarPanahi_Mistral-7B-Instruct-v0.3-GGUF_Mistral-7B-Instruct-v0.3.Q4_K_M.gguf
+      --alias "mistral-7b-it"
+      --ctx-size 0
+      --n-gpu-layers 33
+      --jinja
+      --port ${PORT}
+    ttl: 300 # 5 minutes
