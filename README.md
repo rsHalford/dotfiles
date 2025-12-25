@@ -1,6 +1,4 @@
 # TODO:
-- [ ] sign up for arch news feed: [Arch Linux](https://archlinux.org/)
-- [ ] and/or mailing list: [Info | arch-announce@lists.archlinux.org - lists.archlinux.org](https://lists.archlinux.org/mailman3/lists/arch-announce.lists.archlinux.org/)
 - [ ] sort out GTK styling: [GTK - ArchWiki](https://wiki.archlinux.org/title/GTK)
 - [ ] and QT styling: [Qt - ArchWiki](https://wiki.archlinux.org/title/Qt)
 - [ ] basically RTFM again as it has changed a bit since
