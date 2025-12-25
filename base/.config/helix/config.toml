@@ -54,7 +54,8 @@ layout = ["diff", "diagnostics"]
 min-width = 1
 
 [editor.inline-diagnostics]
-cursor-line = "warning"
+cursor-line = "hint"
+other-lines = "error"
 
 [keys.normal]
 ";" = "flip_selections"
