@@ -10,6 +10,7 @@ go = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 "go:github.com/go-delve/delve/cmd/dlv" = "latest"
 "aqua:golangci/golangci-lint" = "latest"
+"go:mvdan.cc/gofumpt" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
