@@ -172,6 +172,7 @@ xdg-desktop-portal
 xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 xdg-utils
+ydotool
 yq
 yt-dlp
 yubikey-personalization
