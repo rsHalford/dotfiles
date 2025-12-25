@@ -33,7 +33,7 @@ export WLR_NO_HARDWARE_CURSORS=1
 export XCURSOR_THEME=Quintom_Ink
 export YDOTOOL_SOCKET=/tmp/.ydotool_socket
 
-export BROWSER="zen-browser"
+export BROWSER="brave"
 export IMAGE="loupe"
 export READER="papers"
 export VIDEO="showtime"

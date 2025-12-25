@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Inoreader
+Comment=Inoreader
+Exec=webapp-launch https://www.inoreader.com/starred
+Terminal=false
+Type=Application
+Icon=/home/richard/.local/share/applications/icons/Inoreader.png
+StartupNotify=true

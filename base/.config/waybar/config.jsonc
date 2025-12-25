@@ -37,9 +37,8 @@
   "clock": {
     "format": "{:%a %d  %H:%M}",
     "tooltip": false,
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "gnome-calendar",
-    "on-click-middle": "swaync-client -d -sw"
+    "on-click": "webapp-launch https://calendar.google.com/u/0/r",
+    "on-click-right": "gnome-clocks",
   },
   "custom/notification": {
     "tooltip": false,

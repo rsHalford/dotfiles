@@ -4,5 +4,4 @@ Flatseal          com.github.tchx84.Flatseal
 Gear Lever        it.mijorus.gearlever
 Krita             org.kde.krita
 Puddletag         net.puddletag.puddletag
-Todoist           com.todoist.Todoist
 Transmission      com.transmissionbt.Transmission

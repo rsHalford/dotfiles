@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Kagi Assistant
+Comment=Kagi Assistant
+Exec=webapp-launch https://kagi.com/assistant
+Terminal=false
+Type=Application
+Icon=/home/richard/.local/share/applications/icons/Kagi Assistant.png
+StartupNotify=true

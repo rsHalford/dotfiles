@@ -52,7 +52,7 @@ set -gx RIPGREP_CONFIG_PATH "$XDG_CONFIG_HOME/ripgrep/config"
 set -gx SQLITE_HISTORY "$XDG_CACHE_HOME/sqlite_history"
 set -gx WGETRC "$XDG_CONFIG_HOME/wgetrc"
 
-set -gx BROWSER zen-browser
+set -gx BROWSER brave
 set -gx EDITOR helix
 set -gx MANPAGER "nvim +Man!"
 set -gx TERM ghostty

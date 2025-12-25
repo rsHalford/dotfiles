@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Google Messages
+Comment=Google Messages
+Exec=webapp-launch https://messages.google.com/web/conversations
+Terminal=false
+Type=Application
+Icon=/home/richard/.local/share/applications/icons/Google Messages.png
+StartupNotify=true

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Todoist
+Comment=Todoist
+Exec=webapp-launch https://app.todoist.com
+Terminal=false
+Type=Application
+Icon=/home/richard/.local/share/applications/icons/Todoist.png
+StartupNotify=true
