@@ -151,6 +151,7 @@ typst
 udiskie
 udisks2
 unzip
+usage
 usbutils
 uv
 uwsm
