@@ -90,6 +90,9 @@ mousai
 mpc
 mpd
 mpd-mpris
+mpv
+mpv-uosc
+mpv-thumbfast-git
 nautilus
 nautilus-python
 ncmpcpp
