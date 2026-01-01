@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Netflix
+Comment=Netflix
+Exec=webapp-launch https://www.netflix.com/browse
+Terminal=false
+Type=Application
+Icon=/home/richard/.local/share/applications/icons/Netflix.png
+StartupNotify=true

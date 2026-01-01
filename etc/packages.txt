@@ -53,6 +53,7 @@ gopass
 grim
 grub-btrfs
 gtk3
+gum
 gvfs
 gvfs-google
 gvfs-smb
