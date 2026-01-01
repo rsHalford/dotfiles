@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+HELIX_CONFIG_TEMPLATE="$HOME/.config/helix/config.toml.template"
+HELIX_RUNTIME_CONFIG="$HOME/.config/helix/config.toml"
+ZELLIJ_MAIN_CONFIG="$HOME/.config/zellij/config.kdl"
+ZELLIJ_DYNAMIC_THEME="$HOME/.config/zellij/themes/dynamic.kdl"
+ZELLIJ_KANAGAWA_THEME="themes {
+    dynamic {
+        fg \"#DCD7BA\"
+        bg \"#1F1F28\"
+        black \"#090618\"
+        red \"#C34043\"
+        green \"#76946A\"
+        yellow \"#C0A36E\"
+        blue \"#7E9CD8\"
+        magenta \"#957FB8\"
+        cyan \"#6A9589\"
+        white \"#C8C093\"
+        orange \"#FFA066\"
+    }
+}"
+ZELLIJ_FLEXOKI_THEME="themes {
+    dynamic {
+        fg \"#B7B5AC\"
+        bg \"#FFFCF0\"
+        black \"#FFFCF0\"
+        red \"#AF3029\"
+        green \"#879A39\"
+        yellow \"#D0A215\"
+        blue \"#4385BE\"
+        magenta \"#CE5D97\"
+        cyan \"#3AA99F\"
+        white \"#100F0F\"
+        orange \"#DA702C\"
+    }
+}"
+
+set_theme() {
+  if [[ "$1" == "dark" ]]; then
+    NEW_GTK_THEME="adw-gtk3-dark"
+    NEW_GTK_SCHEME="prefer-dark"
+    HELIX_THEME="kanagawa"
+    ZELLIJ_THEME_CONTENT=$ZELLIJ_KANAGAWA_THEME
+  elif [[ "$1" == "light" ]]; then
+    NEW_GTK_THEME="adw-gtk3"
+    NEW_GTK_SCHEME="prefer-light"
+    HELIX_THEME="flexoki_light"
+    ZELLIJ_THEME_CONTENT=$ZELLIJ_FLEXOKI_THEME
+  else
+    echo "[!] Unsupported theme: $1"
+    return
+  fi
+
+  gsettings set org.gnome.desktop.interface gtk-theme "$NEW_GTK_THEME"
+  gsettings set org.gnome.desktop.interface color-scheme "$NEW_GTK_SCHEME"
+
+  mkdir -p "$(dirname "$ZELLIJ_DYNAMIC_THEME")"
+  echo "$ZELLIJ_THEME_CONTENT" > "$ZELLIJ_DYNAMIC_THEME"
+  touch "$ZELLIJ_MAIN_CONFIG"
+
+  cp "$HELIX_CONFIG_TEMPLATE" "$HELIX_RUNTIME_CONFIG"
+
+  if grep -q "^theme =" "$HELIX_RUNTIME_CONFIG"; then
+    sed -i "s/^theme = .*/theme = \"$HELIX_THEME\"/" "$HELIX_RUNTIME_CONFIG"
+  else
+    echo "theme = \"$HELIX_THEME\"" >> "$HELIX_RUNTIME_CONFIG"
+  fi
+  pkill -USR1 helix
+
+  echo "[✓] Theme changed to $1"
+}
+
+# If script run without argument
+if [[ -z "$1" ]]; then
+  CURRENTTIME=$(date +%H:%M)
+  if [[ "$CURRENTTIME" > "17:00" || "$CURRENTTIME" < "09:00" ]]; then
+    set_theme dark
+  else
+    set_theme light
+  fi
+else
+  set_theme "$1"
+fi

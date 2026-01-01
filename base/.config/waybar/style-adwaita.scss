@@ -9,12 +9,10 @@
 
 window#waybar {
   font-size: $font-size;
-  background: $bar-bg;
   border: none;
 }
 
 tooltip {
-  background-color: $widget-bg;
   border: $widget-border;
   border-radius: $radii;
 }
@@ -29,7 +27,7 @@ tooltip {
   min-height: $font-size*0.85;
   margin: $spacing*1.5;
   border-radius: $spacing*10;
-  background-color: $fg_color;
+  background-color: $dark_1;
   transition: 100ms;
   animation: ws_normal 20s ease-out 10;
 }

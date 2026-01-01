@@ -1,7 +1,7 @@
 command = /usr/bin/fish
 confirm-close-surface = false
 shell-integration-features = no-cursor,sudo,title
-theme = dark:Kanagawa Wave,light:Kanagawa Wave
+theme = dark:Kanagawa Wave,light:Flexoki Light
 font-family = CascadiaCode
 font-size = 14
 background-opacity = 0.95

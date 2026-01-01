@@ -1,5 +1,5 @@
 [Unit]
-Description=Auto adjusts GNOME theme between dark and light to match the time
+Description=Auto update system theme between dark and light to match the time
 
 [Timer]
 OnCalendar=*-*-* 19:00:00
