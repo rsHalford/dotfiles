@@ -2,7 +2,7 @@
 
 BING="http://www.bing.com"
 XML_URL="http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=en-WW"
-SAVE_DIR=$XDG_PICTURES_DIR'/Wallpapers/'
+SAVE_DIR=$XDG_PICTURES_DIR'/wallpapers/'
 mkdir -p "$SAVE_DIR"
 PICTURE_NAME="$(date "+%Y%m%d%H%M%S").jpg"
 PICTURE_URL=$BING$(printf '%s\n' "$(curl -s "$XML_URL")" | grep -oP "<url>(.*)</url>" | cut -d ">" -f2 | cut -d "<" -f1)

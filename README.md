@@ -309,7 +309,9 @@ sudo systemctl enable --now fprintd.service
 sudo systemctl enable --now pcscd.service
 sudo systemctl enable --now sshd.service
 
+systemctl --user enable --now auto-theme-switcher.service
 systemctl --user enable --now blueman-manager.service
+systemctl --user enable --now bing-wallpaper.service
 systemctl --user enable --now bluetooth-applet.service
 systemctl --user enable --now fnott.service
 systemctl --user enable --now gnome-keyring-daemon.service
@@ -326,6 +328,8 @@ systemctl --user enable --now waybar.service
 
 systemctl --user enable --now podman.socket
 
+systemctl --user enable --now auto-theme-switcher.timer
+systemctl --user enable --now bing-wallpaper.timer
 systemctl --user enable --now random-wallpaper.timer
 ```
 

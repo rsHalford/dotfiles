@@ -1,0 +1,8 @@
+[Unit]
+Description=Download bing wallpaper
+
+[Service]
+ExecStart=%h/.local/bin/bing-wp
+
+[Install]
+WantedBy=default.target
