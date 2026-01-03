@@ -1,5 +1,6 @@
 command = /usr/bin/fish
 confirm-close-surface = false
+quit-after-last-window-closed = false
 shell-integration-features = no-cursor,sudo,title
 theme = dark:Kanagawa Wave,light:Flexoki Light
 font-family = CascadiaCode

@@ -1,10 +1,10 @@
 # TODO:
+
 - [ ] sort out GTK styling: [GTK - ArchWiki](https://wiki.archlinux.org/title/GTK)
 - [ ] and QT styling: [Qt - ArchWiki](https://wiki.archlinux.org/title/Qt)
 - [ ] basically RTFM again as it has changed a bit since
 - [ ] subscribe to RSS feeds for all major software installed
 - [ ] mention archinstall and git as setup requirements, nmtui on first boot
-
 
 # Hosts
 
@@ -16,13 +16,11 @@ echo "127.0.1.1        $HOSTNAME.localdomain $HOSTNAME" | sudo tee -a /etc/hosts
 
 `$HOSTNAME` is likely to be unset with dash, fish and zsh.
 
-
 # Install all required packages with the below command
 
 ```sh
 sudo pacman -Syu - < ~/.dotfiles/etc/packages.txt
 ```
-
 
 # Stow
 
@@ -37,7 +35,6 @@ Then continue to use:
 ```sh
 stow --restow base
 ```
-
 
 # Symlink /bin/sh to dash
 
@@ -58,7 +55,6 @@ Depends = dash
 EOF
 ```
 
-
 # Update firmware
 
 ```sh
@@ -66,7 +62,6 @@ fwupdmgr refresh --force
 fwupdmgr get-updates
 fwupdmgr update
 ```
-
 
 # Autologin
 
@@ -86,7 +81,6 @@ ExecStart=-/sbin/agetty -o '-f -- $USER' --autologin $USER tty1
 EOF
 ```
 
-
 # Pacman
 
 Update the `/etc/pacman.conf` file to have colour output and change the number of parallel downloads to match CPU count:
@@ -101,7 +95,6 @@ ParallelDownloads = 8
 
 Make sure both lines are uncommented.
 
-
 # Yay
 
 ```sh
@@ -113,7 +106,6 @@ makepkg -si
 sudo pacman -Syu - < ~/.dotfiles/etc/aur.txt
 ```
 
-
 # Multilib
 
 To enable 32-bit software, such as Steam to be installed, multilib packages need to be uncommented inside `/etc/pacman.conf`:
@@ -122,7 +114,6 @@ To enable 32-bit software, such as Steam to be installed, multilib packages need
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 ```
-
 
 # GnuPG
 
@@ -143,7 +134,6 @@ find ~/.local/share/gnupg -type d -exec chmod 700 {} \;
 find ~/.local/share/gnupg -type f -exec chmod 600 {} \;
 ```
 
-
 Retrieve public key from keyoxide servers.
 
 ```sh
@@ -161,7 +151,6 @@ trust
 y
 save
 ```
-
 
 # SSH
 
@@ -184,7 +173,6 @@ EOF
 ```sh
 ssh -T git@github.com
 ```
-
 
 # 1Password
 
@@ -238,7 +226,6 @@ sudo mkdir /etc/1password
 echo "zen-bin" | sudo tee -a /etc/1password/custom_allowed_browsers
 ```
 
-
 # Pass
 
 Before being able to clone the the password store, the remote machine needs to be added to `~/.ssh/config`:
@@ -258,7 +245,6 @@ mkdir "$PASSWORD_STORE_DIR"
 cd "$PASSWORD_STORE_DIR"
 gopass clone "$REMOTE_HOST":~/.password-store
 ```
-
 
 # fprintd
 
@@ -283,7 +269,6 @@ auth    sufficient  pam_unix.so try_first_pass likeauth nullok
 ...
 ```
 
-
 # Polkit
 
 Using Hyprland's hyprpolkitagent to get password prompts for GUI applications (e.g. 1Password).
@@ -297,7 +282,6 @@ auth    sufficient  pam_unix.so try_first_pass likeauth nullok
 ...
 ```
 
-
 # Services
 
 Enable and start all required services:
@@ -309,6 +293,7 @@ sudo systemctl enable --now fprintd.service
 sudo systemctl enable --now pcscd.service
 sudo systemctl enable --now sshd.service
 
+systemctl --user enable app-com.mitchellh.ghostty.service
 systemctl --user enable --now auto-theme-switcher.service
 systemctl --user enable --now blueman-manager.service
 systemctl --user enable --now bing-wallpaper.service
@@ -333,7 +318,6 @@ systemctl --user enable --now bing-wallpaper.timer
 systemctl --user enable --now random-wallpaper.timer
 ```
 
-
 # Bluetooth
 
 If the device continuously connects and disconnects.
@@ -350,7 +334,6 @@ bluetoothctl
 > quit
 ```
 
-
 # Music
 
 Using mpd as the local music server. First the correct directories need to be created (based on `mpd.conf`):
@@ -361,7 +344,6 @@ mkdir ~/.local/share/mpd/playlists
 mkdir ~/.local/share/mpd/state
 ```
 
-
 # Man
 
 To make sure commands such as `apropos` or `fuzzel_man` can find manual pages:
@@ -369,7 +351,6 @@ To make sure commands such as `apropos` or `fuzzel_man` can find manual pages:
 ```sh
 sudo mandb
 ```
-
 
 # Virtual Machines
 
@@ -399,7 +380,6 @@ If the user is required to access virtual machines from `qemu:///system`, add th
 ```sh
 sudo usermod --append --groups libvirt "$USER"
 ```
-
 
 # Kanagawa Theme
 
