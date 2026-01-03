@@ -17,6 +17,7 @@ cups
 curl
 dash
 dconf
+deno
 dmidecode
 dnsmasq
 endeavour
@@ -57,6 +58,7 @@ gum
 gvfs
 gvfs-google
 gvfs-smb
+harper
 hypridle
 hyprland
 hyprlock
@@ -84,6 +86,8 @@ loupe
 man-db
 man-pages
 mangohud
+markdown-oxide
+marksman
 mesa
 mise
 mousai

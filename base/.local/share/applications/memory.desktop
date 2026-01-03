@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Working Memory
+Comment=Open markdown file in helix to help working memory
+Exec=ghostty --title="Working Memory" -e helix -w ~/documents ~/documents/memory.md %F
+Icon=text-editor
+Terminal=false
+Categories=Utilities;TextEditor;

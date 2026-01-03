@@ -20,7 +20,14 @@ continue-comments = false
 # undercurl = true
 
 [editor.statusline]
-left = ["mode", "spinner", "file-name", "version-control", "read-only-indicator", "file-modification-indicator"]
+left = [
+  "mode",
+  "spinner",
+  "file-name",
+  "version-control",
+  "read-only-indicator",
+  "file-modification-indicator",
+]
 center = []
 right = ["diagnostics", "register", "file-encoding", "file-type", "position"]
 separator = "│"
@@ -68,5 +75,5 @@ Q = ":quit!"
 Z = ":write-quit!"
 
 [keys.normal.space]
-t = { c = ":toggle-option continue-comments", h = ":toggle-option lsp.display-inlay-hints" }
+t = { c = ":toggle-option continue-comments", h = ":toggle-option lsp.display-inlay-hints", w = ":toggle-option soft-wrap.enable" }
 # J = [":echo %sh{judge --no-color -a %{buffer_name}:%{cursor_line}:%{cursor_column}}", ":reload"]

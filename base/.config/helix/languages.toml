@@ -60,8 +60,31 @@ auto-format = true
 
 [language-server.tinymist]
 command = "tinymist"
-config = { exportPdf = "onType", outputPath = "$root/target/$dir/$name", preview.background.enabled = true, preview.background.args = ["--data-plane-host=127.0.0.1:23635", "--invert-colors=never", "--open"] }
+config = { exportPdf = "onType", outputPath = "$root/target/$dir/$name", preview.background.enabled = true, preview.background.args = [
+  "--data-plane-host=127.0.0.1:23635",
+  "--invert-colors=never",
+  "--open",
+] }
 
 [[language]]
 name = "typst"
 language-servers = ["tinymist"]
+
+[language-server.harper-ls]
+command = "harper-ls"
+args = ["--stdio"]
+config = { harper-ls.userDictPath = "$HOME/.dotfiles/base/.config/harper-ls/dictionary.txt" }
+
+[[language]]
+name = "markdown"
+formatter = { command = "deno", args = [
+  "fmt",
+  "-",
+  "--ext",
+  "md",
+  "--prose-wrap",
+  "never",
+] }
+auto-format = true
+language-servers = ["marksman", "markdown-oxide", "harper-ls"]
+rulers = []
