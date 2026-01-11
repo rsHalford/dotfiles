@@ -21,7 +21,7 @@ function cat -d "Use appropriate cat replacement for file type"
 
         if is text $file
             if is markown $file || contains (get_ext $file) $exts
-                glow --pager $file
+                glow --tui $file
             else
                 command bat --style plain $file
             end
