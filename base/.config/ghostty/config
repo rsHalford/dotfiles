@@ -6,3 +6,13 @@ theme = dark:Kanagawa Wave,light:Flexoki Light
 font-family = CascadiaCode
 font-size = 14
 background-opacity = 0.95
+keybind = ctrl+up=goto_split:up
+keybind = ctrl+down=goto_split:down
+keybind = ctrl+left=goto_split:left
+keybind = ctrl+right=goto_split:right
+keybind = ctrl+n=goto_split:next
+keybind = ctrl+p=goto_split:previous
+keybind = alt+up=new_split:up
+keybind = alt+down=new_split:down
+keybind = alt+left=new_split:left
+keybind = alt+right=new_split:right
