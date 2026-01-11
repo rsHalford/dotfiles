@@ -13,6 +13,7 @@ bluez-cups
 bluez-utils
 brightnessctl
 ccid
+csvlens
 cups
 curl
 dash
