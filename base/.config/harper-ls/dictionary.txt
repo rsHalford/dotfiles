@@ -3,6 +3,7 @@ Argan
 Ashtanga
 EFI
 FreeSync
+GTD
 Halford
 Hatha
 Kaizen
@@ -14,12 +15,17 @@ Todoist's
 Vinyasa
 WLAN
 bootloader
+chromogens
+fermentable
 forerib
 guanciale
 linux
 pacman
 pecorino
+polyol
+remineralise
 rshalford
+sucralose
 tty
 wifi
 zettel
