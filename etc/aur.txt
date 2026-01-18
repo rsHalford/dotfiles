@@ -24,6 +24,7 @@ nerd-font-inter
 packet
 pam-fprint-grosshack
 pwvucontrol
+selectdefaultapplication-git
 sunsetr-bin
 swayosd-git
 tmux-plugin-manager
