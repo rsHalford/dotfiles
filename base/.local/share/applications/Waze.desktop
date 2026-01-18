@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Waze
+Comment=Waze
+Exec=webapp-launch https://www.waze.com/en-GB/live-map
+Terminal=false
+Type=Application
+Icon=/home/richard/.local/share/applications/icons/Waze.png
+StartupNotify=true
