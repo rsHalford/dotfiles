@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Google Maps
+Comment=Google Maps
+Exec=webapp-launch https://www.google.com/maps
+Terminal=false
+Type=Application
+Icon=/home/richard/.local/share/applications/icons/Google Maps.png
+StartupNotify=true
