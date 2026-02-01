@@ -1,0 +1,352 @@
+#!/bin/bash
+
+# pl-copyfiles
+#
+# Copies media files from M3U playlists to a destination folder,
+# keeping folder structure and file attributes.
+#
+# Can use .m3u, .m3u8 (or actually any text file containing a newline-
+# separated list of files) with absolute or relative file paths,
+# both simple (one line per file) and #EXTM3U formats.
+#
+# Files will only be copied when needed (newer, changed).
+# If multiple playlists are specified and the same file exists in more
+# than one playlist, it will only be copied ONCE, saving time and
+# transfer volume. (Thinking of mounted remote folders!)
+#
+# For safety reasons, files outside the specified base folder will NOT
+# be copied.
+#
+# You can use this to
+#   - copy your favourite music to a USB stick
+#   - copy selected tracks/albums to a synced (Syncthing) folder
+#   - copy music from playlists to a mounted remote web radio station
+#     folder to ensure the remote station can actually play all files
+#     (AzuraCast: Simply mount your station's media folder via SFTP)
+#
+# chmod +x this script and save somewhere handy so it's in the path,
+# like in ~/bin, ~/.local/bin, or /usr/local/bin.
+#
+# 2023-08-17 Matthias C. Hormann a.k.a. Moonbase59
+#   - v0.2 -- much more robust and flexible version of
+#     https://github.com/AzuraCast/AzuraCast/discussions/6512#discussion-5530977
+# 2023-08-18 -- v0.3
+#   - first public (Gist) release
+# 2023-08-18 -- v0.3.1
+#   - updated some comments
+# 2023-08-19 -- v0.4
+#   - Fix sed sometimes not finding extremely obscure playlist file names.
+#   - Display of relative/absolute playlist file paths now dependent on -q switch.
+#   - Use pushd, popd when changing directories to resolve file paths.
+#   - Add note about URL-esaped 'file://' and 'http://', 'https://' links in help.
+# 2023-08-19 -- v0.5
+#   - Add experimental URL decoding and removing of 'file://' (-u option).
+#   - Add warning in help to use this ony when really needed ('%'/'+' problem).
+#   - Playlist entries starting with any scheme like 'http://', 'https://',
+#     'ftp://', 'sftp://', ... will now silently be removed (for the transfer,
+#     not from the original M3U file). Makes no sense to generate extra errors.
+# 2023-08-19 -- v0.6
+#   - Heavy rework of URL decoding: Will now only try this if the file path
+#     contains patterns '%00'..'%FF' (case-insensitive). -u must still be used.
+#   - Playlist entries starting with schemes like 'http://', 'https://', 'ftp://',
+#     'sftp://' and the like will be skipped.
+#   - We will try to find files for 'file://'-type playlist entries. This usually
+#     (not always) requires URL-decoding, use -u, --urldecode to enable.
+#   - It is now checked if media files actually exist. If not, they're skipped.
+#   - Some optimization for more speed, since extra processing slowed us down.
+# 2023-08-20 -- v0.7
+#   - URL-decoding is now automatic, no -u, --urldecode anymore.
+#   - Reworked playlist file cleanup before transfer: MUCH faster and more robust,
+#     works on whole playlist files now, instead on a line-by-line basis.
+#     This brought processing time for 131,170 media files in 39 playlists back
+#     from 32 to 12 minutes, on a live Internet connection via mounted SFTP folder
+#     to a remote AzuraCast station. No glitches or missing files found, although
+#     I DO have file paths that include ' " % + and other usually avoided characters.
+#   - Massive amounts of testing, especially for my elaborate sed syntax.
+# 2023-08-20 -- v0.7.1
+#   - Minor change in help text.
+
+# define me
+me=$(basename "$0")
+version='0.7.1'
+
+# --- USER EDITABLE PARAMETERS START HERE ---
+
+# Location of music folder (we won't transfer anything outside this).
+# Use -b [FOLDER], --base [FOLDER] options to change.
+# If not using the system default folder, you can specify something else
+# like "/mnt/Music" here. Use no trailing slash!
+MUSICFOLDER="$(xdg-user-dir MUSIC)"
+
+# Destination folder is here (use no trailing slash).
+# Use -d [FOLDER], --destination [FOLDER] options to set.
+# If this doesn't exist, rsync will create it for you.
+DESTINATION=""
+
+# (Default) list of playlists to copy files from.
+# Use no characters illegal in filenames!
+# Don’t forget the backslash \ at the end of the lines!
+# Example:
+#   PLAYLISTS=( \
+#     "1970's Rock.m3u" \
+#     '12" Vinyls only.m3u' \
+#     'Kuschelrock.m3u' \
+#     'Night Soul.m3u' \
+#     'テスト.m3u' \
+#   )
+PLAYLISTS=( \
+)
+
+# --- DO NOT MODIFY ANYTHING BELOW THIS POINT! ---
+
+# Default to verbose (not quiet, use -q, --quiet to change)
+# This is so we don't miss file transfers & errors on slow connections.
+VERBOSE=true
+RSYNC_OPT='-v'
+
+# Set IFS to process newline-separated output
+IFS=$'\n'
+
+# option handling using GNU getopt
+VALID_ARGS=$(getopt -o b:d:hqV \
+  --long base:,destination:,help,quiet,version -- "$@")
+if [[ $? -ne 0 ]]; then
+    exit 1;
+fi
+
+eval set -- "$VALID_ARGS"
+while [ : ]; do
+  case "$1" in
+    -b | --base)
+        MUSICFOLDER=${2:-$(xdg-user-dir MUSIC)}
+        shift 2
+        ;;
+
+    -d | --destination)
+        DESTINATION="$2"
+        shift 2
+        ;;
+
+    -h | --help)
+        echo """
+Usage: $me [OPTIONS] [PLAYLIST] [PLAYLIST] ...
+
+Copies media files from M3U playlists to a destination folder,
+keeping folder structure and file attributes. Avoids unneeded copying.
+
+Options:
+  -h, --help         Show this help.
+  -V, --version      Show version number.
+  -b, --base         Set base music folder to which everything will be
+                     referenced. Nothing outside this folder will be copied.
+                     (Default: $MUSICFOLDER)
+  -d, --destination  Set destination folder for copying. Will be created
+                     if it doesn't exist. This MUST be specified.
+  -q, --quiet        Be less verbose (will not list every file copied).
+
+Playlists:
+  At least one playlist must be specified. You can use globbing ('*.m3u').
+  Use quoting as appropriate, like for 'Names with spaces'.
+
+  To use a playlist whose name starts with a '-', use this command:
+    $me [OPTIONS] -- '- Playlist starting with a dash.m3u'
+
+Notes:
+  Can use .m3u, .m3u8 (or actually any text file containing a newline-
+  separated list of files) with absolute or relative file paths,
+  both simple (one line per file) and #EXTM3U formats.
+  
+  Files will only be copied when needed (newer, changed).
+  If multiple playlists are specified and the same file exists in more
+  than one playlist, it will only be copied ONCE, saving time and
+  transfer volume. (Thinking of mounted remote folders!)
+
+  For safety reasons, files outside the specified base folder will NOT
+  be copied.
+  
+  $me WILL try to handle 'file://' URLs and URL-decoding.
+  Windows relative file paths containing backslashes '\' can be used,
+  provided the playlist file's character set is ASCII or UTF-8.
+  You can use 'iconv' or 'recode' to convert these to UTF-8, if needed.
+  
+  Media files that can't be found will produce an error message, but not
+  break the process -- they'll be simply ignored.
+
+  $me CANNOT handle 'http://', 'https://', 'ftp://', 'sftp://', ...
+  entries in playlists. Such entries will be silently skipped.
+
+  Usage examples:
+   - Copy your favourite music to a USB stick.
+   - Copy selected tracks/albums to a synced (Syncthing) folder.
+   - Copy music from playlists to a mounted remote web radio station
+     folder to ensure the remote station actually has all files to play.
+   - Update a radio station's Auto-DJ with new songs.
+  
+Report issues at: https://gist.github.com/Moonbase59/3ced819f3beb5cfa648d8ed888bc6ad1
+"""
+        exit 1
+        ;;
+
+    -q | --quiet)
+        VERBOSE=false
+        RSYNC_OPT=''
+        shift
+        ;;
+
+    -V | --version)
+        echo "$me $version"
+        exit 1
+        ;;
+
+    --) shift; 
+        break 
+        ;;
+  esac
+done
+
+# Commandline args overrule the built-in default array of playlists.
+# Use "pl-copyfiles 'Nuit électronique.m3u' 'Classic Rock.m3u' ...".
+if [ "$1" != "" ] ; then
+  PLAYLISTS=()
+  while [ "$1" != "" ] ; do
+    PLAYLISTS+=("$1")
+    shift
+  done
+fi
+
+# Check if realpath installed
+command -v realpath >/dev/null 2>&1 && HAVE_REALPATH=true || HAVE_REALPATH=false
+if [[ "$HAVE_REALPATH" != true ]] ; then
+  echo >&2 "$me: requires 'realpath' but it's not installed. Aborting."
+  exit 2
+fi
+
+# Check if base music folder exists and is readable.
+# Note: As opposed to -b folder and --base folder,
+# getopt -bfolder and --base=folder will NOT do shell expansion ('~' etc.)!
+# So we do a little magic: let a subshell do the expansion by echoing the echo...
+# This will prevent "not found" errors on the if [ ! -r "$MUSICFOLDER" ] below.
+MUSICFOLDER=$(echo "echo $MUSICFOLDER" | bash)
+# make it an absolute path, for later comparison
+MUSICFOLDER=$(realpath "$MUSICFOLDER")
+if [ ! -r "$MUSICFOLDER" ] ; then
+  echo "$me: Base folder '$MUSICFOLDER' doesn't exist or isn't readable!" >&2
+  exit 1
+fi
+#echo "Base: $MUSICFOLDER"
+
+# Check if a destination was specified
+DESTINATION=$(echo "echo $DESTINATION" | bash)
+if [ -z "$DESTINATION" ] ; then
+  echo "$me: Use -d or --destination to specify a copy destination!" >&2
+  exit 1
+fi
+
+# Destination cannot be the same as the base music folder --
+# this would overwrite our original music files!
+# Destination might not yet exist, so use "realpath -m".
+DESTINATION=$(realpath -m "$DESTINATION")
+if [ "$DESTINATION" = "$MUSICFOLDER" ] ; then
+  echo "$me: Destination can't be the same as the base path, this would overwrite original files!" >&2
+  exit 1
+fi
+#echo "Destination: $DESTINATION"
+
+# use temp files to clean #EXTM3U files
+TMPFILE=$(mktemp)
+TMPFILE2=$(mktemp)
+
+total_playlists=0
+total_songs=0
+errors=0
+
+for playlist in ${PLAYLISTS[@]} ; do
+  [ "$VERBOSE" = true ] && echo
+  
+  # reset TMPFILE to size 0
+  truncate -s 0 -- "$TMPFILE"
+  count=0
+
+  # Get real path of playlist (user might have given relative path).
+  # No need for fancy expansion tricks here, shell has done it for us already.
+  playlist=$(realpath "$playlist")
+
+  # Brute-force playlist file conversion (MUCH faster than doing it file-by-file!):
+  #   First sed (needs -E for extended regexes):
+  #     - Delete all lines starting with '#' (comments, #EXTM3U).
+  #     - Change all (Windows) '\' to '/' to make Windows M3Us with relative paths work;
+  #       this will fail if the character set isn't UTF-8. Use iconv or recode to convert.
+  #     - If line doesn't contain URL-encoded data (%00..%FF), we're finished here
+  #       and "branch" (skip to end of sed commands). This protects file paths natively
+  #       containing '+' or '%' characters, which would otherwise be messed up.
+  #     - Else start URL-decoding: change all '+' to ' ', then
+  #     - change all '%hh' to '\xhh' (hex hh).
+  #   printf '%b\n' (takes 1st sed's output):
+  #     - Convert 1st sed output's '\xhh' values to readable characters again (like echo -e).
+  #   Second sed (takes converted input from printf; needs -E for extended regexes):
+  #     - Remove 'file://' schema (rest of line might contain usable file).
+  #     - Delete all lines that begin with other schemas, and are unusable for us:
+  #       'http://', 'https://', 'ftp://', 'sftp://', 'davs://', ...
+  #   2>/dev/null: Hides unwanted error messages from printf.
+  #
+  # We use "mapfile" which isn't too portable but should work on all modern bashes.
+  # Must use process substitution here (returns a file descriptor), piping won't work.
+  # This builds us the 'files' array.
+  2>/dev/null mapfile -t files < <( \
+    printf '%b\n' \
+    $(sed -E '/^#/d; s/\\/\//g; s/\r//g; /%([0-9A-Fa-f]{2})/!b; s/\+/ /g; s/%([0-9A-Fa-f]{2})/\\x\1/g;' -- "$playlist") | \
+    sed -E 's/^file:\/\///g; /^[-+.[:alnum:]]+:\/\//d;' )
+  
+  # Hop into the playlist folder, for relative paths conversion, save cwd.
+  # Need to hide the stack list.
+  pushd $(dirname -- "$playlist") > /dev/null
+
+  # Convert paths relative to music folder.
+  for file in ${files[@]} ; do
+    # Does the file exist and is readable?
+    if [ -r "$file" ] ; then
+      # realpath will give an error and produce an empty output line
+      # if the file is not found (may happen with non-current playlists).
+      echo "$(realpath --relative-to="$MUSICFOLDER" -- "$file")" >> "$TMPFILE"
+      [ $? -ne 0 ] && errors=$(( $errors + 1 ))
+    else
+      echo "$me: File not found: '$file'" >&2
+      errors=$(( $errors + 1 ))
+    fi
+  done
+
+  # Go back to where we were so script doesn't get confused
+  # checking the next playlist (might have been relative from user's cwd)
+  # Need to hide the stack list.
+  popd > /dev/null
+  
+  # remove empty lines left from possible realpath "not found" errors
+  # sorting and avoiding dups makes rsync more efficient
+  sed '/^$/d;' "$TMPFILE" | sort | uniq > "$TMPFILE2"
+  # count real number of files
+  count="$(wc -l < "$TMPFILE2")"
+  # Show the playlist and how much we got before transfer
+  if [ "$VERBOSE" = true ] ; then
+    # show absolute path
+    echo "Playlist '$playlist' ($count) ..."
+  else
+    # show relative path, starting at user's current working directory
+    echo "Playlist '$(realpath --relative-to "." -- "$playlist")' ($count) ..."
+  fi
+  
+  # transfer all files listed in the playlist to DESTINATION
+  # symlinks will be resolved to copy the real audio file, not the symlink
+  rsync -arL $RSYNC_OPT --files-from "$TMPFILE2" -- "$MUSICFOLDER/" "${DESTINATION}/"
+  [ $? -ne 0 ] && errors=$(( $errors + 1 ))
+  
+  total_playlists=$(( $total_playlists + 1 ))
+  total_songs=$(( $total_songs + $count ))
+done
+
+rm "$TMPFILE" "$TMPFILE2"
+
+echo
+echo "$total_playlists playlists, $total_songs tracks total."
+if [ $errors -gt 0 ] ; then
+  echo "$me: $errors errors occurred (see previous errors)" >&2
+fi
