@@ -131,6 +131,7 @@ qemu-full
 qt5-wayland
 qt6-wayland
 resources
+rhythmbox
 ripgrep
 rsync
 rtkit
@@ -142,6 +143,7 @@ simple-scan
 slurp
 snapper
 socat
+soundconverter
 spice-vdagent
 sqlite
 starship
