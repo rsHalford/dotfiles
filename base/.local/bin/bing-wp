@@ -7,4 +7,5 @@ mkdir -p "$SAVE_DIR"
 PICTURE_NAME="$(date "+%Y%m%d%H%M%S").jpg"
 PICTURE_URL=$BING$(printf '%s\n' "$(curl -s "$XML_URL")" | grep -oP "<url>(.*)</url>" | cut -d ">" -f2 | cut -d "<" -f1)
 curl -s -o "$SAVE_DIR""$PICTURE_NAME" "$PICTURE_URL" && notify-send "Wallpaper Download" "Downloaded Bing wallpaper"
+swww img "$SAVE_DIR""$PICTURE_NAME"
 exit
