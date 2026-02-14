@@ -18,6 +18,7 @@ elephant-websearch
 epson-inkjet-printer-escpr
 gnome-online-accounts-gtk
 heroic-games-launcher-bin
+libation
 morewaita-icon-theme
 mullvad-vpn-bin
 nerd-font-inter
