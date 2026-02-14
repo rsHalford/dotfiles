@@ -22,7 +22,7 @@ deno
 dmidecode
 dnsmasq
 endeavour
-exfat-utils
+exfatprogs
 eyedropper
 eza
 fastfetch
