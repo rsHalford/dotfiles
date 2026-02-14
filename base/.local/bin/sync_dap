@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+SD_ROOT=$(findmnt -no TARGET -D LABEL="DAP")
+
+sudo rsync -rtvP --modify-window=1 "$XDG_MUSIC_DIR/" "$SD_ROOT/music/"
+
+echo "Sync Complete. You can now unmount the SD card."
