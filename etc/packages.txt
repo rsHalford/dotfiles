@@ -47,7 +47,9 @@ glow
 gnome-calendar
 gnome-clocks
 gnome-contacts
+gnome-disk-utility
 gnome-maps
+gnome-podcasts
 gnome-weather
 gnupg
 go
