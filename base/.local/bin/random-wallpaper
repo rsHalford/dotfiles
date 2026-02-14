@@ -1,4 +1,4 @@
 #!/bin/sh
 WALLPAPERS_DIR=~/media/pictures/wallpapers
-WALLPAPER=$(find "$WALLPAPERS_DIR" -type f | shuf -n 1)
+WALLPAPER=$(find "$WALLPAPERS_DIR" -name "*.jpg" | shuf -n 1)
 swww img "$WALLPAPER"
