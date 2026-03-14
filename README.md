@@ -298,6 +298,7 @@ systemctl --user enable --now auto-theme-switcher.service
 systemctl --user enable --now blueman-manager.service
 systemctl --user enable --now bing-wallpaper.service
 systemctl --user enable --now bluetooth-applet.service
+systemctl --user enable --now elephant.service
 systemctl --user enable --now fnott.service
 systemctl --user enable --now gnome-keyring-daemon.service
 systemctl --user enable --now hypridle.service
@@ -309,6 +310,7 @@ systemctl --user enable --now random-wallpaper.service
 systemctl --user enable --now sunsetr.service
 systemctl --user enable --now swww.service
 systemctl --user enable --now syncthing.service
+systemctl --user enable --now walker.service
 systemctl --user enable --now waybar.service
 
 systemctl --user enable --now podman.socket
