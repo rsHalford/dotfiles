@@ -157,6 +157,8 @@ swww
 syncthing
 taplo
 tar
+thunderbird
+thunderbird-i18n-en-gb
 tldr
 translate-shell
 tree
