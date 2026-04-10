@@ -3,7 +3,7 @@ Description=Solution for Wayland Wallpaper Woes
 After=hyprland.service
 
 [Service]
-ExecStart=/usr/bin/swww-daemon
+ExecStart=/usr/bin/awww-daemon
 Restart=on-failure
 RestartSec=5
 

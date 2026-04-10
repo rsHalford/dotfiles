@@ -1,5 +1,5 @@
 [Unit]
-Description=Change wallpaper using SWWW
+Description=Change wallpaper using awww
 
 [Service]
 ExecStart=%h/.local/bin/random-wallpaper

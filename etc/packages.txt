@@ -2,6 +2,7 @@ acpid
 alsa-utils
 amberol
 amd-ucode
+awww
 bash
 bash-language-server
 bat
@@ -153,7 +154,6 @@ starship
 steam
 stow
 stylua
-swww
 syncthing
 taplo
 tar
