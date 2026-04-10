@@ -55,5 +55,5 @@ set -gx WGETRC "$XDG_CONFIG_HOME/wgetrc"
 set -gx BROWSER brave
 set -gx EDITOR helix
 set -gx MANPAGER "nvim +Man!"
-set -gx TERM ghostty
+set -gx TERM xterm-ghostty
 set -gx VISUAL helix
