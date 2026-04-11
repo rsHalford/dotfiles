@@ -34,6 +34,7 @@ flatpak
 fnott
 foot
 fprintd
+framework-system
 fuzzel
 fwupd
 fzf
