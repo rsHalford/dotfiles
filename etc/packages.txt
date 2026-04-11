@@ -146,6 +146,7 @@ sassc
 shellcheck
 shfmt
 showtime
+signal-desktop
 simple-scan
 slurp
 snapper
