@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | while read -r img; do
+    img_dir=$(dirname "$img")
+    target="$img_dir/cover.jpg"
+    magick "$img" -resize "300x300>" "$target"
+    if [[ "$(basename "$img")" != "cover.jpg" ]]; then
+        rm "$img"
+    fi
+done
+
