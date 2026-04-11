@@ -134,6 +134,7 @@ power-profiles-daemon
 puddletag
 python-dbus
 qemu-full
+qpdf
 qt5-wayland
 qt6-wayland
 resources
