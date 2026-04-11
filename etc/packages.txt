@@ -115,6 +115,7 @@ noto-fonts-emoji
 noto-fonts-extra
 nwg-look
 obsidian
+opencode
 openssh
 papers
 pciutils
