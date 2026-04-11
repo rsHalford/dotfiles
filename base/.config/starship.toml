@@ -64,6 +64,10 @@ disabled = false
 [lua]
 symbol = " "
 
+[mise]
+symbol = "󰭼 "
+disabled = false
+
 [nix_shell]
 symbol = " "
 
