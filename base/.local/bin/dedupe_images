@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Default values
+DRY_RUN=false
+FORCE=false
+DIR="${XDG_PICTURES_DIR:-$HOME/Pictures}"
+
+usage() {
+    cat <<EOF
+Usage: ${0##*/} [OPTIONS] [DIRECTORY]
+
+Find and delete duplicate image files by content hash.
+
+Arguments:
+  DIRECTORY          Path to search for duplicates (default: \$XDG_PICTURES_DIR or ~/Pictures)
+
+Options:
+  -d, --dry-run      Print duplicates without deleting
+  -f, --force        Delete duplicates without confirmation
+  -h, --help         Show this help message and exit
+
+Examples:
+  ${0##*/} -d | imv         Pipe duplicates to image viewer
+  ${0##*/} -df ~/photos     Force delete with dry-run (no-op, shows files)
+EOF
+}
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+    -d | --dry-run)
+        DRY_RUN=true
+        shift
+        ;;
+    -f | --force)
+        FORCE=true
+        shift
+        ;;
+    -h | --help)
+        usage
+        exit 0
+        ;;
+    -*)
+        printf 'Error: Unknown option %s\n' "$1" >&2
+        usage >&2
+        exit 1
+        ;;
+    *)
+        DIR="$1"
+        shift
+        ;;
+    esac
+done
+
+# Validate directory
+if [[ ! -d "$DIR" ]]; then
+    printf 'Error: Not a directory: %s\n' "$DIR" >&2
+    exit 1
+fi
+
+# Collect duplicates into array
+mapfile -t duplicates < <(
+    find "$DIR" -type f \
+        \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) \
+        -exec md5sum {} + 2>/dev/null |
+        sort |
+        awk '{
+            hash = $1
+            path = substr($0, index($0,$2))
+            if (seen[hash]++) {
+                print path
+            }
+        }'
+)
+
+# Exit if no duplicates found
+if [[ ${#duplicates[@]} -eq 0 ]]; then
+    # Only print message to stderr when not piping, so stdout is clean
+    [[ -t 2 ]] && printf 'No duplicate images found in: %s\n' "$DIR" >&2
+    exit 0
+fi
+
+# Handle dry-run: detect if stdout is piped
+if [[ "$DRY_RUN" == true ]]; then
+    if [[ -t 1 ]]; then
+        # Terminal: print header for human readability
+        printf 'Duplicate files found (dry-run, not deleting):\n'
+    fi
+    printf '%s\n' "${duplicates[@]}"
+    exit 0
+fi
+
+# Handle force or interactive confirmation
+if [[ "$FORCE" != true ]]; then
+    printf 'The following %d duplicate file(s) will be deleted:\n' "${#duplicates[@]}"
+    printf '  %s\n' "${duplicates[@]}"
+    read -r -p 'Proceed? [y/N] ' response
+    [[ "$response" =~ ^[Yy]$ ]] || {
+        printf 'Aborted.\n'
+        exit 0
+    }
+fi
+
+# Delete duplicates
+for file in "${duplicates[@]}"; do
+    rm -v -- "$file"
+done
+
+printf 'Deleted %d duplicate file(s).\n' "${#duplicates[@]}"
