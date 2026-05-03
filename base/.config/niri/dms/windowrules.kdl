@@ -1,0 +1,8 @@
+// DMS Window Rules - Managed by DankMaterialShell
+// Do not edit manually - changes may be overwritten
+
+// @id=wr_1776884473211323893 @name=org.gnome.Mines
+window-rule {
+    match app-id="^org.gnome.Mines$"
+    open-floating true
+}
