@@ -53,7 +53,7 @@ gvfs-google
 gvfs-smb
 harper
 inotify-tools
-iptables-nft
+iptables
 iwd
 jujutsu
 jq
