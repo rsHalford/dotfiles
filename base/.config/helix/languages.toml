@@ -1,4 +1,15 @@
 [[language]]
+name = "bash"
+indent = { tab-width = 4, unit = " " }
+formatter = { command = 'shfmt', args = ["-i", "4"] }
+auto-format = true
+
+[[language]]
+name = "fish"
+formatter = { command = "fish_indent" }
+auto-format = true
+
+[[language]]
 name = "nix"
 formatter = { command = "nixfmt" }
 auto-format = true
@@ -30,21 +41,19 @@ name = "typescript"
 auto-format = true
 language-servers = ["biome"]
 
-[language-server.elixir-ls]
-command = "elixir-ls"
-config = { elixirLS.dialyzerEnabled = true }
+[language-server.expert]
+command = "expert"
+args = ["--stdio"]
 
 [[language]]
 name = "elixir"
-formatter = { command = "mix format" }
+language-servers = ["expert"]
 auto-format = true
-language-servers = ["elixir-ls"]
 
 [[language]]
 name = "heex"
-formatter = { command = "mix format" }
+language-servers = ["expert"]
 auto-format = true
-language-servers = ["elixir-ls"]
 
 [[language]]
 name = "janet"
